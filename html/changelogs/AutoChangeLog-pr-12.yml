@@ -1,0 +1,6 @@
+author: "coffeecoffeecoffee"
+delete-after: True
+changes:
+  - rscdel: "removed a small handful of loot items AP code doesn't have"
+  - bugfix: "fixed all the incorrect item paths on the Lyndvhar map"
+  - server: "added lyndvhar to voteable maps"
