@@ -23,3 +23,8 @@ map dun_world
 	default
 	votable
 endmap
+
+map lyndvhar_port
+	default
+	votable
+endmap
