@@ -88,6 +88,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	var/sfx_post_delay
 
 	var/_icon = 'icons/effects/effects.dmi'
+	var/pre_icon = 'icons/effects/effects.dmi'
 	var/pre_icon_state = "blip"
 	var/post_icon_state = "strike"
 
@@ -263,7 +264,7 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 /datum/special_intent/proc/_draw(list/turfs, newdelay)
 	for(var/turf/T in turfs)
 		var/obj/effect/temp_visual/special_intent/fx = new (T, newdelay ? newdelay : delay)
-		fx.icon = _icon
+		fx.icon = pre_icon
 		fx.icon_state = pre_icon_state
 
 ///Called after the affected_turfs list is populated, but before the grid is drawn.
@@ -368,6 +369,8 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	if(ishuman(target))
 		var/mob/living/carbon/human/HT = target
 		var/obj/item/bodypart/affecting = HT.get_bodypart(zone)
+		if(!affecting)
+			affecting = HT.get_bodypart(BODY_ZONE_CHEST)//fallback for if we're targeting a missing limb
 		var/armor_block = HT.run_armor_check(zone, d_type, 0, damage = dam, used_weapon = W, armor_penetration = (no_pen ? PEN_NONE : 0))
 		if(full_pen)
 			armor_block = 0		//You block NOTHING, sir!
@@ -380,6 +383,73 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	msg += "</font>"
 	howner?.visible_message(msg)
 
+
+/datum/special_intent/proc/npc_use_chance(mob/living/user, atom/target)
+	return null
+
+
+/datum/special_intent/proc/npc_count_nearby(mob/living/user, radius, atom/center)
+	var/enemies = 0
+	var/allies = 0
+	for(var/mob/living/L in view(radius, get_turf(center || user)))
+		if(L == user || L.stat == DEAD || !(L.mobility_flags & MOBILITY_STAND))
+			continue
+		if(user.faction_check_mob(L))
+			allies++
+		else
+			enemies++
+	return list(enemies, allies)
+
+/datum/special_intent/proc/npc_ring_chance(mob/living/user, radius = 2)
+	var/list/count = npc_count_nearby(user, radius)
+	var/enemies = count[1]
+	var/allies = count[2]
+	if(!enemies)
+		return 0
+	if(enemies >= 3 && enemies >= allies)
+		return 100
+	return max(15 + (enemies - 1) * 20 - (allies * 20), 5)
+
+/datum/special_intent/proc/npc_front_chance(mob/living/user)
+	var/turf/front = get_step(get_turf(user), user.dir)
+	if(!front)
+		return 0
+	var/list/count = npc_count_nearby(user, 1, front)
+	var/enemies = count[1]
+	if(!enemies)
+		return 0
+	if(count[2])
+		return 5
+	if(enemies >= 3)
+		return 100
+	return (enemies >= 2) ? 60 : 15
+
+/datum/special_intent/proc/npc_line_chance(mob/living/user, length = 3)
+	var/enemies = 0
+	var/allies = 0
+	var/turf/T = get_turf(user)
+	for(var/i in 1 to length)
+		T = get_step(T, user.dir)
+		if(!T || T.density)
+			break
+		var/list/count = npc_count_nearby(user, 0, T)
+		enemies += count[1]
+		allies += count[2]
+	if(!enemies)
+		return 0
+	if(allies)
+		return 5
+	if(enemies >= 3)
+		return 100
+	return (enemies >= 2) ? 80 : 15
+
+/datum/special_intent/proc/npc_finisher_chance(atom/target)
+	if(!isliving(target))
+		return 0
+	var/mob/living/L = target
+	if(L.has_status_effect(/datum/status_effect/debuff/exposed) || L.has_status_effect(/datum/status_effect/debuff/vulnerable))
+		return 100
+	return 10
 
 //A subtype that creates a grid for us so we don't have to painstakingly define it tile by tile.
 //Consequently, however, it does NOT support custom timers and will only work with the default delay var.
@@ -446,7 +516,8 @@ SPECIALS START HERE
 	desc = "Swings at your primary flank in a distracting fashion. Anyone caught in it will be exposed for a short while. Aims for the targeted zone."
 	tile_coordinates = list(list(0,0), list(1,0), list(1,-1))	//L shape that hugs our -right- flank.
 	post_icon_state = "sweep_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	sfx_post_delay = 'sound/combat/sidesweep_hit.ogg'
 	delay = 0.6 SECONDS
 	cooldown = 17 SECONDS
@@ -483,7 +554,8 @@ SPECIALS START HERE
 	desc = "A hasty attack at the legs, extending ourselves. Slows down the opponent if hit. Always targets the legs."
 	tile_coordinates = list(list(0,0), list(1,0), list(-1,0))
 	post_icon_state = "sweep_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	sfx_post_delay = 'sound/combat/shin_swipe.ogg'
 	delay = 0.5 SECONDS
 	cooldown = 20 SECONDS
@@ -512,7 +584,8 @@ SPECIALS START HERE
 	desc = "A planned thrust forward, extending ourselves. Pierces our enemy's armor and knocks the wind from them. Aims for the targeted zone."
 	tile_coordinates = list(list(0,0), list(0,1))
 	post_icon_state = "stab"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	sfx_post_delay = 'sound/combat/parry/bladed/bladedsmall (3).ogg'
 	delay = 0.5 SECONDS
 	cooldown = 25 SECONDS
@@ -541,7 +614,8 @@ SPECIALS START HERE
 	desc = "Swings downward, leaving a traveling quake for a few tiles. Anyone struck by it will be slowed and offbalanced, or knocked down if they're already off-balanced. Always targets the chest."
 	tile_coordinates = list(list(0,0), list(0,1, 0.1 SECONDS), list(0,2, 0.2 SECONDS))
 	post_icon_state = "kick_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	respect_adjacency = TRUE
 	requires_wielding = TRUE
 	delay = 0.7 SECONDS
@@ -554,6 +628,9 @@ SPECIALS START HERE
 	var/dam = 200
 
 //We play the pre-sfx here because it otherwise it gets played per tile. Sounds funky.
+/datum/special_intent/ground_smash/npc_use_chance(mob/living/user, atom/target)
+	return npc_line_chance(user, 3)
+
 /datum/special_intent/ground_smash/on_create()
 	. = ..()
 	howner.Immobilize(self_immob_dur)
@@ -590,7 +667,8 @@ SPECIALS START HERE
 	desc = "Swings in a perfect circle all around you, pushing people aside. The more are struck, the more powerful the effect. Always targets the chest."
 	tile_coordinates = SPECIAL_AOE_AROUND_ORIGIN
 	post_icon_state = "sweep_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	sfx_pre_delay = 'sound/combat/flail_sweep.ogg'
 	respect_adjacency = FALSE
 	delay = 0.7 SECONDS
@@ -602,6 +680,15 @@ SPECIALS START HERE
 	var/knockdown = 2 SECONDS
 	var/immobilize_init = 1 SECONDS
 	var/dam = 20
+
+/datum/special_intent/flail_sweep/npc_use_chance(mob/living/user, atom/target)
+	var/list/count = npc_count_nearby(user, 1)
+	var/enemies = count[1]
+	if(enemies >= 3)
+		return 100
+	if(enemies == 2 && !count[2])
+		return 10
+	return 0
 
 /datum/special_intent/flail_sweep/on_create()
 	victim_count = initial(victim_count)
@@ -657,18 +744,22 @@ SPECIALS START HERE
 
 /datum/special_intent/quarterstaff_sweep
 	name = "Quarterstaff Sweep"
-	desc = "Sweep a five-tile frontal arc, knocking foes back and exposing them. Aims for the targeted zone."
+	desc = "Sweep a five-tile frontal arc, knocking foes back and leaving them vulnerable. Aims for the targeted zone."
 	tile_coordinates = list(list(-1,-1), list(1,-1), list(-1,0), list(0,0), list(1,0))
 	post_icon_state = "sweep_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	sfx_pre_delay = 'sound/combat/wooshes/blunt/wooshmed (1).ogg'
 	sfx_post_delay = 'sound/combat/hits/blunt/woodblunt (1).ogg'
 	delay = 0.6 SECONDS
 	cooldown = 15 SECONDS
 	requires_wielding = TRUE
 	stamcost = 20
-	var/exposed_dur = 3 SECONDS
+	var/vulnerable_dur = 3 SECONDS
 	var/dam
+
+/datum/special_intent/quarterstaff_sweep/npc_use_chance(mob/living/user, atom/target)
+	return npc_front_chance(user)
 
 /datum/special_intent/quarterstaff_sweep/process_attack()
 	var/obj/item/rogueweapon/W = iparent
@@ -685,10 +776,10 @@ SPECIALS START HERE
 		L.safe_throw_at(throwtarget, 1, 1, howner, force = MOVE_FORCE_EXTREMELY_STRONG)
 		var/hit_zone = get_aimed_zone(L)
 		apply_generic_weapon_damage(L, dam, "blunt", hit_zone, bclass = BCLASS_BLUNT, no_pen = TRUE)
-		L.apply_status_effect(/datum/status_effect/debuff/exposed, exposed_dur)
+		L.apply_status_effect(/datum/status_effect/debuff/vulnerable, vulnerable_dur)
 	..()
 
-#define AXE_SWING_GRID_DEFAULT 	list(list(-1,0), list(0,0, 0.2 SECONDS), list(1,0, 0.4 SECONDS))
+#define AXE_SWING_GRID_DEFAULT	list(list(-1,0), list(0,0, 0.2 SECONDS), list(1,0, 0.4 SECONDS))
 #define AXE_SWING_GRID_MIRROR	list(list(-1,0, 0.4 SECONDS), list(0,0, 0.2 SECONDS), list(1,0))
 
 /datum/special_intent/axe_swing
@@ -696,7 +787,8 @@ SPECIALS START HERE
 	desc = "Swings from left to right. Anyone caught in the swing get immobilized and exposed. Always targets the legs."
 	tile_coordinates = AXE_SWING_GRID_DEFAULT
 	post_icon_state = "sweep_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	requires_wielding = TRUE
 	respect_adjacency = FALSE
 	delay = 0.5 SECONDS
@@ -705,6 +797,9 @@ SPECIALS START HERE
 	var/immob_dur = 3.5 SECONDS
 	var/exposed_dur = 6 SECONDS
 	var/dam
+
+/datum/special_intent/axe_swing/npc_use_chance(mob/living/user, atom/target)
+	return npc_front_chance(user)
 
 /datum/special_intent/axe_swing/_reset()
 	. = ..()
@@ -749,7 +844,8 @@ SPECIALS START HERE
 	desc = "A long-range lash that coils around the ankles of the target, immobilizing them. Always targets the chest."
 	tile_coordinates = list(list(0,0))	//Just one tile exactly where our cursor is.
 	post_icon_state = "strike"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	sfx_pre_delay = 'sound/combat/sp_whip_start.ogg'
 	respect_adjacency = FALSE
 	use_clickloc = TRUE
@@ -803,6 +899,9 @@ SPECIALS START HERE
 	var/self_immob = 2.5 SECONDS
 	var/self_clickcd = 3 SECONDS
 	var/self_vuln = 3 SECONDS
+
+/datum/special_intent/greatsword_swing/npc_use_chance(mob/living/user, atom/target)
+	return npc_ring_chance(user, 2)
 
 /datum/special_intent/greatsword_swing/_reset()
 	hitcount = initial(hitcount)
@@ -864,7 +963,8 @@ SPECIALS START HERE
 	cooldown = 20 SECONDS
 	requires_wielding = TRUE
 	stamcost = 30
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	post_icon_state = "sweep_fx"
 	sfx_pre_delay = 'sound/combat/wooshes/bladed/wooshlarge (2).ogg'
 	sfx_post_delay = 'sound/combat/sp_axe_swing1.ogg'
@@ -876,6 +976,9 @@ SPECIALS START HERE
 	var/self_immob = 2.5 SECONDS
 	var/self_clickcd = 3 SECONDS
 	var/self_vuln = 3 SECONDS
+
+/datum/special_intent/vicious_swipe/npc_use_chance(mob/living/user, atom/target)
+	return npc_ring_chance(user, 2)
 
 /datum/special_intent/vicious_swipe/post_delay(list/turfs)
 	. = ..()
@@ -925,6 +1028,9 @@ SPECIALS START HERE
 	cooldown = 60 SECONDS
 	stamcost = 25
 
+/datum/special_intent/limbguard/npc_use_chance(mob/living/user, atom/target)
+	return 0
+
 //apply_cost is called before anything else, so it works here for the toggle checks, but it's kind of a bad example -- don't do this.
 /datum/special_intent/limbguard/apply_cost(mob/living/L)
 	if(L.has_status_effect(/datum/status_effect/buff/clash) || L.toggle_timer > world.time)
@@ -964,6 +1070,13 @@ SPECIALS START HERE
 	var/push_dist = 1
 	var/pushdir
 
+/datum/special_intent/polearm_backstep/npc_use_chance(mob/living/user, atom/target)
+	var/list/count = npc_count_nearby(user, 1)
+	var/enemies = count[1]
+	if(!enemies)
+		return 0
+	return (enemies >= 2) ? 75 : 10
+
 /datum/special_intent/polearm_backstep/process_attack()
 	. = ..()
 	var/throwtarget = get_edge_target_turf(howner, get_dir(howner, get_step_away(howner, get_step(get_turf(howner), howner.dir))))
@@ -995,6 +1108,9 @@ SPECIALS START HERE
 	stamcost = 20
 	var/dam = 0
 	var/fire_stacks = 2
+
+/datum/special_intent/drakkyrmaw_bite/npc_use_chance(mob/living/user, atom/target)
+	return npc_line_chance(user, 4)
 
 /datum/special_intent/drakkyrmaw_bite/on_create()
 	. = ..()
@@ -1039,6 +1155,9 @@ SPECIALS START HERE
 	stamcost = 25
 	var/dam = 0
 
+/datum/special_intent/gilded_dragon_sweep/npc_use_chance(mob/living/user, atom/target)
+	return npc_front_chance(user)
+
 /datum/special_intent/gilded_dragon_sweep/process_attack()
 	var/obj/item/rogueweapon/W = iparent
 	dam = W.force_dynamic * max((howner.STASTR / 10), 0.5) //i really dunno if this is too much, this is more or less copypasted
@@ -1064,7 +1183,7 @@ SPECIALS START HERE
 	playsound(T, sfx_post_delay, 100, TRUE)
 	..()
 
-/* 				EXAMPLES
+/*				EXAMPLES
 
 /datum/special_intent/another_example_cast
 	name = "Expanding Rectangle Pattern"
@@ -1108,7 +1227,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	respect_dir = TRUE
 	delay = 1.2 SECONDS
 	fade_delay = 1 SECONDS
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	post_icon_state = "strike"
 	sfx_pre_delay = 'sound/combat/ground_smash_start.ogg'
 	sfx_post_delay = 'sound/combat/ground_smash1.ogg'
@@ -1119,9 +1239,12 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	var/self_immob_dur = 1 SECONDS
 	var/dam = 0
 
+/datum/special_intent/martyr_volcano_slam/npc_use_chance(mob/living/user, atom/target)
+	return npc_front_chance(user)
+
 /datum/special_intent/martyr_volcano_slam/process_attack()
 	var/obj/item/rogueweapon/W = iparent
-	dam = W.force_dynamic * max((howner.STASTR / 10 + howner.STAPER / 10), 1)  / 1.5
+	dam = W.force_dynamic * max((howner.STASTR / 10 + howner.STAPER / 10), 1)	/ 1.5
 	. = ..()
 
 /datum/special_intent/martyr_volcano_slam/on_create()
@@ -1163,7 +1286,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	respect_dir = TRUE
 	delay = 0.7 SECONDS
 	fade_delay = 0.5 SECONDS
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	post_icon_state = "sweep_fx"
 	sfx_pre_delay = 'sound/combat/wooshes/bladed/wooshlarge (1).ogg'
 	sfx_post_delay = 'sound/combat/sp_axe_swing1.ogg'
@@ -1172,6 +1296,9 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	var/fire_stacks = 4
 	var/self_immob_dur = 1 SECONDS
 	var/dam = 0
+
+/datum/special_intent/martyr_blazing_sweep/npc_use_chance(mob/living/user, atom/target)
+	return npc_front_chance(user)
 
 /datum/special_intent/martyr_blazing_sweep/process_attack()
 	var/obj/item/rogueweapon/W = iparent
@@ -1218,7 +1345,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	respect_dir = TRUE
 	delay = 0.7 SECONDS
 	fade_delay = 0.5 SECONDS
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	post_icon_state = "sweep_fx"
 	sfx_pre_delay = 'sound/combat/wooshes/bladed/wooshlarge (1).ogg'
 	sfx_post_delay = 'sound/combat/sidesweep_hit.ogg'
@@ -1269,7 +1397,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	respect_dir = TRUE
 	delay = 0.7 SECONDS
 	fade_delay = 0.5 SECONDS
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	post_icon_state = "sweep_fx"
 	sfx_pre_delay = 'sound/combat/wooshes/bladed/wooshlarge (1).ogg'
 	sfx_post_delay = 'sound/combat/sidesweep_hit.ogg'
@@ -1279,6 +1408,9 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	var/fire_stacks = 4
 	var/self_immob_dur = 0.5 SECONDS
 	var/dam = 0
+
+/datum/special_intent/martyr_blazing_trident/npc_use_chance(mob/living/user, atom/target)
+	return npc_front_chance(user)
 
 /datum/special_intent/martyr_blazing_trident/process_attack()
 	var/obj/item/rogueweapon/W = iparent
@@ -1312,7 +1444,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	desc = "Charge up a devastating strike infront of you. If the target is Exposed they will fall over and be flung back with tremendous damage, if not exposed they will be pushed slightly back. Aims for the targeted zone, finisher always hits the head."
 	tile_coordinates = list(list(0,0))
 	post_icon_state = "kick_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	respect_adjacency = TRUE
 	delay = 1.2 SECONDS
 	cooldown = 30 SECONDS
@@ -1323,6 +1456,9 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	var/prev_pixel_z
 	var/prev_transform
 
+
+/datum/special_intent/upper_cut/npc_use_chance(mob/living/user, atom/target)
+	return npc_finisher_chance(target)
 
 /datum/special_intent/upper_cut/on_create()
 	. = ..()
@@ -1377,7 +1513,8 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	desc = "Rise with arcyne force, then crash down on the target. If the target is Exposed or Vulnerable, they will fall over and be flung back with tremendous damage; otherwise they are pushed slightly back."
 	tile_coordinates = list(list(0,0))
 	post_icon_state = "kick_fx"
-	pre_icon_state = "trap"
+	pre_icon = 'icons/effects/telegraph.dmi'
+	pre_icon_state = "warning"
 	respect_adjacency = TRUE
 	delay = 1.2 SECONDS
 	cooldown = 30 SECONDS
@@ -1387,6 +1524,9 @@ tile_coordinates = list(list(1,1), list(-1,1), list(-1,-1), list(1,-1),list(0,0)
 	var/dam = 50
 	var/prev_pixel_z
 	var/prev_transform
+
+/datum/special_intent/arcyne_descent/npc_use_chance(mob/living/user, atom/target)
+	return npc_finisher_chance(target)
 
 /datum/special_intent/arcyne_descent/on_create()
 	. = ..()

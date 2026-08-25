@@ -1,4 +1,6 @@
 /obj/item/reagent_containers/food/snacks/fish
+	cuisine = CUISINE_SOUTH_IMPERIAL
+	dish_type = DISH_SEAFOOD
 	name = "fish"
 	desc = "Fresh blood stains its silvery skin. Silver-coloured scales shimmering softly.."
 	icon_state = "carp"
@@ -38,7 +40,7 @@
 /obj/item/reagent_containers/food/snacks/fish/dead
 	dead = TRUE
 
-/obj/item/reagent_containers/food/snacks/fish/Initialize()
+/obj/item/reagent_containers/food/snacks/fish/Initialize(mapload)
 	. = ..()
 	var/rarity = pickweight(list("gold" = 1, "ultra" = 40, "rare"= 50, "com"= 900))
 	if(!no_rarity_sprite)
