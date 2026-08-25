@@ -1,17 +1,17 @@
-#define BB_KICK_COOLDOWN           "bb_kick_cooldown"
-#define BB_GRAB_REACTION_AT        "bb_grab_reaction_at"
-#define BB_GRAB_REACTION_GRABBER   "bb_grab_reaction_grabber"
-#define KICK_COOLDOWN              (20 SECONDS)
-#define KICK_WALLED_CHANCE         30  // target backed against a wall
-#define KICK_CHOKEPOINT_CHANCE     25  // target in a doorway/corridor (2+ dense neighbors)
-#define KICK_STACKED_ENEMY_CHANCE  20  // non-allied mob behind target to knock into
-#define KICK_OPPORTUNISTIC_CHANCE  10  // target is off-balanced, prone, or stunned
-#define KICK_EXHAUSTED_CHANCE      35  // target is fatigued - kick guarantees knockdown
-#define KICK_EXHAUSTED_THRESHOLD   1 // 1 = fully exhausted, guarantees knockdown per species.dm
-#define KICK_CHOKEPOINT_THRESHOLD  2   // minimum dense cardinal neighbors to count as chokepoint
-#define GRAB_REACTION_BASE         20  // deciseconds; reduced by (STAINT + STAPER)
-#define GRAB_REACTION_MIN          3   // floor so even maxed stats can't be frame-perfect
-#define GRAB_REACTION_JITTER       2   // +/- deciseconds of randomness
+#define BB_KICK_COOLDOWN			"bb_kick_cooldown"
+#define BB_GRAB_REACTION_AT		"bb_grab_reaction_at"
+#define BB_GRAB_REACTION_GRABBER	"bb_grab_reaction_grabber"
+#define KICK_COOLDOWN				(20 SECONDS)
+#define KICK_WALLED_CHANCE			30	// target backed against a wall
+#define KICK_CHOKEPOINT_CHANCE		25	// target in a doorway/corridor (2+ dense neighbors)
+#define KICK_STACKED_ENEMY_CHANCE	20	// non-allied mob behind target to knock into
+#define KICK_OPPORTUNISTIC_CHANCE	10	// target is off-balanced, prone, or stunned
+#define KICK_EXHAUSTED_CHANCE		35	// target is fatigued - kick guarantees knockdown
+#define KICK_EXHAUSTED_THRESHOLD	1 // 1 = fully exhausted, guarantees knockdown per species.dm
+#define KICK_CHOKEPOINT_THRESHOLD	2	// minimum dense cardinal neighbors to count as chokepoint
+#define GRAB_REACTION_BASE			20	// deciseconds; reduced by (STAINT + STAPER)
+#define GRAB_REACTION_MIN			3	// floor so even maxed stats can't be frame-perfect
+#define GRAB_REACTION_JITTER		2	// +/- deciseconds of randomness
 
 /datum/ai_planning_subtree/kick_attack
 
@@ -155,8 +155,10 @@
 	QDEL_NULL(pawn.mmb_intent)
 	pawn.mmb_intent = old_mmb
 
-	controller.set_blackboard_key(BB_KICK_COOLDOWN, world.time + KICK_COOLDOWN)
+	var/kick_cd = npc_technique_cd(pawn, KICK_COOLDOWN)
+	controller.set_blackboard_key(BB_KICK_COOLDOWN, world.time + kick_cd)
 	controller.set_blackboard_key(BB_HUMAN_NPC_TECHNIQUE_CD, world.time + 3 SECONDS)
+	propagate_technique_cd(pawn, target, BB_KICK_COOLDOWN, world.time + kick_cd)
 	// Kick is a committed action; block the next melee swing briefly so they don't immediately
 	// combo into a full attack right after.
 	if(pawn.next_click < world.time + 1.2 SECONDS)

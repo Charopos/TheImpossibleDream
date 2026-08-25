@@ -86,7 +86,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	/// This mind's antag HUD.
 	var/datum/atom_hud/antag/antag_hud = null
 	var/damnation_type = 0
-	/// Who owns the soul.  Under normal circumstances, this will point to src.
+	/// Who owns the soul.	Under normal circumstances, this will point to src.
 	var/datum/mind/soulOwner
 	/// If false, renders the character unable to sell their soul.
 	var/hasSoul = TRUE
@@ -108,6 +108,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 	var/list/learned_recipes
 
 	var/list/special_items = list()
+	var/list/special_items_metadata = list()
 
 	var/list/areas_entered = list()
 
@@ -140,6 +141,9 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 
 	/// Triumph discount for donators
 	var/triumph_discount_remaining = 0
+
+	/// Copy of role subprefs cached at roundstart
+	var/list/job_subprefs = list()
 
 /datum/mind/New(key)
 	key = key
@@ -584,6 +588,12 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 					return A
 
 
+/datum/mind/proc/has_spellmiracle_block_antag()
+	for(var/antag_type in SPELLMIRACLE_BLOCK_ANTAGS)
+		if(has_antag_datum(antag_type))
+			return TRUE
+	return FALSE
+
 /datum/mind/proc/remove_traitor()
 	remove_antag_datum(/datum/antagonist/traitor)
 
@@ -664,10 +674,10 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		var/challenger_heart_location
 
 		if(target_heart)
-			target_heart_location = target_heart.owner ? target_heart.owner.prepare_deathsight_message() : lowertext(get_area_name(target_heart))
+			target_heart_location = target_heart.owner ? target_heart.owner.prepare_deathsight_message() : LOWER_TEXT(get_area_name(target_heart))
 
 		if(challenger_heart)
-			challenger_heart_location = challenger_heart.owner ? challenger_heart.owner.prepare_deathsight_message() : lowertext(get_area_name(challenger_heart))
+			challenger_heart_location = challenger_heart.owner ? challenger_heart.owner.prepare_deathsight_message() : LOWER_TEXT(get_area_name(challenger_heart))
 
 		if(recipient == challenger)
 			if(target)
@@ -730,13 +740,13 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 		A.admin_remove(usr)
 
 	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
+		var/new_role = input(usr, "Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
 		if (!new_role)
 			return
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
+		var/new_memo = copytext(sanitize(input(usr, "Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
@@ -770,7 +780,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = input("Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
+						var/datum/antagonist/target = input(usr, "Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
 						if (QDELETED(target))
 							return
 						else if(target == "(new custom antag)")
@@ -785,7 +795,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 			if(old_objective.name in GLOB.admin_objective_list)
 				def_value = old_objective.name
 
-		var/selected_type = input("Select objective type:", "Objective type", def_value) as null|anything in GLOB.admin_objective_list
+		var/selected_type = input(usr, "Select objective type:", "Objective type", def_value) as null|anything in GLOB.admin_objective_list
 		selected_type = GLOB.admin_objective_list[selected_type]
 		if (!selected_type)
 			return
@@ -1418,7 +1428,7 @@ GLOBAL_LIST_EMPTY(personal_objective_minds)
 							I.special_item = TRUE
 							I.smeltresult = /obj/item/ash
 							I.salvage_result = /obj/item/ash
-						var/list/metadata = user.client?.prefs?.gear_list?[base_name]
+						var/list/metadata = user.mind.special_items_metadata[base_name]
 						if(islist(metadata))
 							if(metadata["color"])
 								I.add_atom_colour(metadata["color"], FIXED_COLOUR_PRIORITY)

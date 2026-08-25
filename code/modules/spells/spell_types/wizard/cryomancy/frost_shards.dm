@@ -5,8 +5,7 @@
 	button_icon = 'icons/mob/actions/mage_cryomancy.dmi'
 	name = "Frost Shards"
 	desc = "Loose a concentrated spray of frozen shards. The shards lose damage and efffects past 4 paces . \
-	The first shard to hit a foe deals full damage and applies a stack of frost - further shards from the same volley deals slight damage, and do not stack more frost. \
-	Damage is increased by 100% versus simple-minded creechurs."
+	The first shard to hit a foe deals full damage and applies a stack of frost - further shards from the same volley deals slight damage, and do not stack more frost."
 	button_icon_state = "frost_bolt"
 	sound = 'sound/spellbooks/icicle.ogg'
 	spell_color = GLOW_COLOR_ICE
@@ -25,7 +24,7 @@
 	invocation_type = INVOCATION_SHOUT
 
 	charge_required = TRUE
-	charge_swingdelay_type = SWINGDELAY_CANCEL
+	charge_swingdelay_type = SWINGDELAY_PENALTY
 	charge_swingdelay_duration = 6 SECONDS
 	weapon_cast_penalized = TRUE
 	charge_time = CHARGETIME_POKE
@@ -55,7 +54,6 @@
 	expose_caster_on_deflect = TRUE
 	icon_state = "ice_2"
 	damage = 35
-	npc_simple_damage_mult = 2
 	damage_type = BURN
 	woundclass = BCLASS_BURN
 	flag = "fire"
@@ -85,7 +83,7 @@
 			M.mob_timers[MT_FROST_SHARD] = world.time
 	return ..()
 
-/obj/projectile/magic/frost_shard/on_hit(target)
+/obj/projectile/magic/frost_shard/on_hit(target, blocked = FALSE)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
@@ -94,7 +92,7 @@
 			playsound(get_turf(target), 'sound/magic/magic_nulled.ogg', 100)
 			qdel(src)
 			return BULLET_ACT_BLOCK
-		if(isliving(target) && !repeat_hit && !out_of_effective_range())
+		if(isliving(target) && !repeat_hit && !out_of_effective_range() && blocked < 100)
 			var/mob/living/L = target
 			if(L.on_fire)
 				L.adjust_fire_stacks(-1)
@@ -117,7 +115,6 @@
 	expose_caster_on_deflect = TRUE
 	icon_state = "ice_2"
 	damage = 30
-	npc_simple_damage_mult = 2
 	damage_type = BURN
 	woundclass = BCLASS_BURN
 	flag = "fire"
@@ -131,7 +128,7 @@
 	damage = 23
 	arcshot = TRUE
 
-/obj/projectile/magic/frostbolt/on_hit(target)
+/obj/projectile/magic/frostbolt/on_hit(target, blocked = FALSE)
 	. = ..()
 	if(ismob(target))
 		var/mob/M = target
@@ -143,6 +140,8 @@
 		if(isliving(target))
 			var/mob/living/L = target
 			if(out_of_effective_range())
+				return
+			if(blocked >= 100)
 				return
 			if(L.on_fire)
 				L.adjust_fire_stacks(-1)

@@ -36,7 +36,7 @@
 #define STANDING_ORDER_DURATION 2
 #define URGENT_ORDER_DURATION 1
 
-// Order SIZE is not scaled but 
+// Order SIZE is not scaled but
 #define STANDING_ORDERS_BASE_PER_DAY 4
 #define STANDING_ORDERS_PER_ACTIVE_PLAYER 0.05
 #define STANDING_ORDERS_MAX_PER_DAY 13
@@ -62,7 +62,7 @@
 
 
 
-// Trade Escalation slope is the rate at which prices increase / decrease as it is oversold / overbought. Import / Export spread is an enforced differences between Buy / Sell price. By design, goods price is global for AP's internal regions, representing supply and demand and also preventing any same day arbitrage profit which does not generate meaningful gameplay but just reward you for reading and clicking the same damn buttons. 
+// Trade Escalation slope is the rate at which prices increase / decrease as it is oversold / overbought. Import / Export spread is an enforced differences between Buy / Sell price. By design, goods price is global for AP's internal regions, representing supply and demand and also preventing any same day arbitrage profit which does not generate meaningful gameplay but just reward you for reading and clicking the same damn buttons.
 #define TRADE_ESCALATION_SLOPE 1.0
 #define IMPORT_EXPORT_SPREAD 0.25
 
@@ -96,17 +96,17 @@
 #define ECON_EVENT_SATURATION_MAX 40
 #define ECON_EVENT_REROLL_COOLDOWN_DAYS 7
 
-#define ECON_SHORTAGE_MINOR   2.00
-#define ECON_SHORTAGE_NORMAL  2.25
-#define ECON_SHORTAGE_MAJOR   2.5
-#define ECON_SHORTAGE_SEVERE  2.75
-#define ECON_SHORTAGE_CRISIS  3.00
+#define ECON_SHORTAGE_MINOR	2.00
+#define ECON_SHORTAGE_NORMAL	2.25
+#define ECON_SHORTAGE_MAJOR	2.5
+#define ECON_SHORTAGE_SEVERE	2.75
+#define ECON_SHORTAGE_CRISIS	3.00
 
-#define ECON_OVERSUPPLY_MINOR  0.70
+#define ECON_OVERSUPPLY_MINOR	0.70
 #define ECON_OVERSUPPLY_NORMAL 0.65
-#define ECON_OVERSUPPLY_MAJOR  0.60
+#define ECON_OVERSUPPLY_MAJOR	0.60
 #define ECON_OVERSUPPLY_SEVERE 0.55
-#define ECON_OVERSUPPLY_GLUT   0.50
+#define ECON_OVERSUPPLY_GLUT	0.50
 
 // Temp consequences for bnaditry
 #define BANDITRY_DRAIN_DANGEROUS_FLAT 40
@@ -121,11 +121,13 @@
 #define BLOCKADE_ROUNDSTART_COUNT_MAX 3
 #define BLOCKADE_RECLEAR_COOLDOWN 1
 #define BLOCKADE_SCROLL_PLEDGE_COST 500
-#define BLOCKADE_SCROLL_REWARD 500
+#define BLOCKADE_SCROLL_REWARD 715
+#define BLOCKADE_TRAVEL_FEE_COAST 75
+#define BLOCKADE_TRAVEL_FEE_MOUNTAIN 150
 
 #define BLOCKADE_REPLENISH_FLOOR 1
 #define BLOCKADE_REPLENISH_BUDGET_BASE 1
-#define BLOCKADE_REPLENISH_BUDGET_PER_PLAYER 0.02  // +1 per 50 active players
+#define BLOCKADE_REPLENISH_BUDGET_PER_PLAYER 0.02	// +1 per 50 active players
 #define BLOCKADE_REPLENISH_BUDGET_MAX 2
 #define BLOCKADE_REPLENISH_FIRST_DAY 2
 #define BLOCKADE_REPLENISH_LAST_DAY 5 // No last minute blockade
