@@ -112,9 +112,7 @@ const roleTooltip = (role: Role): string => {
     lines.push(`[${KIND_LABEL[role.kind]}] ${role.desc}`);
   }
   if (role.options && role.options.length > 0) {
-    const playable = role.options
-      .filter((o) => o.playable)
-      .map((o) => o.name);
+    const playable = role.options.filter((o) => o.playable).map((o) => o.name);
     const locked = role.options
       .filter((o) => !o.playable)
       .map((o) => `${o.name}${o.reason ? ` (${o.reason})` : ''}`);
@@ -210,7 +208,10 @@ const StaticRoleLine = (props: { roles: Role[] }) => {
           {r.amount > 1 ? ` x${r.amount}` : ''}
           {r.option_count > 0 && (
             <span
-              style={{ color: r.playable_count < r.option_count ? SEAL_AMBER : INK_FAINT }}
+              style={{
+                color:
+                  r.playable_count < r.option_count ? SEAL_AMBER : INK_FAINT,
+              }}
             >
               {' '}
               ({r.playable_count}/{r.option_count})
@@ -465,7 +466,6 @@ export const MigrantPanel = () => {
         <div style={pageStyle}>
           <div style={titleStyle}>Find a Purpose</div>
           <div style={subtitleStyle}>
-            The mist parts, and travellers find their way to Azure Peak.
             The mist parts, and travellers find their way to the realm around
             The Scar.
           </div>
