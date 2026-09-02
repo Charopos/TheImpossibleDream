@@ -50,8 +50,8 @@
 #define HERESYDESC_INQUIS_WHISPERER "A blatently unusual design of ring...? that seems to whisper" //Only shows while not equipped on ring slot
 #define HERESYDESC_INQUIS_CHURNER "I CAN HEAR SCREAMS COMING FROM WITHIN, WHAT THE HELL IS THAT THING?!!" //Only shows while active
 
-#define VIBEDESC_FRIEND "A loyal ally of Azure Peak."
-#define VIBEDESC_FOE "A disloyal enemy of Azure Peak."
+#define VIBEDESC_FRIEND "A loyal ally of the Pharos."
+#define VIBEDESC_FOE "A disloyal enemy of the Pharos."
 #define VIBEDESC_CROWN "A relic anointed by Astrata."
 #define VIBEDESC_GOLGATHA "A relic of Psydon's creation."
 

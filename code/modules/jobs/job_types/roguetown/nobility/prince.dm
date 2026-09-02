@@ -43,7 +43,7 @@
 	var/client/player = H?.client
 	if(player.prefs)
 		if(!istype(player.prefs.virtue_origin, /datum/virtue/origin/azuria) && !istype(player.prefs.virtue_origin, /datum/virtue/origin/grenzelhoft) && !istype(player.prefs.virtue_origin, /datum/virtue/origin/otava) && !istype(player.prefs.virtue_origin, /datum/virtue/origin/etrusca))
-			var/list/new_origins = list("Azuria" = /datum/virtue/origin/azuria,
+			var/list/new_origins = list("Pharos" = /datum/virtue/origin/azuria,
 			"Grenzelhoft" = /datum/virtue/origin/grenzelhoft,
 			"Otava" = /datum/virtue/origin/otava,
 			"Etrusca" = /datum/virtue/origin/etrusca)

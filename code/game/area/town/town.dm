@@ -14,7 +14,7 @@
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	converted_type = /area/rogue/outdoors/exposed/town
 	town_area = TRUE
-	deathsight_message = "the city of Azure Peak and all its bustling souls"
+	deathsight_message = "the township of Pharos and all its bustling souls"
 	detail_text = DETAIL_TEXT_AZURE_PEAK
 
 /area/rogue/outdoors/exposed/town
@@ -45,7 +45,7 @@
 	droning_sound_dusk = null
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/manorgarri
-	first_time_text = "THE KEEP OF AZURE PEAK"
+	first_time_text = "THE KEEP OF PHAROS"
 	keep_area = TRUE
 	detail_text = DETAIL_TEXT_MANOR
 
@@ -57,14 +57,14 @@
 	keep_area = TRUE
 
 /area/rogue/indoors/town/magician
-	name = "University of Azuria"
+	name = "University-Under-the-Scar"
 	icon_state = "magician"
 	spookysounds = SPOOKY_MYSTICAL
 	spookynight = SPOOKY_MYSTICAL
 	droning_sound = 'sound/music/area/magiciantower.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	first_time_text = "THE UNIVERSITY OF AZURIA"
+	first_time_text = "THE UNIVERSITY-UNDER-THE-SCAR"
 	converted_type = /area/rogue/outdoors/exposed/magiciantower
 	keep_area = TRUE
 	detail_text = DETAIL_TEXT_UNIVERSITY_OF_AZURIA
@@ -156,7 +156,7 @@
 	cell_area = TRUE
 
 /area/rogue/indoors/town/tavern
-	name = "Azurian Pint"
+	name = "Old Marks' Tavern"
 	icon_state = "tavern"
 	ambientsounds = AMB_INGEN
 	ambientnight = AMB_INGEN
@@ -174,7 +174,7 @@
 	tavern_area = TRUE
 
 /area/rogue/indoors/town/church
-	name = "The House of the Ten"
+	name = "The Temple of the Pentacle"
 	icon_state = "church"
 	droning_sound = 'sound/music/area/church.ogg'
 	droning_sound_dusk = null
@@ -182,7 +182,7 @@
 	holy_area = TRUE
 	droning_sound_dawn = 'sound/music/area/churchdawn.ogg'
 	converted_type = /area/rogue/outdoors/exposed/church
-	deathsight_message = "a hallowed place, sworn to the Ten"
+	deathsight_message = "a hallowed place, sworn to the Divine Wills"
 
 /area/rogue/outdoors/exposed/church
 	icon_state = "church"
@@ -194,7 +194,7 @@
 
 /area/rogue/indoors/town/church/chapel
 	icon_state = "chapel"
-	first_time_text = "THE HOUSE OF THE TEN"
+	first_time_text = "THE HOUSE OF THE FIVE"
 	detail_text = DETAIL_TEXT_CHAPEL
 
 /area/rogue/indoors/town/church/basement
@@ -260,7 +260,7 @@
 	droning_sound = 'sound/music/area/dwarf.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	first_time_text = "AZUREAN GUILD OF CRAFT"
+	first_time_text = "PHAROVIAN GUILD OF CRAFT"
 	converted_type = /area/rogue/outdoors/exposed/dwarf
 	detail_text = DETAIL_TEXT_AZUREAN_GUILD_OF_CRAFT
 

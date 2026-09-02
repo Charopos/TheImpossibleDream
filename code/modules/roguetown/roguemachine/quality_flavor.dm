@@ -5,7 +5,7 @@
 			"My liege, it'll take three smiths and a dozen forges to fix this.",
 			"My liege, please take a look at this complaint tablet.",
 			"Bold of you to think this machine does not have a touchstone in it.",
-			"The quality of your goods could fell kingdoms, starting with Azuria.",
+			"The quality of your goods could fell kingdoms, starting with Pharos.",
 			"Are you familiar with the shock of the masters' rod? No? You're about to be.",
 
 		)
@@ -41,7 +41,7 @@
 			"Mermaids are leaping out of the water for this cargo!",
 			"These items might just make Psydon return!",
 			"The Captain is most pleased.",
-			"Tis was worth the trip to Azuria.",
+			"Tis was worth the trip to this Scar.",
 			"The Company appreciates your efforts.",
 			"FACTOR! MORE OF THIS!",
 			"FACTOR! DOUBLE THIS ONE'S PAY!",

@@ -126,7 +126,7 @@
 		SSroguemachine.key = src
 
 /obj/item/roguekey/lord/proc/anti_stall()
-	src.visible_message(span_danger("The Key of Azure Peak crumbles to dust, the ashes spiriting away in the direction of the Keep."))
+	src.visible_message(span_danger("The Key to the Pharos crumbles to dust, the ashes spiriting away in the direction of the Keep."))
 	SSroguemachine.key = null //Do not harddel.
 	qdel(src) //Anti-stall
 
@@ -733,13 +733,13 @@
 
 /obj/item/roguekey/university
 	name = "university key"
-	desc = "This key should open all but the most secure areas of the University of Azuria."
+	desc = "This key should open all but the most secure areas of the University-Under-the-Scar."
 	icon_state = "greenkey"
 	lockid = "university"
 
 /obj/item/roguekey/university_secure
 	name = "university tower key"
-	desc = "This key should open the tower in the University of Azuria, where dangerous magic is contained."
+	desc = "This key should open the tower in the University-Under-the-Scar, where dangerous magic is contained."
 	icon_state = "brownkey"
 	lockid = "university_secure"
 

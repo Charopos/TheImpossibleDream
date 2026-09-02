@@ -28,4 +28,4 @@
 			if(!player.client)
 				continue
 
-			to_chat(player, span_danger("Graggar demands blood, assassins flock to Azuria. An assassin slot has been opened."))
+			to_chat(player, span_danger("Blood is demanded. Debts must be paid. Death comes cloaked, ready to carve new wounds before the Scar. An assassin slot has been opened."))

@@ -5,6 +5,14 @@
 	It consists of 12 months, each with exactly 28 days dividing into 4 weeks. And it starts from Monday and ends on Sunday with a 7 days week.
 	Each week = 1 round IC (regardless of how much time actually passed in game)
 	The first month of a year begins in Spring - Gregorian March, like most sane agricultural calendars that begins in February / March.
+
+	HEARTBREAK NOTE:
+	Hey! So! This is a solid calendar, and it's a piece of absolute brilliance. Incredible work, fella! With all credit to the author--
+	We'll be making some edits throughout the process. Y'know, for flavor's sake - and readability.
+	With more Gods than the Pantheon staged in the world of the Dream, we'll be renaming the months to more secular terms.
+	Once I have the chance, I'll likely push for returning to a more traditional Julian/Gregorian start of the Year,
+	The only holdover being in the listed month of holidays. May also be renaming the AP metric to... hmn. Something Zybantine, perhaps.
+	The Calendar will measure from the formation of the original Temple of the Pentacle, after all.
 */
 
 
@@ -62,36 +70,30 @@
 		if(1)
 			return "Psyrise" // March - The first month of a year is dedicated to the original god that created the world
 		if(2)
-			return "Eora" // April
+			return "Aprilis" // April
 		if(3)
-			return "Dendor" // May
+			return "Maius" // May
 		if(4)
-		// June, the hottest month is the month of the god of the SUN, because this is when they come into prominence
-		// Historically, the winter solstice was celebrated as the rebirth of the sun / sun god, so it makes sense for the hottest month to be dedicated to the night god
-			return "Astrata" // June
+		// HEARTBREAK NOTE: Strangely, this month has a lot of old men and women jumping off cliffs.
+			return "Midsommar" // June
 		if(5)
-			return "Xylix" // July
+			return "Jul" // July
 		if(6)
-			return "Malum" // August
+			return "Auganstil" // August
 		if(7)
-			// This neatly split the year into two half of rise and fall of Psydon.
-			// It also happens to be the start of "Fall" / Autumn.
-			// And it matches the "Psydonia is a minecraft world" joke quite well with Psydon going back to school
-			return "Syonfall"
+			return "Steptembre" // September
 		if(8)
-			// Middle / End of harvesting seasons for some crops. It make sense that the goddess of rot / decay follows
-			// And after Syonfall comes the gradual move to winter
-			return "Pestra" // October
+			return "Octscape" // October
 		if(9)
 			// A month dedicated to the goddess of death, before the sun's rebirth and after the goddess of rot
-			return "Necra" // November
+			return "Necrem" // November
 		if(10)
 			// And on winter solstice and the longest night of the year, we have the month dedicated to the god of night
-			return "Noc" // December
+			return "Lunembar" // December
 		if(11)
-			return "Abyssor" // January
+			return "Ianuarius" // January
 		if(12)
-			return "Ravox" // February
+			return "Psybreak" // February
 		else
 			return "Unknown Month ([month_number])"
 

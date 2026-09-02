@@ -342,7 +342,7 @@
 /area/rogue/outdoors/town)
 "adl" = (
 /obj/structure/fluff/signage{
-	desc = "Skulls, daggers, and other grisly symbols are carved into this sign. Western Azuria is not a kind place.";
+	desc = "Skulls, daggers, and other grisly symbols are carved into this sign. The lands West of the Scar are far from kind.";
 	name = "CURSTMARSH - WEST"
 	},
 /turf/open/floor/rogue/naturalstone,
@@ -22930,7 +22930,7 @@
 "erq" = (
 /obj/structure/mineral_door/wood/window{
 	lockid = "university";
-	name = "University of Azuria";
+	name = "University-Under-the-Scar";
 	locked = 1
 	},
 /turf/open/floor/rogue/concrete,
@@ -29871,7 +29871,7 @@
 /area/rogue/indoors/town/tavern)
 "fGr" = (
 /obj/structure/roguemachine/mail{
-	mailtag = "Azurean Coast"
+	mailtag = "Scarred Coast"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/beach/forest/south)
@@ -45597,7 +45597,7 @@
 "iEi" = (
 /obj/structure/fluff/signage{
 	dir = 4;
-	name = "AZURE PEAK - EAST"
+	name = "PHAROS - EAST"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/mountains)
@@ -48653,7 +48653,7 @@
 /area/rogue/indoors/shelter)
 "jhi" = (
 /obj/structure/roguemachine/mail/l{
-	mailtag = "University of Azuria Library"
+	mailtag = "University Library"
 	},
 /obj/machinery/light/rogue/torchholder/l,
 /mob/living/simple_animal/pet/cat/rogue/black/academy{
@@ -91378,7 +91378,7 @@
 "qWB" = (
 /obj/structure/fluff/signage{
 	dir = 8;
-	name = "AZURE PEAK - WEST"
+	name = "PHAROS - WEST"
 	},
 /turf/open/floor/rogue/grass,
 /area/rogue/outdoors/town)
@@ -93654,7 +93654,7 @@
 "ruy" = (
 /obj/structure/fluff/signage{
 	dir = 1;
-	name = "AZURE PEAK - NORTHWEST"
+	name = "PHAROS - NORTHWEST"
 	},
 /turf/open/floor/rogue/cobblerock,
 /area/rogue/outdoors/town)
@@ -105030,7 +105030,7 @@
 "tzc" = (
 /obj/structure/fluff/signage{
 	dir = 8;
-	name = "AZURE PEAK - WEST"
+	name = "PHAROS - WEST"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
@@ -108286,7 +108286,7 @@
 	dir = 1
 	},
 /obj/structure/fluff/walldeco/goblet{
-	name = "Azurian Pints Inn and Bath"
+	name = "Old Marks' Tavern and Baths"
 	},
 /turf/open/floor/rogue/ruinedwood/spiral,
 /area/rogue/indoors/town/tavern)
@@ -116147,7 +116147,7 @@
 /area/rogue/indoors/cave/northern)
 "vFe" = (
 /obj/structure/mineral_door/wood/donjon/stone{
-	name = "Cathedral of Azure Peak";
+	name = "Temple of the Pharos";
 	lockid = "church"
 	},
 /turf/open/floor/rogue/concrete,
@@ -124546,7 +124546,7 @@
 /area/rogue/indoors/shelter/bog/bogmanfort)
 "xkL" = (
 /obj/structure/fluff/signage{
-	name = "AZURE PEAK - SOUTH"
+	name = "PHAROS - SOUTH"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/rtfield)
@@ -126697,7 +126697,7 @@
 /area/rogue/druidsgrove)
 "xFd" = (
 /obj/structure/fluff/signage{
-	name = "AZURE PEAK - SOUTH"
+	name = "PHAROS - SOUTH"
 	},
 /turf/open/floor/rogue/dirt,
 /area/rogue/outdoors/town)
