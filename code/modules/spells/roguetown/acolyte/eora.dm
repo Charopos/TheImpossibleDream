@@ -1046,14 +1046,14 @@
 			icon_state = "rotten"
 		if(2)
 			name = "blemished pomegranate"
-			desc = "A blemished pomegranate, it's blue like azure."
+			desc = "A blemished pomegranate, it's blue and bruised."
 			icon_state = "blemished"
 		if(3)
-			desc = "A vibrant pomegranate pulsing with inner light. It radiates warmth."
+			desc = "A vibrant pomegranate pulsing with inner light. It radiates warmth. It reminds you of the Scar."
 			icon_state = "pom"
 		if(4)
 			name = "golden pomegranate"
-			desc = "A flawless golden pomegranate blazing with divine light. It feels alive, thumping like a beating heart."
+			desc = "A flawless golden pomegranate blazing with divine light. It feels alive, thumping like a beating heart. You feel a sympathetic vibration, deep beneath the soil..."
 			icon_state = "golden"
 
 /obj/item/fruit_of_eora/proc/generate_arils()

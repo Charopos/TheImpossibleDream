@@ -4,26 +4,28 @@ GLOBAL_LIST_EMPTY(origins) // alist: origin name = origin desc. so we don't have
 /datum/virtue/origin/unknown
 	name = "Nowhere"
 	origin_name = "Elsewhere"
-	desc = "I originate from one of the many lesser settlements dotted around Psydonia, oft-too demure or distant for the Azurian layman to recall. Since I hail from nowhere in particular, I know no regional tongue in particular. <br>"
+	desc = "I originate from one of the many lesser settlements dotted around Psydonia, oft-too demure or distant for the layman to recall. Since I hail from nowhere in particular, I know no regional tongue in particular. <br>"
 	origin_desc = "For every greater kingdom that crests Psydonia, there lies a hundred lesser settlements; villages and fiefdoms, cursed to bare a legacy that will \
 	only be carried by the few who travel abroad. More distressingly, such a fate is strongly associated with the many souls who've been left to wander this bygone \
 	world, bereft of an identity to call their own - peasants, refugees, orphans, erranteers and more."
 
 /datum/virtue/origin/azuria
-	name = "Azurian"
-	origin_name = "Azuria"
-	desc = "I originate from the settled lands of Azuria, an independent kingdom sandwiched between Otava and Grenzelhoft. Famed for its delicious waffles and ancient ruins, the Duchy is uniquely situated at the forefront of many worldly affairs - both past and present.<br>"
+	name = "Pharovian"
+	origin_name = "Pharos"
+	desc = "I originate from the Scartouched fief of Pharos; a relatively prosperous County, recognized well for its both its mercantile prowess upon both sea and skies - and its proximity to a rare, stable wound of the Shattering-- the Scar. Here, the County is uniquely interconnected with the world at large - in past, in present, and in potentiality.<br>"
 	restricted = FALSE
 	added_languages = list(/datum/language/oldazurian)
-	origin_desc = "Originally unsettled, Azuria's forested plateaus bore witness to the greatest miracle in history; the Comet Syon, which saved the world from complete \
-	destruction. The missile's resting place - just off Azuria's coast - established the locale as a holy site for worshippers of both Psydon and the Pantheon, which \
-	eventually led to a Celestian-funded displacement of its ancestral elven inhabitants. The recent surge of villainous monsters and misfortune is said to be attributed \
-	to such injustices; a belated curse from Dendor's scornful hand. </br> Azuria houses a uniquely diverse culture, born from generations-upon-generations of pilgrims \
-	from all over Psydonia. Likewise, the lesser kingdom's proximity to the Comet Syon has spawned a deluge of anomalous quirks in both the land and its people; a facet \
-	that has drawn the attention of both opportunistic villains and desperate heroes."
+	origin_desc = "Pharos is a region shaped entirely by its presence to the Scar - a rare breed of township found only in a handful of places across the Known World. \
+	Located within the Southerly frontier of - THE KINGDOM UNNAMED - Pharos has both benefitted and suffered from its proximity to this place of infinite potential. \
+	Built, fortuitously, in a confluence of currents - both skyward and oceanic; and of low enough ground to encourage easy trade between Otava, Etrusca, and the Grenz highlands, \
+	Pharos has been a well-protected gem of - THE KINGDOM'S - possession, and benefited massively from the influx of inventors, pilgrims, purveyors, and adventurers that come to \
+	learn its mysteries, harvest potential and chance from the Scar suffusing the town, or, perhaps, to capitalize on the existential chaos that a Scar inherently creates. \
+	</br> Aerostatics bearing many banners float overhead- tailed by smoke from chimneys and coal-burners below. Ships, wealthy, pass constant through its docks. Pilgrims, settlers, and pillagers from all across the World move in caravan and party both into and out of its gates - some to gain, some to lose. \
+	It is a place at the forefront of witch-engineering; affected by the latest and greatest industries and artifice the world has to offer. Miracles and monsters are made manifest here; the Scar's touch rendering it far stronger than elsewhere in the world. \
+	Nobles vie for power over its Court; sometimes with honey, sometimes with steel. All of these souls seek to carve out a piece of what could yet be- to make it what will be.</br>"
 
 /datum/virtue/origin/grenzelhoft
-	name = "Grenzelhoftian"
+	name = "Grenzelhoftan"
 	origin_name = "Grenzelhoft"
 	added_languages = list(/datum/language/grenzelhoftian)
 	desc = "I originate from the dark boreal woods of Grenzelhoft, the birthplace of humanity. The Empire has a long history of conflict with Otava. Long live emperor Kovel II!<br>"
@@ -75,7 +77,7 @@ GLOBAL_LIST_EMPTY(origins) // alist: origin name = origin desc. so we don't have
 	origin_name = "Raneshen"
 	added_languages = list(/datum/language/raneshi)
 	desc = "I originate from the lush valleys and harsh badlands of Raneshen -- The Autarchy, Merchants of Shifting Sands. Home to the zealous sun elves and many others looking to profit without judgement, build great works with cheap labor or simply fulfill their lyfe's desires with coin and flesh. The region sits at the center of the continent of Eastern Psydonia. Recently engulfed in a violent set of rebellions against the slaver regions, it has been enduring a tumultuous time with many refugees -- both slaver and slave, fleeing its hold.<br>"
-	origin_desc = "Raneshen - better known by its ancestral title, 'Zybantia' - resides across the ocean as Grenzelhoft's economic rival: \
+	origin_desc = "Raneshen resides across the ocean as Grenzelhoft's economic rival: \
 	a greater kingdom, founded long ago by ancient Naledian exiles. While topologically similar to Naledi, the Ranesheni people had built \
 	their nation upon a far different thought: since Psydon had created the world, it was only right that divine reverence shouldn't solely \
 	manifest in prayer, but through indulgence as well.\n\n\
@@ -88,7 +90,7 @@ GLOBAL_LIST_EMPTY(origins) // alist: origin name = origin desc. so we don't have
 	the Sun Elf populace in the western parts of the land, leading many to flee in search of stability, peace, or new lands to learn of their ways."
 
 /datum/virtue/origin/naledi
-	name = "Naledian"
+	name = "Naledan"
 	origin_name = "Naledi"
 	added_languages = list(/datum/language/celestial)
 	desc = "I originate from the sandy dunes of Naledi, known for its mages and scholars. Its people keep to the traditions of the Old God, even in the empire's dying age.<br>"
@@ -157,7 +159,7 @@ GLOBAL_LIST_EMPTY(origins) // alist: origin name = origin desc. so we don't have
 	with the possibility of a full-scale rebellion and independence for Lingyue."
 
 /datum/virtue/origin/hammerhold
-	name = "Hammerholdian"
+	name = "Hammerheldan"
 	origin_name = "Hammerhold"
 	added_languages = list(/datum/language/dwarvish)
 	desc = "I originate from mountainous Hammerhold, a mountainous region in the frigid north. \
@@ -244,12 +246,12 @@ GLOBAL_LIST_EMPTY(origins) // alist: origin name = origin desc. so we don't have
 	The Underdark itself is a gigantic system of different caves, caverns tunnels and hollowed out underground regions that span leagues upon \
 	leagues both across and deep into Psydonia's soil. Not all of these systems are inherenty connected, paved or make logical sense,	but the \
 	Underdwellers always have	knack for traversing them. Underdark as a whole, is split into Western and Eastern, Western being the one that \
-	resides beneath Azuria and its continent, and the Eastern that is located deep within Raneshen and Kazengun's soil, noticeably less populated \
+	resides beneath the Midderland and its continent, and the Eastern that is located deep within Zybantium, Raneshen and Kazengun's soil, noticeably less populated \
 	than the western counterpart, shrouded in mystery; more so than the other. Most important fact remains, Western and Eastern Underdark are NOT \
 	connected directly, only point where one could pass from one into the other, in theory being a marvel of artifice, constructed by the deep \
 	dwarves, known as Duergar. Their hostile and isolationist nature prevents any who seek passage through their fortress of artifice that sits \
 	above the vast molten sea in the deepest of depths, from obtaining it in this lyfe. This makes Eastern Underdwellers somewhat more rare in \
-	places lyke Azuria due to the sheer difficulty and amount of hoops one'd need to jump through to reach its forests.\n<br><br>\
+	places lyke the Pharos due to the sheer difficulty and amount of hoops one'd need to jump through to reach its forests.\n<br><br>\
 	\
 	Underdwellers live a harsh lyfe, filled with hard toil, sweat and blood, and thusly they are no strangers to violence and darker things one \
 	could experience in mortal lyfe. Most settlements in these depths practice some sort of violent cultural tradition, engage in bloodsports, or \

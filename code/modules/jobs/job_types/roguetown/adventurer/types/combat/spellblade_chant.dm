@@ -359,10 +359,10 @@ a.choose-btn:hover {
 </div>
 <div class="preamble">
 <p>O! Blade of Tarichea!</p>
-<p>There was once a great city. On the foot of this very mountain, over the Azure Sea.</p>
+<p>There was once a great city. On the Peak of the highest mountain mountain, over the Circle of the Seas.</p>
 <p>It prospered, and in its midst, our warriors practiced their art, combining the arcyne with blades.</p>
 <p>We were masters! Our skills, unmatched! Our techniques, unparalleled! Envy of the world!</p>
-<p>No Ranesheni bladedancers, or Kazengunese bladesmen, or Grenzelhoftian mercenaries, could match our prowess!</p>
+<p>No Ranesheni bladedancers, or Khazen bladesmen, or mercenaries of the Grenz could match our prowess!</p>
 <p>Mages! Knights! Demons! All fell before our blade.</p>
 <p class="loud">THEN — SHE ASCENDED, ALL WAS LOST.</p>
 <p class="loud">OR WAS IT?</p>

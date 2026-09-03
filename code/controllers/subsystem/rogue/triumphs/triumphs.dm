@@ -295,7 +295,7 @@ SUBSYSTEM_DEF(triumphs)
 // Display leaderboard browser popup
 /datum/controller/subsystem/triumphs/proc/show_triumph_leaderboard(client/C)
 
-	var/webpagu = "<B>CHAMPIONS OF AZURE</B><br>"
+	var/webpagu = "<B>CHAMPIONS OF THE SCAR</B><br>"
 	webpagu += "<hr><br>"
 
 	if(triumph_leaderboard.len)

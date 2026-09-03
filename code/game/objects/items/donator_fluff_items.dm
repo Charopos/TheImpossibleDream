@@ -11,7 +11,7 @@
 
 /obj/item/storage/belt/rogue/pouch/azurosa_seeds
 	name = "pouch of azurosa seeds"
-	desc = "A pouch that's been filled with seeds of the Azurosa flower, freshly harvested from the highest plateaus of the Azure Peak."
+	desc = "A pouch that's been filled with seeds of the Azurosa flower, freshly harvested from the highest plateaus of the distant Azure Peak."
 	populate_contents = list(
 	/obj/item/herbseed/rosa/azure,
 	/obj/item/herbseed/rosa/azure,
@@ -22,8 +22,8 @@
 /obj/structure/flora/roguegrass/herb/rosa/azure
 	name = "azurosa"
 	desc = "A prickly, blueish mutation of the common Rosa found uniquely in the plains of \
-	central Azuria, this flower rarely grows upon the Azurian coast. Its sight here means only \
-	one thing: a donation from the inner lands."
+	central Azuria, this flower rarely grows upon the Azurian highlands. Its sight here means only \
+	one thing: a donation from the inlands."
 	icon_state = "azurosa_plant"
 	icon = 'icons/obj/items/donor_objects.dmi'
 
@@ -59,7 +59,7 @@
 
 /obj/item/flowercrown/rosa/azure
 	name = "crown of azurosa"
-	desc = "A crown formed of azurosas, freshly plucked from the plains of central Azuria. Often worn during \
+	desc = "A crown formed of azurosas, freshly plucked from the plains of centrally-located Azuria. Often worn during \
 	the many festivals and holidaes that're celebrated throughout the yil, as a sign of pride and propserity."
 	icon = 'icons/obj/items/donor_objects.dmi'
 	mob_overlay_icon = 'icons/clothing/onmob/donor_clothes.dmi'

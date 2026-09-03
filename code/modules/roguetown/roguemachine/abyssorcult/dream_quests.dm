@@ -95,11 +95,11 @@
 		/obj/item/dream_material/dream_ring = "gleaming rings",
 		/obj/item/dream_material/dream_seed = "dream seeds"
 	)
-	target_description = "a member of the royal family"
+	target_description = "a member of the noble family"
 	summary = "Leechticks are a danger to the world."
 	vision_text = "The mists part to reveal a tiny image of a creeping, crawling tick. \
 	It is too small to be observed by the naked eye, but you've seen the truth. \
-	Our great Azurean royalty, endangered by the smallest of foes. \
+	Our great Pharovian nobility, endangered by the smallest of foes. \
 	Between the toes, vile and unending, the tick seeks to suck out their lux. \
 	It is not the almighty hordes from the north. But one of the smallest pieces of divinity that threatens the realm. \
 	How was this evil left unnoticed for so long? Their grace ails, but all are blinded, all but you. \
@@ -139,7 +139,7 @@
 	An old grizzled man, wrinkles akin to the very waves that dance above. Frozen in time. \
 	His body twists and turns, the waves above respond... A grand wave rising far above even castles. \
 	Some empty rock in the ocean enveloped, crumbling apart into the depth beneath. \
-	Abyssor turns once more, your heart sinks. You know those waters... Azure- \
+	Abyssor turns once more, your heart sinks. You know those waters... Scar-oiled... \
 	All of them will drown. The seas will swallow up every last soul. Lux extinguished. \
 	Yet the light of the faithful burns bright like a lighthouse fire. Illuminating the waters. \
 	His sleeping grace pauses, a hand adjusting his path. Cautiously lowering Himself down. The seas remain still."
@@ -177,7 +177,7 @@
 	vision_text = "The feeling surrounding me is familiar as I awaken. \
 	Ammonia in the air, warped walls like dripping paint. \
 	The Deepfather's realm. Oddly tranquil this time. No nightmares in sight. \
-	Just more of those trusted images. The town of Azure... The distant broiling of a full inn. \
+	Just more of those trusted images. The town of Pharos... The distant broiling of a full inn. \
 	Yet something is off. The darkened night sky seems to be crawling. \
 	Like a maggot burrowed under the skin, a facade for something else. \
 	Building shrink and wane at the edges of my sight, as the sky swells, the edges rippling like a puddle of water. \

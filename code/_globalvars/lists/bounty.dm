@@ -1,7 +1,7 @@
 GLOBAL_LIST_INIT(bounty_posters, list(
-	"AZURIA" = "The Justiciary of Azuria",
-	"GRENZELHOFT" = "The Grenzelhoftian Holy See",
-	"OTAVAN" = "The Otavan Orthodoxy"
+	"AZURIA" = "The Pharovian Justiciary",
+	"GRENZELHOFT" = "The Temple of the Five Divine Wills",
+	"OTAVAN" = "His Majesty's Holy Inquisition"
 ))
 
 GLOBAL_LIST_INIT(wretch_severities, list(
@@ -18,8 +18,8 @@ GLOBAL_LIST_INIT(vagabond_severities, list(
 
 GLOBAL_LIST_INIT(bandit_severities, list(
 	"FISH" = "Small Fish",
-	"BUTCHER" = "Bay Butcher",
-	"BOOGEYMAN" = "Azurean Boogeyman"
+	"BUTCHER" = "Scarcarver",
+	"BOOGEYMAN" = "Pharovian Boogeyman"
 ))
 
 GLOBAL_LIST_INIT(vagabond_bounty_severities, list(
@@ -65,12 +65,12 @@ GLOBAL_LIST_INIT(bandit_bounty_severities, list(
 		"max" = 400
 	),
 	"BUTCHER" = list(
-		"name" = "Bay Butcher",
+		"name" = "Scarcarver",
 		"min" = 400,
 		"max" = 500
 	),
 	"BOOGEYMAN" = list(
-		"name" = "Azurean Boogeyman",
+		"name" = "Pharovian Boogeyman",
 		"min" = 500,
 		"max" = 600
 	)

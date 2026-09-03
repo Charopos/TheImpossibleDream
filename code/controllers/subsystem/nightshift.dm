@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(nightshift)
 		return
 	if(!SSticker.sunscorch_burn_warning_sent)
 		SSticker.sunscorch_burn_warning_sent = TRUE
-		to_world(span_userdanger("THE WORM CONSUMES THE SUN. Deadly radiance falls on Azuria. Those outside will be unmade. The back of my amygdala itches."))
+		to_world(span_userdanger("THE SCAR HAS OPENED - AND BEGINS TO BLEED. A fracture, sickeningly chromatic, suddenly explodes across the sky. Deadly radiance falls on Pharos. Those outside will be unmade. I cannot help but taste iron upon my tongue."))
 	for(var/mob/living/M as anything in GLOB.mob_living_list)
 		if(M.stat == DEAD || !isturf(M.loc))
 			continue

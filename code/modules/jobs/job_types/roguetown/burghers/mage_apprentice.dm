@@ -10,7 +10,7 @@
 	spells = list()
 	advclass_cat_rolls = list(CTAG_WAPPRENTICE = 20)
 
-	tutorial = "Yils of study have led you to the University of Azuria. The Divine heals and protects. \
+	tutorial = "Yils of study have led you to the University-Under-the-Scar. The Divine heals and protects. \
 	The arcyne arts, though useful, are far more suited to death and destruction. The Crown knows this, \
 	and provides a stipend to fund your studies and just as much your complacency, to not turn your \
 	magicks against the Crown. A comfortable tenure, a stipend, and a place to undergo your study. \
@@ -161,7 +161,7 @@
 	name = "Magician's Apprentice"
 	tutorial = "The road to arcyne mastery is long and treacherous. Books, scrolls, gems, studies, \
 	singed hair, and summoning gone wrong. Expenses and death alike, it is not a path for the pauper \
-	or the coward. You, however, were given a place as an apprentice in the University of Azuria. \
+	or the coward. You, however, were given a place as an apprentice in the University-Under-the-Scar. \
 	Under the watchful gaze of the Court Magician, and their fellow associates, you may yet live \
 	to become a master of the arcyne arts."
 	outfit = /datum/outfit/job/roguetown/wapprentice/apprentice

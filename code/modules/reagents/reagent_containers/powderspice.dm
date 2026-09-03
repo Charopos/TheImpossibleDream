@@ -163,7 +163,7 @@
 
 /obj/item/reagent_containers/powder/rocknut
 	name = "rocknut powder"
-	desc = "Coarsely powdered rocknuts, ready to be rolled into a zig or made into azurian pesto!"
+	desc = "Coarsely powdered rocknuts, ready to be rolled into a zig or made into Etruscan pesto!"
 	gender = PLURAL
 	icon_state = "rocknut"
 	volume = 1

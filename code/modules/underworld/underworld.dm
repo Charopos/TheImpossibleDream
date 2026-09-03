@@ -102,7 +102,7 @@
 
 /obj/structure/underworld/carriage_normal
 	name = "Carriage"
-	desc = "Azure Peak awaits."
+	desc = "The Scar awaits."
 	icon = 'icons/roguetown/underworld/enigma_carriage.dmi'
 	icon_state = "carriage_normal"
 	anchored = TRUE

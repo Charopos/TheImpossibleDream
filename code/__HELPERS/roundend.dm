@@ -150,7 +150,7 @@
 					add_roundpoints(job.round_contrib_points, H.ckey)
 		if(favor_bonus > 0 && H.ckey && H.job && (H.job == "Merchant" || H.job == "Shophand"))
 			H.adjust_triumphs(favor_bonus)
-			to_chat(H, "\n<font color='purple'><b>+[favor_bonus] TRIUMPHS</b> awarded for trade volume earned with the Azurian Trading Company.</font>")
+			to_chat(H, "\n<font color='purple'><b>+[favor_bonus] TRIUMPHS</b> awarded for trade volume earned with the Pharovian Trading Company.</font>")
 	add_roundplayed(key_list)
 
 	update_god_rankings()
@@ -222,29 +222,29 @@
 						"Thus the week's events have taken place. Eventful or mundane, lyfe continues.",
 						"Pawns of gods, preachers of nite, all come together to recite this tale.",
 						"Whether with loss or life, kingdom survives... for now.",
-						"The people of Azuria prepare to look forward; their actions locked in the impermeable past.")
+						"The people of Pharos prepare to look forward; their actions locked in the impermeable past.")
 
 	if(vampire_werewolf() == "vampire")
 		end_reason = pick("None can attest to what truly happened this nite; they can only have faith that they did the right thing.",
-						"And so, another legend of the nite has chiseled itself into the annals of Azuria's history..",
-						"The morning's light shines upon a new week, driving away the darkness that threatened Azuria.. for now.",
+						"And so, another legend of the nite has chiseled itself into the annals of Pharovian history..",
+						"The morning's light shines upon a new week, driving away the darkness that threatened Pharos.. for now.",
 						"A blank page is filled; a new canvas presented.",
 						"Our actors hang up their masks, and a new cast begins to rehearse.",
 						"Thus the week's events have taken place. Eventful or mundane, lyfe continues.",
 						"Pawns of gods, preachers of nite, all come together to recite this tale.",
 						"Whether with loss or life, kingdom survives... for now.",
-						"The people of Azuria prepare to look forward; their actions locked in the impermeable past.")
+						"The people of Pharos prepare to look forward; their actions locked in the impermeable past.")
 
 	if(vampire_werewolf() == "werewolf")
 		end_reason = pick("None can attest to what truly happened this nite; they can only have faith that they did the right thing.",
-						"And so, another legend of the nite has chiseled itself into the annals of Azuria's history..",
-						"The morning's light shines upon a new week, driving away the darkness that threatened Azuria.. for now.",
+						"And so, another legend of the nite has chiseled itself into the annals of Pharovian history..",
+						"The morning's light shines upon a new week, driving away the darkness that threatened Pharos.. for now.",
 						"A blank page is filled; a new canvas presented.",
 						"Our actors hang up their masks, and a new cast begins to rehearse.",
 						"Thus the week's events have taken place. Eventful or mundane, lyfe continues.",
 						"Pawns of gods, preachers of nite, all come together to recite this tale.",
 						"Whether with loss or life, kingdom survives... for now.",
-						"The people of Azuria prepare to look forward; their actions locked in the impermeable past.")
+						"The people of the Pharos prepare to look forward; their actions locked in the impermeable past.")
 
 	if(end_reason)
 		to_world(span_bigbold("[end_reason]."))
