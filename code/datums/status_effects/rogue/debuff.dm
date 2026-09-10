@@ -791,7 +791,7 @@
 			D.passive_devotion_gain = original_passive_devotion_gain
 			D.passive_progression_gain = original_passive_progression_gain
 
-		to_chat(H, span_boldnotice("I have been welcomed back to the Church. I am now able to gain devotion again."))
+		to_chat(H, span_boldnotice("I have been welcomed back to the faith. I am now able to gain devotion again."))
 
 /atom/movable/screen/alert/status_effect/debuff/apostasy
 	name = "Apostasy!"

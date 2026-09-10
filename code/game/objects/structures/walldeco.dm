@@ -139,7 +139,7 @@
 	. += span_info("Lifeblood, otherwise known as 'red' or 'health', heals most injuries. Needles, cloth, and bandages can stop bleeding. Water can restore lost blood. Bedrest and sleeping can fix most things with time.")
 	. += span_info("Examining someone can show how much blood loss they've suffered; from being pale, to very pale, to extremely pale and sickly. If someone is barely conscious, this means they're critically wounded and will die without assistance.")
 	. += span_info("Target someone's mouth and left-click them with an open hand on the 'WEAK' intent to manually breathe into them. This counteracts the onset of suffocation that comes with critical blood loss and other fatal wounds.")
-	. += span_info("With that being said, members of the Church and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
+	. += span_info("With that being said, members of the Temple and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
 
 /obj/structure/fluff/walldeco/barbersignreverse
 	name = "barberpole"
@@ -157,7 +157,7 @@
 	. += span_info("Lifeblood, otherwise known as 'red' or 'health', heals most injuries. Needles, cloth, and bandages can stop bleeding. Water can restore lost blood. Bedrest and sleeping can fix most things with time.")
 	. += span_info("Examining someone can show how much blood loss they've suffered; from being pale, to very pale, to extremely pale and sickly. If someone is barely conscious, this means they're critically wounded and will die without assistance.")
 	. += span_info("Target someone's mouth and left-click them with an open hand on the 'WEAK' intent to manually breathe into them. This counteracts the onset of suffocation that comes with critical blood loss and other fatal wounds.")
-	. += span_info("With that being said, members of the Church and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
+	. += span_info("With that being said, members of the Temple and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
 
 /obj/structure/fluff/walldeco/sparrowflag
 	name = "sparrow flag"
@@ -235,8 +235,7 @@
 	name = " pantheonic banner"
 	icon_state = "unibanner_purple"
 	desc = "A banner depicting a circle over a cross; the symbolic wheel of of the Temple of the Pentacle, the sphere of \
-	Midderland religious practice dedicated to the entirety of the Greatest Divine Wills without favour or preference. \
-	Particularly strongly associated with the Grand Temple of Zybantium."
+	Midderland religious practice dedicated to the entirety of the Greatest Divine Wills without favour or preference."
 
 /obj/structure/fluff/walldeco/psybanner/tennite/red
 	icon_state = "unibanner_red"
@@ -247,7 +246,7 @@
 	desc = "The six-pronged cross of Astrata, embroidered upon fine fabric. It is Her will that \
 	suspends the heavens and the earth, and it is Her light that maintains life upon the abandoned \
 	surface of Psydonia. An image associated with the nobility of all lands, and with the \
-	highest echelons of church leadership."
+	highest echelons of temple leadership."
 
 /obj/structure/fluff/walldeco/psybanner/astrata/red
 	icon_state = "astratabanner_red"
@@ -409,7 +408,7 @@
 	. += span_info("Lifeblood, otherwise known as 'red' or 'health', heals most injuries. Needles, cloth, and bandages can stop bleeding. Water can restore lost blood. Bedrest and sleeping can fix most things with time.")
 	. += span_info("Examining someone can show how much blood loss they've suffered; from being pale, to very pale, to extremely pale and sickly. If someone is barely conscious, this means they're critically wounded and will die without assistance.")
 	. += span_info("Target someone's mouth and left-click them with an open hand on the 'WEAK' intent to manually breathe into them. This counteracts the onset of suffocation that comes with critical blood loss and other fatal wounds.")
-	. += span_info("With that being said, members of the Church and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
+	. += span_info("With that being said, members of the Temple and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
 
 /obj/structure/fluff/walldeco/med2
 	name = "diagram"
@@ -425,7 +424,7 @@
 	. += span_info("Lifeblood, otherwise known as 'red' or 'health', heals most injuries. Needles, cloth, and bandages can stop bleeding. Water can restore lost blood. Bedrest and sleeping can fix most things with time.")
 	. += span_info("Examining someone can show how much blood loss they've suffered; from being pale, to very pale, to extremely pale and sickly. If someone is barely conscious, this means they're critically wounded and will die without assistance.")
 	. += span_info("Target someone's mouth and left-click them with an open hand on the 'WEAK' intent to manually breathe into them. This counteracts the onset of suffocation that comes with critical blood loss and other fatal wounds.")
-	. += span_info("With that being said, members of the Church and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
+	. += span_info("With that being said, members of the Temple and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
 
 /obj/structure/fluff/walldeco/med3
 	name = "diagram"
@@ -441,7 +440,7 @@
 	. += span_info("Lifeblood, otherwise known as 'red' or 'health', heals most injuries. Needles, cloth, and bandages can stop bleeding. Water can restore lost blood. Bedrest and sleeping can fix most things with time.")
 	. += span_info("Examining someone can show how much blood loss they've suffered; from being pale, to very pale, to extremely pale and sickly. If someone is barely conscious, this means they're critically wounded and will die without assistance.")
 	. += span_info("Target someone's mouth and left-click them with an open hand on the 'WEAK' intent to manually breathe into them. This counteracts the onset of suffocation that comes with critical blood loss and other fatal wounds.")
-	. += span_info("With that being said, members of the Church and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
+	. += span_info("With that being said, members of the Temple and Apothecarium are the most well-equipped for healing most wounds. Miracles and surgery can often be the only way to save your character from critical injuries and death.")
 
 /obj/structure/fluff/walldeco/med4
 	name = "diagram"

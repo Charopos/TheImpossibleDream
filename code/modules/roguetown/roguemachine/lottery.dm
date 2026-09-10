@@ -37,7 +37,7 @@
 		return
 	if(istype(P, /obj/item/roguecoin/aalloy))
 		return
-	if(istype(P, /obj/item/roguecoin/inqcoin))	
+	if(istype(P, /obj/item/roguecoin/inqcoin))
 		return
 	if(istype(P, /obj/item/roguecoin))
 		if(src.gamblingprice + (P.sellprice * P.quantity) > src.maxtithing)
@@ -212,7 +212,7 @@
 			src.say("To be honest, I'm about PSY-DONE with this whole debate! Ha-ha-h- ...No? Too soon? Alright.")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 		if(6)
-			src.say("You know, jester, those Ecclesials have the right idea.")
+			src.say("You know, jester, those Ascendant have the right idea.")
 			playsound(src, 'sound/misc/machinetalk.ogg', 100, FALSE, -1)
 			sleep(30)
 			src.say("Won't someone think of the deadite-loving, tax-hating, drug-using murderers?!")

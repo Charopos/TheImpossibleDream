@@ -713,7 +713,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	switch(message)
 		if("heretic")
 			to_chat(target, "<h1 class='alert'>SHAME</h1>") //Only uses first name, as a clue it's not real...and I suck at coding too much to figure out getting the full name.
-			to_chat(target, "<br><br><span class='alert'>The church has put Xylix's curse of woe on [target.first_name()] for offending the church!</span><br><br>")
+			to_chat(target, "<br><br><span class='alert'>The temple has put Xylix's curse of woe on [target.first_name()] for offending the righteous!</span><br><br>")
 			SEND_SOUND(target, 'sound/misc/excomm.ogg')
 		if("outlaw")
 			to_chat(target, "<h1 class='alert'>The [SSticker.rulertype] Decrees</h1>")

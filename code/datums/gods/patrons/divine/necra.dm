@@ -45,7 +45,7 @@
 	// Allows prayer near a grave.
 	for(var/obj/structure/closet/dirthole/grave/G in view(4, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Necra to hear my prayer I must either pray within the church, near a psycross, or near a grave where we all go to be given our final embrace.."))
+	to_chat(follower, span_danger("For Necra to hear my prayer I must either pray within the temple, near a psycross, or near a grave where we all go to be given our final embrace.."))
 	return FALSE
 
 /datum/patron/divine/necra/on_lesser_heal(

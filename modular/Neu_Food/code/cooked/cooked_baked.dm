@@ -1122,7 +1122,7 @@
 	cuisine = CUISINE_RANESHENI
 	dish_type = DISH_BREAD
 	name = "challah loaf"
-	desc = "A Nshkormh loaf of bread, made from leavened dough and egg, the communities of Psydonites in the region continued it's usage even during the Sun Dominion's banning of it's creation for it's 'rejection of Astratan butterness'."
+	desc = "A Nshkormh loaf of bread, made from leavened dough and egg, the communities of Psydonians in the region continued it's usage even during the Sun Dominion's banning of it's creation for it's 'rejection of Astratan butterness'."
 	icon = 'modular/Neu_Food/icons/cooked/cooked_baked.dmi'
 	icon_state = "challah4"
 	slices_num = 4

@@ -888,7 +888,7 @@
 				var/mob/living/carbon/human/viewer = user
 				var/saw_specific = FALSE
 				if(HAS_TRAIT(src, TRAIT_DEBTOR_CHURCH) && (viewer.job in GLOB.church_positions))
-					. += span_userdanger("DEFAULT DEBTOR OF THE CHURCH!")
+					. += span_userdanger("DEFAULT DEBTOR OF THE TEMPLE!")
 					saw_specific = TRUE
 				if(HAS_TRAIT(src, TRAIT_DEBTOR_MERCHANT) && (viewer.job == "Merchant" || viewer.job == "Shophand" || HAS_TRAIT(viewer, TRAIT_AGENT_MERCHANT)))
 					. += span_userdanger("DEFAULT DEBTOR OF THE TRADING COMPANY!")

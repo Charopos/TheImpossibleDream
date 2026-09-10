@@ -224,16 +224,16 @@
 
 /obj/item/rogueweapon/mace/church/get_mechanics_examine(mob/user)
 	. = ..()
-	. += span_info("This mace can be used to ring the Church's bell, distinctly hearable by everyone within the Town's limits.")
+	. += span_info("This mace can be used to ring the Temple's bell, distinctly hearable by everyone within the Town's limits.")
 
 // Holy See equipment
 
 /obj/item/rogueweapon/mace/steel/holyseemace
-	name = "holy see mace"
-	desc = "A blessed mace, wielded by the Holy See's templars to drive the fiends in the dark back. \
-			Many within the See find the shedding of blood regrettable, thus did an ancient artificer be struck by divine inspiration. \
+	name = "five-pronged mace"
+	desc = "A blessed mace, wielded by the Temple's warriors to drive the fiends in the dark back. \
+			Many across the Faith - especially of Eora - find the shedding of blood regrettable, thus did an ancient artificer be struck by divine inspiration. \
 			A holy bludgeon that would draw far less blood than its sharper cousins, but still capable of crushing steel, heretic and \
-			deadite both in righteous fury. When evil is at thy doorstep, grasp the Ten's gift in hand and be ever mindful. \
+			deadite both in righteous fury. When evil is at thy doorstep, grasp the gift of the five wills Divine in hand and be ever mindful. \
 			It's not what's in front of you that's important, it's what's behind you."
 	icon_state = "churchmace"
 	wdefense = 5
@@ -859,7 +859,7 @@
 /obj/item/rogueweapon/mace/warhammer/bronze/decorated
 	force = 30 // this requires GOLD to make, its going to be a bit more heavy.
 	name = "decorated bronze warclub"
-	desc = "beads, silk, and gold caress this carved-and-spiked log; a honored totem who's roots trace back to the daes before Syon's impact. Myths speak of ancient elve-and-humen alike, wielding such bronzen bludgeons against the Archdevil's rampaging hordes."
+	desc = "beads, silk, and gold caress this carved-and-spiked log; a honored totem who's roots trace back to the daes before Syon's impact. Myths speak of ancient elve-and-humen alike, wielding such bronzen bludgeons against the Anathema's rampaging hordes."
 	icon_state = "bronzeclubdec"
 	smeltresult = /obj/item/ingot/gold
 	wdefense = 5

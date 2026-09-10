@@ -78290,7 +78290,7 @@
 "xmB" = (
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "church";
-	name = "Church Access"
+	name = "Temple Access"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church/basement)

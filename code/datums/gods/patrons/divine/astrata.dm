@@ -45,7 +45,7 @@
 	// Allows prayer during daytime if outside.
 	if(istype(get_area(follower), /area/rogue/outdoors) && (GLOB.tod == "day" || GLOB.tod == "dawn"))
 		return TRUE
-	to_chat(follower, span_danger("For Astrata to hear my prayer I must either be in her blessed daylight, within the church, or near a psycross.."))
+	to_chat(follower, span_danger("For Astrata to hear my prayer I must either be in her blessed daylight, within her Temple, or near a psycross.."))
 	return FALSE
 
 /datum/patron/divine/astrata/on_lesser_heal(

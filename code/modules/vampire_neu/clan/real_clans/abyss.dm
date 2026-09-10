@@ -10,7 +10,7 @@
 /// Baali from aliexpress, sort of ish.
 /datum/clan/abyss
 	name = "Children of the Abyss"
-	desc = "The Children of the Abyss are a bloodline of vampires that worship the demons of old. Because of their affinity with the unholy, they are extremely vulnerable to the Church."
+	desc = "The Children of the Abyss are a bloodline of vampires that worship the demons of old. Because of their affinity with the unholy, they are extremely vulnerable to holy ground."
 	curse = "Fear of Religion."
 	clanicon = "daimonion"
 	clane_covens = list(
@@ -45,4 +45,4 @@
 	H.AddElement(/datum/element/holy_weakness)
 
 /datum/clan/abyss/get_downside_string()
-	return "burn in sunlight, and in the presence of the Ten"
+	return "burn in sunlight, and in the presence of the holy"

@@ -536,7 +536,7 @@
 	category = "Windows"
 
 /datum/crafting_recipe/roguetown/turfs/roguewindow/stone_psydon
-	name = "static psydonic church window"
+	name = "static psydonic glass window"
 	display_category = ITEM_CAT_ENG_CONSTRUCTION
 	result = /obj/structure/roguewindow/stained/silver
 	reqs = list(/obj/item/natural/stone = 2, /obj/item/natural/glass = 1)
@@ -546,7 +546,7 @@
 	category = "Windows"
 
 /datum/crafting_recipe/roguetown/turfs/roguewindow/stone_astrata
-	name = "static astratan church window"
+	name = "static astratan glass window"
 	display_category = ITEM_CAT_ENG_CONSTRUCTION
 	result = /obj/structure/roguewindow/stained/yellow
 	reqs = list(/obj/item/natural/stone = 2, /obj/item/natural/glass = 1)
@@ -556,7 +556,7 @@
 	category = "Windows"
 
 /datum/crafting_recipe/roguetown/turfs/roguewindow/stone_zizo
-	name = "static ecclesial church window"
+	name = "static ascendant glass window"
 	display_category = ITEM_CAT_ENG_CONSTRUCTION
 	result = /obj/structure/roguewindow/stained/zizo
 	reqs = list(/obj/item/natural/stone = 2, /obj/item/natural/glass = 1)

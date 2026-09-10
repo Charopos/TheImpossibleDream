@@ -68,7 +68,7 @@
 	var/list/ret = ..()
 	// ret.Insert(2,span_userdanger("A DAEMON...!"))
 	if(HAS_TRAIT(user, TRAIT_CLERGY))
-		ret.Insert(3, span_notice("Vile Archdevil-spawn! Binding such things is forbidden! Brook not daemonbinders!"))
+		ret.Insert(3, span_notice("Vile daemon-spawn! Binding such things is forbidden! Brook not daemonbinders!"))
 	if(HAS_TRAIT(user, TRAIT_INQUISITION))
 		ret.Insert(3, span_notice("Summoning daemons to kill is one thing. Bringing one to Psydonia in full is blatant disrespect of His sacrifice! Brook not daemonbinders!"))
 	return ret

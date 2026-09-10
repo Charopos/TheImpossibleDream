@@ -515,7 +515,7 @@
 	log_admin("PATRONAGE REVOKED: [key_name(user)] revoked [key_name(target)] from [get_patron_label()].")
 
 /obj/structure/roguemachine/vaultbank/church/get_withdraw_rule_text()
-	return "The Church mandates that loans is to be given to the poor, downtrodden, and malumites. [CHURCH_RESERVE_FLOOR]m must remain reserved for charity, less the principal currently in circulation."
+	return "The Temple mandates that loans is to be given to the poor and downtrodden. [CHURCH_RESERVE_FLOOR]m must remain reserved for charity, less the principal currently in circulation."
 
 
 /obj/structure/roguemachine/vaultbank/proc/disburse(mob/living/carbon/human/user, list/params)
@@ -649,10 +649,10 @@
 	log_admin("INDENTURE WRIT: [key_name(user)] drafted [amount]m from [F.name] to [target_fund.name] over [term]d at [rate_pct]%/day.")
 
 /obj/structure/roguemachine/vaultbank/church
-	name = "\improper CHURCH JAWBANK"
-	desc = "A biomechanical obselisk that holds the alms and tithe of Ten's faithful. Throttle it with a strike to spill that which is rightfully yours."
+	name = "\improper TEMPLE JAWBANK"
+	desc = "A biomechanical obelisk that holds the alms and tithe of the Pantheon's faithful. Throttle it with a strike to spill that which is rightfully yours."
 	alert_jobs = list("Bishop", "Martyr", "Acolyte")
-	alert_location = "the Church"
+	alert_location = "the Temple"
 	bash_floor = 500
 	lump_payout = 100
 

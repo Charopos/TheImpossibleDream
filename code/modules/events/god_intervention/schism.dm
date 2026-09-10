@@ -24,7 +24,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	if(!challenger)
 		return
 
-	priority_announce("[challenger.name] challenges Astrata's leadership! The outcome of this conflict will be decided in less than 2 daes by a sheer number of their alive supporters. [challenger.name] promises great rewards to the faithful if victorious, while Astrata swears revenge to any who dare to defy her. Choose your side, or stand aside...", "Schism within the Ten", 'sound/magic/marked.ogg')
+	priority_announce("[challenger.name] challenges Astrata's leadership! The outcome of this conflict will be decided in less than 2 daes by a sheer number of their alive supporters. [challenger.name] promises great rewards to the faithful if victorious, while Astrata swears revenge to any who dare to defy her. Choose your side, or stand aside...", "Schism within the Pantheon", 'sound/magic/marked.ogg')
 	for(var/mob/living/carbon/human/H in GLOB.human_list)
 		setup_mob(H)
 
@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 	if(!challenger || !H)
 		return
 
-	to_chat(H, span_notice("There is an active schism within the Ten! [challenger.name] has challenged Astrata's leadership!"))
+	to_chat(H, span_notice("There is an active schism within the Pantheon! [challenger.name] has challenged Astrata's leadership!"))
 	setup_mob(H)
 
 /datum/tennite_schism/proc/setup_mob(mob/living/carbon/human/H)
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 
 	H.mind.AddSpell(new /obj/effect/proc_holder/spell/self/choose_schism_side)
 	if(!is_tennite(H))
-		to_chat(H, span_notice("Even though you are not a tennite and won't matter in the ultimate resolution of this conflict, you may pretend to be one and use the schism to further your own goals..."))
+		to_chat(H, span_notice("Even though you are not part of the Temple and won't matter in the ultimate resolution of this conflict, you may pretend to be one and use the schism to further your own goals..."))
 
 /datum/tennite_schism/proc/process_winner()
 	var/datum/patron/challenger = challenger_god.resolve()
@@ -172,12 +172,12 @@ GLOBAL_LIST_EMPTY(tennite_schisms)
 		//selected_priest.verbs |= /mob/living/carbon/human/proc/churchcurse	- Add this back seperate later in a seperate PR. Good feature, PR too big tho.
 		add_verb(selected_priest, /mob/living/carbon/human/proc/churchannouncement)
 
-		priority_announce("[challenger.name] has selected [selected_priest.real_name] as a new Bishop! Power sharing begins!", "Bishop rises", 'sound/magic/inspire_02.ogg')
+		priority_announce("[challenger.name] has selected [selected_priest.real_name] as a new Pontifex! Power sharing begins!", "Priest rises", 'sound/magic/inspire_02.ogg')
 
 		if(was_supporter)
-			to_chat(selected_priest, span_green("[challenger.name] smiles upon you! Your faithful support during the schism has been rewarded with the position of a Vice Bishop!"))
+			to_chat(selected_priest, span_green("[challenger.name] smiles upon you! Your faithful support during the schism has been rewarded with the position of a Priest!"))
 		else
-			to_chat(selected_priest, span_green("Though you did not openly support [challenger.name] during the schism, you have been chosen to serve as a Vice Bishop!"))
+			to_chat(selected_priest, span_green("Though you did not openly support [challenger.name] during the schism, you have been chosen to serve as a Priest!"))
 
 		if(D)
 			to_chat(selected_priest, span_notice("You have gained a passive devotion gain and powers to announce, excommunicate or curse!"))

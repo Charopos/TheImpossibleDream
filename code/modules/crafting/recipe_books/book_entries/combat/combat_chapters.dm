@@ -643,9 +643,9 @@
 
 		<ul>
 			<li><b>T1</b> Miracles are usually not dramatically effective, and are granted to Adventuring Paladins and certain classes.</li>
-			<li><b>T2</b> Miracles are usually where the more effective miracles start to show up. They are granted to Church Templars and certain holy roles with town or with an antagonistic nature.</li>
+			<li><b>T2</b> Miracles are usually where the more effective miracles start to show up. They are granted to Templars and certain holy roles with town or with an antagonistic nature.</li>
 			<li><b>T3</b> Miracles are reserved for the Adventurer Missionary, and are often the most effective part of the caster's toolkit.</li>
-			<li><b>T4</b> Miracles are what the Acolyte and most of the church roles get.</li>
+			<li><b>T4</b> Miracles are what the Acolyte and most of the clergy roles get.</li>
 		</ul>
 
 		<p>The DIVINE PANTHEON (The TENS) - the primary gods worshipped in this settings, offer a unique toolkit based on the god you selected as your PRIMARY (not your sole, Tennites are not monotheistic) patron.</p>
@@ -685,7 +685,7 @@
 		<ul>
 			<li><b>Lux Tranfusion</b>: Lux extracted from someone and then purified can be transplanted into someone and then used to revive them.</li>
 			<li><b>FULMENOR Chair</b>: The Fulmenor Chair is exclusively accessed by the Clinic and some wretches, and can revive someone with lux with better efficiency and without any penalty.</li>
-			<li><b>Revival Rituals</b>: The Church, with access to certain materials can also revive someone from the death, though they take a normal penalty.</li>
+			<li><b>Revival Rituals</b>: The Temple, with access to certain materials can also revive someone from the death, though they take a normal penalty.</li>
 		</ul>
 
 		<p>After non-chair revival, you gain Revival Sickness - [REVIVED_DEBUFF_DURATION / 600] minutes of -1 to every single stat you have. It stacks with the rot debuff if your body had begun to turn, so naturally rotting instead of becoming revived, followed by a ritual revival will hit you with a significant amount of debuff. You are encouraged to take it easy for a while and seek non combat roleplay after.</p>

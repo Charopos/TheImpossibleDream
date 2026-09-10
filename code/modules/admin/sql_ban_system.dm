@@ -234,11 +234,11 @@
 		var/break_counter = 0
 		//note to future developers: RT doesn't have command staff so toggle_head was removed, go back in the git history if you need to readd it
 		//departments/groups that don't have command staff would throw a javascript error since there's no corresponding reference for toggle_head()
-		var/list/headless_job_lists = list("Ducal Family" = GLOB.noble_positions,
+		var/list/headless_job_lists = list("Noble Family" = GLOB.noble_positions,
 							"Courtiers" = GLOB.courtier_positions,
 							"Retinue" = GLOB.retinue_positions,
 							"Garrison" = GLOB.garrison_positions,
-							"Church" = GLOB.church_positions,
+							"Clergy" = GLOB.church_positions,
 							"Wanderers" = GLOB.wanderer_positions,
 							"Abstract" = list("Appearance", "Emote", "Deadchat", "OOC", "LOOC"))
 		for(var/department in headless_job_lists)

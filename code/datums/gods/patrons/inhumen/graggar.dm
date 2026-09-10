@@ -1,8 +1,17 @@
 /datum/patron/inhumen/graggar
 	name = "Graggar"
-	domain = "God of Conquest, War, Strategy, Bind-Breaking"
-	desc = "Slave orc turned deity, said by the Holy Ecclesial to have been blessed by Ravox himself. He took his blessings to wage a bloody war against his once-captors, and then continued his conquest in his own name. Some Graggarites might care for honor, however many do not- what matters are results, and victory at a reasonable cost."
-	worshippers = "Prisoners, Slaves, Militants, and the Cruel"
+	domain = "God of Conquest, Slavery, Domination, and Predators"
+	desc = "The Devourer. The Many-Headed Beast. <b>HE</b> is the wicked voice in your head that delights in inflicting suffering upon another, and always demands more. \
+	<b>HE</b> is the part of you - no matter how small - that savors in the sickening crunch of a crushed skull. <b>HIS</b> voice is bellowed through Orcish war cries. <b>HIS</b> visage is seen through the Eclipse; a wicked grin; a cruel twist of the brow. \
+	<b>HIS</b> perfection is in pillage; in the blind destruction of arts, culture, and the creations of man. With <b>HIM,</b> corpses are butchered. Eaten. Sacrificed and scattered; bodies impaled upon every branch of a blood-soaked tree; one of many within a grove of the devoured dead. \
+	It is <b>HIS</b> Will manifest that works of high art and ancient culture are pillaged or burned; <b>HIS</b> glee at the annihilation of the works of the weak. \
+	<br><br> \
+	Only the strong may survive. Only the strong should survive. It is a pleasure to burn.<br> \
+	To kill. <br> \
+	To eat. <br> \
+	<i>Man is no greater than beast; beast is no greater than man.</i>"
+
+	worshippers = "Conquerers, Militants, and the Cruel"
 	mob_traits = list(TRAIT_HORDE, TRAIT_ORGAN_EATER)
 	traits_tier = list(TRAIT_NASTY_EATER = CLERIC_T1)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,

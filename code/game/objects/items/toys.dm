@@ -84,7 +84,7 @@
 	qdel(src)
 
 /obj/item/toy/cards
-	desc = "A source of moral decay, says the church."
+	desc = "A source of moral decay and Xylixian furies, so say the faithful."
 	resistance_flags = FLAMMABLE
 	max_integrity = 50
 	no_use_cd = TRUE

@@ -6,7 +6,7 @@
 	sort_category = "Caparison"
 
 /datum/loadout_item/caparison/psy
-	name = "Psydonite Caparison"
+	name = "Psydonian Caparison"
 	path = /obj/item/caparison/psy
 	sort_category = "Caparison"
 

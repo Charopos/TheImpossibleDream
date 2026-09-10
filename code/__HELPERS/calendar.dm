@@ -48,12 +48,12 @@
 	var/month_name = get_month_number_to_text(month_number)
 	var/season = get_season_from_month(month_number)
 	var/season_phase = get_season_phase(month_number)
-	return "[day_of_month] [month_name] [year_number] AP (Month [month_number] [season_phase] [season]), Cycle [current_cycle]"
+	return "[day_of_month] [month_name] [year_number] BR (Month [month_number] [season_phase] [season]), Cycle [current_cycle]"
 
 /// Compact IC date - what players say in-character. e.g. "3 Eora 1513 AP".
 /proc/get_ic_date_short_as_string(day_number)
 	var/list/parts = resolve_ic_date_parts(day_number)
-	return "[parts[1]] [get_month_number_to_text(parts[2])] [parts[3]] AP"
+	return "[parts[1]] [get_month_number_to_text(parts[2])] [parts[3]] BR"
 
 // Returns the current IC time as a string in the format [DAYS] ᛉ HH:MM ([Time Of Day])
 /proc/get_current_ic_time_as_string()

@@ -1679,7 +1679,7 @@
 /area/rogue/outdoors/town/roofs/keep)
 "aqv" = (
 /obj/structure/fluff/sign{
-	name = "CONDEMNED BY THE HOLY SEE"
+	name = "CONDEMNED BY THE TEMPLE"
 	},
 /turf/open/floor/rogue/naturalstone,
 /area/rogue/outdoors/mountains/decap/stepbelow)
@@ -12580,7 +12580,7 @@
 "cuD" = (
 /obj/structure/gate{
 	gid = "dungeondoor";
-	name = "Temple of the Ten";
+	name = "Temple of the Gods";
 	redstone_id = "dungeondoor"
 	},
 /turf/open/floor/rogue/cobblerock,
@@ -22043,7 +22043,7 @@
 /obj/structure/closet/crate/chest/neu_fancy{
 	locked = 1;
 	lockid = "church";
-	name = "Church Tithes"
+	name = "Temple's Tithes"
 	},
 /obj/item/roguecoin/copper/pile,
 /obj/item/roguecoin/copper/pile,
@@ -24360,7 +24360,7 @@
 /area/rogue/indoors/abandonedhotsprings)
 "eFB" = (
 /obj/structure/mineral_door/wood/window{
-	name = "Cathedral Kitchen";
+	name = "Temple's Kitchen";
 	lockid = "church";
 	locked = 1
 	},
@@ -27706,8 +27706,8 @@
 /area/rogue/outdoors/town)
 "flu" = (
 /obj/structure/standingbell{
-	name = "church service bell";
-	specific_location = "Cathedral Nave"
+	name = "temple service bell";
+	specific_location = "Faithful's Nave"
 	},
 /obj/effect/landmark/start/sexton,
 /obj/machinery/light/rogue/candle/l,
@@ -43376,7 +43376,7 @@
 "ije" = (
 /obj/structure/standingbell{
 	specific_location = "Infirmary of Pestra";
-	name = "church service bell"
+	name = "temple service bell"
 	},
 /obj/effect/decal/edge{
 	color = "#3f3f3f";
@@ -66331,7 +66331,7 @@
 /area/rogue/under/cave/abyssor/inner)
 "moa" = (
 /obj/structure/fluff/sign{
-	name = "CONDEMNED BY THE HOLY SEE"
+	name = "CONDEMNED BY THE TEMPLE"
 	},
 /turf/open/floor/rogue/dirt/road,
 /area/rogue/outdoors/mountains/decap)
@@ -82194,7 +82194,7 @@
 /area/rogue/outdoors/beach/forest/hamlet)
 "pkQ" = (
 /obj/structure/standingbell{
-	name = "church service bell";
+	name = "temple service bell";
 	specific_location = "Public Kitchen"
 	},
 /turf/open/floor/rogue/wood,

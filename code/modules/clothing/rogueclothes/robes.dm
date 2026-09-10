@@ -356,7 +356,7 @@
 
 /obj/item/clothing/suit/roguetown/shirt/robe/eora/alt
 	name = "open eoran robe"
-	desc = "Used by more radical followers of the Eoran Church"
+	desc = "Used by more radical followers of Eora"
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/armor.dmi'
 	body_parts_covered = null // Keyhole should show boob size and the outfit is too open to get in the way of sex
 	icon_state = "eorastraps"
@@ -368,7 +368,7 @@
 	switch(fanatic_wear)
 		if(FALSE)
 			name = "open eoran robe"
-			desc = "Used by more radical followers of the Eoran Church"
+			desc = "Used by more radical followers of the Will of Warmth."
 			body_parts_covered = null
 			icon_state = "eorastraps"
 			item_state = "eorastraps"

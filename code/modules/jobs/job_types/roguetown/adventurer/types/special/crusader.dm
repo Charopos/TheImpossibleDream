@@ -8,7 +8,7 @@
 	maximum_possible_slots = 1 // Disabled Role
 
 	tutorial = "The Crusaders; knights who have pledged \
-	their wealth and lands to the church, taking up the banner \
+	their wealth and lands to the divines, taking up the banner \
 	of one of the rival Orders dedicated to retaking the holy land. \
 	The 451st Crusade is sure to be the last."
 

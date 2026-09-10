@@ -243,8 +243,8 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/guard/paalloy
 	name = "ancient savoyard"
-	desc = "Polished gilbranze plates, molded into a bulwark's greathelm. The Comet Syon's glare has been forever burnt into the alloy; a \
-	decayed glimpse into the world that was, before Psydon's slumber and Zizo's awakening."
+	desc = "Polished gilbranze plates, molded into a bulwark's greathelm. A mote of prismatic glare has been forever burnt into the alloy; a \
+	decayed glimpse into the world that was, before Psydon's shattering and Zizo's awakening."
 	icon_state = "ancientsavoyard"
 	smeltresult = /obj/item/ingot/aaslag
 
@@ -1552,8 +1552,8 @@
 	icon_state = "capbascinet_s"
 
 /obj/item/clothing/head/roguetown/helmet/heavy/holyseebarbute
-	name = "holy see barbute"
-	desc = "A polished plate of sheer silver curtains the barbute's front, its mirror-like sheen reflecting that which the Ten make of His Creation. \
+	name = "blessed barbute"
+	desc = "A polished plate of sheer silver curtains the barbute's front, its mirror-like sheen reflecting that which the Gods make of His Creation. \
 			\n\n'Look upon their works, ye mighty, and despair.'"
 	icon_state = "seebascinet"
 	item_state = "seebascinet"

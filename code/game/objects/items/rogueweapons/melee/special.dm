@@ -901,7 +901,7 @@
 
 /obj/item/rogueweapon/sword/falchion/militia/bronze
 	name = "kopis"
-	desc = "The falchion's ancient predecessor, veiled in bronze - yet no less lethal against an awaiting trunk. The curved grip snuggly fits in the wielder's hand, allowing their will to be imposed upon assailant-and-archdevil alike with terrible force."
+	desc = "The falchion's ancient predecessor, veiled in bronze - yet no less lethal against an awaiting trunk. The curved grip snuggly fits in the wielder's hand, allowing their will to be imposed upon assailant-and-anatheman alike with terrible force."
 	possible_item_intents = list(/datum/intent/sword/cut, /datum/intent/sword/chop/militia, /datum/intent/sword/thrust/long/deep, /datum/intent/sword/strike)
 	icon_state = "kopis"
 	sheathe_icon = "kopis"

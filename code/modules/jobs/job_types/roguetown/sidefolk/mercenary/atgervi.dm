@@ -1,6 +1,6 @@
 /datum/advclass/mercenary/atgervi
 	name = "Atgervi"
-	tutorial = "You are a Varangian of the Gronn Highlands. Warrior-Traders most known for their exploits into the Raneshen Empire, which will be forever remembered by historians."
+	tutorial = "You are a Varangian of the Gronn Highlands. Warrior-Traders most known for their exploits into the Zybantine Empire, which will be forever remembered by historians."
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/roguetown/mercenary/atgervi
@@ -38,7 +38,7 @@
 
 /datum/outfit/job/roguetown/mercenary/atgervi/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("You are a Varangian of the Gronn Highlands. Warrior-Traders whose exploits into the Raneshen Empire will be forever remembered by historians."))
+	to_chat(H, span_warning("You are a Varangian of the Gronn Highlands. Warrior-Traders whose exploits into the Zybantine Empire will be forever remembered by historians."))
 	head = /obj/item/clothing/head/roguetown/helmet/bascinet/atgervi
 	gloves = /obj/item/clothing/gloves/roguetown/angle/atgervi
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
@@ -78,7 +78,7 @@
 
 /datum/advclass/mercenary/atgervi_shaman
 	name = "Atgervi Shaman"
-	tutorial = "You are a Shaman of the Fjall, The Northern Empty. Shamans are savage combatants who commune with the Ecclesical Beast Gods through ritualistic violence, rather than idle prayer."
+	tutorial = "You are a Shaman of the Fjall, The Northern Empty. Shamans are savage combatants who commune with the Divine through ritualistic violence, rather than idle prayer."
 	allowed_sexes = list(MALE, FEMALE)
 
 	outfit = /datum/outfit/job/roguetown/mercenary/atgervi_shaman
@@ -113,7 +113,7 @@
 /datum/outfit/job/roguetown/mercenary/atgervi_shaman/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.set_blindness(0)
-	to_chat(H, span_warning("You are a Shaman of the Fjall, The Northern Empty. Shamans are savage combatants who commune with the Ecclesical Beast gods through ritualistic violence, rather than idle prayer."))
+	to_chat(H, span_warning("You are a Shaman of the Fjall, The Northern Empty. Shamans are savage combatants who commune with the Divine through ritualistic violence, rather than idle prayer."))
 	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/warrior]
 
 	head = /obj/item/clothing/head/roguetown/helmet/leather/shaman_hood

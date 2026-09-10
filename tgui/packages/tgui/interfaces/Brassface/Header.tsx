@@ -56,7 +56,7 @@ export const Header = (props: Props) => {
       >
         {ordinanceActive ? (
           <span style={{ color: SEAL_GREEN }}>
-            <b>Ordinance:</b> in force - {titheRatePct}% tithed unto the Church
+            <b>Ordinance:</b> in force - {titheRatePct}% tithed unto the Temple
           </span>
         ) : (
           <span style={{ color: SEAL_RED }}>
@@ -66,7 +66,7 @@ export const Header = (props: Props) => {
         {isProprietor && (
           <>
             <span style={{ color: INK_SOFT }}>
-              <b>Church tithed here:</b>{' '}
+              <b>Temple tithed here:</b>{' '}
               <span style={{ color: SEAL_AMBER }}>{churchTithePaid}m</span>
             </span>
             <span style={{ color: INK_SOFT }}>

@@ -1278,7 +1278,7 @@
 /obj/item/clothing/cloak/cape/inquisitorsilver
 	name = "silver order cloak"
 	desc = "A time honored cloak inlined with silver threading, the stitchwork tethers it to the Silver Orders; a catch-all term for the various faith-militances that \
-	ward Psydonia from monsters, creechers, and the ever-looming threat of the Archdevil's return."
+	ward Psydonia from monsters, creechers, and the ever-looming threat of assault of the Anatheme."
 	icon_state = "sinquisitor_cloak"
 	icon = 'icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/onmob/cloaks.dmi'

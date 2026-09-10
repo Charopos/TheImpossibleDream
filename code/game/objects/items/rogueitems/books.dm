@@ -169,13 +169,13 @@
 
 //Tennite Bible
 /obj/item/book/rogue/bibble
-	name = "The Verses and Acts of the Ten"
-	desc = "The collected verses and acts of the DIVINE PANTHEON. Split into three parts. </br>VISAGE - The OLD, THE FIRST ACTS \
-	OF THE TEN UPON PSYDONIA, BEFORE THE COMET SYON </br>DECANOMICON - THE ERA OF GLEAM, THE HOLY CELESTIAL EMPIRE - </br>NEW DAWN \
-	- Modern Era, the foundation of the HOLY SEE and ONWARDS."
+	name = "The Verses and Acts of the Pantheon"
+	desc = "The collected verses and acts of the DIVINE PANTHEON; written during the days of the Deceus Reformation. Its doctrines are old - and difficult to find value and comfort in. Split into three parts. </br>VISAGE - The OLD, THE FIRST ACTS \
+	OF THE TEN UPON PSYDONIA </br>DECANOMICON - THE ERA OF GLEAM, THE ETERNAL IMPERATE - </br>NEW DAWN \
+	- Modern Era, the Ten Divine Wills"
 	icon_state = "bibble_0"
 	base_icon_state = "bibble"
-	title = "The Verses and Acts of the Ten"
+	title = "The Verses and Acts of the Pantheon"
 	dat = "gott.json"
 	possible_item_intents = list(
 		/datum/intent/use,
@@ -380,7 +380,7 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = "The Tome of Laws, as passed from the Holy See to its many Ten-worshipping communities."
+	desc = "The Tome of Laws, as passed from the Grand Temple of Zybantium to the many communities under the protection of the Pentacle."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law_2.json"

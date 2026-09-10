@@ -70,7 +70,7 @@ export const DrowWrit = (props: {
   return (
     <>
       <p style={writParagraph}>
-        <i>By writ of the {rulerTitle} and the Holy See:</i>
+        <i>By writ of the {rulerTitle} and Pantheonic law:</i>
       </p>
       <p style={writParagraph}>
         That {subject} hath emerged from the deep dark into the lands of {realm}
@@ -94,9 +94,10 @@ export const DrowWrit = (props: {
       )}
       <p style={writParagraph}>
         Let no man parley, let no man trade, let no priest hear their plea. By
-        writ of the {rulerTitle} and the counsel of the Holy See, {subject} be
-        declared <span style={caputLupinum}>ANATHEMA SIT</span>: accursed before
-        the Tens, sundered from sun and grain, owed neither truce nor ransom.
+        writ of the {rulerTitle} and the counsel of the priesthood of the
+        Temple, {subject} be declared{' '}
+        <span style={caputLupinum}>ANATHEMA SIT</span>: accursed before the
+        Gods, sundered from sun and grain, owed neither truce nor ransom.
       </p>
       <p style={writParagraph}>
         Slay them where they walk and burn what they bear, lest the blight upon

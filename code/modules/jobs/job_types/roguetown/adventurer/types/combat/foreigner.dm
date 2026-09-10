@@ -127,9 +127,9 @@
 
 /datum/advclass/foreigner/repentant
 	name = "Otavan Repentant"
-	tutorial = "An exile from the Holy See of Otava, accused of heresy and cast out of your homeland as penance. \
+	tutorial = "An exile from the heartlands of Otava, accused of heresy and cast out of your homeland as penance. \
 	Some consider yours a fate worse than death; the metal alloy mask seared onto your face serving as a permanent reminder of your sins. \
-	You are a living example of what becomes of those who stand in defiance of the Otavan inquisition."
+	You are a living example of what becomes of those who stand in defiance of His Majesty's Holiest Inquisition."
 
 	outfit = /datum/outfit/job/roguetown/adventurer/repentant
 	subclass_languages = list(/datum/language/otavan)
@@ -155,9 +155,9 @@
 
 /datum/outfit/job/roguetown/adventurer/repentant/pre_equip(mob/living/carbon/human/H)
 	..()
-	to_chat(H, span_warning("An exile from the Holy See of Otava, accused of heresy and cast out of your homeland as penance. \
+	to_chat(H, span_warning("An exile from the heartlands of Otava, accused of heresy and cast out of your homeland as penance. \
 	Some consider yours a fate worse than death; the metal alloy mask seared onto your face serving as a permanent reminder of your sins. \
-	You are a living example of what becomes of those who stand in defiance of the Otavan inquisition."))
+	You are a living example of what becomes of those who stand in defiance of His Majesty's Holiest Inquisition."))
 	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy/mad_touched
 	wrists = /obj/item/clothing/neck/roguetown/psicross
 	shirt = /obj/item/clothing/cloak/tabard/psydontabard

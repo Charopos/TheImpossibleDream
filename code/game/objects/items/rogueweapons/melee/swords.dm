@@ -396,17 +396,17 @@
 	is_even_lesser_silver = TRUE // adv paladin exclusive weapon, works like unblessed silver but only in pve
 
 /obj/item/rogueweapon/sword/long/church
-	name = "see longsword"
-	desc = "A blessed longsword, wielded by the Holy See's templars in their stalwart defense against evil. Originating in the wake of the Celestial Empire's \
-	collapse, legends say that it is the grandfather to longswords all across Psydonia: the triumph of an ancient Malumite priest, stricken with divine \
-	inspiration in humenity's darkest hour. Centuries later, it still remains the ideal choice for skewering infidels and monsters alike. </br>'I am the \
-	holder of light, in the dark abyss..' </br>'..I am the holder of order and ward against vileness..' </br>'..let the Gods guide my hand, and let the Inhumen cower before me.'"
+	name = "templar's longsword"
+	desc = "A blessed longsword, wielded by the warriors of the Temple in their stalwart defense against evil. Engravings in Sama'glos and Old Imperial doctrine texture its blade; a glossy sheen set across the blade, \
+	slow to mar, by combined blessing of the Justiciar and Lune. When cutting down the wicked - when defending the Gods' Own - and when facing off against Atavists or Anatheme - Templars wield this weapon not out of hate, but out of love. \
+	</br>'I am the \
+	holder of light, in the dark abyss..' </br>'..I am the holder of order and ward against vileness..' </br>'..let the Gods guide my hand, and let the false cower before me.'"
 	icon_state = "churchsword"
 	max_integrity = 180
 
 /obj/item/rogueweapon/sword/long/undivided
 	name = "decablade"
-	desc = "A blessed longsword, held by the Holy See's templars in their stalwart defense against evil. The golden crossguard bears the winged motif of an angel, and \
+	desc = "A blessed longsword, held by the warriors of the Temple in their stalwart defense against evil. The golden crossguard bears the winged motif of an Aasimari, and \
 	psalms from the Pantheon's holy tome have been meticulously carved along the blade's edge. </br>'With a drop of holy Eclipsum, doth the blade rise..' </br>'..gilded, \
 	gleaming, radiant heat, warm my soul, immolate my enemies..' </br>'..and let me vanquish all those who would dare to Divide us, once more.'"
 	icon_state = "seeblade"
@@ -1134,7 +1134,7 @@
 /obj/item/rogueweapon/sword/short/gladius
 	name = "gladius"
 	desc = "A hefty blade of bronze, sharp enough to disembowel and decapitate with-but a lone hand's force. Psydonia's ancient champions drove back the \
-	Archdevil's hordes with these shortswords, a thousand years ago; yet now, the end has crept forth to threaten lyfe once more. Move with the grace of \
+	Anathematic hordes with these shortswords, millenia ago; yet now, the end has crept forth to threaten lyfe once more. Move with the grace of \
 	your ancestors - spread your feet, brace your grasp, and make them bleed for every step they take."
 	icon_state = "gladius"
 	sheathe_icon = "gladius"
@@ -1146,7 +1146,7 @@
 /obj/item/rogueweapon/sword/short/gladius/decorated
 	name = "decorated gladius"
 	desc = "A beautiful depiction of justice, beflowered and besilked. The crimson engravings along its blade pay tribute to the ancient epics of Ravox's \
-	ascent to godlihood; for it was His wounding of the Sinistar's tentacled heart that forced the Archdevil to pause - first in disbelief, then in fascination."
+	arrival after the Shattering - for it was His wounding of the Sinistar's tentacled heart that forced the Domineme to pause - first in disbelief, then in fascination."
 	icon_state = "gladiusdec"
 	sheathe_icon = "decgladius"
 	max_integrity = 300
@@ -1464,7 +1464,7 @@
 
 /obj/item/rogueweapon/sword/sabre/palloy
 	name = "ancient khopesh"
-	desc = "A polished hook-sword, forged from gilbronze. The Comet Syon's glare once graced this blade; now, it's wielded by those who can't even \
+	desc = "A polished hook-sword, forged from gilbronze. The stained-glass glare of the Shattering once graced this blade; now, it's wielded by those who can't even \
 	remember what came before His sacrifice."
 	smeltresult = /obj/item/ingot/aaslag
 	icon_state = "akhopesh"
@@ -2055,7 +2055,7 @@
 
 /obj/item/rogueweapon/sword/long/holysee
 	name = "eclipsum sword"
-	desc = "A masterworked longsword, forged from the same divine alloy that decorates the Bishop's hip. As your fingers curl around the shaft, a blessed \
+	desc = "A masterworked longsword, forged from the same divine alloy that decorates the Pontiff's hip. As your fingers curl around the shaft, a blessed \
 	sensation rolls through your very soul: the resolve to stand against evil, and the determination to see it vanquished from this world. </br>'..blessed \
 	to hold strength and bring hope, whether it be during the dae or the nite..'"
 	icon_state = "eclipsum"
