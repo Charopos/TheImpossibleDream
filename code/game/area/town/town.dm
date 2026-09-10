@@ -271,7 +271,7 @@
 	droning_sound_night = null
 
 /area/rogue/indoors/town/zhurch
-	name = "Chapel of the Ecclesial"
+	name = "Chapel of the Anathema"
 	droning_sound = 'sound/music/area/zhurch.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null

@@ -64,7 +64,7 @@
 	// Allows prayer near any body of water turf.
 	for(var/turf/open/water in view(4, get_turf(follower)))
 		return TRUE
-	to_chat(follower, span_danger("For Abyssor to hear my prayer I must either pray within the church, near a psycross, or at any body of water so that the tides of prayer may flow.."))
+	to_chat(follower, span_danger("For Abyssor to hear my prayer I must either pray within the temple, near a psycross, or at any body of water so that the tides of prayer may flow.."))
 	return FALSE
 
 /datum/patron/divine/abyssor/on_lesser_heal(

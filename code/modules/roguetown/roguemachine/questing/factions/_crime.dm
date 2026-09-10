@@ -45,7 +45,7 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	tier = CRIME_TIER_PETTY
 	phrasings = list(
 		"the fouling of a wayside shrine in plain sight",
-		"the fouling of a roadside cairn dedicated to the Tens",
+		"the fouling of a roadside cairn dedicated to the Gods",
 		"the fouling, and relief of one's bowels, upon a sign commissioned by the very Duke."
 	)
 
@@ -467,8 +467,8 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_ALTAR_CASTING_DOWN
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
-		"the casting-down of an altar of the Tens",
-		"the breaking of holy stone, that the Tens be dishonoured before their own",
+		"the casting-down of an altar of the Pantheon",
+		"the breaking of holy stone, that the Gods be dishonoured before their own",
 	)
 
 /datum/quest_crime/pilgrim_slaughter
@@ -492,7 +492,7 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	tier = CRIME_TIER_SACRAL
 	phrasings = list(
 		"the poisoning of a holy well",
-		"the fouling of waters held sacred unto the Tens",
+		"the fouling of waters held sacred unto the gods",
 		"the poisoning of a holy well, fouling at once Pestra's healing arts and Abyssor's gift of water",
 	)
 
@@ -517,7 +517,7 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_APOSTASY
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"apostasy from the Tens, and the open mocking of their rites",
+		"apostasy from the clergy, and the open mocking of their rites",
 		"the casting-off of holy bond, and laughter at the altar",
 	)
 
@@ -525,8 +525,8 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_FORBIDDEN_DOCTRINE
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the teaching of doctrines forbidden by the Holy See",
-		"preaching of foul wisdom in barn and hedge, against the Tens",
+		"the teaching of doctrines forbidden by Pantheonic law",
+		"preaching of foul wisdom in barn and hedge, against the Divine Wills",
 	)
 
 /datum/quest_crime/forbidden_books
@@ -541,8 +541,8 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	id = CRIME_ASCENDANT_CONSORTING
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
-		"the consorting with the false gods Ascendant, raised against the Tens",
-		"the offering of prayer and incense unto Ascendant powers, in defiance of the See",
+		"the consorting with the false gods Ascendant, raised against the Gods",
+		"the offering of prayer and incense unto Ascendant powers, in defiance of the Divine",
 	)
 
 /datum/quest_crime/demonic_pact
@@ -615,7 +615,7 @@ GLOBAL_LIST_EMPTY(quest_crimes)
 	tier = CRIME_TIER_HERESY
 	phrasings = list(
 		"the calling upon the false names of the Inhumen, of Graggar's eight, of Zizo's six, of the Devourer below",
-		"the speaking aloud of the unholy names that the Holy See hath bound to silence",
+		"the speaking aloud of the unholy names that the faithful hath bound to silence",
 	)
 
 

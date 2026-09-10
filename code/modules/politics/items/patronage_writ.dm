@@ -83,7 +83,7 @@
 
 /obj/item/patronage_writ/benefactor
 	name = "Letter of Benefaction"
-	desc = "A sealed letter of the Temple of Pharos, conferring the rank of Benefactor upon its bearer."
+	desc = "A sealed letter of the Temple of the Pentacle, conferring the rank of Benefactor upon its bearer."
 	granted_trait = TRAIT_AGENT_CHURCH
 	faction_label = "the Temple of Pharos"
 	roster_cap = PATRON_CAP_CHURCH

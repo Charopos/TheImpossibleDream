@@ -19,8 +19,8 @@
 
 		<h3>The Ordinance</h3>
 		<ul>
-			<p>The Temple of Pharos and the Bathhouse have signed an agreement that the Bathhouse will not sell any items that violate the Ordinance, and that in exchange the Church shall not interfere with the Bathhouse's business, and take it under their protection. The Ordinance's details can be read in the
-			Meister, and can be revoked by either side for any or no reasons. While it is in force, part of the secret Bathhouse Vault's income is remitted to the Church alongside a small portion of sales. The agreement does not prohibit the Church from breaking it or interfering if the Bathhouse does not even bother to hide their violations or outright professes heresy.
+			<p>The Temple of Pharos and the Bathhouse have signed an agreement that the Bathhouse will not sell any items that violate the Ordinance, and that in exchange the Temple shall not interfere with the Bathhouse's business, and take it under their protection. The Ordinance's details can be read in the
+			Meister, and can be revoked by either side for any or no reasons. While it is in force, part of the secret Bathhouse Vault's income is remitted to the Temple alongside a small portion of sales. The agreement does not prohibit the Temple from breaking it or interfering if the Bathhouse does not even bother to hide their violations or outright professes heresy.
 			</p>
 		</ul>
 

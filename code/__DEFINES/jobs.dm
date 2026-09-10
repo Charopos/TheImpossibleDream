@@ -147,7 +147,7 @@
 	"Courtiers" = JCOLOR_COURTIER,\
 	"Retinue" = JCOLOR_RETINUE,\
 	"Garrison" = JCOLOR_GARRISON,\
-	"Church" = JCOLOR_CHURCH,\
+	"Clergy" = JCOLOR_CHURCH,\
 	"Inquisition" = JCOLOR_INQUISITION,\
 	"Burghers" = JCOLOR_BURGHER,\
 	"Guildsmen" = JCOLOR_GUILD,\

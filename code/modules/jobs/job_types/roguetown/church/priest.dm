@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
+		"The Verses and Acts of the Pantheon" = /obj/item/book/rogue/bibble,
 	)
 	tempo_capable = FALSE
 
@@ -293,8 +293,8 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	new_role = "Acolyte"
 	overlay_state = "recruit_acolyte"
 	recruitment_faction = "Church"
-	recruitment_message = "Serve the ten, %RECRUIT!"
-	accept_message = "FOR THE TEN!"
+	recruitment_message = "Serve the Gods, %RECRUIT!"
+	accept_message = "FOR THE GODS!"
 	refuse_message = "I refuse."
 
 /mob/living/carbon/human/proc/completesermon()

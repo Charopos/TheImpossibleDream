@@ -703,7 +703,7 @@
 
 /obj/item/rogueweapon/huntingknife/idagger/steel/holysee
 	name = "eclipsum dagger"
-	desc = "A sliver of heaven, shaped into an elegant dagger. The alloy radiates with magnificence: a reminder that no matter how dark the nites grow, there will always be a dawn to follow. Such a dagger is reserved for the Holy See's bishops and priests - both as a symbol of their divine authority, and as a means of ritualistic bloodletting. </br>'..come forth, child o' myne, and be anointed in the Pantheon's light once more..'"
+	desc = "A sliver of heaven, shaped into an elegant dagger. The alloy radiates with magnificence: a reminder that no matter how dark the nites grow, there will always be a dawn to follow. Such a dagger is reserved for the Pentacle's bishops and priests - both as a symbol of their divine authority, and as a means of ritualistic bloodletting. </br>'..come forth, child o' myne, and be anointed in the Pantheon's light once more..'"
 	force = 30 //The only instance of this dagger existing, outside of special admin-ran events, is when the Priest joins. They spawn with this on their person. Should be safe from Judgement-tier thefts.
 	throwforce = 33
 	throw_speed = 3

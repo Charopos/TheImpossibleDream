@@ -7,7 +7,7 @@
 	wiki.show_to_user(
 		user,
 		list(/datum/book_entry/treasury_general, /datum/book_entry/treasury_realm, /datum/book_entry/treasury_merchant, /datum/book_entry/treasury_underground),
-		"The Comprehensive Guide to the Azvrian Economy",
+		"The Comprehensive Guide to the Great Game - the Economy",
 		/obj/item/recipe_book/treasury_primer,
 		category,
 		entry,
@@ -54,7 +54,7 @@
 
 		<h3>Tax Collection</h3>
 		<ul>
-			<li>Crown duty remits to Crown's Purse, with a portion given unto the Church for the Concordat tithe if it is in force.</li>
+			<li>Crown duty remits to Crown's Purse, with a portion given unto the Temple for the Concordat tithe if it is in force.</li>
 			<li>Merchant's levy remits to the Merchant's Fund, held in a secure Jawbank.</li>
 		</ul>
 		</div>

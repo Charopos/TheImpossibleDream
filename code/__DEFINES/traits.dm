@@ -413,7 +413,7 @@
 //Ecom Related traits
 #define TRAIT_DEBTOR "Default Debtor"
 #define TRAIT_DEBTOR_CROWN "Default Debtor (Crown)"
-#define TRAIT_DEBTOR_CHURCH "Default Debtor (Church)"
+#define TRAIT_DEBTOR_CHURCH "Default Debtor (Temple)"
 #define TRAIT_DEBTOR_MERCHANT "Default Debtor (Merchant)"
 #define TRAIT_DEBTOR_BATHHOUSE "Default Debtor (Bathhouse)"
 #define TRAIT_AGENT_MERCHANT "Agent of the Trading Company"
@@ -626,12 +626,12 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_RESIDENT = span_info("I've been granted a Meister account, and the ownership of a house in the Pharos."),
 	TRAIT_DEBTOR = span_danger("I have defaulted on a loan. My name is writ red in the ledger until the debt is cleared."),
 	TRAIT_DEBTOR_CROWN = span_danger("My defaulted debt is owed to the Crown. The Steward keeps the tally."),
-	TRAIT_DEBTOR_CHURCH = span_danger("My defaulted debt is owed to the Church. The faithful keep the tally."),
+	TRAIT_DEBTOR_CHURCH = span_danger("My defaulted debt is owed to the Temple. The faithful keep the tally."),
 	TRAIT_DEBTOR_MERCHANT = span_danger("My defaulted debt is owed to the Merchant. The trading company keeps the tally."),
 	TRAIT_DEBTOR_BATHHOUSE = span_danger("My defaulted debt is owed to the Bathhouse. The bathmasters keep the tally."),
 	TRAIT_AGENT_MERCHANT = span_info("I am a chartered agent of the Pharovian Trading Company. I keep its tally and ledger."),
 	TRAIT_AGENT_BATHHOUSE = span_info("I am an agent of the Bathhouse. I keep its tally and ledger."),
-	TRAIT_AGENT_CHURCH = span_info("I am a Benefactor of the Temple of Pharos. The faithful know my name."),
+	TRAIT_AGENT_CHURCH = span_info("I am a Benefactor of the Temple of the Pantheon. The faithful know my name."),
 	TRAIT_ARREARS = span_smallred("I am behind on my poll tax. The Stewardry keeps the tally; the garrison may mark my destitution."),
 	TRAIT_LIGHT_STEP = span_info("My steps are light and swift. I make less noise while sneaking and wearing armor, and can sneak much quicker."),
 	TRAIT_HARDSOLE = span_info("My steps are tempered by countless trials. Stepping on glass or sharp objects won't impair me."),

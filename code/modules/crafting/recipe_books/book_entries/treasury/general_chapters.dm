@@ -109,8 +109,8 @@
 		<p>Three factions print their own patronage writs at their MEISTER's institutional panel. Each writ is a one use item: hand it to someone for them to claim it by using it in hand. Roster slots are limited per faction and prune when an enrolled member dies or is gone.</p>
 		<ul>
 			<li><b>Writ of Charter</b> (Merchant, up to [PATRON_CAP_MERCHANT]) - the bearer becomes an Agent of the Pharovian Trading Company. They are recognized as a Burgher for tax purposes (Golden Bull cap) and will recognize the Company's debtors. Also confers Residency, so they are treated as a towner for round purposes including the towner contract gate.</li>
-			<li><b>Token of the Bathhouse</b> (Bathmaster, up to [PATRON_CAP_BATHHOUSE]) - the bearer becomes an Agent of the Bathhouse. They may pass through the secret tunnel and the northeastern coast smugglers will offer them better prices on Black Market sales. They may also will recognize Bathhouse's debtors. Use discretion when granting to outlaws or wretches - the mark of the Bathhouse is visible, and being seen with it on a fugitive may invite Temple or Crown reprisal against the Bathmaster.</li>
-			<li><b>Letter of Benefaction</b> (Bishop / Martyr, up to [PATRON_CAP_CHURCH]) - the bearer becomes a Benefactor of the Temple and inherits the Concordat's tax exemption (no direct taxation while the Concordat stands). They may also see the Church's debtors. This is one of the way for the Church main channel to gain lay allies say, in preparation for conflicts.</li>
+			<li><b>Token of the Bathhouse</b> (Bathmaster, up to [PATRON_CAP_BATHHOUSE]) - the bearer becomes an Agent of the Bathhouse. They may pass through the secret tunnel and the northeastern coast smugglers will offer them better prices on Black Market sales. They may also will recognize Bathhouse's debtors. Use discretion when granting to outlaws or wretches - the mark of the Bathhouse is visible, and being seen with it on a fugitive may invite the Temple's or Crown reprisal against the Bathmaster.</li>
+			<li><b>Letter of Benefaction</b> (Bishop / Martyr, up to [PATRON_CAP_CHURCH]) - the bearer becomes a Benefactor of the Temple and inherits the Concordat's tax exemption (no direct taxation while the Concordat stands). They may also see the Temple's debtors. This can be one of the Temple's main channels to gain lay allies for certain matters - such as preparation for conflicts.</li>
 		</ul>
 		</div>
 	"}
@@ -149,7 +149,7 @@
 		<div>
 		<p>Both legal and illegal ways to dodge taxes exist.</p>
 
-		<p><b>Legal Evasion</b>: Subjects without a bank account are inherently immune to poll taxes. Avoiding Contract Levy requires membership in a tax-exempt class - nobles, church members, or holders of Church Benefactor status (granted by the Bishop). Note that the Church itself is not expected to adventure without IC reason, so Benefactor status is the practical channel. Tax immunity does not apply to indirect taxes like import tariffs or export duties.</p>
+		<p><b>Legal Evasion</b>: Subjects without a bank account are inherently immune to poll taxes. Avoiding Contract Levy requires membership in a tax-exempt class - nobles, clergy, or holders of Temple Benefactor status (granted by the Bishop). Note that the clergy itself is not expected to adventure without IC reason, so Benefactor status is the practical channel. Tax immunity does not apply to indirect taxes like import tariffs or export duties.</p>
 
 		<p><b>Illegal Evasion</b>: The Merchant can stop paying taxes by toggling the navigator's tax setting and refusing to pay on Goldface sales. The risk of being caught and penalised by the Crown falls on the Merchant. The machines tally dodged amounts, but only the Shophand and the Merchant themselves can view the exact tally - the Crown can only guess and accuse, with or without proof.</p>
 		</div>

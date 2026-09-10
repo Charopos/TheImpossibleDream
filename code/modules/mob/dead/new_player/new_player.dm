@@ -549,11 +549,11 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 				if (GARRISON)
 					cat_name = "Garrison"
 				if (CHURCHMEN)
-					cat_name = "Churchmen"
+					cat_name = "Clergy"
 				if (BURGHERS)
 					cat_name = "Burghers"
 				if (ATC)
-					cat_name = "Pharovian Trading Company"
+					cat_name = "Guilders"
 				if (PEASANTS)
 					cat_name = "Peasants"
 				if (SIDEFOLK)

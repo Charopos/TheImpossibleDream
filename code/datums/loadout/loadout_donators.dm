@@ -557,7 +557,7 @@
 	ckeywhitelist = list("ryan180602")
 
 /datum/loadout_item/donator/ryan/psy_helm
-	name = "Donator Kit - Unorthodoxist Psydonite Helm"
+	name = "Donator Kit - Unorthodoxist Psydonian Helm"
 	path = /obj/item/enchantingkit/ryan_psyhelm
 
 /datum/loadout_item/donator/koruu

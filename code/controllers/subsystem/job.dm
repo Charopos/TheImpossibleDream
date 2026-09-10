@@ -969,7 +969,7 @@ SUBSYSTEM_DEF(job)
 		if(RETINUE)
 			key = "Retinue"
 		if(CHURCHMEN)
-			key = "Church"
+			key = "Clergy"
 		if(INQUISITION)
 			key = "Inquisition"
 		if(BURGHERS)

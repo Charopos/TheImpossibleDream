@@ -7,7 +7,7 @@
 	spawn_positions = 2
 	allowed_sexes = list(MALE, FEMALE)
 	forbidden_races = list(RACES_DESPISED)
-	tutorial = "You are a Sexton, an apprentice, helping hand or aide for the local church. Your responsibilities are little, but so are your obligations."
+	tutorial = "You are a Sexton, an apprentice, helping hand or aide for the temple. Your responsibilities are little, but so are your obligations."
 	outfit = /datum/outfit/job/roguetown/sexton/
 	display_order = JDO_SEXTON
 	give_bank_account = TRUE
@@ -25,8 +25,8 @@
 
 /datum/advclass/sexton/groundskeeper
 	name = "Groundskeeper"
-	tutorial = "You are the groundskeeper for the local church, and are responsible for all the little odd-jobs that keep it running. \
-	Your duties range from cleaning the floors and pews to managing the stores and conducting church business."
+	tutorial = "You are the groundskeeper for the temple, and are responsible for all the little odd-jobs that keep it running. \
+	Your duties range from cleaning the floors and pews to managing the stores and conducting base business for the Gods."
 	outfit = /datum/outfit/job/roguetown/sexton/groundskeeper
 	cmode_music = 'sound/music/combat_holy.ogg'
 	category_tags = list(CTAG_SEXTON)
@@ -115,7 +115,7 @@
 		STATKEY_SPD = 2,
 		STATKEY_PER = 1,
 	)
-	subclass_skills = list( 
+	subclass_skills = list(
 		/datum/skill/misc/climbing = SKILL_LEVEL_JOURNEYMAN,
 		/datum/skill/misc/sneaking = SKILL_LEVEL_APPRENTICE,
 		/datum/skill/misc/swimming = SKILL_LEVEL_APPRENTICE,
@@ -157,9 +157,9 @@
 
 	if(H.mind)
 		SStreasury.give_money_account(ECONOMIC_LOWER_CLASS, H, "Church Funding.")
-		
+
 	var/prev_real_name = H.real_name
 	var/prev_name = H.name
 	var/prefix = "Gravetender" // similar to Big Man: prefix so it's easier to tell who this guy is.
 	H.real_name = "[prefix] [prev_real_name]"
-	H.name = "[prefix] [prev_name]"	
+	H.name = "[prefix] [prev_name]"

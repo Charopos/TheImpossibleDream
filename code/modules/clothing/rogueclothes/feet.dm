@@ -220,7 +220,7 @@
 
 /obj/item/clothing/shoes/roguetown/sandals/aalloy
 	name = "decrepit sandals"
-	desc = "Frayed bronze platforms, curled about to cradle the feet. The beaches that these sandals once treaded are no more; pearly sands, long since turnt to glass from the Comet Syon's impact."
+	desc = "Frayed bronze platforms, curled about to cradle the feet. The beaches that these sandals once treaded are no more; pearly sands eroded away by eons."
 	icon_state = "ancientsandals"
 	color = "#bb9696"
 	armor = ARMOR_LEATHER

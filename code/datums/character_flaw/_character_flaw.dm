@@ -48,7 +48,7 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	"Pharovian Trading Company" = ATC,
 	"Retinue" = RETINUE,
 	"Garrison" = GARRISON,
-	"Churchmen" = CHURCHMEN,
+	"Clergy" = CHURCHMEN,
 	"Peasants" = PEASANTS,
 	"Wanderers" = WANDERERS,
 	"Everyone" = (COURTIERS | NOBLEMEN | INQUISITION | BURGHERS | ATC | RETINUE | GARRISON | CHURCHMEN | PEASANTS | WANDERERS | SIDEFOLK | ANTAGONIST | COUNCILLOR)

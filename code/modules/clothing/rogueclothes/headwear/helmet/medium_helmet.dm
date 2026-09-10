@@ -749,7 +749,7 @@
 	desc = "A bronze helmet that veils the wearer's face behind a perforated visor; a distant ancestor to both the sallet and sayovard, \
 	providing excellent coverage while ensuring one doesn't suffocate on their own adrenal huffs. </br>Out of all actorial labors, none surpass \
 	the reenactment of Ravox's duel against Graggar atop Ur-Syon's ruins - mythologized not as a tentacled star, but as a towering doppelganger-champion; \
-	sculpted by the Archdevil to be the inverse to all who stood for justice and chivalry."
+	sculpted by the Anathema to be the inverse to all who stood for justice and chivalry."
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_HELMET_HEAVY_BRONZE - 100
 	armor_class = ARMOR_CLASS_LIGHT

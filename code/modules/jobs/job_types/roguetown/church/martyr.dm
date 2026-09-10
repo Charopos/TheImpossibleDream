@@ -225,12 +225,12 @@
 								success = TRUE
 								break
 						if(success)	//The SAFE option
-							if(alert(user, "You are within holy grounds. Do you wish to call your god to aid in its defense? (You will live if the duration ends within the Church.)", "Your Oath", "Yes", "No") == "Yes")
+							if(alert(user, "You are within holy grounds. Do you wish to call to Astrata, the Absolute, to aid in its defense? (You will live if the duration ends within the Temple.)", "Your Oath", "Yes", "No") == "Yes")
 								is_activating = TRUE
 								activate(user, STATE_SAFE)
 						else	//The NOT SAFE option
 							if(alert(user, "You are trying to activate the weapon outside of holy grounds. Do you wish to fulfill your Oath of Vengeance? (You will die.)", "Your Oath", "Yes", "No") == "Yes")
-								var/choice = alert(user, "You pray to your god. How many minutes will you ask for? (Shorter length means greater boons)","Your Oath (It is up to you if your death is canon)", "Six", "Two", "Nevermind")
+								var/choice = alert(user, "You pray to the Star, blazing. How many minutes will you ask for? (Shorter length means greater boons)","Your Oath (It is up to you if your death is canon)", "Six", "Two", "Nevermind")
 								switch(choice)
 									if("Six")
 										is_activating = TRUE
@@ -553,7 +553,7 @@
 		/datum/skill/misc/sneaking = SKILL_LEVEL_NOVICE,
 	)
 	subclass_stashed_items = list(
-		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
+		"The Verses and Acts of the Pantheon" = /obj/item/book/rogue/bibble,
 	)
 
 /datum/outfit/job/roguetown/martyr
@@ -1121,7 +1121,7 @@
 
 /obj/item/clothing/under/roguetown/platelegs/holysee
 	name = "holy silver chausses"
-	desc = "Plate leggings of silver forged for the Holy See's forces. A sea of silver to descend upon evil."
+	desc = "Plate leggings of silver forged for the sacred Sacrifice. A sea of silver to descend upon evil."
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyr.dmi'
 	sleeved = 'icons/roguetown/clothing/onmob/helpers/sleeves_pants.dmi'
@@ -1163,7 +1163,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/holysee
 	name = "holy silver bascinet"
-	desc = "Branded by the Holy See, these helms are worn by its chosen warriors. A bastion of hope in the dark nite."
+	desc = "Branded by the miracle of the Star Absolute, these helms are worn by its chosen warriors. A bastion of hope in the dark nite."
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyrhelmets.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
@@ -1212,7 +1212,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/heavy/holysee/alt
 	name = "holy silver armet"
-	desc = "Branded by the Greatest Temple, these helms are worn by its chosen warriors. A bastion of hope in the dark nite."
+	desc = "Forged before the moon and inlaid with eclipsun, these helms are worn by its chosen warriors. A bastion of hope in the dark nite."
 	icon = 'icons/roguetown/clothing/special/martyr.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/martyrhelmets.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'

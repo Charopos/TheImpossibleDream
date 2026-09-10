@@ -92,11 +92,11 @@ export const GronnWrit = (props: {
         </>
       )}
       <p style={writParagraph}>
-        By writ of the {rulerTitle}, and by counsel of the Holy See, let{' '}
-        {subject} be declared <span style={caputLupinum}>ANATHEMA</span>: cut
-        off from the body of the faithful, harboured by no temple, mourned by no
-        priest. Pursue them upon the strand and the cliff; let them not gain the
-        sea before steel finds them.
+        By writ of the {rulerTitle}, and by counsel of the Temple's priesthood,
+        let {subject} be declared <span style={caputLupinum}>ANATHEMA</span>:
+        cut off from the body of the faithful, harboured by no temple, mourned
+        by no priest. Pursue them upon the strand and the cliff; let them not
+        gain the sea before steel finds them.
       </p>
       <p style={writParagraph}>
         Upon their death the writ shall fall silent and mark itself; return it

@@ -57,7 +57,7 @@
 		to_chat(user, span_warning("I have no Meister account to receive these funds. I must open one first."))
 		return
 	if(source_fund_id == "church" && (user.job in GLOB.church_positions))
-		to_chat(user, span_warning("The Church prohibits usury to its own. Eora's coin is for the poor and the downtrodden, not the faithful."))
+		to_chat(user, span_warning("The Temple prohibits usury to its own. Eora's coin is for the poor and the downtrodden, not the faithful."))
 		return
 	var/datum/fund/preview_fund = SStreasury.resolve_fund_by_id(source_fund_id)
 	var/preview_label = preview_fund ? SStreasury.indenture_faction_label(preview_fund) : "an unknown lender"

@@ -1059,7 +1059,7 @@ LICH SKELETONS
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge/paalloy
 	name = "ancient flamberge"
-	desc = "Polished gilbranze and velvety saigaleather, masterfully bound together to hewn a greatsword of archaic opulance. One must remember that even the undying aren't consigned to the Archdevil's grasp; for those of true faith and nobleheartedness can persist in penitence."
+	desc = "Polished gilbranze and velvety saigaleather, masterfully bound together to hewn a greatsword of archaic opulance. One must remember that even the undying aren't consigned to the Anathema's grasp; for those of true faith and nobleheartedness can persist in penitence."
 	icon_state = "ancientflamb"
 	smeltresult = /obj/item/ingot/aaslag
 

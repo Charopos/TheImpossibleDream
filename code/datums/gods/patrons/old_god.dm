@@ -4,7 +4,6 @@
 	desc = "''God. The manifestation of maximal good, and the father of all.'' \
 	</br>''He, who created reality for His children to frollick within.'' \
 	</br>''He, who breathed lyfe into the Pantheon to shepherd His virtues.'' \
-	</br>''He, who sacrificed His strength to strike down the Archdevil with the Comet Syon.'' \
 	</br>''He, who yet slumbers to this dae; and who may yet still return.''"
 	worshippers = "Commonfolk, Zealots, Heroes, Villains, and the Esoteric"
 	associated_faith = /datum/faith/old_god
@@ -32,6 +31,8 @@
 		"Allfather",
 		"Creator",
 		"Father",
+		"Agonist Eternal",
+		"the Sufferer",
 		"Saidon",
 		"Saidun" // lingyue
 	)

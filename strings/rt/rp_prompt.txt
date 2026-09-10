@@ -1,40 +1,76 @@
 <p><strong><em><span style="font-size:115%"> Welcome to Heartbreak! </span></em></strong></p>
 <p> This lore primer serves as an introduction to the setting of the Impossible Dream writ large.
-<br><br>
+<br>
 As always, note that this lore primer shouldn't be treated as gospel. Don't stress too much about trying to "get it all right" - it's far more fun to spark conflict through contradiction, and to explore the many unique interpretations that characters can have.
-<br><br>
+<br>
 Only the broadest strokes have been applied onto this canvas. There's plenty of supplemental lore hidden throughout the realm around the Scar: level a keen eye towards the dungeons, tomes, events, and descriptions of examined items, if you wish to uncover Psydonia's secrets.
-<br><br>
+<br>
 Don't be afraid to check out Azure Peak's Wiki - https://azurepeak.miraheze.org/ - for more information regarding their lore, mechanics, and more.</p>
 
 <details>
-	<summary><strong><span style="font-size:130%"> THE STORY SO FAR </span></strong></summary>
-
-	<p><strong> The year is 1643 AP. There is a County built upon an old Wound of GOD.
-	<br><br>
-	A millennium ago, Psydon sent down the Comet Syon to defeat the rampaging Archdevil, which had arisen to destroy Psydonia. The Archdevil was destroyed under such 	divine might, yet a grave cost: for Psydon had collapsed into a deep sleep - (or into a shallow death?) - from which He did not stir. From the Comet Syon's impact, 	ten angels arose: a Pantheon of His divine will, who guided His children out of their primordial stupor and into enlightenment. From Psydonia's ruins, hope blossomed.
-	<br><br>
-	But times change.
-	<br><br>
-	The Age of Enlightenment brought forth prosperity throughout all of Psydonia. Guided by the Pantheon's blessings, the Holy Celestial Empire reclaimed 	Psydonia and 	shepherded in a millennium of peace. As the mortals expanded their power and understanding of the world around them, however, the Pantheon's interlopage waned - 	perhaps they, too, were being overtaken by the same gradual sleep that plied Psydon. Great Wonders were built, and the mortals learned. And..
-	<br><br>
-	..the mortal races Ascended.
-	<br><br>
-	Not long ago, the Age of Enlightment ended in fire. Zizo, the greatest archmage of the Holy Celestial Empire, had discovered the secrets to apotheosis: that which 	allowed Man to transmute itself into God. She created the Greatest Wonder, and - with it - Ascended with Her chosen acolytes into divinity. Psydonia's leylines
-	ruptured with uncontrollable magicks, the entire snow-elven people were evaporated into lux-mist, and the Holy Celestial Empire collapsed into a raging inferno.
-	<br><br>
-	And on that night - amidst the ashes - His children learned that they, too, could play the part of Gods.
-	<br><br>
-	Psydonia rots. Psydonia decays: a gut-churning scent of shit and pus and maggot-filth, lingering in the air. The Holy See controls dioceses around the world that
-	worship the Pantheon ever-so-faithfully, yet trouble still brews. Arising from the schism that followed the Holy Celestial Empire's collapse, the Ecclesial has since 	driven more-and-more of His children away from the Holy See's teachings: after all - what better-a-way to save this dying world than to ascend as well?
-	<br><br>
-	Children of the Pantheon: Psydonia is under attack by the Inhumen Ascendants - will you lose your faith in the Ten that have guided and nurtured you?
-	<br><br>
-	Glorious Ecclestials, Worshippers of the Ascendants: the Ten are weak and the Holy See is corrupt - will you rise up and rewrite a world in your image, stronger and more resilient?
-	<br><br>
-	Holy Lamb, Sacrificial Hero, Blessed Idiot: Psydon endures - will you yet endure as stoically and willfully as He does, for all of humenkind?
-	<br><br>
-	Lowly fool - will you save your world? Or do you watch the birth of a new one?</em><br></p>
+	<summary><strong><span style="font-size:130%"> THE DREAM, IMPOSSIBLE </span></strong></summary>
+<br>
+<strong><span style="font-size:120%"><b>OUR WORLD WAS SHATTERED.</b></span></strong>
+<br>
+An eon ago, GOD was broken.
+<br><br>
+Ending an unimaginable period of myth, legend, and miracle - PSYDON was ripped asunder. Were He Wounded or Slain, the High Will was divided by force - and thus became Many. From this breakage, divinity was born, or stolen, or sundered and split across fragments; a thousand thousand Gods given birth when there was but One.
+<br><br>
+As the tears of the living began to fall- <br>
+The fundament tears too, spilling light prismatic.
+<br><br>
+The World, as had the God, began to form fissures. Hideous and mortifying, these Wounds carved viciously through the flesh of IS. From it, flowed what IS-NOT - causing cataclysm indescribable.
+<br><br>
+And from it all, <br>
+Anathema to all law, <br>
+And against all odds, <br>
+<i><b>One mortal became a God.</i></b> <br>
+<i><span style="font-size:80%">Zaios Dei.</span></i>
+<br><br>
+Chaos reigned.
+<br><br>
+God could not be saved. It took the Gods to save us.
+<br><br>
+<strong><span style="font-size:120%"><b>OUR WORLD IS FRACTURING.</b></span></strong>
+<br><br>
+Time turns.
+<br><br>
+The Known World has long recovered from the End of God - now titled the Shattering.
+<br><br>
+Yet still, here in the Now, there is no peace; for, like waves, there come rises or falls - extension and retraction. Nations expand and become Empire; come what cruelties to those they conquer. Guildsmen and mercantile families carry wealth and power increasing - sometimes more than their aristocratic allies. Old establishments crumble; divisions due to independence movements, widespread spiritual awakenings, and skirmishes-turned-war; aided by the inevitable advancement of industry and arcana.
+<br><br>
+The Deceus Assimilation- a reformation to rally the many Gods and their followers - has failed, and broken apart. Ten has halved to become but Five; the rest returning to their heritage. New discoveries in the sciences, thaumaturgy, or theologies come every day; manifesting through witch-engineered marvels of architecture, as aerostatics through the skies, and new channels by which the Divine Wills manifest themselves- some previously forbidden.
+<br><br>
+Despite this, the lives of the mortal among the land remain much the same. Often, it defined by plate, blades, labor, and the affectations of aristocracy. Strange as the Known World may be - rife with the inhuman, the Inhumen, the monstrous beyond terror and marvelous closest to sublime-
+<br><br>
+<i>What is</i> remains <i>what will be.</i><br>
+So many lives are ground up in this cycle:<br>
+never to grow, never to blossom, never to break from this fragile mold.
+<br><br>
+<strong><span style="font-size:120%"><b>WHAT WORLD LIES BEYOND THE CRACKS?</b></span></strong>
+<br><br>
+There are exceptional places, however. Places where what is becomes what might. Regions of instability- places where opportunity - potentiality - is predominant. Even a single day there can change one’s life forever; for better, or for worse.
+<br><br>
+The Scars - these ancient wounds borne from the Shattering - leak infinite potential around them. Some are devastating stains: unlivable, ruinous distortions of all things known into those unknown. Others are more stable, however- and create localized pockets of surreality - and unreality - around them.
+<br><br>
+The town of Pharos was built up and around one of these Scars. It was an inevitability, given the power and possibilities that even the proximity to these rare anomalies can offer. Branch of a kingdom rife with strife, its court is given much leeway in its reign- and to be crowned upon its throne is a boon for any noble House that seats it, come what may to its local inhabitants. Pharos exists as a center of trade and travel: a worldly port and scartouched realm that draws adventurers, merchants, settlers, magii and miracleworkers - and so many other souls across the Known World, or its Enigma.
+<br><br>
+It is here where our performance begins.
+<br><br>
+<strong><span style="font-size:120%"><b>OUR WORLD SHALL BREAK.</b></span></strong>
+<br><br>
+The world itself is coming undone.<br>
+What is broken, though, can always be remade–<br>
+By your hands. <br>
+By the snatching of power by the blade's edge. <br>
+By the clever, political outmaneuvering of your rivals. <br>
+By enacting the Will of your GOD - or GODS. <br>
+By uncovering secrets and bounty in the depths beneath the Scar. <br>
+By bringing Ruination to all - in this place of almighty power. <br>
+<br>
+Here, in the Pharos, what is impossible becomes possible.
+<br><br>
+<i>Make it so, my dreamers.</i>
 </details>
 <br><br>
 </details>
@@ -68,7 +104,7 @@ Pharos, like many courts across the Midderland and Southerland currently houses 
 		<br>
 		<span style="display:block; color:#ffd700; font-size:115%"> "WITH ORDER, WE REIGN; AND WITH FAITH, WE PROSPER." </span>
 		<br>
-		The Pantheon are the successors to Psydon: ten deities who have taken up the mantle of guiding His children along. After the Comet Syon had seemingly destroyed both Psydon and the Archdevil, the ruined world's survivors wept for guidence.
+		The Pantheon are the successors to Psydon: five deities who have taken up the mantle of guiding His children along. After the Comet Syon had seemingly destroyed both Psydon and the Archdevil, the ruined world's survivors wept for guidence.
 <br><br>
 Though most of His angels had left Psydonia in search of answers only woven into the stars, there remained a cohort of ten who - whether through guilt or newfound purpose - remained behind to pick up the pieces. Adopting more heavenly forms to ensure His children would not be afraid, Astrata and Her nine siblings finally descended from the reignited skies to answer their prayers: and from there, the rest was history.
 		<br><br>
@@ -423,20 +459,19 @@ Intermingleance with Otavan refugees and Ranesheni freemen, throughout the centu
 	<details>
 	<strong><span style="font-size:115%"> NOTEWORTHY CONCEPTS </span></strong>
 	<br><br>
-		<p><strong> Psydonia </strong> - The world. Here, there is home for all broken hearts and impossible dreams. Named after its creator, Psydon. </p>
-		<p><strong> The Known World </strong> - A more agnostic term for Psydonia, preferred by the Holy See and Ascendants.
+		<p><strong> Psydonia </strong> - The world. Here, there is home for all broken hearts and impossible dreams. Named after its creator, the Progenitus Psydon. </p>
+		<p><strong> The Known World </strong> - A more agnostic term for Psydonia, preferred by the Pantheonic and Ascendants.
 		<p><strong> Enigma </strong> - A term used for areas past the exploration and frontiers of the Known: whether that be past the oceans, mountains, or into otherworldly ontologies and planes. </p>
 		<p><strong> The Scar </strong> - A divine wound, carved when PSYDON shattered an age ago. Surreality and unreality leech from these breakages. Few still exist - and even fewer are stable enough to live near. Pharos is settled upon one of these sites. </p>
 		<p><strong> Undermaiden </strong> - Death. The personification of Necra, who is said to ferry the deceased towards their chosen afterlife. </p>
 		<p><strong> Paradise </strong> - Heaven. Debatably created by either Psydon or Astrata, as a resting place for the faithful and virtuous. </p>
-		<p><strong> Underworld </strong> - Hell. A spiteful inversion of reality, created by the Archdevil. It is the home of devils, demons, and taxmen. </p>
-		<p><strong> Holy See </strong> - The premiere worshippers of the Pantheon, and the governing body of the Church. Ruled by a Pope.</p>
-		<p><strong> Ecclesial </strong> - A splinter-faction of the Holy See, which has instead embraced the Ascendants. Sporadically present in hidden enclaves. </p>
-		<p><strong> Orthodoxy </strong> - The Holy See's eternal rival, whom gives praise to the ancient God of Psydon. Ruled by the High Scholar of Otava.</p>
-		<p><strong> Inquisition </strong> - The militant arm of the Orthodoxy, notorious for hunting both nitebeasts and suspected worshippers with overzealous impunity. </p>
-		<p><strong> County </strong> - Pharos' noble family, and the rulers of Pharos and its Scar. Traditionally helmed by a Count or a Countess. </p>
-		<p><strong> Arcyne </strong> - Magicka. A blessing of Noc, which allows for the manipulation of Psydonia's latent energies. </p>
-		<p><strong> Leyline </strong> - Channels of pure magicka, running across Psydonia like the arteries in a body. Most arcyne acts draw from these veins. </p>
+		<p><strong> Infernus </strong> - Hell. A spiteful inversion of reality, created by the Ascendant. It is the home of demons, the Ascended, and taxmen. </p>
+		<p><strong> Acropoli </strong> - The premiere worshippers of the Pantheon, and the governing body of the Temple - its five grand columns anointing the highest hill of Zybantium. Ruled by a <i>'Pontifex Maxiumus.'</i></p>
+		<p><strong> Orthodoxy </strong> - The largest branch of Psydonian worship, even to this day. Sweeping across the sea from Naledi southward to Otava north, the Orthodoxy, centralized, finds itself increasingly at odds with the Temple and its Pantheon. Reigned by <i>'His Majesty.</i></p>
+		<p><strong> Inquisition </strong> - Once merely the militant arm of the Church of Otava, their effectiveness - and notoriety - has made them an increasingly common organization copied across the world. Traditionally, they remain Psydonian - and take upon the title of <i>His Majesty's Holy Inquisition.</i></p>
+		<p><strong> Thaumaturgy </strong> - Magicka. While previously recognized as 'Arcyne' in previous centuries, as the Arts have expanded into schooling proper: all interacting with the fundament of the Known World- and often toying with the Enigma. </p>
+		<p><strong> Witch-Engineering </strong> - A combination of the thaumaturgic and sciences, it is the product of witch-engineering that most of the miracles of the modern day present themselves. Architectural marvels, ever-burning lampterns, flying machines, charmed rodents to copy speech and transmit it across distances...</p>
+		<p><strong> Leyline </strong> - Channels of pure magicka, running across Psydonia like the arteries in a body. Most thaumaturgies draw from these veins - or from the Scars that birth them. </p>
 		<p><strong> Phlogiston </strong> - The star-speckled space that cradles the Sun, the Moon, Psydonia, and all the various astralities surrounding them. </p>
 		<p><strong> Murderwood </strong> - The Pharos' northern forests, better known in the current dae as the 'Grove'. Temperate, but teeming with brigandry.</p>
 		<p><strong> Terrorbog </strong> - The western swamps of the Pharos, notoriously difficult to traverse and hazardous to even the most well-seasoned Adventurers.</p>
@@ -455,19 +490,20 @@ Intermingleance with Otavan refugees and Ranesheni freemen, throughout the centu
 		<p><strong> Deadite </strong> - Luxless corpses, resurrected through unholy means. Interchangeably used to describe both zombies and skeletons. </p>
 		<p><strong> Nitebeast </strong> - Monsters who rely on night-and-darkness to prowl. Primarily references werewolves, but can reference vampires as well. </p>
 		<p><strong> Lycker </strong> - Vampires. These luxless revenants are said to drink the blood of the living, and are empowered with unholy magicks. </p>
-		<p><strong> Gnoll </strong> - Lesser nitebeasts, born of Graggar's malice towards the worthiest - or most valuable - prey. Like verevolves, they were once men; unlike them, they embrace their inhumenity. </p>
+		<p><strong> Gnoll </strong> - Lesser nitebeasts, believed to born of Graggar's malice towards the worthiest - or most valuable - prey. The Devourer's blessing has made them a hybridized species: one born both through natural methods, or through bloody ritual. The result is the same - a lethal instrument. </p>
 		<p><strong> Verevolf </strong> - Greater nitebeasts, said to've been caused by Dendor's curses. When nite comes, even the meekest blightee turns into a fierce beast. </p>
 		<p><strong> Lich </strong> - Necromancers, ancient and well-versed in unholy magicka. They serve as the self-proclaimed lieutenants of Zizo, and are one of the Known World's gravest threats. </p>
-		<p><strong> Vampyre-Lord </strong> - Lords of lyckerdom, thought only to be restricted to the legends of antiquity. Should one resurface, terrible events are surely to follow. </p>
+		<p><strong> Vampyre-Lord </strong> - Lords of leechdom, thought only to be restricted to the legends of antiquity. Should one resurface, terrible events are surely to follow. </p>
 		<p><strong> Avantyne </strong> - A so-called 'evil' alloy, wielded by Zizo's most devoted worshippers. More commonly known as 'darksteel'.</p>
 		<p><strong> Inquisitor </strong> - Eesoteric lieutenants of the Orthodoxy's militant branch, equally respected and reviled for their techniques in handling the unholiest-of-foes. </p>
 		<p><strong> Taff </strong> - A profanity that happens to be quite popular amongst the peasantry. In the crudest terms, it refers to intercourse or despair.</p>
+		<p><strong> Aerostatic </strong> - Airships. Product of Grenzelhoftan ingenuity, and arcanically enhanced by crews of witch-engineers, these vast, ballooned vessels are increasingly used for trade, travel, exploration, or for war.</p>
 		<p><strong> Saiga </strong> - Large antelopes, and Psydonia's most popular choice for cavalrymen and travelers. Analogous to the far-rarer horse. </p>
 		<p><strong> Fogbeast </strong> - Horses. A rarely-seen alternative to the Saiga, due to its regional exclusivity to a few specific plains in Psydonia. </p>
 		<p><strong> Red </strong> - A healing potion - specifically, the regenerative juices inside. Additionally known as 'lifeblood'.  </p>
 		<p><strong> Blue </strong> - A fatigue potion - or, rather, the energy-boosting juices inside. Additionally known as 'manna'. </p>
 		<p><strong> Cackleberry </strong> - Eggs. The favored pronunciation amongst the peasantry and antiquated. Doubles as an allusion to one's lowest-hanging fruits. </p>
-		<p><strong> Mammon </strong> - Currency. A copper zenny is one mammon, a silver ziliquae is five mammons, and a gold zenar is ten mammons. </p>
+		<p><strong> Mammon </strong> - Currency within the Kingdom. A copper zenny is one mammon, a silver ziliquae is five mammons, and a gold zenar is ten mammons. Other currencies of the Midderland include obols, solidi, and psila.</p>
 		<p><strong> Scom </strong> - A rous-powered communication machine. Also functions as a verb, when used to describe 'calling' or 'contacting' someone. </p>
 		<p><strong> Meister </strong> - A coinage-machine that - with the cost of a bloodied finger - allows one to access their personal reserve of mammons. </p>
 		<p><strong> Nervemaster </strong> - The nexus that all coinage-machines are connected to. It can both deposit-and-tax mammons from all personal reserves.</p>
@@ -475,9 +511,9 @@ Intermingleance with Otavan refugees and Ranesheni freemen, throughout the centu
 		<p><strong> Silverface </strong> - Toggleable vendors, drawing from the stockpile of local businesses. Far more expensive, yet quicker, than commissions.</p>
 		<p><strong> Excidium </strong> - The leyline of bounty-hunters: a machine that both tracks and redeems local bounties for a sum of coinage.</p>
 		<p><strong> Lampternball </strong> - A popular sport, where one maneuvers a rounded lamptern into either a hoop, goal, or a blaggard's face.</p>
-		<p><strong> Blastpowder </strong> - An alchemic enigma, capable of erupting with tremendous power at the lightest spark. Additionally known as 'blastsand'.</p>
-		<p><strong> PR </strong> - The previous calender-era, lasting from the beginning of recorded history to the Comet Syon's impact - and Psydon's absence. </p>
-		<p><strong> AP </strong> - The current calender-era, which started after the end of Psydonic supremacy. The current date, as mentioned, is 1513 AP. </p>
+		<p><strong> Blastpowder </strong> - An alchemic enigma, capable of erupting with tremendous power at the lightest spark. Additionally known as 'blastsand,' or 'Raneshi sugar'. Not quite as sweet as actual Raneshan sugar.</p>
+		<p><strong> HR </strong> - The previous calender-era, beginning with the Shattering itself and extending to the dark days of the Demiurge. Concludes with the officiation of the Pantheon of the Pentacle - and the formation of its Imperate. </p>
+		<p><strong> BR </strong> - The current calender-era, made law by the formation of the Eternal Imperate, and remaining even after its collapse. The current date, as mentioned, is 1643 BR. </p>
 		<br>
 	</details>
 	<br><br>

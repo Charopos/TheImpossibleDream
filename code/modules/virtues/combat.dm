@@ -24,7 +24,7 @@
 
 /datum/virtue/combat/devotee
 	name = "Devotee"
-	desc = "Though not officially of the Church, my relationship with my chosen Patron is strong enough to grant me the most minor of their blessings. I've also kept a psycross of my deity."
+	desc = "Though not officially of the clergy, my relationship with my chosen Patron is strong enough to grant me the most minor of their blessings. I've also kept a cross of my deity."
 
 	custom_text = "You gain access to T0 miracles of your patron. As a non-combat role you also receive a minor passive devotion gain. If you already have access to Miracles, you get slightly increased passive devotion gain."
 
