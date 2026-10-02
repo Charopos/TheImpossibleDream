@@ -102,6 +102,13 @@
 /obj/item/reagent_containers/glass/bottle/alchemical/fermented_crab
 	list_reagents = list(/datum/reagent/fermented_crab = 15)
 
+/obj/item/reagent_containers/glass/bottle/alchemical/emberwine
+	list_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 5)
+	desc = "A small vial labeled as containing emberwine, a potent aphrodisiac."
+
+/obj/item/reagent_containers/glass/bottle/alchemical/emberwine/full
+	list_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 30)
+
 /obj/item/reagent_containers/glass/bottle/alchemical/restoration
 	list_reagents = list(/datum/reagent/medicine/restoration = 30)
 
@@ -392,6 +399,10 @@
 /obj/item/reagent_containers/glass/bottle/claybottle/whitewine
 	list_reagents = list(/datum/reagent/consumable/ethanol/whitewine = 75)
 	desc = "A bottle with the Otavan Merchant Guild cork-seal. This one appears to be labelled as a sweet wine from the colder northern regions."
+
+/obj/item/reagent_containers/glass/bottle/rogue/emberwine
+	list_reagents = list(/datum/reagent/consumable/ethanol/beer/emberwine = 24)
+	desc = "A bottle with an unmarked, tannin-tinted cork-seal. Zybantine red or another such cheap wine, in all likelihood."
 
 /obj/item/reagent_containers/glass/bottle/claybottleclassic/water
 	list_reagents = list(/datum/reagent/water = 75)

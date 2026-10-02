@@ -37,6 +37,7 @@
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 				if(!underwear)
+					modular_handle_chastity_middleclick_strip(user)
 					return
 				src.visible_message(span_notice("[src] begins to take off [underwear]..."))
 				if(do_after(user, 30, needhand = 1, target = src))
@@ -72,6 +73,9 @@
 #endif
 
 /mob/living/carbon/human/Initialize(mapload)
+#ifdef MATURESERVER
+	sexcon = new /datum/sex_controller(src)
+#endif
 	add_verb(src, /mob/living/proc/lay_down)
 	icon_state = "" //Remove the inherent human icon that is visible on the map editor. We're rendering ourselves limb by limb, having it still be there results in a bug where the basic human icon appears below as south in all directions and generally looks nasty.
 
@@ -96,11 +100,6 @@
 
 	if(npc_archetype)
 		init_npc_archetype()
-
-/mob/living/carbon/human/Login()
-	. = ..()
-	if(!GetComponent(/datum/component/arousal))
-		AddComponent(/datum/component/arousal)
 
 /mob/living/carbon/human/ZImpactDamage(turf/T, levels)
 	var/obj/item/bodypart/affecting
@@ -156,6 +155,7 @@
 		var/departing_job = job
 		SScity_assembly.demote_alderman("Alderman's mob was deleted")
 		SScity_assembly.notify_alderman_lost_ref(departing_name, departing_job, "disconnected")
+	QDEL_NULL(sexcon)
 	QDEL_NULL(physiology)
 	QDEL_NULL(sunder_light_obj)
 	GLOB.human_list -= src
@@ -322,6 +322,10 @@
 		dat += "<tr><td><hr></td></tr>"
 		dat += "<tr><td><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[!underwear ? "Nothing" : "Remove"]</A></td></tr>"
 		dat += "<tr><td><B>Legwear:</B> <A href='?src=[REF(src)];legwearsthing=1'>[!legwear_socks ? "Nothing" : "Remove"]</A></td></tr>"
+		var/chastity_row = modular_strippanel_chastity_row()
+		if(chastity_row)
+			dat += "<tr><td><hr></td></tr>"
+			dat += chastity_row
 #endif
 
 	dat += {"</table>"}
@@ -1082,9 +1086,12 @@
 	RETURN_TYPE(/obj/item/organ/breasts)
 	return getorganslot(ORGAN_SLOT_BREASTS)
 
-/mob/living/carbon/human/proc/is_fertile()
+/mob/living/carbon/human/proc/is_fertile(orifice = SEX_PART_CUNT)
+	if(orifice & SEX_PART_TAIL_MAW)
+		var/obj/item/organ/tail/manticore/tail = get_manticore_tail(src)
+		return tail?.fertility
 	var/obj/item/organ/vagina/vagina = getorganslot(ORGAN_SLOT_VAGINA)
-	return vagina.fertility
+	return vagina?.fertility
 
 /mob/living/carbon/human/proc/is_virile()
 	var/obj/item/organ/testicles/testicles = getorganslot(ORGAN_SLOT_TESTICLES)

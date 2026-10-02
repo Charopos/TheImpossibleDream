@@ -399,6 +399,24 @@
 	pixel_y = rand(-4,4)
 	animate(src, pixel_y = pixel_y + 32, alpha = 0, time = 25)
 
+/obj/effect/temp_visual/heart/sex_effects
+	duration = 4 SECONDS
+	plane = GAME_PLANE_UPPER
+
+/obj/effect/temp_visual/heart/sex_effects/invisible
+	icon_state = null
+
+/obj/effect/temp_visual/heart/sex_effects/invisible/Initialize(mapload, mob/seers, custom_state = "redheart")
+	. = ..()
+	layer = prob(50) ? ABOVE_MOB_LAYER : BELOW_MOB_LAYER
+	var/image/I = image(icon = 'icons/effects/erpeffects.dmi', icon_state = custom_state, layer = layer, loc = src)
+	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/People, "erp_effect", I, seers)
+	I.alpha = 255
+	I.appearance_flags = RESET_ALPHA
+	I.pixel_x = rand(-10, 10)
+	I.pixel_y = rand(-10, 10)
+	animate(I, pixel_x = I.pixel_x + rand(-5, 5), pixel_y = I.pixel_y + rand(28, 40), alpha = 0, time = duration)
+
 /obj/effect/temp_visual/love_heart
 	name = "love heart"
 	icon = 'icons/effects/effects.dmi'
@@ -414,13 +432,15 @@
 /obj/effect/temp_visual/love_heart/invisible
 	icon_state = null
 
-/obj/effect/temp_visual/love_heart/invisible/Initialize(mapload, mob/seer)
+/obj/effect/temp_visual/love_heart/invisible/Initialize(mapload, mob/seers, custom_icon = 'icons/effects/effects.dmi', custom_state = "heart")
 	. = ..()
-	var/image/I = image(icon = 'icons/effects/effects.dmi', icon_state = "heart", layer = ABOVE_MOB_LAYER, loc = src)
-	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/onePerson, "heart", I, seer)
+	pixel_x = rand(-10,10)
+	pixel_y = rand(-10,10)
+	var/image/I = image(icon = custom_icon, icon_state = custom_state, layer = ABOVE_MOB_LAYER, loc = src)
+	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/People, "heart", I, seers)
 	I.alpha = 255
 	I.appearance_flags = RESET_ALPHA
-	animate(I, alpha = 0, time = duration)
+	animate(I, pixel_y = pixel_y + 32, alpha = 0, time = duration)
 
 /obj/effect/temp_visual/keen_footstep
 	name = "footsteps"
@@ -443,29 +463,6 @@
 	I.alpha = 200
 	I.appearance_flags = RESET_ALPHA|RESET_COLOR
 	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/onePerson, "keen_footstep_[REF(src)]", I, seer)
-
-// NOCTRA STUFF
-/obj/effect/temp_visual/heart/sex_effects
-	duration = 4 SECONDS
-	plane = GAME_PLANE_UPPER
-
-/obj/effect/temp_visual/heart/sex_effects/Initialize(mapload)
-	. = ..()
-	var/random_pixel_w = rand(2, 5)
-	var/random_time = rand(2, 7) * 0.1 SECONDS
-	var/random_time2 = random_time + rand(5, 15) * 0.1 SECONDS
-	layer = prob(50) ? ABOVE_MOB_LAYER : BELOW_MOB_LAYER
-
-	animate(src, time = 5 SECONDS, transform = transform.Scale(0.1), flags = ANIMATION_PARALLEL)
-	animate(src, time = random_time, pixel_w = random_pixel_w, easing = CIRCULAR_EASING, flags = ANIMATION_PARALLEL|ANIMATION_RELATIVE)
-	animate(time = random_time2, pixel_w = -random_pixel_w, easing = CIRCULAR_EASING, flags = ANIMATION_RELATIVE)
-	animate(time = random_time, pixel_w = -random_pixel_w, easing = CIRCULAR_EASING, flags = ANIMATION_RELATIVE)
-	animate(time = random_time2, pixel_w = random_pixel_w, easing = CIRCULAR_EASING, flags = ANIMATION_RELATIVE, loop = -1)
-
-/obj/effect/temp_visual/heart/sex_effects/red_heart
-	name = "angry"
-	icon = 'icons/effects/noctravfx.dmi'
-	icon_state = "anger"
 
 /obj/effect/temp_visual/bleed
 	name = "bleed"

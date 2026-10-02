@@ -45,6 +45,9 @@
 	character.highlight_color = highlight_color
 	character.nickname = nickname
 
+	if(character.sexcon && free_use_default)
+		character.sexcon.freeuse = TRUE
+
 	character.voice_color = voice_color
 	character.voice_pitch = voice_pitch
 	character.skin_tone = skin_tone

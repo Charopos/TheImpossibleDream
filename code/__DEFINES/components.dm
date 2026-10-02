@@ -242,6 +242,8 @@
 #define COMSIG_MOB_DEATH "mob_death"							//from base of mob/death(): (gibbed)
 #define COMSIG_MOB_TRY_BARK "try_bark"
 #define COMSIG_MOB_TRY_EMOTE "try_emote"
+#define COMSIG_MOB_EJACULATED "comsig_mob_ejaculated"				//from base of /datum/sex_controller/proc/ejaculate()
+#define COMSIG_SEX_JOSTLE "sex_jostle"
 #define COMSIG_MOB_EMOTED "mob_emoted"							//from /mob/proc/emote() when a keyed emote is intentionally invoked
 #define COMSIG_MOB_MEDITATED "mob_meditated"						//from /datum/emote/living/meditate/run_emote() when a meditation focus completes uninterrupted: ()
 #define COMSIG_MOB_MODIFY_AGGRO_LINES "comsig_mob_modify_aggro_lines"
@@ -292,6 +294,7 @@
 	#define SPEECH_MODE 8
 #define COMSIG_MOB_DEADSAY "mob_deadsay" // from /mob/say_dead(): (mob/speaker, message)
 	#define MOB_DEADSAY_SIGNAL_INTERCEPT 1
+#define COMSIG_MOB_EMOTE "mob_emote"
 ///from base of /mob/proc/linepoint: (atom/A)
 #define COMSIG_MOB_POINTED "mob_pointed"
 // /mob/living signals
@@ -309,6 +312,8 @@
 #define COMSIG_LIVING_SWINGDELAY_MOD "living_swingdelay_mod"	//from base of /obj/item/proc/attack(mob/living/M, mob/living/user)
 #define COMSIG_PROCESS_BORGCHARGER_OCCUPANT "living_charge"		//sent from borg recharge stations: (amount, repairs)
 #define COMSIG_BORG_SAFE_DECONSTRUCT "borg_safe_decon"			//sent from borg mobs to itself, for tools to catch an upcoming destroy() due to safe decon (rather than detonation)
+
+#define COMSIG_LIVING_ATTACKED_BY "living_attacked_by"
 
 //ALL OF THESE DO NOT TAKE INTO ACCOUNT WHETHER AMOUNT IS 0 OR LOWER AND ARE SENT REGARDLESS!
 #define COMSIG_LIVING_STATUS_OFFBALANCED "living_offbalanced"

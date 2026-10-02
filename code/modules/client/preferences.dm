@@ -72,6 +72,19 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/list/features = MANDATORY_FEATURE_LIST
 	var/shake = TRUE
 	var/sexable = FALSE
+	var/erp_visuals = TRUE
+	var/chastenable = FALSE
+	var/chastity_hardmode = CHASTITY_HARDMODE_DISABLED
+	var/extreme_erp = FALSE
+	var/edging = FALSE
+	var/free_use_default = FALSE
+	var/sensitive_brands = FALSE
+	var/facial_brands = FALSE
+	var/pubes = FALSE
+	var/pits = FALSE
+	var/descriptor_color = FALSE
+	/// If a cursed collar can be equipped to them at all
+	var/cursed_collarable = FALSE
 	var/compliance_notifs = TRUE
 
 	//Job preferences 2.0 - indexed by job title , no key or value implies never
@@ -95,7 +108,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	var/anonymize = TRUE
 	var/masked_examine = FALSE
-	var/full_examine = FALSE
 	var/mute_animal_emotes = FALSE
 	var/autoconsume = FALSE
 	var/no_examine_blocks = FALSE

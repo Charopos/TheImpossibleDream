@@ -196,6 +196,15 @@
 #define SFX_PLATE_COAT_STEP "plate_coat_step"
 #define SFX_JINGLE_BELLS "jingle_bells"
 #define SFX_WOOD_ARMOR "wood_armor"
+#define SFX_COLLARJINGLE list('sound/items/jinglebell1.ogg',\
+							'sound/items/jinglebell2.ogg',\
+							'sound/items/jinglebell3.ogg',\
+							'sound/items/jinglebell4.ogg',\
+							'sound/items/jinglebell5.ogg',\
+							'sound/items/jinglebell6.ogg')
+#define SFX_CBJINGLE list('sound/items/cbjingle1.ogg',\
+							'sound/items/cbjingle2.ogg',\
+							'sound/items/cbjingle3.ogg')
 #define SFX_HEELS	"heels"
 #define SFX_TRICK "trick"
 

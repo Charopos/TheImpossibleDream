@@ -47,10 +47,7 @@
 	if(channeling_spell?.blocks_defense_while_channeling)
 		return FALSE
 
-	if(has_flaw(/datum/charflaw/addiction/thrillseeker))
-		var/datum/component/arousal/CAR = GetComponent(/datum/component/arousal)
-		if(CAR)
-			CAR.adjust_arousal_special(src, 2)
+	sexcon?.adjust_arousal_thrill(2)
 
 	if(has_status_effect(/datum/status_effect/debuff/vulnerable))
 		if(!has_status_effect(/datum/status_effect/buff/weapon_binded) && !has_status_effect(/datum/status_effect/debuff/weapon_binded))

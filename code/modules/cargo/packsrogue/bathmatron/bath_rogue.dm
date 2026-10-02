@@ -86,6 +86,11 @@
 	cost = 150
 	contains = list(/obj/item/clothing/climbing_gear)
 
+/datum/supply_pack/rogue/bath_rogue/brandiron
+	name = "Branding Iron"
+	cost = 20
+	contains = list(/obj/item/rogueweapon/surgery/cautery/branding)
+
 // these dont techniiiically count as "roguery" but candles r used in the bathhouse a lot for if a room is 
 // busy or whatever. + its cool.
 /datum/supply_pack/rogue/bath_rogue/eoran_candles

@@ -5,41 +5,48 @@ export interface SexAction {
   requires_grab: boolean;
 }
 
-export interface Participant {
+export interface SexCategory {
   name: string;
-  ref: string;
+  value: number;
 }
 
 export interface SexSessionData {
   // Static data
-  actions: SexAction[];
   speed_names: string[];
   force_names: string[];
-  has_penis: boolean;
-  has_knotted_penis: boolean;
+  manual_arousal_names: string[];
 
   // Dynamic data
   title: string;
-  character_info: string;
+  doing_unto: string;
   current_action: string | null;
   speed: number;
   force: number;
+  max_speed: number;
+  max_force: number;
+  has_penis: boolean;
   manual_arousal: number;
   do_until_finished: boolean;
-  do_knot_action: boolean;
 
-  // Arousal tracking
-  arousal: number;
-  pleasure: number;
-  pain: number;
-  frozen: boolean;
+  exposure_label: string;
+  bottom_exposed: boolean;
+  has_genitals: boolean;
+  hide_pintle_visuals: boolean;
   freeuse: boolean;
   doing_subtly: boolean;
 
-  // Which actions can be performed
-  can_perform: string[];
+  knot_mode: 'top' | 'bottom' | null;
+  do_knot_action: boolean;
+  do_knot_action_as_bottom: boolean;
 
-  // Session info
-  session_name: string;
-  participants: Participant[];
+  // Arousal tracking
+  arousal: number;
+  frozen: boolean;
+  can_freeze: boolean;
+
+  // Action menu
+  category: number;
+  categories: SexCategory[];
+  actions: SexAction[];
+  can_perform: string[];
 }

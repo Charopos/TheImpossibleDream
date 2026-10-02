@@ -157,3 +157,84 @@
 #define HAIR_COLOR_LIST list("#8f5a00", "#593800", "#362200", "#4e422e", "#8c8271", "#bfb7ab", "#31302e", "#f0dc48")
 #define EYE_COLOR_LIST list("#865900", "#06b400", "#312f27", "#008e83", "#002d8e", "#c16c00")
 
+#define MIN_PENIS_SIZE 1
+#define MAX_PENIS_SIZE 3
+#define DEFAULT_PENIS_SIZE 2
+
+#define PENIS_TYPE_PLAIN 1
+#define PENIS_TYPE_KNOTTED 2
+#define PENIS_TYPE_EQUINE 3
+#define PENIS_TYPE_TAPERED 4
+#define PENIS_TYPE_TAPERED_DOUBLE 5
+#define PENIS_TYPE_TAPERED_DOUBLE_KNOTTED 6
+#define PENIS_TYPE_BARBED 7
+#define PENIS_TYPE_BARBED_KNOTTED 8
+#define PENIS_TYPE_TENTACLE 9
+#define PENIS_TYPE_TAPERED_KNOTTED 10
+#define PENIS_TYPE_EQUINE_KNOTTED 11
+
+#define SHEATH_TYPE_NONE 0
+#define SHEATH_TYPE_NORMAL 1
+#define SHEATH_TYPE_SLIT 2
+
+#define ERECT_STATE_NONE 0
+#define ERECT_STATE_PARTIAL 1
+#define ERECT_STATE_HARD 2
+
+#define MIN_TESTICLES_SIZE 1
+#define MAX_TESTICLES_SIZE 3
+#define DEFAULT_TESTICLES_SIZE 2
+
+#define MIN_BREASTS_SIZE 0
+#define MAX_BREASTS_SIZE 12
+#define DEFAULT_BREASTS_SIZE 3
+#define MIN_JIGGLE_BREASTS_SIZE 1
+#define BREAST_JIGGLE_CYCLE (0.8 SECONDS)
+#define BREAST_JIGGLE_MIN_DURATION 8
+#define BREAST_JIGGLE_MAX_DURATION 100
+#define BREAST_JIGGLE_FREE_DURATION 50
+#define BREAST_JIGGLE_STAMINA_PER_SECOND 0.83
+#define BREAST_JIGGLE_ENDLESS_STAMINA_MULT 3
+#define BREAST_JIGGLE_HOP_HEIGHT 4
+#define BREAST_JIGGLE_ENDLESS 0
+#define BREAST_JIGGLE_PROMPT_STEP (BREAST_JIGGLE_CYCLE * 2)
+
+#define EARS_NORMAL 0
+#define EARS_SENSITIVE 1 //Should this be used for ANYTHING else - move it. / Also only works on ANTHROS for some reason
+
+#define PENIS_SIZES_BY_NAME list(\
+	"Small" = MIN_PENIS_SIZE,\
+	"Average" = DEFAULT_PENIS_SIZE,\
+	"Large" = MAX_PENIS_SIZE,\
+	)
+
+#define SHEATH_TYPES_BY_NAME list(\
+	"No Sheath" = SHEATH_TYPE_NONE,\
+	"Sheath" = SHEATH_TYPE_NORMAL,\
+	"Slit" = SHEATH_TYPE_SLIT,\
+	)
+
+#define ERECT_STATES_BY_NAME list(\
+	"Unaroused" = ERECT_STATE_NONE,\
+	"Half-Aroused" = ERECT_STATE_PARTIAL,\
+	"Aroused" = ERECT_STATE_HARD,\
+	)
+
+#define TESTICLE_SIZES_BY_NAME list(\
+	"Small" = MIN_TESTICLES_SIZE,\
+	"Average" = DEFAULT_TESTICLES_SIZE,\
+	"Large" = MAX_TESTICLES_SIZE,\
+	)
+
+#define BREAST_SIZES_BY_NAME list(\
+	"Flat" = 0,\
+	"Slight" = 1,\
+	"Small" = 2,\
+	"Moderate" = 3,\
+	"Large" = 4,\
+	"Generous" = 5,\
+	"Heavy" = 6,\
+	"Massive" = 7,\
+	"Heaping" = 8,\
+	"Obscene" = 9,\
+	)

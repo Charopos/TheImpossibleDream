@@ -83,6 +83,9 @@
 
 	handle_gas_mask_sound()
 
+	if(sexcon && client?.prefs?.sexable)
+		sexcon.process_sexcon(1 SECONDS)
+
 	if(world.time > next_tempo_cull)
 		cull_tempo_list()
 		next_tempo_cull = world.time + TEMPO_CULL_DELAY

@@ -455,3 +455,11 @@
 
 /datum/sprite_accessory/tail/large_snake_plain/is_visible(obj/item/organ/organ, obj/item/bodypart/bodypart, mob/living/carbon/owner)
 	return TRUE	//Always visible.
+
+/datum/sprite_accessory/tail/manticore
+	icon = 'modular/icons/mob/tails/manticore_tail.dmi'
+	name = "Tail Maw (Manticore)"
+	icon_state = "manticore"
+	color_keys = 3
+	color_key_names = list("Tail", "Innerds", "Spikes")
+	can_wag = TRUE

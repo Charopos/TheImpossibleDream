@@ -136,6 +136,21 @@
 	path = /obj/item/clothing/neck/roguetown/collar/fur
 	sort_category = "Accessories"
 
+/datum/loadout_item/rope_leash
+	name = "Rope Leash"
+	path = /obj/item/leash
+	sort_category = "Accessories"
+
+/datum/loadout_item/leather_leash
+	name = "Leather Leash"
+	path = /obj/item/leash/leather
+	sort_category = "Accessories"
+
+/datum/loadout_item/chain_leash
+	name = "Chain Leash"
+	path = /obj/item/leash/chain
+	sort_category = "Accessories"
+
 /datum/loadout_item/cloth_blindfold
 	name = "Cloth Blindfold"
 	path = /obj/item/clothing/mask/rogue/blindfold

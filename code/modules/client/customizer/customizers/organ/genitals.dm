@@ -23,6 +23,8 @@
 	penis_entry.penis_size = sanitize_integer(penis_entry.penis_size, MIN_PENIS_SIZE, MAX_PENIS_SIZE, DEFAULT_PENIS_SIZE)
 	if(!(penis_entry.sheath_type in list(SHEATH_TYPE_NONE, SHEATH_TYPE_NORMAL, SHEATH_TYPE_SLIT)))
 		penis_entry.sheath_type = SHEATH_TYPE_NONE
+	if(penis_entry.penis_size != MAX_PENIS_SIZE)
+		penis_entry.massive = FALSE
 
 /datum/customizer_choice/organ/penis/imprint_organ_dna(datum/organ_dna/organ_dna, datum/customizer_entry/entry, datum/preferences/prefs)
 	..()
@@ -39,6 +41,8 @@
 	data["penis_size"] = find_key_by_value(PENIS_SIZES_BY_NAME, penis_entry.penis_size)
 	data["penis_functional"] = penis_entry.functional
 	data["sheath_type"] = find_key_by_value(SHEATH_TYPES_BY_NAME, penis_entry.sheath_type)
+	data["can_be_massive"] = penis_entry.penis_size == MAX_PENIS_SIZE
+	data["penis_massive"] = penis_entry.massive
 
 	return data
 
@@ -62,10 +66,16 @@
 					break
 			prefs.verbose_pref_log_change(user, "notice", "\"[name]\" size", old_size, named_size)
 			penis_entry.penis_size = new_size
+			if(new_size != MAX_PENIS_SIZE)
+				penis_entry.massive = FALSE
 			return TRUE
 		if("functional")
 			penis_entry.functional = !penis_entry.functional
 			prefs.verbose_pref_log_change(user, "notice", "\"[name]\" functionality", !penis_entry.functional ? "Functional" : "Not Functional", penis_entry.functional ? "Functional" : "Not Functional")
+			return TRUE
+		if("massive")
+			penis_entry.massive = !penis_entry.massive
+			prefs.verbose_pref_log_change(user, "notice", "\"[name]\" massive", !penis_entry.massive ? "Massive" : "Not Massive", penis_entry.massive ? "Massive" : "Not Massive")
 			return TRUE
 		if("sheath_type")
 			var/named_sheath = tgui_input_list(user, "Choose your sheath type:", "Character Preference", SHEATH_TYPES_BY_NAME, find_key_by_value(SHEATH_TYPES_BY_NAME, penis_entry.sheath_type))
@@ -81,6 +91,13 @@
 	var/penis_size = DEFAULT_PENIS_SIZE
 	var/functional = TRUE
 	var/sheath_type = SHEATH_TYPE_NONE
+	var/massive = FALSE
+
+/datum/preferences/proc/wants_the_big_one()
+	for(var/datum/customizer_entry/organ/penis/penis_entry in customizer_entries)
+		if(!penis_entry.disabled && penis_entry.massive && penis_entry.penis_size == MAX_PENIS_SIZE)
+			return TRUE
+	return FALSE
 
 /datum/customizer/organ/penis/human
 	customizer_choices = list(/datum/customizer_choice/organ/penis/human)
@@ -90,10 +107,17 @@
 		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/knotted,
 		/datum/customizer_choice/organ/penis/equine,
+		/datum/customizer_choice/organ/penis/equine_knotted,
+		/datum/customizer_choice/organ/penis/equine_slit,
+		/datum/customizer_choice/organ/penis/equine_knotted_slit,
 		/datum/customizer_choice/organ/penis/tapered_mammal,
+		/datum/customizer_choice/organ/penis/tapered_double_mammal,
 		/datum/customizer_choice/organ/penis/tapered,
+		/datum/customizer_choice/organ/penis/tapered_knot,
+		/datum/customizer_choice/organ/penis/tapered_knot_mammal,
 		/datum/customizer_choice/organ/penis/tapered_double,
 		/datum/customizer_choice/organ/penis/tapered_double_knot,
+		/datum/customizer_choice/organ/penis/tapered_double_knot_mammal,
 		/datum/customizer_choice/organ/penis/barbed,
 		/datum/customizer_choice/organ/penis/barbed_knotted,
 		/datum/customizer_choice/organ/penis/tentacle,
@@ -103,6 +127,7 @@
 	customizer_choices = list(
 		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/knotted,
+		/datum/customizer_choice/organ/penis/tapered_knot_mammal,
 		)
 
 /datum/customizer/organ/penis/feline
@@ -116,6 +141,7 @@
 	customizer_choices = list(
 		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/tapered,
+		/datum/customizer_choice/organ/penis/tapered_knot,
 		/datum/customizer_choice/organ/penis/tapered_double,
 		/datum/customizer_choice/organ/penis/tapered_double_knot,
 		)
@@ -124,18 +150,27 @@
 	customizer_choices = list(
 		/datum/customizer_choice/organ/penis/human_anthro,
 		/datum/customizer_choice/organ/penis/equine,
+		/datum/customizer_choice/organ/penis/equine_knotted,
+		/datum/customizer_choice/organ/penis/equine_slit,
+		/datum/customizer_choice/organ/penis/equine_knotted_slit,
 		)
 
 /datum/customizer_choice/organ/penis/human
 	name = "Plain Penis"
 	organ_type = /obj/item/organ/penis
-	sprite_accessories = list(/datum/sprite_accessory/penis/human)
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/human,
+		/datum/sprite_accessory/penis/simple/human,
+		)
 	allows_accessory_color_customization = FALSE
 
 /datum/customizer_choice/organ/penis/human_anthro
 	name = "Plain Penis"
 	organ_type = /obj/item/organ/penis
-	sprite_accessories = list(/datum/sprite_accessory/penis/human)
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/human,
+		/datum/sprite_accessory/penis/simple/human,
+		)
 	allows_accessory_color_customization = TRUE
 
 /datum/customizer_choice/organ/penis/knotted
@@ -144,6 +179,7 @@
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/knotted,
 		/datum/sprite_accessory/penis/knotted2,
+		/datum/sprite_accessory/penis/simple/knotted,
 		)
 
 /datum/customizer_choice/organ/penis/equine
@@ -151,6 +187,31 @@
 	organ_type = /obj/item/organ/penis/equine
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/flared,
+		/datum/sprite_accessory/penis/simple/flared,
+		)
+
+/datum/customizer_choice/organ/penis/equine_knotted
+	name = "Equine Knotted Penis"
+	organ_type = /obj/item/organ/penis/equine_knotted
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/flared_knotted,
+		/datum/sprite_accessory/penis/simple/flared,
+		)
+
+/datum/customizer_choice/organ/penis/equine_slit
+	name = "Equine Penis (Slit)"
+	organ_type = /obj/item/organ/penis/equine_slit
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/flared,
+		/datum/sprite_accessory/penis/simple/flared,
+		)
+
+/datum/customizer_choice/organ/penis/equine_knotted_slit
+	name = "Equine Knotted Penis (Slit)"
+	organ_type = /obj/item/organ/penis/equine_knotted_slit
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/flared_knotted,
+		/datum/sprite_accessory/penis/simple/flared,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_mammal
@@ -158,6 +219,7 @@
 	organ_type = /obj/item/organ/penis/tapered_mammal
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/tapered_mammal,
+		/datum/sprite_accessory/penis/simple/tapered_mammal,
 		)
 
 /datum/customizer_choice/organ/penis/tapered
@@ -165,6 +227,21 @@
 	organ_type = /obj/item/organ/penis/tapered
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/tapered,
+		/datum/sprite_accessory/penis/simple/tapered,
+		)
+
+/datum/customizer_choice/organ/penis/tapered_knot
+	name = "Knotted Tapered Penis"
+	organ_type = /obj/item/organ/penis/tapered_knotted
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/taperedknot,
+		)
+
+/datum/customizer_choice/organ/penis/tapered_knot_mammal
+	name = "Knotted Tapered Penis (Mammal)"
+	organ_type = /obj/item/organ/penis/tapered_knotted_mammal
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/taperedknot_mammal,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double
@@ -172,6 +249,15 @@
 	organ_type = /obj/item/organ/penis/tapered_double
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemi,
+		/datum/sprite_accessory/penis/simple/hemi,
+		)
+
+/datum/customizer_choice/organ/penis/tapered_double_mammal
+	name = "Hemi Tapered Penis (Mammal)"
+	organ_type = /obj/item/organ/penis/tapered_mammal
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/hemi_mammal,
+		/datum/sprite_accessory/penis/simple/hemi,
 		)
 
 /datum/customizer_choice/organ/penis/tapered_double_knot
@@ -179,6 +265,15 @@
 	organ_type = /obj/item/organ/penis/tapered_double_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/hemiknot,
+		/datum/sprite_accessory/penis/simple/hemiknot,
+		)
+
+/datum/customizer_choice/organ/penis/tapered_double_knot_mammal
+	name = "Knotted Hemi Tapered Penis (mammal)"
+	organ_type = /obj/item/organ/penis/tapered_double_knotted_mammal
+	sprite_accessories = list(
+		/datum/sprite_accessory/penis/hemiknot,
+		/datum/sprite_accessory/penis/simple/hemiknot,
 		)
 
 /datum/customizer_choice/organ/penis/barbed
@@ -186,6 +281,7 @@
 	organ_type = /obj/item/organ/penis/barbed
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/barbknot,
+		/datum/sprite_accessory/penis/simple/barbknot,
 		)
 
 /datum/customizer_choice/organ/penis/barbed_knotted
@@ -193,6 +289,7 @@
 	organ_type = /obj/item/organ/penis/barbed_knotted
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/barbknot,
+		/datum/sprite_accessory/penis/simple/barbknot,
 		)
 
 /datum/customizer_choice/organ/penis/tentacle
@@ -200,6 +297,7 @@
 	organ_type = /obj/item/organ/penis/tentacle
 	sprite_accessories = list(
 		/datum/sprite_accessory/penis/tentacle,
+		/datum/sprite_accessory/penis/simple/tentacle,
 		)
 
 /datum/customizer/organ/testicles
@@ -334,12 +432,14 @@
 	var/datum/organ_dna/breasts/breasts_dna = organ_dna
 	var/datum/customizer_entry/organ/breasts/breasts_entry = entry
 	breasts_dna.breast_size = breasts_entry.breast_size
+	breasts_dna.lactating = breasts_entry.lactating
 
 /datum/customizer_choice/organ/breasts/tgui_pref_choices(datum/preferences/prefs, datum/customizer_entry/entry, customizer_type)
 	var/list/data = ..()
 
 	var/datum/customizer_entry/organ/breasts/breasts_entry = entry
 	data["breast_size"] = find_key_by_value(BREAST_SIZES_BY_NAME, breasts_entry.breast_size)
+	data["lactating"] = breasts_entry.lactating
 
 	return data
 
@@ -364,15 +464,23 @@
 			prefs.verbose_pref_log_change(user, "notice", "\"[name]\" size", old_size, named_size)
 			breasts_entry.breast_size = new_size
 			return TRUE
+		if("lactating")
+			breasts_entry.lactating = !breasts_entry.lactating
+			prefs.verbose_pref_log_change(user, "notice", "\"[name]\" lactation", !breasts_entry.lactating ? "Enabled" : "Disabled", breasts_entry.lactating ? "Enabled" : "Disabled")
+			return TRUE
 
 /datum/customizer_entry/organ/breasts
 	var/breast_size = DEFAULT_BREASTS_SIZE
+	var/lactating = FALSE
 
 /datum/customizer/organ/breasts/human
 	customizer_choices = list(/datum/customizer_choice/organ/breasts/human)
 
 /datum/customizer_choice/organ/breasts/human
-	sprite_accessories = list(/datum/sprite_accessory/breasts/pair)
+	sprite_accessories = list(
+		/datum/sprite_accessory/breasts/pair,
+		/datum/sprite_accessory/breasts/simple/pair,
+		)
 	allows_accessory_color_customization = FALSE
 
 /datum/customizer/organ/breasts/animal
@@ -383,6 +491,9 @@
 		/datum/sprite_accessory/breasts/pair,
 		/datum/sprite_accessory/breasts/quad,
 		/datum/sprite_accessory/breasts/sextuple,
+		/datum/sprite_accessory/breasts/simple/pair,
+		/datum/sprite_accessory/breasts/simple/quad,
+		/datum/sprite_accessory/breasts/simple/sextuple,
 		)
 
 /datum/customizer/organ/vagina
@@ -441,6 +552,10 @@
 		/datum/sprite_accessory/vagina/human,
 		/datum/sprite_accessory/vagina/gaping,
 		/datum/sprite_accessory/vagina/hairy,
+		/datum/sprite_accessory/vagina/trimmed,
+		/datum/sprite_accessory/vagina/simple/human,
+		/datum/sprite_accessory/vagina/simple/gaping,
+		/datum/sprite_accessory/vagina/simple/hairy,
 		)
 	allows_accessory_color_customization = FALSE
 
@@ -452,6 +567,10 @@
 		/datum/sprite_accessory/vagina/human,
 		/datum/sprite_accessory/vagina/gaping,
 		/datum/sprite_accessory/vagina/hairy,
+		/datum/sprite_accessory/vagina/trimmed,
+		/datum/sprite_accessory/vagina/simple/human,
+		/datum/sprite_accessory/vagina/simple/gaping,
+		/datum/sprite_accessory/vagina/simple/hairy,
 		)
 	allows_accessory_color_customization = TRUE
 
@@ -463,8 +582,14 @@
 		/datum/sprite_accessory/vagina/human,
 		/datum/sprite_accessory/vagina/gaping,
 		/datum/sprite_accessory/vagina/hairy,
+		/datum/sprite_accessory/vagina/trimmed,
 		/datum/sprite_accessory/vagina/spade,
 		/datum/sprite_accessory/vagina/furred,
+		/datum/sprite_accessory/vagina/simple/human,
+		/datum/sprite_accessory/vagina/simple/gaping,
+		/datum/sprite_accessory/vagina/simple/hairy,
+		/datum/sprite_accessory/vagina/simple/spade,
+		/datum/sprite_accessory/vagina/simple/furred,
 		)
 
 /datum/customizer/organ/vagina/anthro
@@ -475,7 +600,14 @@
 		/datum/sprite_accessory/vagina/human,
 		/datum/sprite_accessory/vagina/gaping,
 		/datum/sprite_accessory/vagina/hairy,
+		/datum/sprite_accessory/vagina/trimmed,
 		/datum/sprite_accessory/vagina/spade,
 		/datum/sprite_accessory/vagina/furred,
 		/datum/sprite_accessory/vagina/cloaca,
+		/datum/sprite_accessory/vagina/simple/human,
+		/datum/sprite_accessory/vagina/simple/gaping,
+		/datum/sprite_accessory/vagina/simple/hairy,
+		/datum/sprite_accessory/vagina/simple/spade,
+		/datum/sprite_accessory/vagina/simple/furred,
+		/datum/sprite_accessory/vagina/simple/cloaca,
 		)

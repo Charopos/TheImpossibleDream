@@ -26,7 +26,7 @@
 #define TRAIT_FASTSLEEP "Fast Sleeper"
 #define TRAIT_GOODSLEEP "Restful"
 #define TRAIT_GOODLOVER "Fabled Lover"
-#define TRAIT_UNSATISFIED "Unsatisfactory Act"
+#define TRAIT_BATHHOUSE_DANCER "Bathhouse Dancer"
 #define TRAIT_SEEDKNOW "Seed Knower"
 #define TRAIT_SQUIRE_REPAIR "Squire Knowledge"
 #define TRAIT_TRAINED_SMITH "Trained Smith"
@@ -338,6 +338,17 @@
 #define TRAIT_CABAL "Of the Cabal" //Zizo cultists can use exclusive gear
 #define TRAIT_HORDE "Anointed" //Graggarites can use exclusive gear
 #define TRAIT_DEPRAVED "Fallen" //Baothans can use exclusive gear
+#define TRAIT_DEATHBYSNUSNU "Bed Breaker" //What do you think? Pelvis crushing and increased pain.
+#define TRAIT_BROKEN_IN "Broken In"
+#define TRAIT_BAOTHA_FERTILITY_BOON "Marked and shaped by Baotha" //Able to be impregnated, has permanent womb tattoo and stronger version of nympho vice
+// chastity traits are defined in chastity_core.dm since they're pretty specific and it's easier to keep them there, but here are the trait defines for them:
+#define TRAIT_CHASTITY_FULL "Chastity Belt" //Prevents most penetrative sexual activity. Given by chastity belt.
+#define TRAIT_CHASTITY_CAGE "Chastity Cage" //Prevents most penis action sexual activity. Given by chastity cage.
+#define TRAIT_CHASTITY_PENIS_BLOCKED "Penis Shielded"
+#define TRAIT_CHASTITY_VAGINA_BLOCKED "Vagina Shielded"
+#define TRAIT_CHASTITY_ANAL "Anal Shield" //Prevents penetrative anal sex. Given by a chastity device with an anal shield.
+#define TRAIT_CHASTITY_SPIKED "Genital Spikes" // Causes discomfort during arousal.
+#define TRAIT_CHASTITY_LOCKED "Locked Chastity Device" // Prevents removal of the chastity device.
 #define TRAIT_DUSTRUNNER "Dust Runner" //Dust runners recognize each other, and are known to bathhouse workers and matthiosites
 
 // ASSASSIN ANTAG TRAITS
@@ -563,6 +574,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_KNOWNCRIMINAL = span_bloody("I am a branded criminal. Nothing can change this."),
 	TRAIT_NORUN = span_warning("My body has atrophied in my state of decay; my leg joints just don't have the strength or durability for running anymore"),
 	TRAIT_GOODLOVER = span_love("It's a lucky thing to share my bed."),
+	TRAIT_BATHHOUSE_DANCER = span_info("I am trained in the bathhouse arts. Within its walls I can dance and shake for a patron all night without tiring."),
 	TRAIT_LIMPDICK = span_crit("My soldier refuses to rise to attention! Curses!"),
 	TRAIT_SEEDKNOW = span_info("I know which seeds grow which crops."),
 	TRAIT_PERFECT_TRACKER = span_info("I am a master at pursuing those I hunt. I can discern every last detail within a spotted track, and any attempts to hide said-tracks will fail to deceive me."),//Hearthstone port.
@@ -592,6 +604,16 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_LYCANRESILENCE = span_info("Dendor's fury flows through my veins, my wounds regenerate over time..."),
 	TRAIT_FORTITUDE = span_info("The typical drain I feel from day to day life is lessened, my athleticism greater."),
 	TRAIT_DEPRAVED = span_info("The languid scent of Her debauchery is known to me."),
+	TRAIT_DEATHBYSNUSNU = "With strong intent, I am a violent partner in bed. Breaking pelvis and spirit alike.",
+	TRAIT_BROKEN_IN = "Rough lovers can still hurt me, but it takes a lot more to make me whimper.",
+	TRAIT_BAOTHA_FERTILITY_BOON = span_info("I have been marked by Baotha. I am branded visibly on my groin and am able to be impregnated regardless of physical states that would usually prevent this"),
+	TRAIT_CHASTITY_FULL = span_info("My chastity device prevents me from engaging in most penetrative sex."),
+	TRAIT_CHASTITY_CAGE = span_info("My chastity device prevents me getting an erection or engaging in penetrative sex."),
+	TRAIT_CHASTITY_PENIS_BLOCKED = span_info("My chastity device blocks access to my penis."),
+	TRAIT_CHASTITY_VAGINA_BLOCKED = span_info("My chastity device blocks access to my vagina."),
+	TRAIT_CHASTITY_ANAL = span_info("My chastity device is equipped with a shield that protects my anus from penetration."),
+	TRAIT_CHASTITY_SPIKED = span_info("My chastity device is equipped with spikes constantly pressing against my nethers."),
+	TRAIT_CHASTITY_LOCKED = span_info("My chastity device is locked, it's impossible to remove without the key."),
 	TRAIT_SILVER_BLESSED = span_info("I have been baptized in fire. Blessed silverdust flows through my blood, protecting me from both vampyrism and lycanthropy."),
 	TRAIT_UNLYCKERABLE = span_info("My kind cannot bear the Sun curse for it already has another."),
 	TRAIT_NOWW = span_info("Dendor's madness shall find no hold in me."),
@@ -1008,6 +1030,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define VEHICLE_TRAIT "vehicle" // inherited from riding vehicles
 #define INNATE_TRAIT "innate"
 #define POULTICE_TRAIT "poultice"
+#define TRAIT_SOURCE_CHASTITY "chastity" //source for chastity device traits
+#define TRAIT_LOVESTRUCK "lovestruck"
 #define TRAIT_INFUSION "infusion"
 #define NPC_LOADOUT_TRAIT "npc_loadout"
 

@@ -506,15 +506,15 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	var/do_update_msg = TRUE
 	if(new_mammon_amount >= required_mammons)
 		// Feel better
-		if(user.has_stress_event(/datum/stressevent/vice))
+		if(user.has_stress_event(/datum/stressevent/vice/greedy))
 			to_chat(user, span_blue("[new_mammon_amount] mammons... That's more like it.."))
-		user.remove_stress(/datum/stressevent/vice)
+		user.remove_stress(/datum/stressevent/vice/greedy)
 		user.remove_status_effect(/datum/status_effect/debuff/addiction)
 		last_passed_check = world.time
 		do_update_msg = FALSE
 	else
 		// Feel bad
-		user.add_stress(/datum/stressevent/vice)
+		user.add_stress(/datum/stressevent/vice/greedy)
 		user.apply_status_effect(/datum/status_effect/debuff/addiction)
 
 	if(new_mammon_amount == last_checked_mammons)
@@ -876,3 +876,44 @@ GLOBAL_LIST_INIT(averse_factions, list(
 		addtimer(CALLBACK(src, PROC_REF(apply_bounty_when_ready), H), 5 SECONDS)
 		return
 	wretch_select_bounty(H)
+
+/datum/charflaw/marked_by_baotha
+	name = "Marked by Baotha"
+	desc = "Whether through intentionally seeking out heretical ritualists or against my will, I have been marked by Baotha. I am branded visibly on my groin and am able to be impregnated regardless of physical states that would usually prevent this. I will need to sate my new urges often to avoid stress..."
+
+/datum/charflaw/marked_by_baotha/on_mob_creation(mob/user)
+
+	var/mutable_appearance/marking_overlay = mutable_appearance('icons/roguetown/misc/baotha_marking.dmi', "marking_[user.gender == "male" ? "m" : "f"]", -BODY_LAYER)
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(isdwarf(H) || isgoblinp(H) || iskobold(H) || iscritter(H))
+			if(H.gender == MALE)
+				marking_overlay.pixel_y -= 5
+			else
+				marking_overlay.pixel_y -= 3
+	user.add_overlay(marking_overlay)
+
+	// A bodyless spawn(40) sat here. DM binds the next single statement as the spawn body,
+	// so the boon has always landed 4 seconds after the marking, not with it.
+	addtimer(CALLBACK(src, PROC_REF(grant_fertility_boon), user), 40)
+
+	var/obj/item/organ/vagina/vagina = user.getorganslot(ORGAN_SLOT_VAGINA)
+	if(vagina && !vagina.fertility)
+		vagina.fertility = TRUE
+	var/obj/item/organ/tail/manticore/tail = get_manticore_tail(user)
+	if(tail)
+		tail.fertility = TRUE
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+
+		// Add the adjusted Nymphomaniac addiction flaw
+		if(!HAS_TRAIT(H, TRAIT_DEPRAVED))
+			var/datum/charflaw/addiction/baothamarked/L = new
+			H.charflaws += L
+			L.on_mob_creation(H)
+
+/datum/charflaw/marked_by_baotha/proc/grant_fertility_boon(mob/user)
+	if(QDELETED(user))
+		return
+	ADD_TRAIT(user, TRAIT_BAOTHA_FERTILITY_BOON, TRAIT_GENERIC)

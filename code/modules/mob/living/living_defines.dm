@@ -256,8 +256,5 @@
 	/// "In Combat" timer that is used to prevent stealth and a few other mechanics while active.
 	var/in_combat_until
 
-	/// Bypasses positioning and exposure checks entirely
-	var/freeuse = FALSE
-
 	/// Inquisition trauma should only happen once per examined.
 	var/list/examined_inquisitors = list()
