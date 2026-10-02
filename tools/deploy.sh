@@ -12,7 +12,10 @@ fi
 mkdir -p \
     $1/_maps \
     $1/icons/ \
-	$1/strings
+	$1/strings \
+    $1/modular/code/modules/slave_collar/strings \
+    $1/modular/code/game/objects/items/lewd/chastity/strings \
+    $1/modular/code/datums/components/strings
 
 if [ -d ".git" ]; then
   mkdir -p $1/.git/logs
@@ -23,6 +26,9 @@ cp roguetown.dmb roguetown.rsc $1/
 cp -r _maps/* $1/_maps/
 cp -r icons/* $1/icons/
 cp -r strings/* $1/strings/
+cp -r modular/code/modules/slave_collar/strings/* $1/modular/code/modules/slave_collar/strings/
+cp -r modular/code/game/objects/items/lewd/chastity/strings/* $1/modular/code/game/objects/items/lewd/chastity/strings/
+cp -r modular/code/datums/components/strings/* $1/modular/code/datums/components/strings/
 
 #remove .dm files from _maps
 
