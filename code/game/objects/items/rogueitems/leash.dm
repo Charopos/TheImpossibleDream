@@ -485,3 +485,8 @@
 	category = "Smithing"
 	req_table = TRUE
 	always_availible = TRUE
+
+#undef STATUS_EFFECT_LEASH_PET
+#undef STATUS_EFFECT_LEASH_OWNER
+#undef STATUS_EFFECT_LEASH_FREEPET
+#undef MOVESPEED_ID_LEASH

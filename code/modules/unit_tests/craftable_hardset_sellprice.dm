@@ -22,7 +22,6 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/vilespawn,
 		/obj/item/reagent_containers/lux,
 		/obj/item/reagent_containers/lux/moss,
-		/obj/item/reagent_containers/powder/black_ichor,
 		/obj/item/reagent_containers/powder/moondust,
 		/obj/item/reagent_containers/powder/ozium,
 		/obj/item/reagent_containers/powder/starsugar/skysugar,
