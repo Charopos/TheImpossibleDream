@@ -2099,8 +2099,10 @@ More uniquely, her rites always cut out the light in the room, then proc. 10 sec
 		return
 	var/riteselection = input(user, "Rituals of Unity", src) as null|anything in baotharites
 	switch(riteselection) // put ur rite selection here
-		if("Unholy Boon of Fertility") // SURREALIS ADDITION
-			fertility_boon_rite(user) // SURREALIS ADDITION
+		// [SURREALIS-ADD] - SEXCON
+		if("Unholy Boon of Fertility")
+			fertility_boon_rite(user)
+		// [/SURREALIS-ADD]
 		if("Rite of Armaments")
 			if(user.has_status_effect(/datum/status_effect/debuff/armamentrites))
 				to_chat(user, span_warning("I am not yet ready to perform this rite."))

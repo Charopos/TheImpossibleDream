@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_session_lock
 	var/mob/living/locked_host
 	var/locked_organ_slot
@@ -258,4 +259,5 @@
 		else
 			new /obj/effect/temp_visual/heart/sex_effects/red_heart(get_turf(user))
 
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

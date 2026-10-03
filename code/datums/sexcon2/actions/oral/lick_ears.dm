@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/oral/lick_ears
 	name = "Lick their ears"
 	check_same_tile = FALSE
@@ -72,4 +73,5 @@
 		sex_session.perform_sex_action(target, 1, 0, TRUE, sex_session.speed, sex_session.force)
 
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/miscellaneous/rub_ears
 	name = "Rub their ears"
 	check_same_tile = FALSE
@@ -67,4 +68,5 @@
 		sex_session.perform_sex_action(target, 0.5, 0, TRUE, sex_session.speed, sex_session.force)
 
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

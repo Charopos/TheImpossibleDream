@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 GLOBAL_LIST_INIT(sex_actions, build_sex_actions())
 
 GLOBAL_LIST_EMPTY(sex_sessions)
@@ -236,4 +237,5 @@ GLOBAL_LIST_EMPTY(locked_sex_objects)
 #define KNOTTED_NULL 0
 #define KNOTTED_AS_TOP 1
 #define KNOTTED_AS_BTM 2
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

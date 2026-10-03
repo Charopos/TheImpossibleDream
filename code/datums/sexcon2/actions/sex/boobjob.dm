@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/boobjob
 	name = "Use their tits to get off"
 	intensity = 3
@@ -70,4 +71,5 @@
 	var/do_subtle = sex_session.doing_subtly
 	user.visible_message(span_love("[user] [do_subtle ? "subtly " : ""]cums over [target]'s tits!"), vision_distance = (do_subtle ? 1 : DEFAULT_MESSAGE_RANGE))
 	return "onto"
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

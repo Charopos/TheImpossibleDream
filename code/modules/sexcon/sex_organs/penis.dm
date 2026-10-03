@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /obj/item/organ/penis
 	name = "penis"
 	icon_state = "severedtail" //placeholder
@@ -146,4 +147,5 @@
 	name = "tentacle penis"
 	penis_type = PENIS_TYPE_TENTACLE
 	sheath_type = SHEATH_TYPE_NONE
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

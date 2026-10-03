@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/masturbate/other/godjob_anal
 	name = "Finger their butt with godhand"
 	check_same_tile = FALSE
@@ -152,4 +153,5 @@
 	)
 
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

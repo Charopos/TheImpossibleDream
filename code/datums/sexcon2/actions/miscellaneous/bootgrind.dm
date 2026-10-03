@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/miscellaneous/stompjob
 	name = "Stomp on them"
 	check_same_tile = FALSE
@@ -75,4 +76,5 @@
 	else
 		sex_session.perform_sex_action(target, 2, 4, TRUE, sex_session.speed, sex_session.force)
 		sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

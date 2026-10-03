@@ -48,8 +48,10 @@
 	if (!H)
 		return
 	var/should_update = FALSE
-	// var/list/choices = list("Accessory", "Breast Quantity", "Breast Size", "Ears", "Ear Color One", "Ear Color Two", "Eye Color", "Skin Color", "Skin Color 2", "Skin Color 3", "Facial Hairstyle", "Facial Hair Color", "Face Detail", "Hairstyle", "Hair Primary Color", "Hair Secondary Gradient", "Hair Secondary Natural Color", "Hair Third Gradient", "Hair Third Dye Color", "Horns", "Horn Color", "Penis", "Penis Size", "Tail", "Tail Color One", "Tail Color Two", "Tail Color Three", "Snout", "Snout Color One", "Snout Color Two", "Snout Color Three", "Fluff", "Fluff Color One", "Fluff Color Two", "Testicles", "Testicle Size", "Vagina", "Wings", "Wing Color") // SURREALIS REMOVAL
-	var/list/choices = list("Accessory", "Breast Quantity", "Breast Size", "Ears", "Ear Color One", "Ear Color Two", "Eye Color", "Skin Color", "Skin Color 2", "Skin Color 3", "Facial Hairstyle", "Facial Hair Color", "Face Detail", "Hairstyle", "Hair Primary Color", "Hair Secondary Gradient", "Hair Secondary Natural Color", "Hair Third Gradient", "Hair Third Dye Color", "Horns", "Horn Color", "Penis", "Penis Size", "Pits", "Pubes", "Tail", "Tail Color One", "Tail Color Two", "Tail Color Three", "Snout", "Snout Color One", "Snout Color Two", "Snout Color Three", "Fluff", "Fluff Color One", "Fluff Color Two", "Testicles", "Testicle Size", "Vagina", "Wings", "Wing Color") // SURREALIS ADDITION
+	var/list/choices = list("Accessory", "Breast Quantity", "Breast Size", "Ears", "Ear Color One", "Ear Color Two", "Eye Color", "Skin Color", "Skin Color 2", "Skin Color 3", "Facial Hairstyle", "Facial Hair Color", "Face Detail", "Hairstyle", "Hair Primary Color", "Hair Secondary Gradient", "Hair Secondary Natural Color", "Hair Third Gradient", "Hair Third Dye Color", "Horns", "Horn Color", "Penis", "Penis Size", "Tail", "Tail Color One", "Tail Color Two", "Tail Color Three", "Snout", "Snout Color One", "Snout Color Two", "Snout Color Three", "Fluff", "Fluff Color One", "Fluff Color Two", "Testicles", "Testicle Size", "Vagina", "Wings", "Wing Color")
+	// [SURREALIS-ADD] - SEXCON
+	choices.Insert(choices.Find("Penis Size") + 1, "Pits", "Pubes")
+	// [/SURREALIS-ADD]
 	if(HAS_TRAIT(H, TRAIT_EDIT_DESCRIPTORS))
 		choices += "Descriptors"
 	var/chosen = input(H, "Change what?", "Appearance") as null|anything in choices
@@ -396,12 +398,16 @@
 
 		if("Penis")
 			var/list/valid_penis_types = list("none")
-			/* SURREALIS REMOVAL BEGIN
+			// [SURREALIS-REMOVE] - SEXCON
+			/*
 			for(var/penis_path in subtypesof(/datum/sprite_accessory/penis))
 				var/datum/sprite_accessory/penis/penis = new penis_path()
 				valid_penis_types[penis.name] = penis_path
-			SURREALIS REMOVAL END */
-			valid_penis_types += mirror_transform_penis_choices() // SURREALIS ADDITION
+			*/
+			// [/SURREALIS-REMOVE]
+			// [SURREALIS-ADD] - SEXCON
+			valid_penis_types += mirror_transform_penis_choices()
+			// [/SURREALIS-ADD]
 
 			var/new_style = input(H, "Choose your penis type", "Penis Customization") as null|anything in valid_penis_types
 			if(new_style)
@@ -413,21 +419,25 @@
 						H.update_body()
 						should_update = TRUE
 				else
-					/* SURREALIS REMOVAL BEGIN
+					// [SURREALIS-REMOVE] - SEXCON
+					/*
 					var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
 					if(!penis)
 						penis = new()
 						penis.Insert(H, TRUE, FALSE)
 					penis.accessory_type = valid_penis_types[new_style]
-					SURREALIS REMOVAL END */
-					// SURREALIS ADDITION BEGIN
+					*/
+					// [/SURREALIS-REMOVE]
+					// [SURREALIS-ADD] - SEXCON
 					var/obj/item/organ/penis/penis = mirror_transform_swap_penis(H, valid_penis_types[new_style])
 					if(!penis)
 						return
-					// SURREALIS ADDITION END
+					// [/SURREALIS-ADD]
 					var/datum/sprite_accessory/penis/penis_type = SPRITE_ACCESSORY(penis.accessory_type)
 					penis.accessory_colors = penis_type.get_default_colors(color_key_source_list_from_carbon(H))
-					penis.Insert(H, TRUE, FALSE) // SURREALIS ADDITION
+					// [SURREALIS-ADD] - SEXCON
+					penis.Insert(H, TRUE, FALSE)
+					// [/SURREALIS-ADD]
 					H.update_body()
 					should_update = TRUE
 
@@ -515,13 +525,16 @@
 					should_update = TRUE
 
 		if("Breast Size")
-			// var/list/breast_sizes = list("Flat", "Slight", "Small", "Moderate", "Large", "Generous", "Heavy", "Massive", "Heaping", "Obscene") // SURREALIS REMOVAL
-			var/list/breast_sizes = BREAST_SIZES_BY_NAME // SURREALIS ADDITION
+			// [SURREALIS-EDIT] - SEXCON
+			// var/list/breast_sizes = list("Flat", "Slight", "Small", "Moderate", "Large", "Generous", "Heavy", "Massive", "Heaping", "Obscene") // SURREALIS-EDIT - ORIGINAL
+			var/list/breast_sizes = BREAST_SIZES_BY_NAME
+			// [/SURREALIS-EDIT]
 			var/new_size = input(H, "Choose your breast size", "Breast Size") as null|anything in breast_sizes
 			if(new_size)
 				var/obj/item/organ/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
 				if(breasts)
-					/* SURREALIS REMOVAL BEGIN
+					// [SURREALIS-REMOVE] - SEXCON
+					/*
 					var/size_num
 					switch(new_size)
 						if("Flat")
@@ -546,8 +559,11 @@
 							size_num = 9
 
 					breasts.breast_size = size_num
-					SURREALIS REMOVAL END */
-					breasts.breast_size = breast_sizes[new_size] // SURREALIS ADDITION
+					*/
+					// [/SURREALIS-REMOVE]
+					// [SURREALIS-ADD] - SEXCON
+					breasts.breast_size = breast_sizes[new_size]
+					// [/SURREALIS-ADD]
 					H.update_body()
 					should_update = TRUE
 
@@ -567,10 +583,10 @@
 							size_num = 3
 
 					penis.penis_size = size_num
-					// SURREALIS ADDITION BEGIN
+					// [SURREALIS-ADD] - SEXCON
 					if(size_num != MAX_PENIS_SIZE)
 						penis.massive = FALSE
-					// SURREALIS ADDITION END
+					// [/SURREALIS-ADD]
 					H.update_body()
 					should_update = TRUE
 
@@ -610,20 +626,23 @@
 						should_update = TRUE
 				else
 					var/obj/item/organ/tail/tail = H.getorganslot(ORGAN_SLOT_TAIL)
-					/* SURREALIS REMOVAL BEGIN
+					// [SURREALIS-REMOVE] - SEXCON
+					/*
 					if(!tail)
 						tail = new /obj/item/organ/tail/anthro()
-					SURREALIS REMOVAL END */
-					// SURREALIS ADDITION BEGIN
+						tail.Insert(H, TRUE, FALSE)
+					tail.accessory_type = valid_tails[new_style]
+					*/
+					// [/SURREALIS-REMOVE]
+					// [SURREALIS-ADD] - SEXCON
 					var/new_accessory_type = valid_tails[new_style]
 					var/wants_tail_maw = new_accessory_type == /datum/sprite_accessory/tail/manticore
 					if(!tail || wants_tail_maw != istype(tail, /obj/item/organ/tail/manticore))
 						var/new_tail_type = wants_tail_maw ? /obj/item/organ/tail/manticore : /obj/item/organ/tail/anthro
 						tail = new new_tail_type()
-					// SURREALIS ADDITION END
 						tail.Insert(H, TRUE, FALSE)
-					// tail.accessory_type = valid_tails[new_style] // SURREALIS REMOVAL
-					tail.accessory_type = new_accessory_type // SURREALIS ADDITION
+					tail.accessory_type = new_accessory_type
+					// [/SURREALIS-ADD]
 					var/datum/sprite_accessory/tail/tail_type = SPRITE_ACCESSORY(tail.accessory_type)
 					tail.accessory_colors = tail_type.get_default_colors(color_key_source_list_from_carbon(H))
 					H.update_body()
@@ -906,10 +925,12 @@
 					should_update = TRUE
 			else
 				to_chat(H, span_warning("You don't have a ears!"))
-		if("Pubes") // SURREALIS ADDITION
-			should_update = mirror_transform_pubes(H) || should_update // SURREALIS ADDITION
-		if("Pits") // SURREALIS ADDITION
-			should_update = mirror_transform_pits(H) || should_update // SURREALIS ADDITION
+		// [SURREALIS-ADD] - SEXCON
+		if("Pubes")
+			should_update = mirror_transform_pubes(H) || should_update
+		if("Pits")
+			should_update = mirror_transform_pits(H) || should_update
+		// [/SURREALIS-ADD]
 
 		if("Horns")
 			var/list/valid_horns = list("none")
@@ -1033,7 +1054,7 @@
 		H.update_hair()
 		H.update_body()
 		H.update_body_parts()
-		// SURREALIS ADDITION BEGIN
+		// [SURREALIS-ADD] - SEXCON
 		if(H.sexcon)
 			H.sexcon.update_erect_state()
-		// SURREALIS ADDITION END
+		// [/SURREALIS-ADD]

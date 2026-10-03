@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/slit
 	name = "Fuck their slit"
 	stamina_cost = 1.0
@@ -140,4 +141,5 @@
 
 /datum/sex_action/sex/slit/double/get_knot_count()
 	return 2
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

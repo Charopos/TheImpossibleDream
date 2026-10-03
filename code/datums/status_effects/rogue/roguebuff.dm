@@ -408,12 +408,16 @@
 		pintle.functional = TRUE
 		had_disfunctional_pintle = TRUE
 
-	/* SURREALIS REMOVAL BEGIN
+	// [SURREALIS-REMOVE] - SEXCON
+	/*
 	var/datum/component/arousal/arousal_comp = owner?.GetComponent(/datum/component/arousal)
 	if(arousal_comp)
 		arousal_comp.set_charge(SEX_MAX_CHARGE)	// Fully restore charge
-	SURREALIS REMOVAL END */
-	owner?.sexcon?.set_charge(owner?.sexcon?.get_max_charge()) // SURREALIS ADDITION
+	*/
+	// [/SURREALIS-REMOVE]
+	// [SURREALIS-ADD] - SEXCON
+	owner?.sexcon?.set_charge(owner?.sexcon?.get_max_charge())
+	// [/SURREALIS-ADD]
 
 /datum/status_effect/buff/fermented_crab/on_remove()
 	. = ..()

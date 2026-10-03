@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /obj/item/organ/testicles
 	name = "testicles"
 	icon_state = "severedtail" //placeholder
@@ -17,4 +18,5 @@
 	name = "internal testicles"
 	visible_organ = FALSE
 	accessory_type = /datum/sprite_accessory/none
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

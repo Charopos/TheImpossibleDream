@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/miscellaneous/spanking
 	name = "Spank their butt"
 	// Allow through all clothes, so no body zone accessibility check for clothing
@@ -75,4 +76,5 @@
 /datum/sex_action/miscellaneous/spanking/lock_sex_object(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	var/locked = user.get_active_precise_hand()
 	sex_locks |= new /datum/sex_session_lock(user, locked)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

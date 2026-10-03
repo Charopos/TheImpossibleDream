@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/double_penetration
 	name = "Fuck both their holes"
 	stamina_cost = 1.0
@@ -88,4 +89,5 @@
 
 /datum/sex_action/sex/double_penetration/get_knot_count()
 	return 2
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/oral/suck_nipples
 	name = "Suck their nipples"
 	check_same_tile = FALSE
@@ -68,4 +69,5 @@
 	sex_session.handle_passive_ejaculation(target)
 
 //No we really don't need remnants of milking code in here.
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

@@ -22,7 +22,11 @@
 		/obj/item/reagent_containers/food/snacks/rogue/meat/steak/vilespawn,
 		/obj/item/reagent_containers/lux,
 		/obj/item/reagent_containers/lux/moss,
-		// /obj/item/reagent_containers/powder/black_ichor, // SURREALIS REMOVAL
+		// [SURREALIS-REMOVE] - SEXCON
+		/*
+		/obj/item/reagent_containers/powder/black_ichor,
+		*/
+		// [/SURREALIS-REMOVE]
 		/obj/item/reagent_containers/powder/moondust,
 		/obj/item/reagent_containers/powder/ozium,
 		/obj/item/reagent_containers/powder/starsugar/skysugar,

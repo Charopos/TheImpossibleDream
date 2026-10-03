@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/miscellaneous/facesitting
 	name = "Sit on their face"
 	intensity = 3
@@ -77,4 +78,5 @@
 
 	sex_session.perform_sex_action(target, 0, 2, FALSE, sex_session.speed, sex_session.force)
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

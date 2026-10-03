@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN - see modular_tidi/code/modules/mob/dead/new_player/sprite_accessory/genitals.dm
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/organs/genital_sprites.dm)
+/*
 /datum/sprite_accessory/penis
 	icon = 'icons/mob/sprite_accessory/genitals/pintle.dmi'
 	color_keys = 2
@@ -199,4 +200,5 @@
 	icon_state = "cloaca"
 	name = "Cloaca"
 	default_colors = list("f99696")
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

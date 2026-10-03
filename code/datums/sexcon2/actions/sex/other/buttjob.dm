@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/other/buttjob
 	name = "Give them a butt job"
 	intensity = 3
@@ -57,4 +58,5 @@
 
 	sex_session.perform_sex_action(target, 2, 4, TRUE, sex_session.speed, sex_session.force)
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

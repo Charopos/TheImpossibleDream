@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /obj/item/organ/breasts
 	name = "breasts"
 	icon_state = "severedtail" //placeholder
@@ -11,4 +12,5 @@
 
 /obj/item/organ/breasts/get_cache_key()
 	return "[..()]-[breast_size]"
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

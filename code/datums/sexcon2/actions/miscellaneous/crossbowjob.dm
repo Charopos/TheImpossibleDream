@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/miscellaneous/grind_crossbow
 	name = "Grind buttstock against them"
 	check_same_tile = FALSE
@@ -51,4 +52,5 @@
 
 	sex_session.perform_sex_action(target, 1, 4, TRUE, sex_session.speed, sex_session.force)
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

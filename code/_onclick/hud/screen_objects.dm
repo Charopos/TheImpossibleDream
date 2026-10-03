@@ -1911,7 +1911,9 @@
 					M.add_stress(/datum/stressevent/triumph)
 					M.adjust_triumphs(-3)
 					M.playsound_local(M, 'sound/misc/notice (2).ogg', 100, FALSE)
-					M.sexcon?.set_charge(M.sexcon.get_max_charge()) // SURREALIS ADDITION
+					// [SURREALIS-ADD] - SEXCON
+					M.sexcon?.set_charge(M.sexcon.get_max_charge())
+					// [/SURREALIS-ADD]
 
 
 /atom/movable/screen/rmbintent

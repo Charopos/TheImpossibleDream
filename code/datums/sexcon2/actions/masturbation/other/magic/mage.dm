@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/masturbate/other/magejob
 	name = "Jerk them off with magehand"
 	check_same_tile = FALSE
@@ -67,4 +68,5 @@
 
 	sex_session.perform_sex_action(target, (2*skill_level), 0, TRUE)
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

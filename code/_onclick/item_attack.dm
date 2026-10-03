@@ -22,8 +22,10 @@
 			return
 		// FAR less aggressive version of chunkyfingers, designed to be used with nudist. Shrimply lets the user still use neat stuff like orison without letting them weaponize.
 		if(HAS_TRAIT(user, TRAIT_GNARLYDIGITS))
-			// if(istype(src, /obj/item/rogueweapon) && !istype(src, /obj/item/rogueweapon/werewolf_claw)) // SURREALIS REMOVAL
-			if(istype(src, /obj/item/rogueweapon) && !istype(src, /obj/item/rogueweapon/werewolf_claw) && !istype(src, /obj/item/rogueweapon/surgery/cautery/branding)) // SURREALIS ADDITION
+			// [SURREALIS-EDIT] - SEXCON
+			// if(istype(src, /obj/item/rogueweapon) && !istype(src, /obj/item/rogueweapon/werewolf_claw)) // SURREALIS-EDIT - ORIGINAL
+			if(istype(src, /obj/item/rogueweapon) && !istype(src, /obj/item/rogueweapon/werewolf_claw) && !istype(src, /obj/item/rogueweapon/surgery/cautery/branding))
+			// [/SURREALIS-EDIT]
 				to_chat(user, span_warning("My fingers are too misshapen to use this puny implement."))
 				return
 		// even less aggressive; allows use of tools but not weapons
@@ -264,7 +266,8 @@
 		else
 			playsound(M.loc, "nodmg", 100, FALSE, -1)
 
-		/* SURREALIS REMOVAL BEGIN
+		// [SURREALIS-REMOVE] - SEXCON
+		/*
 		if(M.has_flaw(/datum/charflaw/addiction/thrillseeker))
 			var/datum/component/arousal/CAR = M.GetComponent(/datum/component/arousal)
 			if(CAR)
@@ -274,11 +277,12 @@
 			var/datum/component/arousal/CAR = user.GetComponent(/datum/component/arousal)
 			if(CAR)
 				CAR.adjust_arousal_special(src, 2)
-		SURREALIS REMOVAL END */
-		// SURREALIS ADDITION BEGIN
+		*/
+		// [/SURREALIS-REMOVE]
+		// [SURREALIS-ADD] - SEXCON
 		M.sexcon?.adjust_arousal_thrill(2)
 		user.sexcon?.adjust_arousal_thrill(2)
-		// SURREALIS ADDITION END
+		// [/SURREALIS-ADD]
 
 		user.changeMaxDodge(2)
 		user.dodgetime = clamp(user.dodgetime - 2, 0, CLICK_CD_DODGE)

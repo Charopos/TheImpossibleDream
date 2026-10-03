@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/toy/other/oral
 	name = "Fuck their mouth with a toy"
 	stamina_cost = 1.0
@@ -58,4 +59,5 @@
 	user.make_sucking_noise(do_subtle)
 	var/obj/item/dildo/used_item = user.get_active_held_item()
 	sex_session.perform_sex_action(target, 0, used_item.pleasure, TRUE, sex_session.speed, sex_session.force)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

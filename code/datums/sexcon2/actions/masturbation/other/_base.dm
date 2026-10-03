@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/masturbate/other
 	abstract_type = /datum/sex_action/masturbate/other
 	flipped = TRUE
@@ -23,4 +24,5 @@
 	if(sex_session.finished_check())
 		return TRUE
 	return FALSE
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_session //! TODO SEX SOUNDS
 	/// The initiating user
 	var/mob/living/carbon/human/user
@@ -557,4 +558,5 @@
 		return 1
 	else
 		return 7
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

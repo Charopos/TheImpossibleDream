@@ -826,9 +826,13 @@ There are several things that need to be remembered:
 				if(mbeltoverlay && !dna.species.custom_clothes)
 					apply_offset(mbeltoverlay, OFFSET_BELT, OFFSET_BELT_F)
 				standing_front += mbeltoverlay
-				add_belt_toy_overlay(standing_front, mbeltoverlay) // SURREALIS ADDITION
+				// [SURREALIS-ADD] - SEXCON
+				add_belt_toy_overlay(standing_front, mbeltoverlay)
+				// [/SURREALIS-ADD]
 
-	add_chastity_toy_overlay(standing_front) // SURREALIS ADDITION
+	// [SURREALIS-ADD] - SEXCON
+	add_chastity_toy_overlay(standing_front)
+	// [/SURREALIS-ADD]
 	overlays_standing[BELT_LAYER] = standing_front
 	overlays_standing[BELT_BEHIND_LAYER] = standing_behind
 

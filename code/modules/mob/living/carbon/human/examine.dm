@@ -260,8 +260,9 @@
 		str += beltl.integrity_check(is_smart)
 		. += str
 
-	. += human_chastity_examine_lines(user, m1, m2, m3) // SURREALIS ADDITION
-
+	// [SURREALIS-ADD] - SEXCON
+	. += human_chastity_examine_lines(user, m1, m2, m3)
+	// [/SURREALIS-ADD]
 	//shoes
 	if(shoes && !(SLOT_SHOES in obscured))
 		var/str = "[m3] [shoes.generate_tooltip(shoes.get_examine_string(user))] on [m2] feet. "
@@ -724,10 +725,13 @@
 	if(show_descriptors)
 		var/list/lines
 		if((get_face_name() != real_name) && !observer_privilege)
-			// lines = build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src) // SURREALIS REMOVAL
-			lines = surrealis_build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src, user) // SURREALIS ADDITION
+			// [SURREALIS-EDIT] - SEXCON
+			// lines = build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src) // SURREALIS-EDIT - ORIGINAL
+			lines = surrealis_build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src, user)
+			// [/SURREALIS-EDIT]
 		else
-			/* SURREALIS REMOVAL BEGIN
+			// [SURREALIS-REMOVE] - SEXCON
+			/*
 			lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 
 		var/app_str
@@ -743,15 +747,16 @@
 				app_str += "</details>"
 
 		. += app_str
-			SURREALIS REMOVAL END */
-			// SURREALIS ADDITION BEGIN
+			*/
+			// [/SURREALIS-REMOVE]
+			// [SURREALIS-ADD] - SEXCON
 			lines = surrealis_build_cool_description(get_mob_descriptors(obscure_name, user), src, user)
 
 		for(var/line in lines)
 			. += span_info(line)
 
 	. += human_brand_examine_lines(m2)
-	// SURREALIS ADDITION END
+	// [/SURREALIS-ADD]
 
 	if(dna?.species?.type == /datum/species/gnoll)
 		if(istype(user, /mob/living/carbon/human)) //Submitting this one upstream because not our shitcode for once
@@ -901,8 +906,9 @@
 				else
 					. += span_notice("A noble!")
 
-		. += human_sex_status_examine_lines(user, observer_privilege, m1, m2, m3) // SURREALIS ADDITION
-
+		// [SURREALIS-ADD] - SEXCON
+		. += human_sex_status_examine_lines(user, observer_privilege, m1, m2, m3)
+		// [/SURREALIS-ADD]
 		if(HAS_TRAIT(src, TRAIT_RESIDENT))
 			. += span_notice("A chartered resident of Pharos.")
 

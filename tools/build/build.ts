@@ -83,7 +83,9 @@ export const DmTarget = new Juke.Target({
     'sound/**',
     'tgui/public/tgui.html',
     'modular/**',
-    'modular_tidi/**', // SURREALIS ADDITION
+    // [SURREALIS-ADD] - SEXCON
+    'modular_tidi/**',
+    // [/SURREALIS-ADD]
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],

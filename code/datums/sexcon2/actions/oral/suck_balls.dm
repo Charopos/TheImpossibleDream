@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/oral/suck_balls
 	name = "Suck their balls"
 	intensity = 3
@@ -66,4 +67,5 @@
 
 	sex_session.perform_sex_action(target, 1, 3, TRUE, sex_session.speed, sex_session.force)
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

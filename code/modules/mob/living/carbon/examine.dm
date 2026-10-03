@@ -77,7 +77,9 @@
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		msg += "[t_He] seem[p_s()] to be clumsy and unable to think.\n"
 
-	msg += carbon_modular_examine_lines(user, t_He, m1, m2, m3) // SURREALIS ADDITION
+	// [SURREALIS-ADD] - SEXCON
+	msg += carbon_modular_examine_lines(user, t_He, m1, m2, m3)
+	// [/SURREALIS-ADD]
 	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks))
 		msg += "[t_He] [t_is] covered in something flammable.\n"
 	if(has_status_effect(/datum/status_effect/fire_handler/wet_stacks))

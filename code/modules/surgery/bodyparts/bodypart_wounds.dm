@@ -187,7 +187,8 @@
 					human_owner.emote("paincrit", forced = TRUE)
 
 			if(user)
-				/* SURREALIS REMOVAL BEGIN
+				// [SURREALIS-REMOVE] - SEXCON
+				/*
 				if(user.has_flaw(/datum/charflaw/addiction/thrillseeker))
 					var/datum/component/arousal/CAR = user.GetComponent(/datum/component/arousal)
 					if(CAR)
@@ -201,11 +202,12 @@
 						owner.sate_addiction(/datum/charflaw/addiction/thrillseeker)
 						owner.add_stress(/datum/stressevent/thrill)
 						CAR.ejaculate_special()
-				SURREALIS REMOVAL END */
-				// SURREALIS ADDITION BEGIN
+				*/
+				// [/SURREALIS-REMOVE]
+				// [SURREALIS-ADD] - SEXCON
 				user.sexcon?.thrill_climax()
 				owner.sexcon?.thrill_climax()
-				// SURREALIS ADDITION END
+				// [/SURREALIS-ADD]
 
 			return crit_attempt
 	if(ishuman(owner))

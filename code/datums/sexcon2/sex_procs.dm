@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /mob/living/carbon/human/proc/get_highest_grab_state_on(mob/living/carbon/human/victim)
 	var/grabstate = null
 	if(r_grab && r_grab.grabbed == victim)
@@ -178,4 +179,5 @@
 				highest_session = session
 				continue
 	return highest_session
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

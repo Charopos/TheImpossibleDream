@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/throat
 	name = "Fuck their throat"
 	stamina_cost = 1.0
@@ -136,4 +137,5 @@
 
 /datum/sex_action/sex/throat/double/get_knot_count()
 	return 2
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

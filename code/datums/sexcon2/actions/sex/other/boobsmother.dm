@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/other/boobsmother
 	name = "Smother them with boobs"
 	intensity = 3
@@ -51,4 +52,5 @@
 
 	sex_session.perform_sex_action(target, 2, 4, TRUE, sex_session.speed, sex_session.force)
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 ///chief i'm gonna be real this is whats gonna get me barred from entering the pearly gates
 /datum/component/knotting
 	/// Current knotted state
@@ -440,4 +441,5 @@
 	knotted_recipient = null
 	knotted_status = KNOTTED_NULL
 	knot_count = 0
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

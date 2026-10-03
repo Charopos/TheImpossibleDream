@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/masturbate/breasts
 	name = "Fondle breasts"
 	debug_erp_panel_verb = FALSE
@@ -58,4 +59,5 @@
 
 	sex_session.perform_sex_action(user, 1, 4, TRUE, sex_session.speed, sex_session.force)
 	sex_session.handle_passive_ejaculation()
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

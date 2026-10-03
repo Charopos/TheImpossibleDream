@@ -108,8 +108,10 @@ GLOBAL_LIST_INIT(averse_factions, list(
 			cf_list -= cf_path
 		if(cf.needs_extra_vice) // difficulty flaws require a deliberate extra vice - never resolve into one at random
 			cf_list -= cf_path
-		if(cf.no_random) // SURREALIS ADDITION
-			cf_list -= cf_path // SURREALIS ADDITION
+		// [SURREALIS-ADD] - SEXCON
+		if(cf.no_random)
+			cf_list -= cf_path
+		// [/SURREALIS-ADD]
 
 	var/datum/job/mob_job = null
 	if(target.mind?.assigned_role)
@@ -508,18 +510,24 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	var/do_update_msg = TRUE
 	if(new_mammon_amount >= required_mammons)
 		// Feel better
-		// if(user.has_stress_event(/datum/stressevent/vice)) // SURREALIS REMOVAL
-		if(user.has_stress_event(/datum/stressevent/vice/greedy)) // SURREALIS ADDITION
+		// [SURREALIS-EDIT] - SEXCON
+		// if(user.has_stress_event(/datum/stressevent/vice)) // SURREALIS-EDIT - ORIGINAL
+		if(user.has_stress_event(/datum/stressevent/vice/greedy))
+		// [/SURREALIS-EDIT]
 			to_chat(user, span_blue("[new_mammon_amount] mammons... That's more like it.."))
-		// user.remove_stress(/datum/stressevent/vice) // SURREALIS REMOVAL
-		user.remove_stress(/datum/stressevent/vice/greedy) // SURREALIS ADDITION
+		// [SURREALIS-EDIT] - SEXCON
+		// user.remove_stress(/datum/stressevent/vice) // SURREALIS-EDIT - ORIGINAL
+		user.remove_stress(/datum/stressevent/vice/greedy)
+		// [/SURREALIS-EDIT]
 		user.remove_status_effect(/datum/status_effect/debuff/addiction)
 		last_passed_check = world.time
 		do_update_msg = FALSE
 	else
 		// Feel bad
-		// user.add_stress(/datum/stressevent/vice) // SURREALIS REMOVAL
-		user.add_stress(/datum/stressevent/vice/greedy) // SURREALIS ADDITION
+		// [SURREALIS-EDIT] - SEXCON
+		// user.add_stress(/datum/stressevent/vice) // SURREALIS-EDIT - ORIGINAL
+		user.add_stress(/datum/stressevent/vice/greedy)
+		// [/SURREALIS-EDIT]
 		user.apply_status_effect(/datum/status_effect/debuff/addiction)
 
 	if(new_mammon_amount == last_checked_mammons)

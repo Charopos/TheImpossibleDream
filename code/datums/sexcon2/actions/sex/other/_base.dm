@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/other
 	abstract_type = /datum/sex_action/sex/other
 	target_priority = 100
@@ -15,4 +16,5 @@
 	if(!session)
 		return FALSE
 	return SEND_SIGNAL(target, COMSIG_SEX_TRY_KNOT, user, session.force)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/sex/other/anal
 	name = "Ride them with butt"
 	stamina_cost = 1.0
@@ -86,4 +87,5 @@
 	else
 		sex_session.perform_sex_action(target, 2.4, 9, TRUE, sex_session.speed, sex_session.force)
 	sex_session.handle_passive_ejaculation(target)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

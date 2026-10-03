@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/component/arousal
 	/// Our arousal level
 	var/arousal = 0
@@ -466,4 +467,5 @@
 			return 1.2
 		if(SEX_SPEED_EXTREME)
 			return 1.4
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]

@@ -37,7 +37,9 @@
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 				if(!underwear)
-					modular_handle_chastity_middleclick_strip(user) // SURREALIS ADDITION
+					// [SURREALIS-ADD] - SEXCON
+					modular_handle_chastity_middleclick_strip(user)
+					// [/SURREALIS-ADD]
 					return
 				src.visible_message(span_notice("[src] begins to take off [underwear]..."))
 				if(do_after(user, 30, needhand = 1, target = src))
@@ -98,13 +100,15 @@
 	if(npc_archetype)
 		init_npc_archetype()
 
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /mob/living/carbon/human/Login()
 	. = ..()
 	if(!GetComponent(/datum/component/arousal))
 		AddComponent(/datum/component/arousal)
 
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]
 /mob/living/carbon/human/ZImpactDamage(turf/T, levels)
 	var/obj/item/bodypart/affecting
 	var/dam = levels * rand(10,50)
@@ -325,7 +329,9 @@ SURREALIS REMOVAL END */
 		dat += "<tr><td><hr></td></tr>"
 		dat += "<tr><td><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[!underwear ? "Nothing" : "Remove"]</A></td></tr>"
 		dat += "<tr><td><B>Legwear:</B> <A href='?src=[REF(src)];legwearsthing=1'>[!legwear_socks ? "Nothing" : "Remove"]</A></td></tr>"
-		dat += modular_strippanel_chastity_rows() // SURREALIS ADDITION
+		// [SURREALIS-ADD] - SEXCON
+		dat += modular_strippanel_chastity_rows()
+		// [/SURREALIS-ADD]
 #endif
 
 	dat += {"</table>"}

@@ -1,4 +1,5 @@
-/* SURREALIS REMOVAL BEGIN
+// [SURREALIS-REMOVE] - SEXCON
+/*
 /datum/sex_action/oral/cunnilingus
 	name = "Suck their clit off"
 	target_priority = 100
@@ -78,4 +79,5 @@
 		do_thrust_animate(user, target)
 
 	sex_session.perform_sex_action(target, 2, 3, TRUE, sex_session.speed, sex_session.force)
-SURREALIS REMOVAL END */
+*/
+// [/SURREALIS-REMOVE]
