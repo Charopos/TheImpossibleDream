@@ -1232,9 +1232,11 @@
 	else if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire() //stop, drop, and roll
+		// SURREALIS ADDITION BEGIN
 		else if(has_status_effect(/datum/status_effect/leash_pet))
 			if(istype(src, /mob/living/carbon))
 				src:resist_leash()
+		// SURREALIS ADDITION END
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 			var/datum/component/riding/human/riding_datum = GetComponent(/datum/component/riding/human)
@@ -1472,9 +1474,6 @@
 	return
 
 /mob/living/proc/resist_restraints()
-	return
-
-/mob/living/proc/resist_leash()
 	return
 
 /mob/living/proc/get_visible_name()

@@ -557,8 +557,6 @@ GLOBAL_LIST_INIT(roleplay_readme, world.file2list("strings/rt/rp_prompt.txt"))
 	if(dna?.species)
 		dna.species.after_creation(src)
 
-	pay_for_the_big_one(client || new_player?.client)
-
 	roll_stats(new_player)
 
 	if(npc_archetype)

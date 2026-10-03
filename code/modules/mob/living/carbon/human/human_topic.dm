@@ -132,10 +132,6 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 				C.put_in_hands(underwear)
 			underwear = null
 
-	if(href_list["chastitything"])
-		modular_handle_chastitything(usr)
-		return
-
 	if(href_list["legwearsthing"]) //canUseTopic check for this is handled by mob/Topic()
 		if(NO_UNDERWEAR in dna.species.species_traits)
 			return

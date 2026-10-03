@@ -75,12 +75,6 @@
 			if(mobility_flags & MOBILITY_STAND)
 				wear_armor.step_action()
 
-		if(wear_neck)
-			if(mobility_flags & MOBILITY_STAND)
-				if(istype(wear_neck, /obj/item/clothing))
-					var/obj/item/clothing/N = wear_neck
-					N.step_action()
-
 		if(wear_shirt)
 			if(mobility_flags & MOBILITY_STAND)
 				wear_shirt.step_action()

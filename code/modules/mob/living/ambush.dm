@@ -101,12 +101,6 @@ GLOBAL_LIST_INIT(melee_combat_skills, list( \
 		if(world.time < mob_timers["ambush_check"] + GLOB.ambush_mobconsider_cooldown)
 			return FALSE
 	mob_timers["ambush_check"] = world.time
-#ifdef MATURESERVER
-	if(ishuman(src))
-		var/mob/living/carbon/human/M = src
-		if(M?.sexcon.current_action && !M?.sexcon.desire_stop) // if we're fucking in the bushes, don't spawn ambush
-			return FALSE
-#endif
 
 	// Count nearby players and calculate player factor
 	// Combat-capable players = 1.0 weight (full-strength ambush), non-combat = 0.5 weight (mercy — they can't fight back)

@@ -428,14 +428,6 @@
 	created_item = /obj/item/rogueweapon/blowrod
 	display_category = ITEM_CAT_TOOLS_WORKSHOP
 
-/datum/anvil_recipe/tools/iron/branding
-	name = "Branding Iron (+1 Iron)"
-	category = "Iron"
-	req_bar = /obj/item/ingot/iron
-	additional_items = list(/obj/item/ingot/iron)
-	created_item = /obj/item/rogueweapon/surgery/cautery/branding
-	display_category = ITEM_CAT_TOOLS_WORKSHOP
-
 /datum/anvil_recipe/tools/iron/surgerytools
 	name = "Surgeon's Bag (+1 Iron, +1 Cured Leather)"
 	category = "Iron"

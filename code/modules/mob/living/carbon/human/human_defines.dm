@@ -222,9 +222,10 @@
 	var/mob/living/carbon/human/hostagetaker //Stores the person that took us hostage in a var, allows us to force them to attack the mob and such
 	var/mob/living/carbon/human/hostage //What hostage we have
 
-	var/has_gnoll_scent_this_round = FALSE
-	var/list/collar_loop_timers
-	var/branded = FALSE // Saves time during examine if character hasn't been branded at all
+	/// Boolean. Usually set only to TRUE for non-Eoran church roles.
+	var/virginity = FALSE
+	/// Used to prevent certain antag from having sex
+	var/can_do_sex = TRUE
 	/// For vision cone, check out mobs.dm defines for values
 	fovangle = FOV_DEFAULT
 

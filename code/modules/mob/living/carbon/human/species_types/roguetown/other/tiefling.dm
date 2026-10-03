@@ -74,9 +74,6 @@
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human_anthro,
 		/datum/customizer/organ/ears/tiefling,
-		/datum/customizer/bodypart_feature/pits,
-		/datum/customizer/bodypart_feature/pubes,
-		/datum/customizer/organ/tail/manticore,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,

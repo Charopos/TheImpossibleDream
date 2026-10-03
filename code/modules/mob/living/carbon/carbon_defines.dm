@@ -45,7 +45,6 @@
 
 	var/obj/item/undies/underwear = null	//Underwear item
 	var/obj/item/legwears/legwear_socks = null	//legwear item
-	var/obj/item/chastity/chastity_device = null // Chastity item reference.
 
 
 	var/datum/dna/dna = null //Carbon

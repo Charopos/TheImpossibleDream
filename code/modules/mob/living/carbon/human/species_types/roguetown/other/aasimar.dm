@@ -56,8 +56,6 @@
 		/datum/customizer/organ/ears/wings,
 		/datum/customizer/organ/horns/wings,
 		/datum/customizer/organ/snout/wings,
-		/datum/customizer/bodypart_feature/pits,
-		/datum/customizer/bodypart_feature/pubes,
 		)
 	body_marking_sets = list(
 		/datum/body_marking_set/none,

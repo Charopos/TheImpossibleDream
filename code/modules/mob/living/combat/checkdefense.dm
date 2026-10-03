@@ -47,7 +47,13 @@
 	if(channeling_spell?.blocks_defense_while_channeling)
 		return FALSE
 
-	sexcon?.adjust_arousal_thrill(2)
+	/* SURREALIS REMOVAL BEGIN
+	if(has_flaw(/datum/charflaw/addiction/thrillseeker))
+		var/datum/component/arousal/CAR = GetComponent(/datum/component/arousal)
+		if(CAR)
+			CAR.adjust_arousal_special(src, 2)
+	SURREALIS REMOVAL END */
+	sexcon?.adjust_arousal_thrill(2) // SURREALIS ADDITION
 
 	if(has_status_effect(/datum/status_effect/debuff/vulnerable))
 		if(!has_status_effect(/datum/status_effect/buff/weapon_binded) && !has_status_effect(/datum/status_effect/debuff/weapon_binded))

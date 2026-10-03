@@ -137,6 +137,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["anonymize"]			>> anonymize
 	S["stopdroning"]		>> stopdroning
 	S["masked_examine"]		>> masked_examine
+	S["full_examine"]		>> full_examine
 	S["mute_animal_emotes"]	>> mute_animal_emotes
 	S["autoconsume"]		>> autoconsume
 	S["no_examine_blocks"]	>> no_examine_blocks
@@ -148,18 +149,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["crt"]				>> crt
 	S["grain"]				>> grain
 	S["sexable"]			>> sexable
-	S["erp_visuals"]		>> erp_visuals
-	S["chastenable"]		>> chastenable
-	S["chastity_hardmode"]	>> chastity_hardmode
-	S["extreme_erp"]		>> extreme_erp
-	S["edging"]				>> edging
-	S["free_use_default"]	>> free_use_default
-	S["sensitive_brands"] 	>> sensitive_brands
-	S["facial_brands"] 		>> facial_brands
-	S["pubes"]				>> pubes
-	S["pits"]				>> pits
-	S["descriptor_color"]	>> descriptor_color
-	S["cursed_collarable"] 	>> cursed_collarable
 	S["shake"]				>> shake
 	S["mastervol"]			>> mastervol
 	S["compliance_notifs"]  >> compliance_notifs
@@ -198,11 +187,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	auto_fit_viewport	= sanitize_bool(auto_fit_viewport, initial(auto_fit_viewport))
 	shake				= sanitize_bool(shake, initial(shake))
 	sexable				= sanitize_bool(sexable, initial(sexable))
-	chastity_hardmode = sanitize_integer(chastity_hardmode, CHASTITY_HARDMODE_DISABLED, CHASTITY_HARDMODE_ENABLED, initial(chastity_hardmode))
 	compliance_notifs	= sanitize_bool(compliance_notifs, initial(compliance_notifs))
 	stopdroning			= sanitize_bool(stopdroning, initial(stopdroning))
 	anonymize			= sanitize_bool(anonymize, initial(anonymize))
 	masked_examine		= sanitize_bool(masked_examine, initial(masked_examine))
+	full_examine		= sanitize_bool(full_examine, initial(full_examine))
 	mute_animal_emotes	= sanitize_bool(mute_animal_emotes, initial(mute_animal_emotes))
 	autoconsume			= sanitize_bool(autoconsume, initial(autoconsume))
 	no_examine_blocks	= sanitize_bool(no_examine_blocks, initial(no_examine_blocks))
@@ -304,6 +293,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["anonymize"], anonymize)
 	WRITE_FILE(S["stopdroning"], stopdroning)
 	WRITE_FILE(S["masked_examine"], masked_examine)
+	WRITE_FILE(S["full_examine"], full_examine)
 	WRITE_FILE(S["mute_animal_emotes"], mute_animal_emotes)
 	WRITE_FILE(S["autoconsume"], autoconsume)
 	WRITE_FILE(S["no_examine_blocks"], no_examine_blocks)
@@ -315,18 +305,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["crt"], crt)
 	WRITE_FILE(S["grain"], grain)
 	WRITE_FILE(S["sexable"], sexable)
-	WRITE_FILE(S["erp_visuals"], erp_visuals)
-	WRITE_FILE(S["chastenable"], chastenable)
-	WRITE_FILE(S["chastity_hardmode"], chastity_hardmode)
-	WRITE_FILE(S["extreme_erp"], extreme_erp)
-	WRITE_FILE(S["edging"], edging)
-	WRITE_FILE(S["free_use_default"], free_use_default)
-	WRITE_FILE(S["sensitive_brands"], sensitive_brands)
-	WRITE_FILE(S["facial_brands"], facial_brands)
-	WRITE_FILE(S["pubes"], pubes)
-	WRITE_FILE(S["pits"], pits)
-	WRITE_FILE(S["descriptor_color"], descriptor_color)
-	WRITE_FILE(S["cursed_collarable"], cursed_collarable)
 	WRITE_FILE(S["shake"], shake)
 	WRITE_FILE(S["mastervol"], mastervol)
 	WRITE_FILE(S["lastchangelog"], lastchangelog)

@@ -19,7 +19,7 @@
 
 // Returns PREFERENCE_CHARFLAW_X define
 /datum/preferences/proc/cannot_take_flaw(datum/charflaw/cf)
-	if(cf.type == /datum/charflaw/noflaw || cf.type == /datum/charflaw/addiction/baothamarked)
+	if(cf.type == /datum/charflaw/noflaw)
 		return PREFERENCE_CHARFLAW_DENIAL_HIDE
 	if(has_flaw(cf.type) && !istype(cf, /datum/charflaw/randflaw))
 		return PREFERENCE_CHARFLAW_DENIAL_ALREADY_TAKEN

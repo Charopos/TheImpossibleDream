@@ -139,14 +139,6 @@
 //			adjust_hydration(-nutrition_ratio * HUNGER_FACTOR) //get thirsty twice as fast when regenning blood
 		blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * nutrition_ratio)
 
-	if(stat != DEAD && ishuman(src) && !HAS_TRAIT(src, TRAIT_JOURNEYS_END))
-		var/mob/living/carbon/human/H = src
-		if(H.has_massive_erection())
-			var/blood_minimum = 117 + (STACON * 18) // Having six constitution or lower can drain you. Twelve and under is tier two blood loss.
-			var/blood_extracted = min(blood_volume - blood_minimum, 2)
-			if(blood_extracted > 0)
-				blood_volume = max(blood_volume - blood_extracted, 0)
-
 	//Effects of bloodloss - only if we're actually alive, though
 	if (stat != DEAD)
 		if(!HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))

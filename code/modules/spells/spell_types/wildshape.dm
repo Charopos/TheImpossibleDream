@@ -80,6 +80,7 @@
 	var/wildshape_icon
 	var/wildshape_icon_state
 	var/untransform_on_death = TRUE
+	can_do_sex = FALSE
 
 /mob/living/carbon/human/species/wildshape/proc/gain_inherent_skills()
 	if(src.mind)

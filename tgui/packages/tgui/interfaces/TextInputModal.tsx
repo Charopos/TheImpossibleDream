@@ -18,7 +18,6 @@ type TextInputData = {
   title: string;
   spellcheck: BooleanLike;
   bigmodal?: boolean;
-  disable_paste?: boolean; // right now just used by chastity code to force players to type out a message with ctrl+c ctrl+v, other use cases may exist. Options are nice :).
 };
 
 export const sanitizeMultiline = (toSanitize: string) => {
@@ -27,18 +26,6 @@ export const sanitizeMultiline = (toSanitize: string) => {
 
 export const removeAllSkiplines = (toSanitize: string) => {
   return toSanitize.replace(/[\r\n]+/, '');
-};
-
-const pauseEvent = (event: any) => {
-  if (event.stopPropagation) {
-    event.stopPropagation();
-  }
-  if (event.preventDefault) {
-    event.preventDefault();
-  }
-  event.cancelBubble = true;
-  event.returnValue = false;
-  return false;
 };
 
 export const TextInputModal = () => {
@@ -53,7 +40,6 @@ export const TextInputModal = () => {
     title,
     spellcheck,
     bigmodal,
-    disable_paste,
   } = data;
 
   const [input, setInput] = useState(placeholder || '');
@@ -88,15 +74,6 @@ export const TextInputModal = () => {
       act('cancel');
     }
   }
-
-  // gate for chastity hardmode prayer to prevent cheaters from copy pasting
-  const handleBlockedInput = (event: React.SyntheticEvent) => {
-    if (!disable_paste) {
-      return;
-    }
-    pauseEvent(event);
-  };
-
   return (
     <Window title={title} width={windowWidth} height={windowHeight}>
       {timeout && <Loader value={timeout} />}
@@ -107,25 +84,18 @@ export const TextInputModal = () => {
               <Box color="label">{message}</Box>
             </Stack.Item>
             <Stack.Item grow>
-              {/* height:100% propagates the Stack.Item's grown height down to the TextArea */}
-              <div
-                style={{ height: '100%' }}
-                onDrop={handleBlockedInput}
-                onPaste={handleBlockedInput}
-              >
-                <TextArea
-                  autoFocus
-                  autoSelect
-                  fluid
-                  userMarkup={{ u: '_', i: '|', b: '+' }}
-                  height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
-                  maxLength={max_length}
-                  onEscape={() => act('cancel')}
-                  onChange={onType}
-                  placeholder="Type something..."
-                  value={input}
-                />
-              </div>
+              <TextArea
+                autoFocus
+                autoSelect
+                fluid
+                userMarkup={{ u: '_', i: '|', b: '+' }}
+                height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
+                maxLength={max_length}
+                onEscape={() => act('cancel')}
+                onChange={onType}
+                placeholder="Type something..."
+                value={input}
+              />
             </Stack.Item>
             <Stack.Item>
               <InputButtons input={input} message={`${input.length}`} />

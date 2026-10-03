@@ -826,19 +826,9 @@ There are several things that need to be remembered:
 				if(mbeltoverlay && !dna.species.custom_clothes)
 					apply_offset(mbeltoverlay, OFFSET_BELT, OFFSET_BELT_F)
 				standing_front += mbeltoverlay
-				if(istype(belt, /obj/item/storage/belt/rogue)) // check if belt has dildo attached
-					var/obj/item/storage/belt/rogue/belt_with_dildo = belt
-					if(istype(belt_with_dildo.attached_toy, /obj/item/dildo)) // draw dildo in correct position
-						var/mutable_appearance/mbeltoverlaydildo = mutable_appearance('modular/icons/obj/lewd/dildo.dmi', "dildo_belt_[belt_with_dildo.attached_toy.dildo_size]", layer = -ABOVE_BODY_FRONT_LAYER)
-						mbeltoverlaydildo.color = belt_with_dildo.attached_toy.color // get material color
-						mbeltoverlaydildo.pixel_x = mbeltoverlay.pixel_x
-						mbeltoverlaydildo.pixel_y = mbeltoverlay.pixel_y
-						standing_front += mbeltoverlaydildo
+				add_belt_toy_overlay(standing_front, mbeltoverlay) // SURREALIS ADDITION
 
-	var/mutable_appearance/chastity_overlay = chastity_attached_toy_overlay()
-	if(chastity_overlay)
-		standing_front += chastity_overlay
-
+	add_chastity_toy_overlay(standing_front) // SURREALIS ADDITION
 	overlays_standing[BELT_LAYER] = standing_front
 	overlays_standing[BELT_BEHIND_LAYER] = standing_behind
 
@@ -1738,8 +1728,6 @@ generate/load female uniform sprites matching all previously decided variables
 	for(var/obj/item/organ/organ as anything in visible_organs)
 		. += organ.get_cache_key()
 	. += "[obscured_flags]"
-	if(sexcon)
-		. += "[sexcon.bottom_exposed]-[sexcon.hide_pintle_visuals]"
 	if(HAS_TRAIT(src, TRAIT_HUSK))
 		. += "husk"
 	return jointext(., "-")

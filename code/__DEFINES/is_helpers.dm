@@ -103,8 +103,6 @@ GLOBAL_LIST_INIT(our_forest_sex, typecacheof(list(
 #define isvulp(A) (is_species(A, /datum/species/vulpkanin))
 #define isooze(A) (is_species(A, /datum/species/ooze))
 #define isgnoll(A) (is_species(A, /datum/species/gnoll))
-#define islamia(A) (isliving(A) && istype(A:get_taur_tail(), /obj/item/bodypart/taur/lamia))
-#define iscritter(A) (is_species(A, /datum/species/anthromorphsmall))
 #define iswerewolf(A) (is_species(A, /datum/species/werewolf))
 #define isfamiliar(A) (istype(A, /mob/living/carbon/human/species/familiar))
 

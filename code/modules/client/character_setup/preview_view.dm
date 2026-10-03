@@ -15,9 +15,7 @@
 	copy_to(mannequin, 1, TRUE, TRUE)
 	var/obj/item/organ/penis/preview_penis = mannequin.getorganslot(ORGAN_SLOT_PENIS)
 	if(preview_penis)
-		preview_penis.erect_state = preview_boner_state
-		preview_penis.massive = wants_the_big_one() && preview_penis.penis_size == MAX_PENIS_SIZE
-		mannequin.update_body_parts(TRUE)
+		preview_penis.update_erect_state(preview_boner_state)
 	return mannequin.appearance
 
 /datum/preferences/proc/cycle_boner_preview()

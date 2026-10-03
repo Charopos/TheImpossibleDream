@@ -187,8 +187,25 @@
 					human_owner.emote("paincrit", forced = TRUE)
 
 			if(user)
+				/* SURREALIS REMOVAL BEGIN
+				if(user.has_flaw(/datum/charflaw/addiction/thrillseeker))
+					var/datum/component/arousal/CAR = user.GetComponent(/datum/component/arousal)
+					if(CAR)
+						user.sate_addiction(/datum/charflaw/addiction/thrillseeker)
+						user.add_stress(/datum/stressevent/thrill)
+						CAR.ejaculate_special()
+
+				if(owner.has_flaw(/datum/charflaw/addiction/thrillseeker))
+					var/datum/component/arousal/CAR = owner.GetComponent(/datum/component/arousal)
+					if(CAR)
+						owner.sate_addiction(/datum/charflaw/addiction/thrillseeker)
+						owner.add_stress(/datum/stressevent/thrill)
+						CAR.ejaculate_special()
+				SURREALIS REMOVAL END */
+				// SURREALIS ADDITION BEGIN
 				user.sexcon?.thrill_climax()
 				owner.sexcon?.thrill_climax()
+				// SURREALIS ADDITION END
 
 			return crit_attempt
 	if(ishuman(owner))

@@ -59,11 +59,6 @@
 	misscost = 0
 
 /obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
-	if(user.used_intent.type == INTENT_FILL)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			H.try_milking(user, src)
-			return
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, span_warning("[src] is empty!"))
 		return

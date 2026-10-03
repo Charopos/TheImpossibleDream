@@ -23,7 +23,8 @@
 				mob_vice.partial_sate = world.time + (15 MINUTES)
 				to_chat(src, span_blue("<i>This will do... for now...</i>"))
 				mob_vice.next_sate = world.time + max((initial(mob_vice.time) / 1.5), 1)
-				remove_stress(mob_vice.stress_event)	// These are just in case we ended up here w/ unsated vice debuffs
+				// remove_stress(/datum/stressevent/vice)	// These are just in case we ended up here w/ unsated vice debuffs // SURREALIS REMOVAL
+				remove_stress(mob_vice.stress_event)	// These are just in case we ended up here w/ unsated vice debuffs // SURREALIS ADDITION
 				if(mob_vice.debuff)
 					remove_status_effect(mob_vice.debuff)
 				sate_voyeurs(mob_vice)
@@ -37,7 +38,8 @@
 	mob_vice.time = initial(mob_vice.time) //reset roundstart sate offset to standard
 	mob_vice.partial_sate = world.time + (5 MINUTES)
 	mob_vice.next_sate = world.time + max(mob_vice.time, 1)
-	remove_stress(mob_vice.stress_event)  // Remove vice-specific stress event
+	// remove_stress(/datum/stressevent/vice) // SURREALIS REMOVAL
+	remove_stress(mob_vice.stress_event)  // Remove vice-specific stress event // SURREALIS ADDITION
 	if(mob_vice.debuff)
 		remove_status_effect(mob_vice.debuff)
 
@@ -65,7 +67,6 @@
 	var/sated_text = "That's much better..."
 	var/unsate_time
 	var/partial_sating = TRUE
-	var/stress_event = /datum/stressevent/vice  // Specific stress event type for this vice
 
 
 /datum/charflaw/addiction/on_mob_creation(mob/user)
@@ -90,7 +91,8 @@
 		if(needsate_text)
 			to_chat(user, span_boldwarning("[needsate_text]"))
 	if(!sated)
-		H.add_stress(stress_event)  // Use vice-specific stress event
+		// H.add_stress(/datum/stressevent/vice) // SURREALIS REMOVAL
+		H.add_stress(stress_event)  // Use vice-specific stress event // SURREALIS ADDITION
 		if(debuff)
 			H.apply_status_effect(debuff)
 
@@ -118,7 +120,6 @@
 	ui_fa_icon = "whiskey-glass"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "Time for a drink."
-	stress_event = /datum/stressevent/vice/alcoholic
 	voyeur_descriptor = "quite the drinker"
 	debuff = /datum/status_effect/debuff/addiction/alcoholic
 
@@ -140,7 +141,6 @@
 	ui_fa_icon  = "syringe"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "Time to get really high."
-	stress_event = /datum/stressevent/vice/junkie
 	voyeur_descriptor = "eager for a high"
 	debuff = /datum/status_effect/debuff/addiction/junkie
 
@@ -162,7 +162,6 @@
 	ui_fa_icon = "smoking"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "Time for a flavorful smoke."
-	stress_event = /datum/stressevent/vice/smoker
 	voyeur_descriptor = "eager for a smoke"
 	debuff = /datum/status_effect/debuff/addiction/smoker
 
@@ -184,7 +183,6 @@
 	ui_fa_icon = "mug-hot"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "I need a hot brew."
-	stress_event = /datum/stressevent/vice/caffiend
 	voyeur_descriptor = "in need of a brew"
 	debuff = /datum/status_effect/debuff/addiction/caffiend
 
@@ -206,7 +204,6 @@
 	ui_fa_icon = "person-praying"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "Time to pray to my Patron."
-	stress_event = /datum/stressevent/vice/godfearing
 	voyeur_descriptor = "quite devout"
 	debuff = /datum/status_effect/debuff/addiction/godfearing
 
@@ -228,7 +225,6 @@
 	ui_fa_icon = "baseball-bat-ball"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "I need to hear someone whimper."
-	stress_event = /datum/stressevent/vice/sadist
 	voyeur_descriptor = "looking to hurt"
 	debuff = /datum/status_effect/debuff/addiction/sadist
 
@@ -250,7 +246,6 @@
 	ui_fa_icon = "user-injured"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "I need someone to HURT me."
-	stress_event = /datum/stressevent/vice/masochist
 	voyeur_descriptor = "looking to be hurt"
 	debuff = /datum/status_effect/debuff/addiction/masochist
 	partial_sating = FALSE
@@ -276,7 +271,6 @@
 	ui_fa_icon = "heart"
 	time = ADDICT_TIME_STANDARD
 	needsate_text = "I'm feeling randy."
-	stress_event = /datum/stressevent/vice/nympho
 	voyeur_descriptor = "looking lovesick"
 	debuff = /datum/status_effect/debuff/addiction/nympho
 
@@ -299,38 +293,6 @@
 	desc = "I must make love. My loins burn with unsated desire."
 	icon_state = "nymphomaniac"
 
-/// For sex freaks. Manually raising their arousal prevents their vices from being sated. Try jerking off.
-/datum/status_effect/debuff/false_sensation
-	id = "false_sensation"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/false_sensation
-	effectedstats = null
-	duration = 2 MINUTES
-	status_type = STATUS_EFFECT_REFRESH
-
-/atom/movable/screen/alert/status_effect/debuff/false_sensation
-	name = "False Sensation"
-	desc = "My body is aflame, but it's not real. Only a real touch of passion will sate my urges."
-	icon_state = "debuff"
-
-/datum/charflaw/addiction/baothamarked
-	name = "Baothan Marked"
-	desc = "I've been branded by a Baothan mark."
-	time = 45 MINUTES
-	needsate_text = "My brand burns painfully."
-	stress_event = /datum/stressevent/vice/baothamarked
-	sated_text = "The brand's glow lessens, relief washing over me..."
-	debuff = /datum/status_effect/debuff/addiction/baothamarked
-
-/datum/status_effect/debuff/addiction/baothamarked
-	id = "addiction_baothamark"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/addiction/baothamarked
-	effectedstats = list(STATKEY_CON = -1, STATKEY_WIL = -1)
-
-/atom/movable/screen/alert/status_effect/debuff/addiction/baothamarked
-	name = "Baothan Mania"
-	desc = "That accursed rune. It burns brightly across my flesh, searing my loins with a painful desire for release."
-	icon_state = "nymphomaniac"
-
 /datum/charflaw/addiction/thrillseeker
 	name = "Thrillseeker"
 	desc = "Only fighting brings me pleasure."
@@ -338,32 +300,7 @@
 	time = ADDICT_TIME_OFTEN
 	debuff = null
 	needsate_text = "I need a FIGHT!"
-	stress_event = /datum/stressevent/vice/thrillseeker
 	voyeur_descriptor = "eager for a fight"
-
-#define THRILLSEEKER_THRESHOLD 85
-
-/datum/sex_controller/proc/adjust_arousal_thrill(amount)
-	if(!user.has_flaw(/datum/charflaw/addiction/thrillseeker))
-		return
-	if(arousal_frozen)
-		return
-	if(last_ejaculation_time > world.time - (3 MINUTES))
-		return
-	if(arousal >= THRILLSEEKER_THRESHOLD)
-		return
-	set_arousal(min(arousal + amount, THRILLSEEKER_THRESHOLD))
-
-/datum/sex_controller/proc/thrill_climax()
-	if(!user.has_flaw(/datum/charflaw/addiction/thrillseeker))
-		return
-	user.sate_addiction(/datum/charflaw/addiction/thrillseeker)
-	user.add_stress(/datum/stressevent/thrill)
-	last_ejaculation_time = world.time
-	if(prob(1))
-		user.emote("groan", forced = TRUE)
-
-#undef THRILLSEEKER_THRESHOLD
 
 /datum/charflaw/addiction/clamorous
 	name = "Clamorous"
@@ -371,7 +308,6 @@
 	ui_fa_icon = "volume-high"
 	time = ADDICT_TIME_FREQUENT
 	needsate_text = "It's too quiet. Where's the yelling? The fighting?"
-	stress_event = /datum/stressevent/vice/clamorous
 	voyeur_descriptor = "soothed by noise"
 	debuff = null
 	partial_sating = FALSE
@@ -382,7 +318,6 @@
 	ui_fa_icon = "user-tag"
 	time = ADDICT_TIME_OFTEN
 	needsate_text = "Am I the only one of my kind left?"
-	stress_event = /datum/stressevent/vice/paranoid
 	voyeur_descriptor = "comforted by their own"
 	partial_sating = FALSE
 	var/chosen_faction
@@ -413,7 +348,6 @@
 	ui_fa_icon = "face-grin-stars"
 	time = ADDICT_TIME_OFTEN
 	needsate_text = "I must please someone."
-	stress_event = /datum/stressevent/vice/voyeur
 	voyeur_descriptor = "pleased by others"
 	partial_sating = FALSE
 
