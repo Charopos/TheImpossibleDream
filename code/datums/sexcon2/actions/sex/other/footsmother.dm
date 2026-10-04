@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/footsmother.dm)
 /*
 /datum/sex_action/sex/other/footsmother//Blame Pots for this existing.
 	name = "Smother them with feet"

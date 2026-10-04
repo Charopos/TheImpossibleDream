@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/oral/lick_ears.dm)
 /*
 /datum/sex_action/oral/lick_ears
 	name = "Lick their ears"

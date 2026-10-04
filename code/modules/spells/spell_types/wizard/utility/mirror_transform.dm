@@ -398,16 +398,15 @@
 
 		if("Penis")
 			var/list/valid_penis_types = list("none")
-			// [SURREALIS-REMOVE] - SEXCON
+			// [SURREALIS-EDIT] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/mirror_transform.dm)
+			// SURREALIS-EDIT - ORIGINAL
 			/*
 			for(var/penis_path in subtypesof(/datum/sprite_accessory/penis))
 				var/datum/sprite_accessory/penis/penis = new penis_path()
 				valid_penis_types[penis.name] = penis_path
 			*/
-			// [/SURREALIS-REMOVE]
-			// [SURREALIS-ADD] - SEXCON
 			valid_penis_types += mirror_transform_penis_choices()
-			// [/SURREALIS-ADD]
+			// [/SURREALIS-EDIT]
 
 			var/new_style = input(H, "Choose your penis type", "Penis Customization") as null|anything in valid_penis_types
 			if(new_style)
@@ -419,7 +418,8 @@
 						H.update_body()
 						should_update = TRUE
 				else
-					// [SURREALIS-REMOVE] - SEXCON
+					// [SURREALIS-EDIT] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/mirror_transform.dm)
+					// SURREALIS-EDIT - ORIGINAL
 					/*
 					var/obj/item/organ/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
 					if(!penis)
@@ -427,12 +427,10 @@
 						penis.Insert(H, TRUE, FALSE)
 					penis.accessory_type = valid_penis_types[new_style]
 					*/
-					// [/SURREALIS-REMOVE]
-					// [SURREALIS-ADD] - SEXCON
 					var/obj/item/organ/penis/penis = mirror_transform_swap_penis(H, valid_penis_types[new_style])
 					if(!penis)
 						return
-					// [/SURREALIS-ADD]
+					// [/SURREALIS-EDIT]
 					var/datum/sprite_accessory/penis/penis_type = SPRITE_ACCESSORY(penis.accessory_type)
 					penis.accessory_colors = penis_type.get_default_colors(color_key_source_list_from_carbon(H))
 					// [SURREALIS-ADD] - SEXCON
@@ -533,7 +531,8 @@
 			if(new_size)
 				var/obj/item/organ/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
 				if(breasts)
-					// [SURREALIS-REMOVE] - SEXCON
+					// [SURREALIS-EDIT] - SEXCON
+					// SURREALIS-EDIT - ORIGINAL
 					/*
 					var/size_num
 					switch(new_size)
@@ -560,10 +559,8 @@
 
 					breasts.breast_size = size_num
 					*/
-					// [/SURREALIS-REMOVE]
-					// [SURREALIS-ADD] - SEXCON
 					breasts.breast_size = breast_sizes[new_size]
-					// [/SURREALIS-ADD]
+					// [/SURREALIS-EDIT]
 					H.update_body()
 					should_update = TRUE
 
@@ -626,15 +623,14 @@
 						should_update = TRUE
 				else
 					var/obj/item/organ/tail/tail = H.getorganslot(ORGAN_SLOT_TAIL)
-					// [SURREALIS-REMOVE] - SEXCON
+					// [SURREALIS-EDIT] - SEXCON
+					// SURREALIS-EDIT - ORIGINAL
 					/*
 					if(!tail)
 						tail = new /obj/item/organ/tail/anthro()
 						tail.Insert(H, TRUE, FALSE)
 					tail.accessory_type = valid_tails[new_style]
 					*/
-					// [/SURREALIS-REMOVE]
-					// [SURREALIS-ADD] - SEXCON
 					var/new_accessory_type = valid_tails[new_style]
 					var/wants_tail_maw = new_accessory_type == /datum/sprite_accessory/tail/manticore
 					if(!tail || wants_tail_maw != istype(tail, /obj/item/organ/tail/manticore))
@@ -642,7 +638,7 @@
 						tail = new new_tail_type()
 						tail.Insert(H, TRUE, FALSE)
 					tail.accessory_type = new_accessory_type
-					// [/SURREALIS-ADD]
+					// [/SURREALIS-EDIT]
 					var/datum/sprite_accessory/tail/tail_type = SPRITE_ACCESSORY(tail.accessory_type)
 					tail.accessory_colors = tail_type.get_default_colors(color_key_source_list_from_carbon(H))
 					H.update_body()
@@ -925,7 +921,7 @@
 					should_update = TRUE
 			else
 				to_chat(H, span_warning("You don't have a ears!"))
-		// [SURREALIS-ADD] - SEXCON
+		// [SURREALIS-ADD] - SEXCON - (New procs in modular_tidi/sexcon/code/overrides/mirror_transform.dm)
 		if("Pubes")
 			should_update = mirror_transform_pubes(H) || should_update
 		if("Pits")
@@ -1054,7 +1050,7 @@
 		H.update_hair()
 		H.update_body()
 		H.update_body_parts()
-		// [SURREALIS-ADD] - SEXCON
+		// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/controller/sexcon.dm)
 		if(H.sexcon)
 			H.sexcon.update_erect_state()
 		// [/SURREALIS-ADD]

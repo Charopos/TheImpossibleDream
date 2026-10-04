@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/sex/throat_sex.dm)
 /*
 /datum/sex_action/sex/throat
 	name = "Fuck their throat"

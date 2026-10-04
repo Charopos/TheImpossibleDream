@@ -510,24 +510,15 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	var/do_update_msg = TRUE
 	if(new_mammon_amount >= required_mammons)
 		// Feel better
-		// [SURREALIS-EDIT] - SEXCON
-		// if(user.has_stress_event(/datum/stressevent/vice)) // SURREALIS-EDIT - ORIGINAL
-		if(user.has_stress_event(/datum/stressevent/vice/greedy))
-		// [/SURREALIS-EDIT]
+		if(user.has_stress_event(/datum/stressevent/vice))
 			to_chat(user, span_blue("[new_mammon_amount] mammons... That's more like it.."))
-		// [SURREALIS-EDIT] - SEXCON
-		// user.remove_stress(/datum/stressevent/vice) // SURREALIS-EDIT - ORIGINAL
-		user.remove_stress(/datum/stressevent/vice/greedy)
-		// [/SURREALIS-EDIT]
+		user.remove_stress(/datum/stressevent/vice)
 		user.remove_status_effect(/datum/status_effect/debuff/addiction)
 		last_passed_check = world.time
 		do_update_msg = FALSE
 	else
 		// Feel bad
-		// [SURREALIS-EDIT] - SEXCON
-		// user.add_stress(/datum/stressevent/vice) // SURREALIS-EDIT - ORIGINAL
-		user.add_stress(/datum/stressevent/vice/greedy)
-		// [/SURREALIS-EDIT]
+		user.add_stress(/datum/stressevent/vice)
 		user.apply_status_effect(/datum/status_effect/debuff/addiction)
 
 	if(new_mammon_amount == last_checked_mammons)

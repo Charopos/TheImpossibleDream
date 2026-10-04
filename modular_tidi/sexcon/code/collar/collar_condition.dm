@@ -1,4 +1,4 @@
-// Helper for generating damage description text based on thresholds, used by both examine and condition summary on cursed collar UI.
+// Helper for generating damage description text based on thresholds, used by the condition summary on cursed collar UI.
 /mob/living/carbon/proc/get_damage_descriptor_text(damage_amount, minor_text, moderate_text, severe_text)
 	if(!damage_amount)
 		return null
@@ -23,10 +23,3 @@
 		return "No obvious bruises or burns"
 
 	return capitalize(jointext(conditions, "; "))
-
-/mob/living/carbon/proc/carbon_modular_examine_lines(mob/user, t_He, m1, m2, m3)
-	var/list/lines = list()
-	var/list/ext_lines = carbon_modular_examine_extension(user, t_He, m1, m2, m3)
-	if(length(ext_lines))
-		lines += ext_lines
-	return lines

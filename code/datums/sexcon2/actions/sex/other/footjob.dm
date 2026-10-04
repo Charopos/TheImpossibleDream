@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/footjob.dm)
 /*
 /datum/sex_action/sex/other/footjob
 	name = "Jerk them off with feet"

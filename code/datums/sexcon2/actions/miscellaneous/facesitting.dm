@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/facesitting_vaginal.dm)
 /*
 /datum/sex_action/miscellaneous/facesitting
 	name = "Sit on their face"

@@ -439,7 +439,7 @@
 	prefs.save_preferences()
 	to_chat(src, "You will [prefs.admin_chat_toggles & CHAT_ADMINSPAWN ? "see" : "not see any"] spawn logs.")
 
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/overrides/descriptors.dm)
 /*
 /client/verb/full_examine()
 	set category = "Preferences.Options"

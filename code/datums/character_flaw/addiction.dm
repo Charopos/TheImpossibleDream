@@ -23,10 +23,7 @@
 				mob_vice.partial_sate = world.time + (15 MINUTES)
 				to_chat(src, span_blue("<i>This will do... for now...</i>"))
 				mob_vice.next_sate = world.time + max((initial(mob_vice.time) / 1.5), 1)
-				// [SURREALIS-EDIT] - SEXCON
-				// remove_stress(/datum/stressevent/vice)	// These are just in case we ended up here w/ unsated vice debuffs // SURREALIS-EDIT - ORIGINAL
-				remove_stress(mob_vice.stress_event)	// These are just in case we ended up here w/ unsated vice debuffs
-				// [/SURREALIS-EDIT]
+				remove_stress(/datum/stressevent/vice)	// These are just in case we ended up here w/ unsated vice debuffs
 				if(mob_vice.debuff)
 					remove_status_effect(mob_vice.debuff)
 				sate_voyeurs(mob_vice)
@@ -40,10 +37,7 @@
 	mob_vice.time = initial(mob_vice.time) //reset roundstart sate offset to standard
 	mob_vice.partial_sate = world.time + (5 MINUTES)
 	mob_vice.next_sate = world.time + max(mob_vice.time, 1)
-	// [SURREALIS-EDIT] - SEXCON
-	// remove_stress(/datum/stressevent/vice) // SURREALIS-EDIT - ORIGINAL
-	remove_stress(mob_vice.stress_event)  // Remove vice-specific stress event
-	// [/SURREALIS-EDIT]
+	remove_stress(/datum/stressevent/vice)
 	if(mob_vice.debuff)
 		remove_status_effect(mob_vice.debuff)
 
@@ -95,10 +89,7 @@
 		if(needsate_text)
 			to_chat(user, span_boldwarning("[needsate_text]"))
 	if(!sated)
-		// [SURREALIS-EDIT] - SEXCON
-		// H.add_stress(/datum/stressevent/vice) // SURREALIS-EDIT - ORIGINAL
-		H.add_stress(stress_event)  // Use vice-specific stress event
-		// [/SURREALIS-EDIT]
+		H.add_stress(/datum/stressevent/vice)
 		if(debuff)
 			H.apply_status_effect(debuff)
 

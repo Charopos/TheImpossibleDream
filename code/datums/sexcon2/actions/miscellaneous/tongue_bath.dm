@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/tonguebath.dm)
 /*
 /datum/sex_action/miscellaneous/tonguebath
 	name = "Bathe with tongue"

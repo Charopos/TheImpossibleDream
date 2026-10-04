@@ -260,7 +260,7 @@
 		str += beltl.integrity_check(is_smart)
 		. += str
 
-	// [SURREALIS-ADD] - SEXCON
+	// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/human_examine.dm)
 	. += human_chastity_examine_lines(user, m1, m2, m3)
 	// [/SURREALIS-ADD]
 	//shoes
@@ -725,12 +725,13 @@
 	if(show_descriptors)
 		var/list/lines
 		if((get_face_name() != real_name) && !observer_privilege)
-			// [SURREALIS-EDIT] - SEXCON
+			// [SURREALIS-EDIT] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/descriptors.dm)
 			// lines = build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src) // SURREALIS-EDIT - ORIGINAL
 			lines = surrealis_build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src, user)
 			// [/SURREALIS-EDIT]
 		else
-			// [SURREALIS-REMOVE] - SEXCON
+			// [SURREALIS-EDIT] - SEXCON - (New procs in modular_tidi/sexcon/code/overrides/descriptors.dm and modular_tidi/sexcon/code/overrides/human_examine.dm)
+			// SURREALIS-EDIT - ORIGINAL
 			/*
 			lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 
@@ -748,15 +749,13 @@
 
 		. += app_str
 			*/
-			// [/SURREALIS-REMOVE]
-			// [SURREALIS-ADD] - SEXCON
 			lines = surrealis_build_cool_description(get_mob_descriptors(obscure_name, user), src, user)
 
 		for(var/line in lines)
 			. += span_info(line)
 
 	. += human_brand_examine_lines(m2)
-	// [/SURREALIS-ADD]
+	// [/SURREALIS-EDIT]
 
 	if(dna?.species?.type == /datum/species/gnoll)
 		if(istype(user, /mob/living/carbon/human)) //Submitting this one upstream because not our shitcode for once
@@ -906,7 +905,7 @@
 				else
 					. += span_notice("A noble!")
 
-		// [SURREALIS-ADD] - SEXCON
+		// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/human_examine.dm)
 		. += human_sex_status_examine_lines(user, observer_privilege, m1, m2, m3)
 		// [/SURREALIS-ADD]
 		if(HAS_TRAIT(src, TRAIT_RESIDENT))

@@ -37,7 +37,7 @@
 		if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
 			if(get_location_accessible(src, BODY_ZONE_PRECISE_GROIN, skipundies = TRUE))
 				if(!underwear)
-					// [SURREALIS-ADD] - SEXCON
+					// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/chastity/chastity_hooks.dm)
 					modular_handle_chastity_middleclick_strip(user)
 					// [/SURREALIS-ADD]
 					return
@@ -100,7 +100,7 @@
 	if(npc_archetype)
 		init_npc_archetype()
 
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/overrides/human.dm)
 /*
 /mob/living/carbon/human/Login()
 	. = ..()
@@ -329,7 +329,7 @@
 		dat += "<tr><td><hr></td></tr>"
 		dat += "<tr><td><B>Underwear:</B> <A href='?src=[REF(src)];undiesthing=1'>[!underwear ? "Nothing" : "Remove"]</A></td></tr>"
 		dat += "<tr><td><B>Legwear:</B> <A href='?src=[REF(src)];legwearsthing=1'>[!legwear_socks ? "Nothing" : "Remove"]</A></td></tr>"
-		// [SURREALIS-ADD] - SEXCON
+		// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/human.dm)
 		dat += modular_strippanel_chastity_rows()
 		// [/SURREALIS-ADD]
 #endif

@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/oral/crotch_nuzzle.dm)
 /*
 /datum/sex_action/oral/crotch_nuzzle
 	name = "Nuzzle their crotch"

@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/buttjob_other.dm)
 /*
 /datum/sex_action/sex/buttjob
 	name = "Use their butt to get off"

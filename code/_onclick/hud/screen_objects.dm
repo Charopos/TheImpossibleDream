@@ -1911,7 +1911,7 @@
 					M.add_stress(/datum/stressevent/triumph)
 					M.adjust_triumphs(-3)
 					M.playsound_local(M, 'sound/misc/notice (2).ogg', 100, FALSE)
-					// [SURREALIS-ADD] - SEXCON
+					// [SURREALIS-ADD] - SEXCON - (New procs in modular_tidi/sexcon/code/controller/sexcon.dm)
 					M.sexcon?.set_charge(M.sexcon.get_max_charge())
 					// [/SURREALIS-ADD]
 

@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/rub_body.dm)
 /*
 /datum/sex_action/miscellaneous/rub_body
 	name = "Rub their body"

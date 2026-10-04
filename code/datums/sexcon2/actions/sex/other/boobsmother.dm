@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/tit_smother.dm)
 /*
 /datum/sex_action/sex/other/boobsmother
 	name = "Smother them with boobs"

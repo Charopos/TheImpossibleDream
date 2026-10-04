@@ -1,9 +1,3 @@
-/mob/living/carbon/proc/carbon_modular_examine_extension(mob/user, t_He, m1, m2, m3)
-	var/list/lines = list()
-	if(sexcon?.has_chastity_cage() && get_location_accessible(src, BODY_ZONE_PRECISE_GROIN))
-		lines += "[t_He] is wearing a chastity device!\n"
-	return lines
-
 /mob/living/carbon/human/proc/human_modular_examine_extension(mob/user, observer_privilege, m1, m2, m3)
 	var/list/lines = list()
 	var/user_is_gnoll = FALSE

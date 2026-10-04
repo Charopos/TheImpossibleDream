@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/magic/prestidigitation_penis.dm)
 /*
 /datum/sex_action/masturbate/other/magejob
 	name = "Jerk them off with magehand"

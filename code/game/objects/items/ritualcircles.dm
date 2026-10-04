@@ -2099,7 +2099,7 @@ More uniquely, her rites always cut out the light in the room, then proc. 10 sec
 		return
 	var/riteselection = input(user, "Rituals of Unity", src) as null|anything in baotharites
 	switch(riteselection) // put ur rite selection here
-		// [SURREALIS-ADD] - SEXCON
+		// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/ritual_circles.dm)
 		if("Unholy Boon of Fertility")
 			fertility_boon_rite(user)
 		// [/SURREALIS-ADD]

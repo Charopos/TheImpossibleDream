@@ -266,7 +266,8 @@
 		else
 			playsound(M.loc, "nodmg", 100, FALSE, -1)
 
-		// [SURREALIS-REMOVE] - SEXCON
+		// [SURREALIS-EDIT] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/addictions.dm)
+		// SURREALIS-EDIT - ORIGINAL
 		/*
 		if(M.has_flaw(/datum/charflaw/addiction/thrillseeker))
 			var/datum/component/arousal/CAR = M.GetComponent(/datum/component/arousal)
@@ -278,11 +279,9 @@
 			if(CAR)
 				CAR.adjust_arousal_special(src, 2)
 		*/
-		// [/SURREALIS-REMOVE]
-		// [SURREALIS-ADD] - SEXCON
 		M.sexcon?.adjust_arousal_thrill(2)
 		user.sexcon?.adjust_arousal_thrill(2)
-		// [/SURREALIS-ADD]
+		// [/SURREALIS-EDIT]
 
 		user.changeMaxDodge(2)
 		user.dodgetime = clamp(user.dodgetime - 2, 0, CLICK_CD_DODGE)

@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/toy/toy_oral.dm)
 /*
 /datum/sex_action/toy/oral
 	name = "Suck off toy"

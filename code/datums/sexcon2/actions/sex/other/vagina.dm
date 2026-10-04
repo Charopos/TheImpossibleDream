@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/sex/vaginal_ride_sex.dm)
 /*
 /datum/sex_action/sex/other/vagina
 	name = "Ride them with cunt"

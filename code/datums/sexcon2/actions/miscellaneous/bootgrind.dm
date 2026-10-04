@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/stompjob.dm)
 /*
 /datum/sex_action/miscellaneous/stompjob
 	name = "Stomp on them"

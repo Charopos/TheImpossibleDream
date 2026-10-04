@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/grinding.dm)
 /*
 /datum/sex_action/miscellaneous/grind_body
 	name = "Grind against them"

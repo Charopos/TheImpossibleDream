@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/toy/toy_other_vaginal.dm)
 /*
 /datum/sex_action/toy/other/vagina
 	name = "Fuck their cunt using toy"

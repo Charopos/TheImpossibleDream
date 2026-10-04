@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/force/force_titjob.dm)
 /*
 /datum/sex_action/sex/other/boobjob
 	name = "Give them a boob job"

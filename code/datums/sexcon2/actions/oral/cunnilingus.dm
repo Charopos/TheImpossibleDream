@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/oral/cunnilingus.dm)
 /*
 /datum/sex_action/oral/cunnilingus
 	name = "Suck their clit off"

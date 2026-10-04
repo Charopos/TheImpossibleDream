@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/titjob.dm)
 /*
 /datum/sex_action/sex/boobjob
 	name = "Use their tits to get off"

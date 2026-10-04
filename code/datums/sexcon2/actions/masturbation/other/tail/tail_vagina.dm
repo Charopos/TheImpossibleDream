@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/tailpegging_vaginal.dm)
 /*
 /datum/sex_action/masturbate/other/tailjob_vagina
 	name = "Prod their cunt with a tail"

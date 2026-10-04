@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/controller/sex_action.dm)
 /*
 /datum/sex_action/masturbate/other
 	abstract_type = /datum/sex_action/masturbate/other

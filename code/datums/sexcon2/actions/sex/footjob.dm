@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/force/force_footjob.dm)
 /*
 /datum/sex_action/sex/footjob
 	name = "Use their feet to get off"

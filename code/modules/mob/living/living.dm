@@ -1232,7 +1232,7 @@
 	else if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire() //stop, drop, and roll
-		// [SURREALIS-ADD] - SEXCON
+		// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/living.dm)
 		else if(has_status_effect(/datum/status_effect/leash_pet))
 			if(istype(src, /mob/living/carbon))
 				src:resist_leash()

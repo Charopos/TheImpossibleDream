@@ -1,41 +1,3 @@
-/datum/charflaw/addiction/var/stress_event = /datum/stressevent/vice
-
-/datum/charflaw/addiction/alcoholic
-	stress_event = /datum/stressevent/vice/alcoholic
-
-/datum/charflaw/addiction/junkie
-	stress_event = /datum/stressevent/vice/junkie
-
-/datum/charflaw/addiction/smoker
-	stress_event = /datum/stressevent/vice/smoker
-
-/datum/charflaw/addiction/caffiend
-	stress_event = /datum/stressevent/vice/caffiend
-
-/datum/charflaw/addiction/godfearing
-	stress_event = /datum/stressevent/vice/godfearing
-
-/datum/charflaw/addiction/sadist
-	stress_event = /datum/stressevent/vice/sadist
-
-/datum/charflaw/addiction/masochist
-	stress_event = /datum/stressevent/vice/masochist
-
-/datum/charflaw/addiction/lovefiend
-	stress_event = /datum/stressevent/vice/nympho
-
-/datum/charflaw/addiction/thrillseeker
-	stress_event = /datum/stressevent/vice/thrillseeker
-
-/datum/charflaw/addiction/clamorous
-	stress_event = /datum/stressevent/vice/clamorous
-
-/datum/charflaw/addiction/paranoid
-	stress_event = /datum/stressevent/vice/paranoid
-
-/datum/charflaw/addiction/voyeur
-	stress_event = /datum/stressevent/vice/voyeur
-
 /// For sex freaks. Manually raising their arousal prevents their vices from being sated. Try jerking off.
 /datum/status_effect/debuff/false_sensation
 	id = "false_sensation"
@@ -54,7 +16,6 @@
 	desc = "I've been branded by a Baothan mark."
 	time = 45 MINUTES
 	needsate_text = "My brand burns painfully."
-	stress_event = /datum/stressevent/vice/baothamarked
 	sated_text = "The brand's glow lessens, relief washing over me..."
 	debuff = /datum/status_effect/debuff/addiction/baothamarked
 

@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/magic/prestidigitation_vagina.dm)
 /*
 /datum/sex_action/masturbate/other/magejob_vagina
 	name = "Finger their cunt with magehand"

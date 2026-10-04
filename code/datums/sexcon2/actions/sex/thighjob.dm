@@ -1,4 +1,4 @@
-// [SURREALIS-REMOVE] - SEXCON
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/sex_actions/deviant/thighjob.dm)
 /*
 /datum/sex_action/sex/thighjob
 	name = "Use their thighs to get off"
