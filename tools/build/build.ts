@@ -83,7 +83,6 @@ export const DmTarget = new Juke.Target({
     'sound/**',
     'tgui/public/tgui.html',
     'modular/**',
-    'modular_tidi/**',
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
