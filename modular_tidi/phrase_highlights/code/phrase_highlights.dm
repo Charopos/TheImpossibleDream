@@ -1,6 +1,6 @@
 /proc/highlight_phrases(text)
 	for(var/phrase in GLOB.phrase_highlights)
-		var/regex/reg = regex("(\\w*[REGEX_QUOTE(html_encode(phrase))]\\w*)(?!\[^<\]*>)", "gi")
+		var/regex/reg = regex("([REGEX_QUOTE(html_encode(phrase))])(?!\[^<\]*>)", "gi")
 		text = reg.Replace(text, "<span data-component=\"TooltipHTML\" data-html=\"[html_encode(GLOB.phrase_highlights[phrase])]\" style=\"color:#ad456d\">$1</span>")
 	return text
 

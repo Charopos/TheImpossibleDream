@@ -1,6 +1,7 @@
 GLOBAL_LIST_INIT(phrase_highlights, list(
-	"anathema" = "The Inverse Quaternity: the ascendant Demiurge and its abominable allies of the Infernus.",
+	"of the anathema" = "Something of the Inverse Quaternity.",
 	"of anathema" = "Something of the Inverse Quaternity.",
+	"anathema" = "The Inverse Quaternity: the ascendant Demiurge and its abominable allies of the Infernus.",
 	"anatheme" = "ZIZO.",
 	"domineme" = "GRAGGAR.",
 	"anarcheme" = "MATTHIOS.",
