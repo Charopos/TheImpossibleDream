@@ -1,6 +1,6 @@
 /datum/patron/inhumen/matthios
 	name = "Matthios"
-	domain = "God of Exchange, Alchemy, Theft, and Greed"
+	domain = "God of Ignition, Alchemy, Theft, and Greed"
 	desc = "Matthios, the Grinning God, the Fiddler-upon-Flames, the Great Leveller, is a Divine Will disparate from his allies of the Infernus. Where they are maelstroms of force, encompassing against all else, Matthios’ works are like lightning, sparking direct and targeted. His greatest works crack the sky once, inspire, and thus ignite embers that, when unified together, form a raging inferno that envelops the world. The Matthic hope is simple: to bring forth the Great Change, which looms ever on the horizon. \n \n\
 	In chaos, he is in his element. His voice echoes through a rabid mob; his hands tear the corrupt from their thrones. His mad laughter is the crackle of flame, pillage, and ignition. He is the leader of all free men - the truly free; free from law, expectation, hierarchy, and rule. \n \n\
 	It is well known that Matthios walks among men; as an actor does on stage. In these forms, his appearance shifts; the character ever-changing. These masks are known as Gilt Saints to the loyal: the minstrel, the thief, the folk hero and liberator - seducer of Queens, assassin of Kings, and rebel of regimes. \n \n\
