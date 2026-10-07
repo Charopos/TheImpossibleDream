@@ -16,17 +16,10 @@ Anyone that wants to edit this further can futz with the `code/species_renames.d
 
 ## Layout
 
-<<<<<<< Updated upstream
-- `_phrase_highlights.dme`: the module's .dme.
-- `code/phrase_list.dm`: the words and their definitions.
-- `code/phrase_highlights.dm`: the proc override to make it work.
-
-## Core files changed
 =======
 - `species_renames.dme`: the module's .dme.
 - `code/species_renames.dm`: The main body of work - the renames and re-descriptions.
-
+- 
 ## Core files changed
 
 N/A! We're good!
->>>>>>> Stashed changes
