@@ -425,8 +425,6 @@ Here, in the Pharos, what is impossible becomes possible.
 	<details style="max-width:800px; margin:0 auto;">
 		<summary><strong> KAZENGUN </strong></summary>
 		<br>
-		<em>// Sister-Kingdoms of Mystique //</em>
-		<br><br>
 		<em>// Realm of Reeds and Far-flung-Frontiers //</em>
 		<br><br>
 		Located far easterly, across difficult, choppy seas, the Khazan continent is a distant, disparate collection of states - equal in scale and complexity to that of the Midderland and Southerland. While travelers, immigrants, and local scholars had long been aware of its existence, it took the Grenz's aerostatics to finally carve a stable route for intercontinental exchange.
