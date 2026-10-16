@@ -1615,13 +1615,6 @@
 	created_item = /obj/item/rogueweapon/halberd/silver
 	display_category = ITEM_CAT_WEAPONS_POLEARMS
 
-/datum/anvil_recipe/weapons/silver/knuckledusters
-	name = "Knuckledusters, Silver"
-	category = "Silver"
-	req_bar = /obj/item/ingot/silver
-	created_item = /obj/item/rogueweapon/knuckledusters/silver
-	display_category = ITEM_CAT_WEAPONS_MACES
-
 /datum/anvil_recipe/weapons/silver/scythe
 	name = "Scythe, Silver (+1 Small Log)"
 	category = "Silver"
@@ -2055,7 +2048,8 @@
 // HOLY STEEL
 
 /datum/anvil_recipe/weapons/holysteel/church_longsword
-	name = "Longsword, Templaric (+1 Amulet of the Pantheon)"
+	name = "Longsword, Templaric (+1 Amulet of Ten)"
+	category = "Holy Steel"
 	req_bar = /obj/item/ingot/steelholy
 	additional_items = /obj/item/clothing/neck/roguetown/psicross/undivided
 	created_item = /obj/item/rogueweapon/sword/long/church
@@ -2063,7 +2057,8 @@
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/holysteel/church_spear
-	name = "Spear, Templaric (+1 Holy Steel, +1 Amulet of the Pantheon)"
+	name = "Spear, Templaric (+1 Holy Steel, +1 Amulet of Ten)"
+	category = "Holy Steel"
 	req_bar = /obj/item/ingot/steelholy
 	additional_items = list(/obj/item/ingot/steelholy, /obj/item/clothing/neck/roguetown/psicross/undivided)
 	created_item = /obj/item/rogueweapon/spear/holysee
@@ -2071,7 +2066,8 @@
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/holysteel/decasword
-	name = "Longsword, Pentablessed (+1 Holy Steel, +1 Amulet of the Pantheon)"
+	name = "Longsword, Decablessed (+1 Holy Steel, +1 Amulet of Ten)"
+	category = "Holy Steel"
 	req_bar = /obj/item/ingot/steelholy
 	additional_items = list(/obj/item/ingot/steelholy, /obj/item/clothing/neck/roguetown/psicross/undivided)
 	created_item = /obj/item/rogueweapon/sword/long/undivided
@@ -2079,7 +2075,8 @@
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/holysteel/decashield
-	name = "Shield, Pentablessed (+1 Holy Steel, +1 Amulet of the Pantheon)"
+	name = "Shield, Decablessed (+1 Holy Steel, +1 Amulet of Ten)"
+	category = "Holy Steel"
 	req_bar = /obj/item/ingot/steelholy
 	additional_items = list(/obj/item/ingot/steelholy, /obj/item/clothing/neck/roguetown/psicross/undivided)
 	created_item = /obj/item/rogueweapon/shield/tower/holysee
@@ -2146,14 +2143,6 @@
 	req_bar = /obj/item/ingot/silverblessed
 	created_item = /obj/item/rogueweapon/katar/psydon
 	display_category = ITEM_CAT_WEAPONS_SWORDS
-	i_type = "Weapons"
-
-/datum/anvil_recipe/weapons/psy/knuckles
-	name = "Psydonic Knuckledusters"
-	category = "Blessed Silver"
-	req_bar = /obj/item/ingot/silverblessed
-	created_item = /obj/item/rogueweapon/knuckledusters/psy
-	display_category = ITEM_CAT_WEAPONS_MACES
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/psy/armingsword

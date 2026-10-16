@@ -60,7 +60,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	var/HTML = {"
 		<i>You can choose a favorite subclass here. You'll automatically select this subclass on roundstart if possible.</i><br/><br/>
 		<b>Selected class:</b> <a href="?src=[REF(src)];class=1">[favorite_name]</a><br/>
+		<!-- \[SURREALIS-EDIT\] - LORE -->
+		<!-- <i>You can choose your ducal colors here; this will only take effect if both are set.</i><br/> SURREALIS-EDIT - ORIGINAL -->
 		<i>You can choose your courtly colors here; this will only take effect if both are set.</i><br/>
+		<!-- \[/SURREALIS-EDIT\] -->
 		<b>Primary color:</b> <a href="?src=[REF(src)];primcolor=1">[roleprefs["primcolor"] || "Choose"]</a><br/>
 		<b>Secondary color:</b> <a href="?src=[REF(src)];seccolor=1">[roleprefs["seccolor"] || "Choose"]</a><br/>
 		<center><a href="?src=[REF(src)];subprefsexit=1">EXIT</a>\t\t<a href="?src=[REF(src)];subprefsreset=1">RESET</a></center>
@@ -99,7 +102,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 		else
 			GLOB.lordsurname = "of [L.real_name]"
 		SSticker.set_ruler_mob(L)
+		// [SURREALIS-EDIT] - LORE
+		// var/realm = SSticker.realm_name || "Azure Peak" // SURREALIS-EDIT - ORIGINAL
 		var/realm = SSticker.realm_name || "Pharos"
+		// [/SURREALIS-EDIT]
 		to_world("<b><span class='notice'><span class='big'>[L.real_name] is [SSticker.rulertype] of [realm].</span></span></b>")
 		if(istype(SSticker.regentmob, /mob/living/carbon/human))
 			var/mob/living/carbon/human/regentbuddy = SSticker.regentmob
@@ -125,12 +131,12 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			}
 
 /datum/outfit/job/roguetown/lord
-	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
-	cloak = /obj/item/clothing/cloak/lordcloak
+	neck = /obj/item/clothing/neck/roguetown/ornateamulet/noble
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
-	beltl = /obj/item/storage/keyring/lord
 	beltr = /obj/item/rogueweapon/scabbard/sword/royal
-	backr = /obj/item/storage/backpack/rogue/satchel
+	pants = /obj/item/clothing/under/roguetown/tights/puritan
+	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord/heavy //DNR guarrenteed role, won't save you since your legs are unarmored by default, but it at least prevents a cheap swift-intent gutspill ending you.
+	shoes = /obj/item/clothing/shoes/roguetown/rosa/nine
 	id = /obj/item/scomstone/garrison
 
 /datum/outfit/job/roguetown/lord/pre_equip(mob/living/carbon/human/H)
@@ -141,17 +147,12 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	else
 		to_chat(H, span_warning("My crown must be yet in the realm. I shall search it out."))
 	if(should_wear_femme_clothes(H))
-		pants = /obj/item/clothing/under/roguetown/tights/black
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
 		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal
 		cloak = /obj/item/clothing/cloak/lordcloak/ladycloak
 		wrists = /obj/item/clothing/wrists/roguetown/royalsleeves
-		shoes = /obj/item/clothing/shoes/roguetown/shortboots
 	else if(should_wear_masc_clothes(H))
-		pants = /obj/item/clothing/under/roguetown/tights/black
-		shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/black
-		armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
-		shoes = /obj/item/clothing/shoes/roguetown/boots
+		armor = /obj/item/clothing/suit/roguetown/shirt/dress/royal/prince/lord
+		cloak = /obj/item/clothing/cloak/lordcloak
 	saiga_shoes = /obj/item/clothing/shoes/roguetown/horseshoes/gold
 	if(H.wear_mask)
 		if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/eyepatch))
@@ -167,7 +168,10 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	var/client/player = H?.client
 	if(player.prefs)
 		if(!istype(player.prefs.virtue_origin, /datum/virtue/origin/azuria) && !istype(player.prefs.virtue_origin, /datum/virtue/origin/grenzelhoft) && !istype(player.prefs.virtue_origin, /datum/virtue/origin/otava) && !istype(player.prefs.virtue_origin, /datum/virtue/origin/etrusca))
+			// [SURREALIS-EDIT] - LORE
+			// var/list/new_origins = list("Azuria" = /datum/virtue/origin/azuria, // SURREALIS-EDIT - ORIGINAL
 			var/list/new_origins = list("Pharos" = /datum/virtue/origin/azuria,
+			// [/SURREALIS-EDIT]
 			"Grenzelhoft" = /datum/virtue/origin/grenzelhoft,
 			"Otava" = /datum/virtue/origin/otava,
 			"Etrusca" = /datum/virtue/origin/etrusca)
@@ -220,13 +224,22 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	)
 
 	subclass_stashed_items = list(
-		"County Caparison (Saiga)" = /obj/item/caparison/azure,
+		"Ducal Caparison (Saiga)" = /obj/item/caparison/azure,
 		"Fogbeast Caparison" = /obj/item/caparison/fogbeast)
 
 /datum/outfit/job/roguetown/lord/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
 	l_hand = /obj/item/rogueweapon/lordscepter
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/blueprint/mace_mushroom = 1, /obj/item/hunting_map/white_stag = 1)
+	//assigned per subclass to prevent duplication glitches with items
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/storage/keyring/lord = 1,
+		/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/decorated = 1, 
+		/obj/item/blueprint/mace_mushroom = 1, 
+		/obj/item/hunting_map/white_stag = 1, 
+		/obj/item/rogueweapon/scabbard/sheath/royal = 1
+	)
 
 /**
 	Merchant Lord subclass. Consider this an evolution from Sheltered Aristocrat.
@@ -237,7 +250,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/merchant
 	name = "Merchant Lord"
-	tutorial = "You were always talented with coins and trade. And your talents have brought you to the position of the Lord of Pharos, and its Scar. You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins. Fighting directly is not your forte\
+	tutorial = "You were always talented with coins and trade. And your talents have brought you to the position of the Lord of Azure Peak. You could be a merchant who bought his way into nobility and power, or an exceptionally talented noble who were inclined to be good with coins. Fighting directly is not your forte\
 	But you have plenty of wealth, keen ears, and know a good deal from a bad one."
 	outfit = /datum/outfit/job/roguetown/lord/merchant
 	category_tags = list(CTAG_LORD)
@@ -270,13 +283,22 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	)
 
 	subclass_stashed_items = list(
-		"County Caparison (Saiga)" = /obj/item/caparison/azure,
+		"Ducal Caparison (Saiga)" = /obj/item/caparison/azure,
 		"Fogbeast Caparison" = /obj/item/caparison/fogbeast)
 
 /datum/outfit/job/roguetown/lord/merchant/pre_equip(mob/living/carbon/human/H)
 	..()
 	l_hand = /obj/item/rogueweapon/lordscepter
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/blueprint/mace_mushroom = 1, /obj/item/hunting_map/white_stag = 1)
+	//assigned per subclass to prevent duplication glitches with items
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/storage/keyring/lord = 1,
+		/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/decorated = 1, 
+		/obj/item/blueprint/mace_mushroom = 1, 
+		/obj/item/hunting_map/white_stag = 1, 
+		/obj/item/rogueweapon/scabbard/sheath/royal = 1
+	)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/secular)
 
@@ -320,13 +342,24 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	)
 
 	subclass_stashed_items = list(
-		"County Caparison (Saiga)" = /obj/item/caparison/azure,
+		"Ducal Caparison (Saiga)" = /obj/item/caparison/azure,
 		"Fogbeast Caparison" = /obj/item/caparison/fogbeast)
 
 /datum/outfit/job/roguetown/lord/mage/pre_equip(mob/living/carbon/human/H)
 	..()
 	l_hand = /obj/item/rogueweapon/lordscepter
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rogueweapon/spellbook = 1, /obj/item/chalk = 1, /obj/item/blueprint/mace_mushroom = 1, /obj/item/hunting_map/white_stag = 1)
+	//assigned per subclass to prevent duplication glitches with items
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/storage/keyring/lord = 1,
+		/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/decorated = 1, 
+		/obj/item/blueprint/mace_mushroom = 1, 
+		/obj/item/hunting_map/white_stag = 1, 
+		/obj/item/rogueweapon/scabbard/sheath/royal = 1
+	)
+
+	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/rogueweapon/spellbook = 1, /obj/item/blueprint/mace_mushroom = 1, /obj/item/chalk = 1, /obj/item/hunting_map/white_stag = 1,)
 
 /**
 	Inbred Lord subclass. A joke class, evolution of the Inbred Wastrel.
@@ -337,7 +370,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 */
 /datum/advclass/lord/inbred
 	name = "Inbred Lord"
-	tutorial = "Psydon and Astrata smiles upon you. For despite your inbred and weak body, and your family's conspiracies to remove you from succession, you have somehow become the Lord of Pharos, and its Scar. May your reign lasts a hundred years."
+	tutorial = "Psydon and Astrata smiles upon you. For despite your inbred and weak body, and your family's conspiracies to remove you from succession, you have somehow become the Lord of Azure Peak. May your reign lasts a hundred years."
 	outfit = /datum/outfit/job/roguetown/lord/inbred
 	category_tags = list(CTAG_LORD)
 	traits_applied = list(TRAIT_NOBLE, TRAIT_CRITICAL_WEAKNESS, TRAIT_NORUN, TRAIT_HEAVYARMOR, TRAIT_GOODLOVER, TRAIT_DNR)
@@ -362,13 +395,22 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	)
 
 	subclass_stashed_items = list(
-		"County Caparison (Saiga)" = /obj/item/caparison/azure,
+		"Ducal Caparison (Saiga)" = /obj/item/caparison/azure,
 		"Fogbeast Caparison" = /obj/item/caparison/fogbeast)
 
 /datum/outfit/job/roguetown/lord/inbred/pre_equip(mob/living/carbon/human/H)
 	..()
 	l_hand = /obj/item/rogueweapon/lordscepter
-	backpack_contents = list(/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, /obj/item/blueprint/mace_mushroom = 1, /obj/item/hunting_map/white_stag = 1)
+	//assigned per subclass to prevent duplication glitches with items
+	backr = /obj/item/storage/backpack/rogue/satchel/black
+	backpack_contents = list(
+		/obj/item/storage/keyring/lord = 1,
+		/obj/item/storage/belt/rogue/pouch/coins/veryrich = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel/decorated = 1, 
+		/obj/item/blueprint/mace_mushroom = 1, 
+		/obj/item/hunting_map/white_stag = 1, 
+		/obj/item/rogueweapon/scabbard/sheath/royal = 1
+	)
 	H.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1), TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, pick(0,0,1), TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, pick(0,1), TRUE)

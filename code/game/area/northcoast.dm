@@ -1,6 +1,6 @@
 // Azure Coast - the northern part of the map - may not be actually coast
 /area/rogue/outdoors/beach/forest
-	name = "Scarred Coast"
+	name = "Azure Coast"
 	loot_budget = LOOT_BUDGET_AZURE_COAST
 	loot_pool_key = "azure_coast"
 	icon_state = "beach"
@@ -13,26 +13,13 @@
 	droning_sound_dusk = 'sound/music/area/septimus.ogg'
 	droning_sound_night = 'sound/music/area/sleeping.ogg'
 	soundenv = 15
-	ambush_times = list("night","dusk")
+	ambush_factions = list()
 	ambush_mobs = list(
-				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
-				/mob/living/simple_animal/hostile/retaliate/rogue/mole = 10,
-				/mob/living/simple_animal/hostile/retaliate/rogue/bobcat = 20,
-				/mob/living/simple_animal/hostile/retaliate/rogue/direbear = 15,
-				/mob/living/carbon/human/species/human/northern/searaider/ambush = 10,
-				/mob/living/carbon/human/species/human/northern/searaider/archer/ambush = 3,
-				/mob/living/carbon/human/species/human/northern/searaider/huscarl/ambush = 4,
-				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30,
-				/mob/living/carbon/human/species/orc/npc/footsoldier = 10,
-				/mob/living/carbon/human/species/orc/npc/archer = 3,
-				/mob/living/carbon/human/species/orc/npc/berserker = 10,
-				/mob/living/carbon/human/species/orc/npc/marauder = 10,
-				/mob/living/carbon/human/species/orc/npc/warlord = 4,
-				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 40,
-				/mob/living/carbon/human/species/hobgoblin/npc/ambush = 12,
-				/mob/living/carbon/human/species/goblin/npc/archer/sea = 10,
-				/datum/npc_warband/huscarl_raiding_party = 4)
-	first_time_text = "THE SCARRED COAST"
+		/mob/living/carbon/human/species/hobgoblin/npc/ambush = 4,
+		/datum/npc_warband/huscarl_raiding_party = 4,
+		/datum/npc_warband/direvolfcoastpack = 6,
+	)
+	first_time_text = "THE AZURE COAST"
 	converted_type = /area/rogue/indoors/shelter/woods
 	deathsight_message = "somewhere betwixt Abyssor's realm and Dendor's bounty"
 	threat_region = THREAT_REGION_AZUREAN_COAST
@@ -40,7 +27,7 @@
 	area_sniff_message = "You smell deadite animals."
 
 /area/rogue/outdoors/beach/forest/hamlet
-	name = "The Scarred Coast - Hamlet"
+	name = "The Azure Coast - Hamlet"
 	first_time_text = "THE HAMLET"
 	ambush_mobs = null // We don't want actual ambushes in Hamlet but we also don't want to misuse outdoors/beach lol
 	threat_region = THREAT_REGION_AZUREAN_COAST
@@ -48,11 +35,11 @@
 	area_sniff_message = "You smell deadites and the sea."
 
 /area/rogue/outdoors/beach/forest/north
-	name = "The Scarred Coast - North"
+	name = "The Azure Coast - North"
 	threat_region = THREAT_REGION_AZUREAN_COAST
 
 /area/rogue/outdoors/beach/forest/south
-	name = "The Scarred Coast - South"
+	name = "The Azure Coast - South"
 	threat_region = THREAT_REGION_AZUREAN_COAST
 
 /area/rogue/under/cave/dukecourt
@@ -84,25 +71,11 @@
 	droning_sound_night = 'sound/music/area/grimforest.ogg'
 	droning_sound_dawn = 'sound/music/area/grimdawn.ogg'
 	soundenv = 15
-	ambush_times = list("night","dusk")
+	ambush_factions = list()
 	ambush_mobs = list(
-				/mob/living/simple_animal/hostile/retaliate/rogue/wolf = 30,
-				/mob/living/simple_animal/hostile/retaliate/rogue/mole = 10,
-				/mob/living/simple_animal/hostile/retaliate/rogue/bobcat = 20,
-				/mob/living/simple_animal/hostile/retaliate/rogue/direbear = 15,
-				/mob/living/carbon/human/species/human/northern/searaider/ambush = 10,
-				/mob/living/carbon/human/species/human/northern/searaider/archer/ambush = 3,
-				/mob/living/carbon/human/species/human/northern/searaider/huscarl/ambush = 4,
-				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 30,
-				/mob/living/carbon/human/species/orc/npc/footsoldier = 10,
-				/mob/living/carbon/human/species/orc/npc/archer = 3,
-				/mob/living/carbon/human/species/orc/npc/berserker = 10,
-				/mob/living/carbon/human/species/orc/npc/marauder = 10,
-				/mob/living/carbon/human/species/orc/npc/warlord = 4,
-				/mob/living/carbon/human/species/goblin/npc/ambush/sea = 40,
-				/mob/living/carbon/human/species/hobgoblin/npc/ambush = 12,
-				/mob/living/carbon/human/species/goblin/npc/archer/sea = 10,
-				/datum/npc_warband/huscarl_raiding_party = 4)
+		/mob/living/carbon/human/species/hobgoblin/npc/ambush = 6,
+		/datum/npc_warband/huscarl_raiding_party = 2,
+	)
 	first_time_text = "BILEWOOD"
 	converted_type = /area/rogue/indoors/shelter/woods/grim
 	deathsight_message = "somewhere betwixt Abyssor's realm and Dendor's bounty"

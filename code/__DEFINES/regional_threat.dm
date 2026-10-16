@@ -5,9 +5,14 @@
 #define DANGER_LEVEL_DANGEROUS "Dangerous"
 #define DANGER_LEVEL_BLEAK "Bleak"
 
+// [SURREALIS-EDIT] - LORE
+// #define THREAT_REGION_AZURE_BASIN "Azure Basin" // SURREALIS-EDIT - ORIGINAL
+// #define THREAT_REGION_AZURE_GROVE "Azure Grove" // SURREALIS-EDIT - ORIGINAL
+// #define THREAT_REGION_AZUREAN_COAST "Azurean Coast" // SURREALIS-EDIT - ORIGINAL
 #define THREAT_REGION_AZURE_BASIN "Basin of the Pharos"
 #define THREAT_REGION_AZURE_GROVE "Pharovian Grove"
 #define THREAT_REGION_AZUREAN_COAST "Scarred Coast"
+// [/SURREALIS-EDIT]
 #define THREAT_REGION_MOUNT_DECAP "Mount Decapitation"
 #define THREAT_REGION_TERRORBOG "Terrorbog"
 #define THREAT_REGION_UNDERDARK "Underdark"
@@ -22,7 +27,7 @@
 #define THREAT_TOUGH 25		// Searaider + archer, mount reaver, hard skeleton, drow raider, deepone spit/wiz
 #define THREAT_DANGEROUS 30	// Bog deserter, orc berserker/marauder, troll, bog troll, drider
 #define THREAT_DEADLY 40		// Searaider huscarl, road knight, sharpshooter, orc warlord, direbear — champion-tier
-#define THREAT_ELITE 50		// Minotaur, mirespider lurker/paralytic, dwarf skeleton — boss-tier mobs
+#define THREAT_ELITE 50		// Minotaur, mirespider lurker/paralytic, dwarf skeleton, mad-touched — boss-tier mobs
 #define THREAT_APEX 70		// Half-drakkyn, ancient dreamfiend
 #define THREAT_LEGENDARY 100 // Drakkyn broodmother
 

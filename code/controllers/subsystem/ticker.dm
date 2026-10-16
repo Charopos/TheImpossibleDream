@@ -65,13 +65,13 @@ SUBSYSTEM_DEF(ticker)
 	var/list/royals_readied = list()
 
 	/// Realm name, the location name of the current map
-	var/realm_name = "Pharos and its Scar"
+	var/realm_name = "Azure Peak"
 	/// Formal realm type (e.g. "Grand Duchy", "Most Serene Republic"). Changed by usurpation rites.
-	var/realm_type = "County"
+	var/realm_type = "Grand Duchy"
 	/// Short form for casual references (e.g. "Duchy", "Republic"). Changed by usurpation rites.
-	var/realm_type_short = "County"
+	var/realm_type_short = "Duchy"
 	/// Reports the current ruler's display name
-	var/rulertype = "Count"
+	var/rulertype = "Grand Duke"
 	/// The current ruling mob
 	var/rulermob = null
 	/// Current regent mob
@@ -447,10 +447,16 @@ SUBSYSTEM_DEF(ticker)
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/player = i
 		if(!player)
+			// [SURREALIS-EDIT] - LORE
+			// message_admins("THERES A FUCKING NULL IN THE NEW_PLAYER_LIST, REPORT IT TO AZURE DEVELOPMENT STAFF NOW!") // SURREALIS-EDIT - ORIGINAL
 			message_admins("THERES A FUCKING NULL IN THE NEW_PLAYER_LIST, REPORT IT TO SURREALIS DEVELOPMENT STAFF NOW!")
+			// [/SURREALIS-EDIT]
 			continue
 		if(!player.mind)
+			// [SURREALIS-EDIT] - LORE
+			// message_admins("THERES A MIND LACKING PLAYER IN THE NEW_PLAYER_LIST, REPORT IT TO AZURE DEVELOPMENT STAFF NOW!") // SURREALIS-EDIT - ORIGINAL
 			message_admins("THERES A MIND LACKING PLAYER IN THE NEW_PLAYER_LIST, REPORT IT TO SURREALIS DEVELOPMENT STAFF NOW!")
+			// [/SURREALIS-EDIT]
 			continue
 		if(player.ready == PLAYER_READY_TO_PLAY)
 			GLOB.joined_player_list += player.ckey
@@ -492,11 +498,13 @@ SUBSYSTEM_DEF(ticker)
 				var/atom/movable/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
 			livings += living
-			if(ishuman(living))
-				SSrole_class_handler.setup_class_handler(living)
-				try_apply_character_post_equipment(living)
 		else
 			continue
+	SSrole_class_handler.roll_roundstart_favorites(livings)
+	SSjob.settle_roll_tokens()
+	for(var/mob/living/carbon/human/human in livings)
+		SSrole_class_handler.setup_class_handler(human)
+		try_apply_character_post_equipment(human)
 	if(livings.len)
 		addtimer(CALLBACK(src, PROC_REF(release_characters), livings), 30, TIMER_CLIENT_TIME)
 
@@ -509,7 +517,7 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/proc/send_tip_of_the_round(input)
 	if(!input)
 		return
-	to_world(fieldset_block(span_purple("<b>Tip of the Round</b>"), span_purple("[html_encode(input)]"), "tipoftheround"))
+	to_world(fieldset_block(span_purple("<b>Tip of the Round</b>"), span_purple(parse_admin_spans(html_encode(input))), "tipoftheround"))
 
 /datum/controller/subsystem/ticker/proc/check_queue()
 	if(!queued_players.len)

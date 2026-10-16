@@ -79,7 +79,7 @@
 					/obj/item/clothing/neck/roguetown/psicross/xylix,)
 
 /datum/supply_pack/rogue/apparel/crosses/divinepantheonten
-	name = "Pantheonic Amulet"
+	name = "Undivided Amulet"
 	cost = 10
 	contains = list(
 					/obj/item/clothing/neck/roguetown/psicross/undivided,)
@@ -210,7 +210,7 @@
 
 /datum/supply_pack/rogue/apparel/scabbard
 	name = "Scabbard"
-	cost = 15
+	cost = 22
 	contains = list(
 					/obj/item/rogueweapon/scabbard/sword
 				)

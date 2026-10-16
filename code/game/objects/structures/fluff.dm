@@ -129,6 +129,8 @@
 	var/pass_throwing = TRUE
 	/// Throwing/Flying non mobs can always exit the turf regardless of other flags
 	var/allow_flying_outwards = TRUE
+	/// Small flying mobs can fly over
+	var/pass_flying = TRUE
 
 /obj/structure/fluff/railing/do_climb(atom/movable/A)
 	var/turf/climber_turf = get_turf(A)
@@ -177,6 +179,8 @@
 		return 1
 	if(isobserver(mover))
 		return 1
+	if(flown_over(mover))
+		return 1
 	if(isliving(mover))
 		var/mob/living/M = mover
 		if(!(M.mobility_flags & MOBILITY_STAND))
@@ -217,6 +221,9 @@
 	if(pass_throwing && leaving.throwing)
 		return
 
+	if(flown_over(leaving))
+		return
+
 	if(pass_crawl && isliving(leaving))
 		var/mob/living/M = leaving
 		if(!(M.mobility_flags & MOBILITY_STAND))
@@ -224,6 +231,12 @@
 
 	leaving.Bump(src)
 	return COMPONENT_ATOM_BLOCK_EXIT
+
+/obj/structure/fluff/railing/proc/flown_over(atom/movable/mover)
+	if(!pass_flying || !isliving(mover))
+		return FALSE
+	var/mob/living/L = mover
+	return (L.movement_type & FLYING) && L.mob_size <= MOB_SIZE_SMALL
 
 /obj/structure/fluff/railing/OnCrafted(dirin)
 	. = ..()
@@ -296,6 +309,7 @@
 	climbable = FALSE
 	max_integrity = 400
 	pass_crawl = FALSE
+	pass_flying = FALSE
 	climb_offset = 6
 
 /obj/structure/fluff/railing/fence/Initialize(mapload)
@@ -1625,8 +1639,8 @@
 	..()
 
 /obj/structure/fluff/psycross
-	name = "stone pantheon wheel"
-	desc = "Symbol of the Divine Pantheon, the religion of five - once ten, and nevermore - deities which reigns throughout most of the known world. Their divine order must be maintained."
+	name = "stone pantheon cross"
+	desc = "Symbol of the Divine Pantheon, the religion of ten - formerly eleven - deities which reigns throughout most of the known world. Their divine order must be maintained."
 	icon_state = "cross_undivided_r"
 	icon = 'icons/roguetown/misc/tallstructure.dmi'
 	break_sound = 'sound/combat/hits/onwood/destroyfurniture.ogg'
@@ -1693,14 +1707,14 @@
 		return COMPONENT_ATOM_BLOCK_EXIT
 
 /obj/structure/fluff/psycross/copper
-	name = "pantheonic wheel"
+	name = "pantheon cross"
 	icon_state = "cross_undivided_church"
 	break_sound = null
 	attacked_sound = list("sound/combat/hits/onmetal/metalimpact (1).ogg", "sound/combat/hits/onmetal/metalimpact (2).ogg")
 	chance2hear = 66
 
 /obj/structure/fluff/psycross/crafted
-	name = "wooden pantheonic wheel"
+	name = "wooden pantheon cross"
 	icon_state = "cross_undivided"
 	max_integrity = 80
 	chance2hear = 10
@@ -1714,7 +1728,7 @@
 
 /obj/structure/fluff/psycross/psycrucifix/stone
 	name = "stone psydonic crucifix"
-	desc = "Formed of stone, this great Psycross symbolises that HE is forever ENDURING."
+	desc = "Formed of stone, this great Psycross symbolises that HE is forever ENDURING. Considered a rare sight upon the Peaks."
 	icon_state = "cross_psy_r"
 	max_integrity = 120
 	chance2hear = 10
@@ -2110,15 +2124,17 @@
 	if(.)
 		return
 	to_chat(user, span_notice("I take down [src]."))
-	victim.forceMove(drop_location())
-	victim = null
+	if (victim)
+		victim.forceMove(drop_location())
+		victim = null
 	stake.forceMove(drop_location())
 	stake = null
 	qdel(src)
 
 /obj/structure/fluff/headstake/deconstruct()
-	victim.forceMove(drop_location())
-	victim = null
+	if (victim)
+		victim.forceMove(drop_location())
+		victim = null
 	stake.forceMove(drop_location())
 	stake = null
 	qdel(src)
@@ -2149,3 +2165,10 @@
 /obj/effect/wisp/prestidigitation/runelight
 	name = "arcyne mote"
 	desc = "An ethereal ball of pure light, manifested through an arcyne sigil."
+
+/obj/structure/fluff/statue/valmora
+	name = "saint valmora statue"
+	desc = "A statue of Valmora the Sword-Saint, who led the dark elves in the city-state of Llurth Dreir to slaughter the cruel lords and priests of the Arch-Enemy and begin an exodus to the surface. The dark elves of Otava praise her as a redeemer and savior."
+	icon_state = "valmora"
+	icon = 'icons/roguetown/structure/statues/statue_drow.dmi'
+	pixel_x = -16

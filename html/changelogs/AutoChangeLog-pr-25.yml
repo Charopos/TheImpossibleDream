@@ -1,0 +1,4 @@
+author: "tmyqlfpir"
+delete-after: True
+changes:
+  - qol: "Dye bins auto eject clothing on apply color"

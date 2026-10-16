@@ -104,9 +104,15 @@ export const HarborTab = (props: {
         Chartered Agent
       </span>
       <span style={{ color: INK_SOFT }}>
+        {/* [SURREALIS-EDIT] - LORE */}
+        {/* SURREALIS-EDIT - ORIGINAL */}
+        {/*
+        As an agent of the Azurian Trading Company, you are allowed to access,
+        buy the Cultural Stock of any docked ship and hail ships for the Factor.
+        */}
         As an agent of the Pharovian Trading Company, you are allowed to access,
-        view, and purchase the Cultural Stock of any docked ships, and view and
-        hail ships on behalf of the Factor.
+        buy the Cultural Stock of any docked ship and hail ships for the Factor.
+        {/* [/SURREALIS-EDIT] */}
       </span>
     </div>
   ) : null;
@@ -216,6 +222,7 @@ export const HarborTab = (props: {
       {tab === 'ships' && (
         <ShipsView
           docked={harbor.ships_docked}
+          departing={harbor.ships_departing}
           pool={harbor.ships_pool}
           dockSpotsUsed={harbor.dock_spots_used}
           dockSpotsMax={harbor.dock_spots_max}

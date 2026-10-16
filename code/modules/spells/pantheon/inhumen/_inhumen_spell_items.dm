@@ -791,7 +791,10 @@ GLOBAL_LIST_INIT(da_bubbles, list('sound/foley/bubb (1).ogg','sound/foley/bubb (
 	to_chat(user, span_notice("You begin channeling your greed into the mixture..."))
 
 	var/list/options = list(
+		// [SURREALIS-EDIT] - LORE
+		// "Ducal Peppersteak" = /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal, // SURREALIS-EDIT - ORIGINAL
 		"Noble Peppersteak" = /obj/item/reagent_containers/food/snacks/rogue/peppersteak/ducal,
+		// [/SURREALIS-EDIT]
 		"Lobster Meal" = /obj/item/reagent_containers/food/snacks/rogue/fryfish/lobster/meal,
 		"Crabcake" = /obj/item/reagent_containers/food/snacks/rogue/crabcake,
 		"Chocolate" = /obj/item/reagent_containers/food/snacks/chocolate,
@@ -1590,8 +1593,13 @@ GLOBAL_LIST_INIT(da_bubbles, list('sound/foley/bubb (1).ogg','sound/foley/bubb (
 		return
 	if(!do_after(user, 1 SECONDS))
 		return
-	to_chat(user, span_warning(swap_message))
 	playsound(user.loc, 'sound/magic/swap.ogg', 25, TRUE, -2)
+	if(findtext(LOWER_TEXT(name), "ruined"))
+		to_chat(user, span_warning("[src] crumbles into ash in your hands."))
+		new /obj/item/ash(get_turf(src))
+		qdel(src)
+		return
+	to_chat(user, span_warning(swap_message))
 	swap_form(user)
 
 /obj/item/clothing/neck/roguetown/psicross/inhumen/matthios/gilded/get_examine_highlight_status()
@@ -1675,6 +1683,7 @@ GLOBAL_LIST_INIT(da_bubbles, list('sound/foley/bubb (1).ogg','sound/foley/bubb (
 	aura_color = "#fffb00"
 	var/active_item = FALSE
 	is_important = TRUE
+	attachable = FALSE
 
 /obj/item/clothing/mask/rogue/spectacles/matthios/equipped(mob/living/carbon/human/user, slot)
 	. = ..()

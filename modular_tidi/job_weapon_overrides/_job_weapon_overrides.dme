@@ -1,0 +1,2 @@
+#include "code\ducal_standard.dm"
+#include "code\standard_bearer.dm"

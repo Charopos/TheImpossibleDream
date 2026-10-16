@@ -473,6 +473,7 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CTAG_PILGRIM		"CAT_PILGRIM"			// Pilgrim classes
 #define CTAG_ADVENTURER	"CAT_ADVENTURER"		// Adventurer classes
 #define CTAG_TOWNER		"CAT_TOWNER"			// Villager class - Villagers can use it
+#define CTAG_LAMPLIGHTER	"CAT_LAMPLIGHTER"	// Lamplighter classes
 #define CTAG_ANTAG			"CAT_ANTAG"			// Antag class - results in an antag
 #define CTAG_BANDIT			"CAT_BANDIT"		// Bandit class - Tied to the bandit antag really
 #define CTAG_ASSASSIN		"CAT_ASSASSIN"		// Assassin classes - Tied to the assassin antag for specialization
@@ -494,6 +495,7 @@ GLOBAL_LIST_EMPTY(round_join_times)
 #define CTAG_GNOLL			"CAT_GNOLL"			// Wretch-esque gnolls, graggar's chosen.
 #define CTAG_GNOLL_IMPURE	"CAT_GNOLL_IMPURE"	// Reward for beating enough gnolls.
 #define CTAG_HAG			"CAT_HAG"
+#define CTAG_NO_OUTFIT		"CAT_NO_OUTFIT"		//VL and other blank slates
 
 #define CTAG_WARDEN			"CAT_WARDEN"		// Warden class - Handles warden class selector.
 #define CTAG_WATCH			"CAT_WATCH"			// Watch class - Handles Town Watch class selector

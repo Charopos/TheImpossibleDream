@@ -99,6 +99,7 @@
 #define ADVENTURER	(1<<0)
 #define COURTAGENT	(1<<1)
 #define TRADER		(1<<2)
+#define LAMPLIGHTER (1<<3)
 
 #define INQUISITION			(1<<9)
 
@@ -147,7 +148,10 @@
 	"Courtiers" = JCOLOR_COURTIER,\
 	"Retinue" = JCOLOR_RETINUE,\
 	"Garrison" = JCOLOR_GARRISON,\
+	/* [SURREALIS-EDIT] - LORE */\
+	/* "Church" = JCOLOR_CHURCH, SURREALIS-EDIT - ORIGINAL */\
 	"Clergy" = JCOLOR_CHURCH,\
+	/* [/SURREALIS-EDIT] */\
 	"Inquisition" = JCOLOR_INQUISITION,\
 	"Burghers" = JCOLOR_BURGHER,\
 	"Guildsmen" = JCOLOR_GUILD,\
@@ -229,6 +233,7 @@
 #define JDO_ADVENTURER 9
 #define JDO_COURTAGENT 9.1
 #define JDO_TRADER 9.2
+#define JDO_LAMPLIGHTER 9.3
 
 // Inquisition
 #define JDO_INQUISITOR 10

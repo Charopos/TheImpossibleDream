@@ -10,7 +10,7 @@
 	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/monk
-	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble acolyte is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Temple. Assist the Pontifex in their daily tasks, maybe today will be the day something interesting happens."
+	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble acolyte is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Bishop in their daily tasks, maybe today will be the day something interesting happens."
 
 	display_order = JDO_ACOLYTE
 	give_bank_account = TRUE
@@ -20,6 +20,7 @@
 
 	//No nobility for you, being a member of the clergy means you gave UP your nobility. It says this in many of the church tutorial texts.
 	virtue_restrictions = list(/datum/virtue/utility/noble)
+	quirk_restrictions = list(/datum/quirk/noble)
 	job_traits = list(TRAIT_RITUALIST, TRAIT_GRAVEROBBER, TRAIT_HOMESTEAD_EXPERT, TRAIT_CLERGY)
 	advclass_cat_rolls = list(CTAG_ACOLYTE = 2)
 	job_subclasses = list(
@@ -30,7 +31,7 @@
 
 /datum/advclass/acolyte
 	name = "Acolyte"
-	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble acolyte is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Temple. Assist the Pontifex in their daily tasks, maybe today will be the day something interesting happens."
+	tutorial = "Chores, some more chores- Even more chores.. Oh how the life of a humble acolyte is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Bishop in their daily tasks, maybe today will be the day something interesting happens."
 	outfit = /datum/outfit/job/roguetown/monk/basic
 	subclass_languages = list(/datum/language/grenzelhoftian)
 	category_tags = list(CTAG_ACOLYTE)
@@ -56,7 +57,7 @@
 		/datum/skill/magic/holy = SKILL_LEVEL_MASTER,
 	)
 	subclass_stashed_items = list(
-		"The Verses and Acts of the Pantheon" = /obj/item/book/rogue/bibble,
+		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
 	)
 	tempo_capable = FALSE
 
@@ -125,7 +126,7 @@
 			cloak = /obj/item/clothing/cloak/templar/pestran
 			l_hand = /obj/item/storage/belt/rogue/surgery_bag
 		if(/datum/patron/divine/eora) //Eora content from Stonekeep
-			head = /obj/item/clothing/head/roguetown/eoramask
+			backpack_contents[/obj/item/clothing/head/roguetown/eoramask] = 1
 			neck = /obj/item/clothing/neck/roguetown/psicross/eora/g
 			cloak = /obj/item/clothing/cloak/templar/eoran
 			r_hand = /obj/item/rogueweapon/huntingknife/scissors
@@ -188,9 +189,9 @@
 			neck = /obj/item/clothing/neck/roguetown/psicross/astrata/g
 			shoes = /obj/item/clothing/shoes/roguetown/sandals
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
-	if(H.mind)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/divine_blast)
 	// -- End of section for god specific bonuses --
+	if(H.mind)
+		H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/divine_bolt)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)	//Starts off maxed out.
 	if(H.mind)

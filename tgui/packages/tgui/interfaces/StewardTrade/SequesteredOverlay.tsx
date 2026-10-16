@@ -49,7 +49,10 @@ export const SequesteredOverlay = (props: {
             color: SEAL_RED,
           }}
         >
-          {props.label} held by the Pharovian Trading Company
+          {/* [SURREALIS-EDIT] - LORE */}
+          {/* {props.label} held by the ATC SURREALIS-EDIT - ORIGINAL */}
+          {props.label} held by the PTC
+          {/* [/SURREALIS-EDIT] */}
         </div>
       </div>
     </div>

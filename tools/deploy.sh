@@ -14,6 +14,10 @@ mkdir -p \
     $1/icons/ \
 	$1/strings
 
+# [SURREALIS-ADD]
+mkdir -p $1/modular_tidi/sexcon/strings
+mkdir -p $1/modular_tidi/lore/strings
+# [/SURREALIS-ADD]
 if [ -d ".git" ]; then
   mkdir -p $1/.git/logs
   cp -r .git/logs/* $1/.git/logs/
@@ -23,6 +27,10 @@ cp roguetown.dmb roguetown.rsc $1/
 cp -r _maps/* $1/_maps/
 cp -r icons/* $1/icons/
 cp -r strings/* $1/strings/
+# [SURREALIS-ADD]
+cp -r modular_tidi/sexcon/strings/* $1/modular_tidi/sexcon/strings/
+cp -r modular_tidi/lore/strings/* $1/modular_tidi/lore/strings/
+# [/SURREALIS-ADD]
 
 #remove .dm files from _maps
 

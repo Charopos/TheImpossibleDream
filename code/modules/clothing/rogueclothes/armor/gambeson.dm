@@ -299,6 +299,9 @@
 	. = ..()
 	loadoutize()
 
+/obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft/loadout/astrocrat
+	name = "thin grenzelhoftian hip-shirt"
+
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/raneshen
 	name = "padded desert coat"
 	desc = "A slim-fitting sherwani, a Ranesheni-styled coat meant to endure in the desert's climate. This one is heavily padded, meant for a warrior to wear."
@@ -323,14 +326,14 @@
 	loadoutize()
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex
-	name = "medjai's kaftan"
+	name = "pontifex's kaftan"
 	icon_state = "monkleather"
 	item_state = "monkleather"
 	desc = "Tight boiled leathers that stretch and fit to one's frame perfectly."
 	shiftable = FALSE
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/pontifex/loadout
-	name = "aesthetic medjai's kaftan"
+	name = "aesthetic pontifex's kaftan"
 	armor = ARMOR_CLOTHING
 	max_integrity = ARMOR_INT_CHEST_CIVILIAN
 	armor_class = ARMOR_CLASS_NONE

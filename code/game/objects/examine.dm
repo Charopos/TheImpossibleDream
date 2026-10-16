@@ -90,7 +90,10 @@
 
 	var/list/seals = list()
 	if(atc_sealed)
-		seals += "ATC seal"
+		// [SURREALIS-EDIT] - LORE
+		// seals += "ATC seal" // SURREALIS-EDIT - ORIGINAL
+		seals += "PTC seal"
+		// [/SURREALIS-EDIT]
 	if(unmintable)
 		seals += "town-property stamp"
 	if(length(seals))

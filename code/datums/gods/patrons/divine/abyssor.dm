@@ -1,9 +1,9 @@
 /datum/patron/divine/abyssor
 	name = "Abyssor"
 	domain = "God of the Sea, Dreams, and The Unknown"
-	desc = "The seaborne's Primal Divine. When awakened, the world flooded for a thousand daes and a thousand nights before He was put to slumber. Resting fitfully did Dendor split from his skull like a gaping wound, blessing the primodal men with the first taste of water - and in their dreams, the first nightmares."
+	desc = "The strongest of the Ten; when awakened, the world flooded for a thousand daes and a thousand nights before He was put to slumber. Resting fitfully did Dendor split from his skull like a gaping wound, blessing the primodal men with the first taste of water - and in their dreams, the first nightmares."
 	worshippers = "Sailors, Seapeople, and Sages"
-	mob_traits = list(TRAIT_ABYSSOR_SWIM, TRAIT_SEA_DRINKER)
+	mob_traits = list(TRAIT_ABYSSOR_SWIM, TRAIT_SEA_DRINKER, TRAIT_DEEP_DREAMER)
 	miracles = list(/datum/action/cooldown/spell/touch/orison					= CLERIC_ORI,
 					/obj/effect/proc_holder/spell/invoked/aquatic_compulsion	= CLERIC_T0,
 					/obj/effect/proc_holder/spell/self/abyssor_wind				= CLERIC_T0,
@@ -64,7 +64,10 @@
 	// Allows prayer near any body of water turf.
 	for(var/turf/open/water in view(4, get_turf(follower)))
 		return TRUE
+	// [SURREALIS-EDIT] - LORE
+	// to_chat(follower, span_danger("For Abyssor to hear my prayer I must either pray within the church, near a psycross, or at any body of water so that the tides of prayer may flow..")) // SURREALIS-EDIT - ORIGINAL
 	to_chat(follower, span_danger("For Abyssor to hear my prayer I must either pray within the temple, near a psycross, or at any body of water so that the tides of prayer may flow.."))
+	// [/SURREALIS-EDIT]
 	return FALSE
 
 /datum/patron/divine/abyssor/on_lesser_heal(

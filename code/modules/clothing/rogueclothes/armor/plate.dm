@@ -27,6 +27,7 @@
 	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP, 12)
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
 	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FREEBLADEDEXTERITY)
 
 /obj/item/clothing/suit/roguetown/armor/plate/iron
 	name = "iron half-plate"
@@ -145,7 +146,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/paalloy
 	name = "ancient half-plate"
-	desc = "Polished gilbronze layers, artificed into plate armor. Let none impede the march of the deathrisen, and let Her champions bring \
+	desc = "Polished gilbranze layers, artificed into plate armor. Let none impede the march of progress, and let Her champions bring \
 	the unenlightened masses to kneel."
 	icon_state = "ancientplate"
 	item_state = "ancientplate"
@@ -356,7 +357,7 @@
 	name = "plate armor"
 	desc = "A pristine set of steel plate armor, fitted with tassets and bracers for additional coverage. To the Knights \
 	of Psydonia, these sets are a symbolic manifestation of their oath; to serve thine kingdom without hesitation, and to \
-	rebuke all the villains who'd dare to defile it. </br>‎	</br>'Slow to don-and-doff, without a trusted Squire's aid..'"
+	rebuke all the villains who'd dare to defile it."
 	icon_state = "plate"
 	body_parts_covered = COVERAGE_ALL_BUT_HANDFEET
 	equip_delay_self = 12 SECONDS
@@ -371,8 +372,7 @@
 	icon_state = "ironplate"
 	desc = "A 'munition'-grade set of iron plate armor, fitted with pauldrons and tassets for additional coverage. Most \
 	of these sets, produced within the last century, can trace their origins to an edict from Hammerhold's former King: one \
-	which demanded a munitions run, but forgot to specify its tailoring towards the dwarven physique. </br>‎	</br>'Slow \
-	to don-and-doff, without a trusted Levyman's aid..'"
+	which demanded a munitions run, but forgot to specify its tailoring towards the dwarven physique."
 	smeltresult = /obj/item/ingot/iron
 	max_integrity = ARMOR_INT_CHEST_PLATE_IRON
 
@@ -709,6 +709,12 @@
 	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 1
 
+/obj/item/clothing/suit/roguetown/armor/plate/cuirass/ComponentInitialize()
+	AddComponent(/datum/component/item_equipped_movement_rustle, SFX_PLATE_STEP, 12)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FENCERDEXTERITY)
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_HONORBOUND)
+	AddComponent(/datum/component/armour_filtering/positive, TRAIT_FREEBLADEDEXTERITY)
+
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer
 	name = "fencer's cuirass"
 	desc = "An expertly smithed form-fitting steel cuirass that is much lighter and agile, but breaks with much more ease. It's \
@@ -751,7 +757,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer/donator_gothic
 	name = "gothic cuirass"
-	desc = "A magnificent steel cuirass, assembled by a mastersmith. The intricate fluting and interlocked plates are clear \
+	desc = "A magnificent steel cuirass, assembled by an Azurian mastersmith. The intricate fluting and interlocked plates are clear \
 	signs of its Grenzelhoftian heritage; expensive, but second-to-none when it comes to what truly matters in life."
 	icon = 'icons/clothing/donor_clothes.dmi'
 	mob_overlay_icon = 'icons/clothing/onmob/donor_clothes.dmi'
@@ -797,10 +803,10 @@
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL
 
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/holysee
-	name = "templar's cuirass"
+	name = "holy see cuirass"
 	desc = "A blessed steel cuirass, fitted with tassets for additional coverage. Noc's holy silver, and Astratan gold are woven into the fluting. \
 			When the world was ending, and hunger of the nite ravenous, Templars one and all remember the radiance of the blessed metals, \
-			and the warmth of home. Then and forever, the Gods have not forgotten their faithful."
+			and the warmth of home. Then and forever, the Ten have not forgotten their faithful."
 	icon_state = "seecuirass"
 	item_state = "seecuirass"
 
@@ -847,6 +853,14 @@
 	. += span_info("If a character has the 'Maille Training' trait and has Psydon as their selected patron, they can comfortably wear Psydonic plate armor without suffering any downsides.")
 	. += span_hypnophrase("'..the feeling of Aeon's grasp upon your shoulders, imparting the world's burden unto flesh and bone..'")
 
+/obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/grinning
+	name = "grinning cuirass"
+	icon_state = "grinningcuirass"
+	desc = "The steel of this chestpiece is deformed into sharp fangs crowning under the breast, equal parts to catch blades and mock your opponent, while gilt tooth-inlays line the waist. Stay hungry, hustler. Get your laughs in while you can."
+
+/obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted/grinning/get_examine_highlight_status()
+	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_SUSPICIOUS, HERESYDESC_MATTHIOS_GRINNING)
+
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/iron
 	name = "iron breastplate"
 	desc = "An iron cuirass. While most would sneer at the idea of wearing 'lesser alloys', many-a-levyman can attest to its robustness."
@@ -872,7 +886,7 @@
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "templar's half-plate"
 	desc = "Noc's holy silver, one fifth. Steel, three fifths. Chosen Material, one fifth. The armor of the Templar, protector and \
-	warrior of the Godly Faithful."
+	warrior of the Ten's Faithful."
 	body_parts_covered = COVERAGE_TORSO
 	icon_state = "silverhalfplate"
 	item_state = "silverhalfplate"
@@ -915,6 +929,7 @@
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_BRONZE
 	smeltresult = /obj/item/ingot/bronze
 	armor_class = ARMOR_CLASS_MEDIUM
+	armor = ARMOR_BRONZE
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/copper
 	name = "copper lamellar"
@@ -928,7 +943,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/plate/scale/marshal
 	name = "coat of the commander"
-	desc = "A coat of plates concealed beneath a heavy leather surcoat. Only the most battle-hardened of the Count's commanders can \
+	desc = "A coat of plates concealed beneath a heavy leather surcoat. Only the most battle-hardened of Azuria's commanders can \
 	hope to bear its burden, both metaphorically and quite literally."
 	icon_state = "leathercoat"
 	item_state = "leathercoat"
@@ -1064,6 +1079,10 @@
 	is_silver = TRUE
 	is_lesser_silver = TRUE
 
+/obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat/armored/heavy/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/armour_filtering/positive, TRAIT_PSYDONIAN_GRIT, "ornate_plate")
+
 /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fencer/decorated
 	name = "decorated chestplate"
 	icon_state = "gildedchestplate"
@@ -1137,7 +1156,7 @@
 	name = "decorated plate armor"
 	icon_state = "gildedplate"
 	smeltresult = /obj/item/ingot/gold
-	desc = "An ornate set of steel plate armor, decorated with golden fluting. For when you need to do something with all of that precious, precious wealth gathering dust in a fief's treasury."
+	desc = "An ornate set of steel plate armor, decorated with golden fluting. For when you need to do something with all of that precious, precious wealth gathering dust in a fief's ducal treasury."
 	smelt_bar_num = 1
 	color = null
 	detail_color = CLOTHING_WHITE

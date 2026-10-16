@@ -41,7 +41,7 @@
 
 /obj/item/paper/scroll/attack_self(mob/user)
 	if(mailer)
-		user.visible_message(span_notice("[user] opens the missive from [mailer]."))
+		user.visible_message(span_notice("[user] opens a letter."))
 		mailer = null
 		mailedto = null
 		update_icon()
@@ -134,7 +134,7 @@
 //Fake reskin of a scroll for the dwarf mercs -- just a fluffy toy
 /obj/item/paper/scroll/grudge
 	name = "Book of Grudges"
-	desc = "A copy you've taken with you. Unfortunately, a sudden burst of Scarland rainfall made it unreadable. You can still add new entries, however. It looks bulky enough to act as a mild blunt weapon."
+	desc = "A copy you've taken with you. Unfortunately the dampness of Azuria made it unreadable. You can still add new entries, however. It looks bulky enough to act as a mild blunt weapon."
 	icon_state ="grudge_closed"
 	drop_sound = 'sound/foley/dropsound/book_drop.ogg'
 	grid_width = 32
@@ -233,7 +233,10 @@
 
 	if(signedname)
 		info += "SIGNED,<br/>"
+		// [SURREALIS-EDIT] - LORE
+		// info += "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[signedname] the [signedjob] of Azure Peak</font>" // SURREALIS-EDIT - ORIGINAL
 		info += "<font face=\"[FOUNTAIN_PEN_FONT]\" color=#27293f>[signedname] the [signedjob] of Pharos</font>"
+		// [/SURREALIS-EDIT]
 
 /obj/item/paper/inqslip
 	name = "inquisition slip"
@@ -320,54 +323,34 @@
 /obj/item/paper/inqslip/arrival/abso
 	marquevalue = 16 //Ditto.
 
-/obj/item/paper/inqslip/proc/attemptsign(mob/user, mob/living/carbon/human/M)
-	if(sliptype == 2)
-		if(paired)
-			if(paired.subject != user)
-				to_chat(M, span_warning("Why am I trying to make them sign this with the wrong [paired] paired with it?"))
-				return
-			else if(alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO")
-				signed = TRUE
-				signee = user
-				update_icon()
-		else if(alert(user, "SIGN THE CONFESSION?", "CONFIRM OR DENY", "YES", "NO") != "NO")
-			signed = TRUE
-			signee = user
-			update_icon()
-		else
-			return
-	else if(alert(user, "SIGN THE SLIP?", "CONFIRM OR DENY", "YES", "NO") != "NO")
-		signed = TRUE
-		signee = user
-		update_icon()
-	else
+/obj/item/paper/inqslip/proc/attemptsign(mob/living/carbon/human/target, mob/living/carbon/human/user)
+	if(alert(target, "SIGN THE [(sliptype == 2) ? "CONFESSION" : "SLIP"]?", "CONFIRM OR DENY", "YES", "NO") == "NO")
 		return
+	signed = TRUE
+	signee = target
+	update_icon()
 
-/obj/item/paper/inqslip/attack(mob/living/carbon/human/M, mob/user)
+/obj/item/paper/inqslip/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
+	if(!istype(target) || !istype(user))
+		return
 	if(sealed)
 		return
 	if(signed)
 		to_chat(user, span_warning("It's already been signed."))
 		return
 	if(paired && !paired.full)
-		to_chat(user, span_warning("I should seperate [paired] from [src] before signing it."))
+		to_chat(user, span_warning("I should separate [paired] from [src] before signing it."))
 		return
-	if(sliptype != 2)
-		if(M != user)
-			to_chat(user, span_warning("This is meant to be signed by the holder."))
-			return
-	if(!M.get_bleed_rate())
+	if(sliptype != 2 && target != user)
+		to_chat(user, span_warning("This is meant to be signed by the holder."))
+		return
+	if(!target.get_bleed_rate())
 		to_chat(user, span_warning("It must be signed in blood."))
 		return
-	if(sliptype == 1)
-		if(signee == M)
-			attemptsign(user)
-		else
-			to_chat(user, span_warning("This slip isn't meant for me."))
-	else if(!sliptype)
-		attemptsign(user)
-	else
-		attemptsign(M, user)
+	if(sliptype == 1 && signee != target)
+		to_chat(user, span_warning("This slip isn't meant for me."))
+		return
+	attemptsign(target)
 
 /obj/item/paper/inqslip/attack_self(mob/user)
 	if(waxed)

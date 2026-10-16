@@ -262,6 +262,14 @@
 	desc = "An iron 'sallet'-styled helmet with an adjustable visor, its bevor drawn forward into a muzzle. Favored by those with snouts. Out for a stroll, now, are we?"
 	icon_state = "isallet_visor_s"
 
+/obj/item/clothing/head/roguetown/helmet/sallet/visored/grinning
+	name = "besilked sallet"
+	desc = "The gilded steel of the helm cradles your face between two great drakkyn-jaws. Pass a coin through the slit and place it on your tongue, for the ferryman is never far away."
+	icon_state = "mgrinningsallet"
+
+/obj/item/clothing/head/roguetown/helmet/sallet/visored/grinning/get_examine_highlight_status()
+	return list(EXAMINEHIGHLIGHT_HERESYSEVERITY_SUSPICIOUS, HERESYDESC_MATTHIOS_GRINNING)
+
 /obj/item/clothing/head/roguetown/helmet/sallet/raneshen
 	name = "kulah khud"
 	desc = "A sturdy, conical helm that has served the Empire well throughout its many campaigns. It's a sight to see, thousands of these bobbing as an army marches. The only greater humiliation than losing it is losing one's medallion."
@@ -607,7 +615,7 @@
 // Warden Helmets
 /obj/item/clothing/head/roguetown/helmet/bascinet/antler
 	name = "warden's helmet"
-	desc = "A beastly snouted armet with the large horns of an elder saiga protruding from it. Residents of the Pharos know not to fear such a sight in the wilds, for they are exclusively associated with the wildwood's wardens."
+	desc = "A beastly snouted armet with the large horns of an elder saiga protruding from it. Residents of Azure Peak know not to fear such a sight in the wilds, for they are exclusively associated with the Azurian wardens."
 	icon = 'icons/roguetown/clothing/special/warden.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden64.dmi'
 	bloody_icon = 'icons/effects/blood64.dmi'
@@ -651,7 +659,7 @@
 
 /obj/item/clothing/head/roguetown/helmet/sallet/warden/goat
 	name = "warden's ramskull helm"
-	desc = "The large, intimidating horned skull of an elusive Midland great ram, plated with steel on its inner side and given padding - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long foresters and their descendants."
+	desc = "The large, intimidating horned skull of an elusive Azurian great ram, plated with steel on its inner side and given padding - paired together with a steel maille mask and worn with a linen shroud. Such trophies are associated with life-long foresters and their descendants."
 	icon = 'icons/roguetown/clothing/special/warden.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/warden.dmi'
 	icon_state = "skullmet_goat"
@@ -748,7 +756,7 @@
 	desc = "A bronze helmet that veils the wearer's face behind a perforated visor; a distant ancestor to both the sallet and sayovard, \
 	providing excellent coverage while ensuring one doesn't suffocate on their own adrenal huffs. </br>Out of all actorial labors, none surpass \
 	the reenactment of Ravox's duel against Graggar atop Ur-Syon's ruins - mythologized not as a tentacled star, but as a towering doppelganger-champion; \
-	sculpted by the Anathema to be the inverse to all who stood for justice and chivalry."
+	sculpted by the Archdevil to be the inverse to all who stood for justice and chivalry."
 	armor = ARMOR_BRONZE
 	max_integrity = ARMOR_INT_HELMET_HEAVY_BRONZE - 100
 	armor_class = ARMOR_CLASS_LIGHT

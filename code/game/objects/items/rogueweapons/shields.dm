@@ -358,7 +358,7 @@
 	smeltresult = /obj/item/ingot/iron
 
 /obj/item/rogueweapon/shield/tower/holysee
-	name = "pentablessed shield"
+	name = "decablessed shield"
 	desc = "A blessed kite shield, said to bestow the Pantheon's protection upon the wielder. A final, staunch line against the darkness. For it's not what is before the shield-carrier that matters, but the home behind them."
 	icon_state = "gsshield"
 	force = 20
@@ -480,7 +480,7 @@
 	desc = "'A Psydonian endures. A Psydonian preserves themselves. A Psydonian preserves His flock.' </br>A blessed silver pavise, capable of thwarting the deadliness of \
 	even the hottest balefires. The one who wields it shall never falter; and the ones behind them shall never suffer."
 	icon_state = "psyshield"
-	force = 15
+	force = 12
 	throwforce = 5
 	throw_speed = 1
 	throw_range = 3
@@ -488,11 +488,11 @@
 	wlength = WLENGTH_NORMAL
 	resistance_flags = null
 	flags_1 = CONDUCT_1
-	wdefense = 14
+	wdefense = 15
 	coverage = 50
 	attacked_sound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
 	parrysound = list('sound/combat/parry/shield/metalshield (1).ogg','sound/combat/parry/shield/metalshield (2).ogg','sound/combat/parry/shield/metalshield (3).ogg')
-	max_integrity = 350
+	max_integrity = 450
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver
 
@@ -500,11 +500,7 @@
 	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_PSYDONIAN,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = -3,\
-		added_blade_int = 0,\
-		added_int = 100,\
-		added_def = 1,\
+		silver_type = SILVER_PSYDONIAN\
 	)
 
 /obj/item/rogueweapon/shield/tower/metal/alloy
@@ -522,7 +518,7 @@
 /obj/item/rogueweapon/shield/tower/metal/palloy
 	name = "ancient shield"
 	desc = "A venerable scutum, plated with polished gilbranze. An undying legionnaire's closest friend; that which rebukes arrow-and-bolt alike with \
-	unphasing prejudice. It is a reminder - one of many - of the Winnower's joys - and that the dead cannot be stopped."
+	unphasing prejudice. It is a reminder - one of many - that Her progress cannot be stopped."
 	icon_state = "ancientsh"
 	smeltresult = /obj/item/ingot/aaslag
 

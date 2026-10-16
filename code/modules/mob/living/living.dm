@@ -1008,6 +1008,7 @@
 	set_disgust(0)
 	set_sunder(0)
 	set_nutrition(NUTRITION_LEVEL_FED + 50)
+	set_hydration(HYDRATION_LEVEL_FULL)
 	bodytemperature = BODYTEMP_NORMAL
 	set_blindness(0)
 	set_blurriness(0)
@@ -1019,6 +1020,7 @@
 	cure_paralysis()
 	hallucination = 0
 	heal_overall_damage(INFINITY, INFINITY, INFINITY, null, TRUE) //heal brute and burn dmg on both organic and robotic limbs, and update health right away.
+	energy_add(max_energy)
 	for(var/datum/wound/wound as anything in get_wounds())
 		if(admin_revive)
 			qdel(wound)
@@ -1232,6 +1234,11 @@
 	else if(mobility_flags & MOBILITY_MOVE)
 		if(on_fire)
 			resist_fire() //stop, drop, and roll
+		// [SURREALIS-ADD] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/living.dm)
+		else if(has_status_effect(/datum/status_effect/leash_pet))
+			if(istype(src, /mob/living/carbon))
+				src:resist_leash()
+		// [/SURREALIS-ADD]
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
 			var/datum/component/riding/human/riding_datum = GetComponent(/datum/component/riding/human)
@@ -1929,6 +1936,9 @@
 		return
 
 	if(HAS_TRAIT(spread_to, TRAIT_NOFIRE) || HAS_TRAIT(src, TRAIT_NOFIRE))
+		return
+
+	if(HAS_TRAIT(src, TRAIT_NOFIREDECAY))
 		return
 
 	if(!prob(25))

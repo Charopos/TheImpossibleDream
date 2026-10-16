@@ -94,7 +94,7 @@
 
 /datum/reagent/water
 	name = "water"
-	description = "An ubiquitous chemical substance that is composed of hydrogen and oxygen."
+	description = "Unwholesome by itself for an Azurian. It is cold, slow and slack of digestion."
 	color = "#6a9295"
 	taste_description = "water"
 	var/cooling_temperature = 2
@@ -124,11 +124,17 @@
 #undef WATER_BLOOD_RESTORE
 
 /datum/reagent/water/gross
+	description = "Marshy, stagnant water putrified with froth, beloved of Pestra. Not for drinking by ordinary folk."
 	taste_description = "something vile"
 	color = "#98934b"
 	harmful = TRUE
+
 /datum/reagent/water/gross/sewage
+	description = "Water mixed in with filth. Stagnant and putrid, of a greenish and brown hue. An extremely unwholesome drink."
 	taste_description = "repulsive sulfur and decaying shit"
+
+/datum/reagent/water/gross/sewage/well
+	taste_description = "funky juice"
 
 /datum/reagent/water/gross/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if(method == INGEST) // Make sure you DRANK the toxic water before giving damage
@@ -140,14 +146,17 @@
 		return
 	M.adjustToxLoss(1)
 	M.add_nausea(12) //Over 8 units will cause puking
+
 /datum/reagent/water/gross/sewage/reaction_mob(mob/living/L, method=TOUCH, reac_volume)
 	if (method == INGEST)
 		..()
+
 /datum/reagent/water/gross/sewage/on_mob_life(mob/living/carbon/M)
 	..()
 	//I am not putting in a NASTY_EATER check for this. He's the god of bloodshed, not the god of coprophagia.
 	M.adjustToxLoss(4) //Horrible day for poop drinkers
 	M.add_nausea(20)
+
 /datum/chemical_reaction/grosswaterboil //boiling water purifies it
 	name = "gross water purification"
 	id = /datum/reagent/water
@@ -156,10 +165,12 @@
 	required_temp = 375
 
 /datum/reagent/water/bathwater
+	description = "Water that has been used to cleanse a body of filth, frothing with bubbles and the faint smell of soap. Still more drinkable than bog water."
 	taste_description = "bathwater"
 	color = "#c9e5ee"
 
 /datum/reagent/water/salty
+	description = "Water that belongs to Abyssor. Salty, thick, and good for fishes. Not so good for those who dwell on land."
 	taste_description = "salt"
 	color = "#417ac5"
 

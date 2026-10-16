@@ -572,9 +572,21 @@
 
 /datum/status_effect/debuff/permadeath/on_remove()
 	. = ..()
-	REMOVE_TRAIT(owner, TRAIT_DNR, id)
+	if(owner.stat != DEAD) //removing DNR if the user is dead means they'll just be able to get rezzed after 10 mins elapse
+		REMOVE_TRAIT(owner, TRAIT_DNR, id)
 	owner.remove_stress(/datum/stressevent/permadeath_threat)
 	owner.add_stress(/datum/stressevent/permadeath_end)
+
+/datum/status_effect/debuff/permadeath/permanent
+	duration = -1
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/permadeath/permanent
+
+/datum/status_effect/debuff/permadeath/permanent/on_apply()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_LASTLEGS, null) // no need to have both this AND dnr
+
+/atom/movable/screen/alert/status_effect/debuff/permadeath/permanent
+	desc = "Your heart beats with arrythmic fright, as an otherworldly chill rolls through your very spirit. Should you perish again, nothing will be able to bring you back from death's grasp."
 
 /// CONT. DEBUFFS
 /datum/status_effect/debuff/dazed
@@ -736,9 +748,9 @@
 	icon_state = "dazed"
 
 /datum/status_effect/debuff/staggered/on_apply()
-		. = ..()
-		var/mob/living/carbon/C = owner
-		C.add_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN, multiplicative_slowdown = 1.5)
+	. = ..()
+	var/mob/living/carbon/C = owner
+	C.add_movespeed_modifier(MOVESPEED_ID_DAMAGE_SLOWDOWN, multiplicative_slowdown = 1.5)
 
 /datum/status_effect/debuff/staggered/on_remove()
 	. = ..()
@@ -754,7 +766,7 @@
 
 /atom/movable/screen/alert/status_effect/debuff/excomm
 	name = "Excommunicated!"
-	desc = "The Gods have forsaken me!"
+	desc = "The Ten have forsaken me!"
 	icon_state = "excommunication"
 
 /datum/status_effect/debuff/apostasy
@@ -811,7 +823,10 @@
 			D.passive_devotion_gain = original_passive_devotion_gain
 			D.passive_progression_gain = original_passive_progression_gain
 
+		// [SURREALIS-EDIT] - LORE
+		// to_chat(H, span_boldnotice("I have been welcomed back to the Church. I am now able to gain devotion again.")) // SURREALIS-EDIT - ORIGINAL
 		to_chat(H, span_boldnotice("I have been welcomed back to the faith. I am now able to gain devotion again."))
+		// [/SURREALIS-EDIT]
 
 /atom/movable/screen/alert/status_effect/debuff/apostasy
 	name = "Apostasy!"

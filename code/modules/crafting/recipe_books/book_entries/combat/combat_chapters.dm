@@ -118,6 +118,7 @@
 /datum/book_entry/combat/inventory
 	name = "04. Inventory & Equipment"
 
+/// [SURREALIS-EDITED] - LORE
 /datum/book_entry/combat/inventory/inner_book_html(mob/user)
 	return {"
 		<div>
@@ -582,6 +583,7 @@
 /datum/book_entry/combat/archetypes
 	name = "16. Character Archetypes"
 
+/// [SURREALIS-EDITED] - LORE
 /datum/book_entry/combat/archetypes/inner_book_html(mob/user)
 	return {"
 		<div>
@@ -669,6 +671,7 @@
 /datum/book_entry/combat/revival
 	name = "17. Death, Deadite & Revival"
 
+/// [SURREALIS-EDITED] - LORE
 /datum/book_entry/combat/revival/inner_book_html(mob/user)
 	return {"
 		<div>
