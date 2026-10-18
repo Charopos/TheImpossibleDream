@@ -2,6 +2,7 @@
 #include "belt_keys\_belt_keys.dme"
 #include "combat_music\_combat_music.dme"
 #include "commandbar\_commandbar.dme"
+#include "construct_edits\_construct_edits.dme"
 #include "excidium\_excidium.dme"
 #include "iconoclast_tweak\_iconoclast_tweak.dme"
 #include "job_weapon_overrides\_job_weapon_overrides.dme"
