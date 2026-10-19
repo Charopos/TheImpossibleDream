@@ -1,26 +1,22 @@
 # Construct Changes
 
-**Tag:** `SPECIES_CHANGES`
+**Tag:** `CONSTRUCT_EDITS`
 
 **Created in:**
 
 **Major changes:**
 
-## Existing Species Part Edits + Scaling Changes
+## Construct Changes & Fixes
 
-Not every species had the right parts, nor had they the best pieces. Lupians, for example, didn't have the digitigrade goat legs. I've decided to add them all as a choice for anthro species, alongside a tiny thing like adding tusks to Wildbloods.
+V quickly writing this up, since I'm tired as hell. Constructs were written as a subspecies to Murklings. Constructs had funky color schemes. Constructs couldn't pick halfkin parts. I changed these, and added them to the options. This is the first part of me adding Dolls to the game again.
 
-More majorly, however, I'd also changed up the minimum and maximum sprite sizes for characters- and had to touch on DNA.dm to do it. You'll find that my edit has been appropriately marked.
-
-Ideally, species_changes.dm will serve as a general edit point for a majority of rearrangements - if we want to make it so that Tabaxi could have tusks, you can edit that file instead of creating a totally new module.
-
-New species content is better contained within its own module, though.
+Gimme a bit. Surrealis. Soon.
 
 ## Files
 
-- `_species_changes.dme`: local includes.
-- `code/_species_changes.dm`: Changes to the lists of available parts and customizers to species.
+- `_construct_edits.dme`: local includes.
+- `code/_construct_edits.dm`: Changes to the lists of available parts and customizers to species.
 
 ## Core files changed
 
-- `code\__DEFINES\DNA.dm`:
+N/A. We're good.
