@@ -12,10 +12,19 @@ GLOBAL_LIST_INIT(averse_factions, list(
 	"Courtiers & Nobility" = (COURTIERS | NOBLEMEN),
 	"Inquisition" = INQUISITION,
 	"Burghers" = BURGHERS,
+	// [SURREALIS-EDIT] - LORE
+	// SURREALIS-EDIT - ORIGINAL
+	/*
+	"Azurian Trading Company" = ATC,
+	"Retinue" = RETINUE,
+	"Garrison" = GARRISON,
+	"Churchmen" = CHURCHMEN,
+	*/
 	"Pharovian Trading Company" = ATC,
 	"Retinue" = RETINUE,
 	"Garrison" = GARRISON,
 	"Clergy" = CHURCHMEN,
+	// [/SURREALIS-EDIT]
 	"Peasants" = PEASANTS,
 	"Wanderers" = WANDERERS,
 	"Everyone" = (COURTIERS | NOBLEMEN | INQUISITION | BURGHERS | ATC | RETINUE | GARRISON | CHURCHMEN | PEASANTS | WANDERERS | SIDEFOLK | ANTAGONIST)
@@ -108,6 +117,10 @@ GLOBAL_LIST_INIT(averse_factions, list(
 			cf_list -= cf_path
 		if(cf.needs_extra_vice) // difficulty flaws require a deliberate extra vice - never resolve into one at random
 			cf_list -= cf_path
+		// [SURREALIS-ADD] - SEXCON
+		if(cf.no_random)
+			cf_list -= cf_path
+		// [/SURREALIS-ADD]
 
 	var/datum/job/mob_job = null
 	if(target.mind?.assigned_role)
@@ -158,6 +171,15 @@ GLOBAL_LIST_INIT(averse_factions, list(
 			if(istype(H.head, /obj/item/clothing/mask/rogue/spectacles))
 				var/obj/item/G = H.head
 				if(!G.obj_broken)
+					return
+			// Naledi masks let us see properly if they have inlaid spectacles and if the mask is not broken
+			if(istype(H.wear_mask, /obj/item/clothing/mask/rogue/lordmask/naledi))
+				var/obj/item/clothing/mask/rogue/lordmask/naledi/M = H.wear_mask
+				if(M.has_inlaid_spectacles && !M.obj_broken)
+					return
+			if(istype(H.head, /obj/item/clothing/mask/rogue/lordmask/naledi))
+				var/obj/item/clothing/mask/rogue/lordmask/naledi/M = H.head
+				if(M.has_inlaid_spectacles && !M.obj_broken)
 					return
 	H.blur_eyes(2)
 	H.apply_status_effect(/datum/status_effect/debuff/badvision)
@@ -732,7 +754,10 @@ GLOBAL_LIST_INIT(averse_factions, list(
 				var/height = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_HEIGHT), "%DESC1%")
 				var/body = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_BODY), "%DESC1%")
 				var/voice = build_coalesce_description_nofluff(d_list, H, list(MOB_DESCRIPTOR_SLOT_VOICE), "%DESC1%")
+				// [SURREALIS-EDIT] - LORE
+				// add_bounty(H.real_name, H.dna.species, H.gender, height, body, voice, rand(100, 200), FALSE, "Failure to pay outstanding debts.", "The Justiciary of Azuria") // SURREALIS-EDIT - ORIGINAL
 				add_bounty(H.real_name, H.dna.species, H.gender, height, body, voice, rand(100, 200), FALSE, "Failure to pay outstanding debts.", "The Pharovian Justiciary")
+				// [/SURREALIS-EDIT]
 			bounty_added = TRUE
 
 /datum/charflaw/averse
@@ -876,3 +901,13 @@ GLOBAL_LIST_INIT(averse_factions, list(
 		addtimer(CALLBACK(src, PROC_REF(apply_bounty_when_ready), H), 5 SECONDS)
 		return
 	wretch_select_bounty(H)
+
+/datum/charflaw/dnr
+	name = "Last Legs"
+	desc = "My lux is worn. I am not truly unrevivable, not yet; but the next shall be my last."
+	ui_fa_icon = "skull"
+	needs_extra_vice = TRUE
+
+/datum/charflaw/dnr/on_mob_creation(mob/user)
+	. = ..()
+	ADD_TRAIT(user, TRAIT_LASTLEGS, "[type]")

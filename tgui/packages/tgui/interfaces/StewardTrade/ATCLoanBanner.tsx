@@ -50,23 +50,38 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
           color: accent,
         }}
       >
-        Pharovian Trading Company - Company Clerk's Bench
+        {/* [SURREALIS-EDIT] - LORE */}
+        {/* ATC Clerk's Bench SURREALIS-EDIT - ORIGINAL */}
+        PTC Clerk's Bench
+        {/* [/SURREALIS-EDIT] */}
       </div>
       <div style={{ color: INK, marginBottom: '6px' }}>
         {atc_loan.available ? (
           <>
-            The clerk receives applications for emergency loan of{' '}
+            {/* [SURREALIS-EDIT] - LORE */}
+            {/* SURREALIS-EDIT - ORIGINAL */}
+            {/*
+            The ATC receives applications for an emergency loan of{' '}
             <b>
               {atc_loan.min}m to {atc_loan.max}m
-            </b>{' '}
-            on the Company&apos;s standing credit, at the customary{' '}
-            <b>{atc_loan.interest_pct}% interest</b> charged against the
-            principal. The arrears grace stands forfeit on draw - should the
-            Crown miss its next payroll, the realm enters sequestration without
-            warning. Window closes on Day {atc_loan.closed_day}.
+            </b>
+            , at <b>{atc_loan.interest_pct}% interest</b>. While you owe the ATC,
+            the Burghers won&apos;t cover a missed payroll. Miss one and the
+            realm is sequestered. Loans close on Day{' '}
+            {atc_loan.closed_day}.
+            */}
+            The PTC receives applications for an emergency loan of{' '}
+            <b>
+              {atc_loan.min}m to {atc_loan.max}m
+            </b>
+            , at <b>{atc_loan.interest_pct}% interest</b>. While you owe the PTC,
+            the Burghers won&apos;t cover a missed payroll. Miss one and the
+            realm is sequestered. Loans close on Day{' '}
+            {atc_loan.closed_day}.
+            {/* [/SURREALIS-EDIT] */}
           </>
         ) : (
-          atc_loan.blocker || 'The clerk is unavailable.'
+          atc_loan.blocker || 'No loan available right now.'
         )}
       </div>
       {!!atc_loan.arrears_consumed && (
@@ -77,17 +92,24 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
             marginBottom: '6px',
           }}
         >
-          Outstanding to the Company: <b>{atc_loan.outstanding}m</b>. All inflow
-          into the Crown&apos;s Purse is skimmed against the debt until it is
-          settled. The Burghers&apos; grace is forfeit; the next missed payroll
-          skips arrears and goes straight to sequestration.
+          {/* [SURREALIS-EDIT] - LORE */}
+          {/* SURREALIS-EDIT - ORIGINAL */}
+          {/*
+          You owe the ATC <b>{atc_loan.outstanding}m</b>. Everything paid into
+          the Treasury goes to them until it&apos;s repaid, and the Burghers
+          won&apos;t cover a missed payroll.
+          */}
+          You owe the PTC <b>{atc_loan.outstanding}m</b>. Everything paid into
+          the Treasury goes to them until it&apos;s repaid, and the Burghers
+          won&apos;t cover a missed payroll.
+          {/* [/SURREALIS-EDIT] */}
         </div>
       )}
       {atc_loan.loans_drawn > 0 && (
         <div
           style={{ color: INK_FAINT, fontSize: FONT_BODY, marginBottom: '6px' }}
         >
-          Loans drawn this week: {atc_loan.loans_drawn}.
+          Loans taken this week: {atc_loan.loans_drawn}.
         </div>
       )}
       {!!atc_loan.available && (
@@ -101,11 +123,11 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
           }}
           title={
             aldermanActing
-              ? "The Alderman's writ does not extend to drawing loans against the Crown."
+              ? "As Alderman, you can't take loans for the Crown."
               : undefined
           }
         >
-          <span>Draw:</span>
+          <span>Amount:</span>
           <NumberInput
             value={amount}
             minValue={atc_loan.min}
@@ -124,7 +146,7 @@ export const ATCLoanBanner = (props: { atc_loan: AtcLoanState }) => {
             disabled={aldermanActing}
             onClick={() => act('take_atc_loan', { amount })}
           >
-            Approach the Clerk
+            Take Loan
           </Button.Confirm>
         </div>
       )}

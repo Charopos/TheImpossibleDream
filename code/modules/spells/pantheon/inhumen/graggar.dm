@@ -284,7 +284,7 @@
 
 /datum/action/cooldown/spell/graggar/graggar_battlecry
 	name = "Vicious Roar"
-	desc = "Grants you and all allies nearby a buff to their strength, willpower, and constitution. Debuffs followers of the Gods, but not Psydonians."
+	desc = "Grants you and all allies nearby a buff to their strength, willpower, and constitution. Debuffs followers of the Ten, but not Psydonites."
 	fluff_desc = "The battlefield quakes with your roar! Shaken to their core, they will prove easy pickings for a worthy champion such as yourself; the power of the Sinistar, unleashed.\
 	SLAUGHTER THE LAMBS - DRINK THEIR MARROW - FEAST UPON THEIR FLESH - LEAVE NO TRACE OF THEIR PATHETIC EXISTENCE! - THE SINISTAR HUNGERS!"
 	button_icon_state = "vicious_roar"
@@ -301,7 +301,10 @@
 	invocations = list("REND AND TEAR! TIL NAUGHT BUT RED REMAINS!!")
 	invocation_type = INVOCATION_SHOUT
 
-	charge_required = FALSE
+	charge_required = TRUE
+	charge_time = 1 SECONDS
+	charge_slowdown = 1
+	charge_swingdelay_type = SWINGDELAY_PENALTY
 	cooldown_time = 5 MINUTES
 
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC | SPELL_REQUIRES_HUMAN | SPELL_REQUIRES_SAME_Z

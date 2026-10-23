@@ -447,7 +447,12 @@ export const EconomicPanel = () => {
                       <LabeledList.Item label="Sequestration Auto-Export">
                         {bankruptcy.autoexport_override}%
                       </LabeledList.Item>
-                      <LabeledList.Item label="ATC Loans This Round">
+                      <LabeledList.Item
+                        // [SURREALIS-EDIT] - LORE
+                        // label="ATC Loans This Round" // SURREALIS-EDIT - ORIGINAL
+                        label="PTC Loans This Round"
+                        // [/SURREALIS-EDIT]
+                      >
                         {bankruptcy.atc_loans_drawn}
                         {!!bankruptcy.atc_loan_arrears_consumed && (
                           <span style={{ color: '#e07b39', marginLeft: '6px' }}>
@@ -461,7 +466,10 @@ export const EconomicPanel = () => {
                 <Box mt={1} mb={1}>
                   <Stack align="center">
                     <Stack.Item>
-                      <b>ATC Emergency Loan:</b>
+                      {/* [SURREALIS-EDIT] - LORE */}
+                      {/* <b>ATC Emergency Loan:</b> SURREALIS-EDIT - ORIGINAL */}
+                      <b>PTC Emergency Loan:</b>
+                      {/* [/SURREALIS-EDIT] */}
                     </Stack.Item>
                     <Stack.Item>
                       <NumberInput
@@ -479,7 +487,10 @@ export const EconomicPanel = () => {
                         disabled={!bankruptcy.atc_loan_available}
                         tooltip={
                           bankruptcy.atc_loan_available
-                            ? `Borrow ${atcLoanAmount}m from the ATC. Consumes the arrears grace.`
+                            // [SURREALIS-EDIT] - LORE
+                            // ? `Borrow ${atcLoanAmount}m from the ATC. Consumes the arrears grace.` // SURREALIS-EDIT - ORIGINAL
+                            ? `Borrow ${atcLoanAmount}m from the PTC. Consumes the arrears grace.`
+                            // [/SURREALIS-EDIT]
                             : `Loan unavailable: ${bankruptcy.atc_loan_blocker}`
                         }
                         onClick={() =>

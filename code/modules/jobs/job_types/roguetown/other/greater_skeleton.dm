@@ -30,6 +30,12 @@
 	H.set_patron(/datum/patron/inhumen/zizo)
 	H.can_do_sex = FALSE // we've had one too many skeletons panel themselves in public
 
+	H.possible_rmb_intents = list(/datum/rmb_intent/feint,\
+	/datum/rmb_intent/aimed,\
+	/datum/rmb_intent/riposte,\
+	/datum/rmb_intent/strong,\
+	/datum/rmb_intent/weak)
+	H.swap_rmb_intent(num=1)
 
 	var/datum/antagonist/new_antag = new /datum/antagonist/skeleton()
 	H.mind.add_antag_datum(new_antag)
@@ -147,7 +153,7 @@ NECRO SKELETONS
 // Ranged skeleton with either a bow or a sling.
 /datum/advclass/greater_skeleton/necro/ballistiare
 	name = "Hollow Ballistiare"
-	tutorial = "You're broken, cracked and risen anew. How do they expect a lesser rattler like you to shoot out the eyes of our enemies? The Demiurge smiles at you tonight. Make IT proud."
+	tutorial = "You're broken, cracked and risen anew. How do they expect a lesser rattler like you to shoot out the eyes of our enemies? The Dame of Progress smiles at you tonight. Make Her proud."
 	outfit = /datum/outfit/job/roguetown/greater_skeleton/necro/ballistiare
 
 	category_tags = list(CTAG_NSKELETON)

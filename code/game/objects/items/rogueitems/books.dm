@@ -169,13 +169,13 @@
 
 //Tennite Bible
 /obj/item/book/rogue/bibble
-	name = "The Verses and Acts of the Pantheon"
-	desc = "The collected verses and acts of the DIVINE PANTHEON; written during the days of the Deceus Reformation. Its doctrines are old - and difficult to find value and comfort in. Split into three parts. </br>VISAGE - The OLD, THE FIRST ACTS \
-	OF THE TEN UPON PSYDONIA </br>DECANOMICON - THE ERA OF GLEAM, THE ETERNAL IMPERATE - </br>NEW DAWN \
-	- Modern Era, the Ten Divine Wills"
+	name = "The Verses and Acts of the Ten"
+	desc = "The collected verses and acts of the DIVINE PANTHEON. Split into three parts. </br>VISAGE - The OLD, THE FIRST ACTS \
+	OF THE TEN UPON PSYDONIA, BEFORE THE COMET SYON </br>DECANOMICON - THE ERA OF GLEAM, THE HOLY CELESTIAL EMPIRE - </br>NEW DAWN \
+	- Modern Era, the foundation of the HOLY SEE and ONWARDS."
 	icon_state = "bibble_0"
 	base_icon_state = "bibble"
-	title = "The Verses and Acts of the Pantheon"
+	title = "The Verses and Acts of the Ten"
 	dat = "gott.json"
 	possible_item_intents = list(
 		/datum/intent/use,
@@ -202,7 +202,10 @@
 			if("Visage")
 				chosentxt = 'strings/visage.txt'
 			if("Decanomicon")
-				chosentxt = 'strings/decanomicon.txt'
+				// [SURREALIS-EDIT] - LORE
+				// chosentxt = 'strings/decanomicon.txt' // SURREALIS-EDIT - ORIGINAL
+				chosentxt = 'modular_tidi/lore/strings/decanomicon.txt'
+				// [/SURREALIS-EDIT]
 			if("New Dawn")
 				chosentxt = 'strings/newdawn.txt'
 		var/m
@@ -227,7 +230,8 @@
 	. = ..()
 	if(user.mind?.assigned_role == "Bishop" && isitem(target) && user.used_intent?.type == /datum/intent/bless)
 		if(istype(target, /obj/item/rogueweapon/huntingknife/idagger/steel/profane))
-			destroy_that_dagger(user, target)
+			var/obj/item/rogueweapon/huntingknife/idagger/steel/profane/zevil_dagger = target
+			zevil_dagger.attempt_to_break(zevil_dagger, user, 1)
 			return
 		var/datum/component/silverbless/CP = target.GetComponent(/datum/component/silverbless)
 		if(!CP)
@@ -250,45 +254,6 @@
 	. += span_info("Anointing a silver weapon will bless it, greatly increasing the power of its critical hits and debuffs against sunderable opponents.")
 	. += span_info("Anointing a person will bless them, imparting a temporary bonus to their Fortune.")
 	. += span_info("Profane daggers can be destroyed by blessing them.")
-
-// proc unique to bibble, although golgatha or something similar will get another, as well. serves as backup in case there's no necrans.
-// recites scripture & Blesses the dagger which blows itthe FUCK UP!!!
-/obj/item/book/rogue/bibble/proc/destroy_that_dagger(mob/user, atom/target)
-	// assassin must be dead
-	var/obj/item/rogueweapon/huntingknife/idagger/steel/profane/pissdagger = target
-	if(!pissdagger.is_my_owner_dead())
-		to_chat(user, span_warning("I hear a laughing surrounding me. The assassin is not yet dead... their foul magicks still protect this dagger!"))
-		return
-	// im so fucking sorry for the if chain. conceptually we're invoking ravox & necra verus graggar in a tiny battle.
-	user.visible_message(span_warning("[user] begins reciting a prayer over [pissdagger]..."), span_info("I begin to recite a prayer over [pissdagger]... this will take some time."))
-	playsound(user, 'sound/magic/censercharging.ogg', 100)
-	if(do_after(user, 7 SECONDS))
-		user.say("VISAGE: RAVOX - 4:6... HE travels the lands. RAVOX's justice falls upon the thief, a hand taken, by HIS ADJUDICATORS.")
-		playsound(user, 'sound/magic/censercharging.ogg', 100)
-		if(do_after(user, 7 SECONDS))
-			user.say("VISAGE: NECRA - 1:2... To her arms did she call the dead and dying, to save them from their empty and wandering fate did they rest forevermore in her embrace!")
-			pissdagger.say(span_gamedeadsay("NECRA, FREE US!!"))
-			playsound(user, 'sound/misc/carriage2.ogg', 100)
-			if(do_after(user, 7 SECONDS))
-				user.say("DECA: NECRA - 5:4... The dead shall rest eternum. Within HER grasp. The FAITHFUL have NAUGHT to fear of HER realm.")
-				pissdagger.say(span_cult("MASTER! SAVE ME!! I DON'T WANT TO GO!!")) // dagger is not happy
-				playsound(user, 'sound/magic/battle_cry_graggar.ogg', 60)
-				pissdagger.visible_message(span_warning("[pissdagger] begins thrashing around on the ground! Souls scream from within! The metal begins to twist!"))
-				if(do_after(user, 5 SECONDS))
-					user.say("DECA: RAVOX - 7:1... Though outmatched, outnumbered and with inferior weapons, there the man stood... and He gave him the strength to see the fight to the end, for Justice is its own armor!")
-					pissdagger.visible_message(span_warning("CURSED METAL TWISTS INTO NAUGHT! THE HILTED GLUT TREMBLES, NEARLY FALLING OUT OF IT'S METAL EMPLACEMENT!"))
-					pissdagger.say(span_cult("IT HUUURTS!!")) // hes so fucking sad
-					playsound(user, 'sound/magic/bloodcurse.ogg', 60)
-					if(do_after(user, 5 SECONDS))
-						user.say("DAWN: RAVOX - 6:1... The warrior had just enough strength to see the fight through, finally DRIVING HIS BLADE through the WRETCHED HIDE OF THE BEAST and saving all, NO MATTER THE COST!!")
-						pissdagger.say(span_cult("MAAAASTER!! PLEAAAASE!!"))
-						playsound(user, 'sound/magic/battle_cry_undivided.ogg', 70) // gaggar loses
-						if(do_after(user, 7	 SECONDS))
-							user.say("UNDERMAIDEN! JUSTICAR! FREE THOSE TRAPPED WITHIN! BY THE GODS' LIGHT I SMITE YOU!")
-							playsound(user, 'sound/magic/undivided_solemnity.ogg', 80)
-							pissdagger.release_profane_souls(user)
-							pissdagger.shatter_dagger()
-
 
 
 
@@ -324,7 +289,10 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		var/m
 		if(sect)
-			var/list/verses = world.file2list("strings/psy[sect].txt")
+			// [SURREALIS-EDIT] - LORE
+			// var/list/verses = world.file2list("strings/psy[sect].txt") // SURREALIS-EDIT - ORIGINAL
+			var/list/verses = world.file2list("modular_tidi/lore/strings/psy[sect].txt")
+			// [/SURREALIS-EDIT]
 			m = pick(verses)
 			if(m)
 				if(prob(1) && sect == "sect1")
@@ -354,14 +322,14 @@
 //Zizonic Bible
 /obj/item/book/rogue/bibble/zizo
 	name = "The Verses and Chants of Zizo"
-	desc = "<font color='ff0000'>'Zaios Dei.'</font> \
+	desc = "<font color='ff0000'>'She called us forth from the edge of reality - and with Her dying breath, rasped out the final truth; the fire is gone, and the world will soon follow.'</font> \
 	</br>An old, dusty leatherbound tome; a strip of velvet silk threaded into the leather resembling a zcross made out of avantyne upon the cover. \
 	chronicling the beliefs held throughout the collective of the Cabal which could mutually agree on the same matters; \
 	such tomes are often considered major contraband in most of Psydonia and oft burned, even by followers of Noc. \
 	Even to this dae its unknown how such tomes keep circulating, presumably from some unknown printing press or two somewhere; \
 	but they are seldom found outside of the black market. Inside are two seperate testaments. </br> \
-	</br>APOTHEOSIS - TESTAMENTS OF HER TRUTH, HER RISE, HIS SHATTERING. \
-	</br>DEMIURGOS - TESTAMENTS OF ITS REIGN, THE PLACE OF DEATHRISING, AND PROMISES TO THE FUTURE."
+	</br>PROGRESS - TESTAMENTS OF PROGRESS, HER TRUTH, FAITH. \
+	</br>SACRIFICE - TESTAMENTS OF UNDEATH, NECROMANCY, ASCENSION."
 	icon_state = "zible_0"
 	base_icon_state = "zible"
 	title = "ziyble"
@@ -385,13 +353,27 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		var/m
 		if(sect)
-			var/list/verses = world.file2list("strings/zizo[sect].txt")
+			// [SURREALIS-EDIT] - LORE
+			// var/list/verses = world.file2list("strings/zizo[sect].txt") // SURREALIS-EDIT - ORIGINAL
+			var/list/verses = world.file2list("modular_tidi/lore/strings/zizo[sect].txt")
+			// [/SURREALIS-EDIT]
 			m = pick(verses)
 			if(m)
 				user.say(m)
 
 /obj/item/book/rogue/bibble/zizo/MiddleClick(mob/user, params)
 	. = ..()
+	// [SURREALIS-EDIT] - LORE
+	// SURREALIS-EDIT - ORIGINAL
+	/*
+	var/sects = list("PROGRESS", "SACRIFICE")
+	var/sect_choice = input(user, "SELECT YOUR TESTAMENT", "PROGRESS COMMANDS SACRIFICE.") as anything in sects
+	switch(sect_choice)
+		if("PROGRESS")
+			sect = "sect1"
+		if("SACRIFICE")
+			sect = "sect2"
+	*/
 	var/sects = list("APOTHEOSIS", "DEMIURGOS")
 	var/sect_choice = input(user, "SELECT YOUR TESTAMENT", "CHANGE COMMANDS SACRIFICE.") as anything in sects
 	switch(sect_choice)
@@ -399,6 +381,7 @@
 			sect = "sect1"
 		if("DEMIURGOS")
 			sect = "sect2"
+	// [/SURREALIS-EDIT]
 
 /obj/item/book/rogue/bibble/zizo/get_mechanics_examine(mob/user)
 	. = ..()
@@ -426,7 +409,7 @@
 
 /obj/item/book/rogue/law
 	name = "Tome of Justice"
-	desc = "The Tome of Laws, as passed from the Grand Temple of Zybantium to the many communities under the protection of the Pentacle."
+	desc = "The Tome of Laws, as passed from the Holy See to its many Ten-worshipping communities."
 	icon_state ="lawtome_0"
 	base_icon_state = "lawtome"
 	bookfile = "law_2.json"
@@ -611,6 +594,12 @@
 	base_icon_state = "book6"
 	bookfile = "naledi4.json"
 
+/obj/item/book/rogue/lamplighter
+	name = "Roadsman's Codex"
+	desc = "By Lampsmith Arlniss"
+	icon_state = "lawtome_0"
+	base_icon_state = "lawtome"
+	bookfile = "lamplighter.json"
 
 /obj/item/book/rogue/playerbook
 	var/player_book_text

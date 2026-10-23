@@ -29,7 +29,10 @@ export const SequestrationBanner = (props: {
           opacity: 0.7,
         }}
       >
-        sealed under the Burghers&apos; mark
+        {/* [SURREALIS-EDIT] - LORE */}
+        {/* sealed under the ATC&apos;s mark SURREALIS-EDIT - ORIGINAL */}
+        sealed under the PTC&apos;s mark
+        {/* [/SURREALIS-EDIT] */}
       </div>
       <div
         style={{
@@ -41,11 +44,19 @@ export const SequestrationBanner = (props: {
         SEQUESTRATION DECLARED
       </div>
       <div style={{ fontVariant: 'normal' }}>
-        Following the Crown&apos;s default, the Pharovian Trading Company holds
-        the sequestered revenues of the realm and farms the customs and salt
-        tolls in perpetuity until the {sequestration.debt}m debt is repaid.
-        Trade controls and stockpile pricing stand locked. Petitions, taxation,
-        and the lash of fines remain.
+        {/* [SURREALIS-EDIT] - LORE */}
+        {/* SURREALIS-EDIT - ORIGINAL */}
+        {/*
+        The Crown defaulted, so the ATC now collects the realm&apos;s revenues
+        until the {sequestration.debt}m debt is repaid. You can&apos;t change
+        trade settings or stockpile prices until then. Petitions, taxes and
+        fines still work.
+        */}
+        The Crown defaulted, so the PTC now collects the realm&apos;s revenues
+        until the {sequestration.debt}m debt is repaid. You can&apos;t change
+        trade settings or stockpile prices until then. Petitions, taxes and
+        fines still work.
+        {/* [/SURREALIS-EDIT] */}
       </div>
     </div>
   );

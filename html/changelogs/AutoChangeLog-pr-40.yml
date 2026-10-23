@@ -1,0 +1,9 @@
+author: "Yuckuza"
+delete-after: True
+changes:
+  - balance: "Ducal pike now uses the freifechter lancer pike intents + lance intent, more focused on ranged thrusting and maintaining the sweet spot for full penetration."
+  - balance: "Ducal poleaxe is now 30 force one- and two-handed. One-handed, two-handed, and alt grip all have different intent sets to encourage the use of all 3 aspects of the weapon, that is, thrusting, cutting, and bashing."
+  - balance: "Ducal poleaxe can now choose between 4 different weapon special options."
+  - balance: "both ducal standards are now strapless & fit directly on the back slot"
+  - image: "Ducal pike icon updated, now uses blacksteel weapon palette"
+  - image: "Ducal pike and poleaxe banners are now two-tone to better showcase the ducal scheme."

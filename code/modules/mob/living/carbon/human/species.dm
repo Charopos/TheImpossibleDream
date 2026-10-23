@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 	var/base_name
 	var/sub_name
 	var/psydonic = FALSE
-	var/origin = "Pharos"
+	var/origin = "Azuria"
 	var/origin_default = /datum/virtue/origin/azuria
 	var/max_age = 75
 	var/is_subrace = FALSE
@@ -734,7 +734,10 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 		if(!I.species_exception || !is_type_in_list(src, I.species_exception))
 			return FALSE
 
-	var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST)
+	// [SURREALIS-EDIT] - NUDIST_APPROVED - Only bypass the Nudist restriction, including the cloak slot.
+	// var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST) // SURREALIS-EDIT - ORIGINAL
+	var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST) && !I.nudist_approved
+	// [/SURREALIS-EDIT]
 	var/is_shirtless = HAS_TRAIT(H, TRAIT_SHIRTLESS)
 	var/is_inhumen = HAS_TRAIT(H, TRAIT_INHUMEN_ANATOMY)
 	var/num_arms = H.get_num_arms(FALSE)
@@ -815,7 +818,7 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 				if(istype(H.wear_shirt, I.type))
 					return FALSE
 				if(I.blocksound)
-					if(I.blocksound == H.wear_shirt.blocksound)
+					if(I.blocksound == H.wear_shirt.blocksound && !(istype(incoming_armor) && is_type_in_list(H.wear_shirt, incoming_armor.underlayers)))
 						return FALSE
 			if( !(I.slot_flags & ITEM_SLOT_ARMOR) )
 				return FALSE
@@ -911,7 +914,7 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 					if(!(I.blocking_behavior & SAMEWEAR))
 						return FALSE
 				if(I.blocksound)
-					if(I.blocksound == H.wear_armor.blocksound)
+					if(I.blocksound == H.wear_armor.blocksound && !is_type_in_list(I, H.wear_armor.underlayers))
 						return FALSE
 			if( !(I.slot_flags & ITEM_SLOT_SHIRT) )
 				return FALSE
@@ -1390,7 +1393,17 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 		if(!target.lying_attack_check(user))
 			return 0
 
-		var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = PEN_NONE, blade_dulling = user.used_intent.blade_class, damage = damage, intdamfactor = user.used_intent?.intent_intdamage_factor)
+		var/obj/item/clothing/gloves/roguetown/worn_gloves = user.get_item_by_slot(SLOT_GLOVES)
+		var/glove_intdamfactor_mult = 1
+		if(istype(worn_gloves))
+			var/datum/component/silverbless/glove_bless = worn_gloves.GetComponent(/datum/component/silverbless)
+			if(glove_bless)
+				glove_intdamfactor_mult = glove_bless.get_int_damage_multiplier()
+
+		var/base_intdamfactor = user.used_intent?.intent_intdamage_factor
+		if(isnum(base_intdamfactor))
+			base_intdamfactor *= glove_intdamfactor_mult
+		var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = PEN_NONE, blade_dulling = user.used_intent.blade_class, damage = damage, intdamfactor = base_intdamfactor)
 
 		target.lastattacker = user.real_name
 		if(target.mind)
@@ -1414,7 +1427,6 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 
 			target.on_hit_as_pacifist(user)
 
-			var/obj/item/clothing/gloves/roguetown/worn_gloves = user.get_item_by_slot(SLOT_GLOVES)
 			if(istype(worn_gloves))
 				worn_gloves.apply_unarmed_weapon_effects(user, affecting, user.used_intent, target, selzone)
 		log_combat(user, target, "punched", zone=selzone)

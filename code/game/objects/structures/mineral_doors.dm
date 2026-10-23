@@ -56,6 +56,7 @@
 	var/grant_resident_key = FALSE
 	var/resident_key_amount = 1
 	var/require_noble_trait = FALSE
+	var/require_wretch_trait = FALSE
 	/// The type of a key the resident will get
 	var/resident_key_type
 	/// The required role of the resident
@@ -167,6 +168,9 @@
 		return FALSE
 	if(require_noble_trait && !HAS_TRAIT(user, TRAIT_NOBLE))
 		to_chat(user, span_boldnotice("Only those of noble blood can inherit this house."))
+		return FALSE
+	if(require_wretch_trait && !HAS_TRAIT(user, TRAIT_ZURCH))
+		to_chat(user, span_boldnotice("Only a lowlyfe wretch can inherit this house."))
 		return FALSE
 	var/mob/living/carbon/human/human = user
 	if(human.received_resident_key)
@@ -490,6 +494,8 @@
 				user.visible_message(span_notice("[user] repaired [src]."), \
 				span_notice("I repaired [src]."))
 
+// [SURREALIS-REMOVE] - BELT_KEYS - (Moved to modular_tidi/belt_keys/code/belt_keys.dm)
+/*
 /obj/structure/mineral_door/attack_right(mob/user)
 	user.changeNext_move(CLICK_CD_FAST)
 	var/obj/item = user.get_active_held_item()
@@ -501,6 +507,8 @@
 		trykeylock(item, user)
 	else
 		return ..()
+*/
+// [/SURREALIS-REMOVE]
 
 /obj/structure/mineral_door/proc/trykeylock(obj/item/I, mob/user, autobump = FALSE)
 	if(door_opened || isSwitchingStates)
@@ -905,9 +913,13 @@
 	repair_cost_second = /obj/item/natural/stone
 	repair_skill = /datum/skill/craft/masonry
 
+// [SURREALIS-REMOVE] - BELT_KEYS - (Moved to modular_tidi/belt_keys/code/belt_keys.dm)
+/*
 /obj/structure/mineral_door/wood/donjon/stone/attack_right(mob/user)
 	if(user.get_active_held_item())
 		..()
+*/
+// [/SURREALIS-REMOVE]
 
 /obj/structure/mineral_door/wood/donjon/stone/view_toggle(mob/user)
 	return
@@ -917,6 +929,8 @@
 	icon_state = base_state
 	..()
 
+// [SURREALIS-REMOVE] - BELT_KEYS - (Moved to modular_tidi/belt_keys/code/belt_keys.dm)
+/*
 /obj/structure/mineral_door/wood/donjon/attack_right(mob/user)
 	if(user.get_active_held_item())
 		..()
@@ -931,6 +945,8 @@
 	else
 		to_chat(user, span_warning("The viewport doesn't toggle from this side."))
 		return
+*/
+// [/SURREALIS-REMOVE]
 
 /obj/structure/mineral_door/wood/donjon/proc/view_toggle(mob/user)
 	if(door_opened)
@@ -1041,6 +1057,10 @@
 
 /obj/structure/mineral_door/wood/towner/generic/two_keys/noble
 	require_noble_trait = TRUE
+
+/obj/structure/mineral_door/wood/towner/generic/two_keys/wretch
+	resident_role = /datum/job/roguetown/wretch
+	require_wretch_trait = TRUE
 
 /obj/structure/mineral_door/wood/towner/blacksmith
 	resident_advclass = list(/datum/advclass/blacksmith, /datum/advclass/masterblacksmith)

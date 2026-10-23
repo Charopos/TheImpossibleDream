@@ -151,6 +151,7 @@
 	var/PQ_boost_divider = 0
 
 	var/list/virtue_restrictions
+	var/list/quirk_restrictions
 	var/list/vice_restrictions
 
 	///The job's stats
@@ -301,6 +302,11 @@
 			if(isnull(H.mind?.special_role) && (MF?.special_role in list(ROLE_VAMPIRE, ROLE_NBEAST, ROLE_BANDIT, ROLE_LICH, ROLE_WRETCH, ROLE_UNBOUND_DEATHKNIGHT)))
 				continue
 			H.mind.i_know_person(MF)
+	if(give_bank_account)
+		for(var/mob/living/carbon/human/MF in GLOB.player_list)
+			if(HAS_TRAIT(MF, TRAIT_WELLKNOWN)) // we have to do this to handle resident virtue and well-known quirk
+				H.mind.person_knows_me(MF)
+				H.mind.i_know_person(MF)
 
 	// Ready up bonus
 	if(H.mind)
@@ -326,7 +332,10 @@
 		var/used_title = display_title || title
 		if((H.titles_pref == TITLES_F) && f_title)
 			used_title = f_title
+		// [SURREALIS-EDIT] - LORE
+		// scom_announce("[H.real_name] the [used_title] arrives to Azure Peak.") // SURREALIS-EDIT - ORIGINAL
 		scom_announce("[H.real_name] the [used_title] arrives to Pharos.")
+		// [/SURREALIS-EDIT]
 
 	if(give_bank_account)
 		if(give_bank_account > TRUE)

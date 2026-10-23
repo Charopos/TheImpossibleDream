@@ -624,21 +624,12 @@ LICH SKELETONS
 // Medium armor, high INT, same chant/spells as regular spellblade. No miracles.
 /datum/advclass/greater_skeleton/lich/spellblade
 	name = "Venerated Azurcaephan"
-	tutorial = "Swerve, parry, cast. Your bones have dried, and your flesh have withered. But your wits, and the flow of the arcyne remains untamed. Fuse gilbranze and sorcery, let the legends of the Azurcaephan be known again. Enigma, reborn in arcyne fyre! No! Tarichea! Tarichea! Tarichea! Long may she live! Long may she reign! Tarichea forevermore! My blade undulled, my chant unbroken, my wits untarnished!"
+	tutorial = "Swerve, parry, cast. Your bones have dried, and your flesh have withered. But your wits, and the flow of the arcyne remains untamed. Fuse gilbranze and sorcery, let the legends of the Azurcaephan be known again. Azurea, reborn in arcyne fyre! No! Tarichea! Tarichea! Tarichea! Long may she live! Long may she reign! Tarichea forevermore! My blade undulled, my chant unbroken, my wits untarnished!"
 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/spellblade
 	maximum_possible_slots = 1
 	category_tags = list(CTAG_LSKELETON)
 
 /datum/outfit/job/roguetown/greater_skeleton/lich/spellblade
-	var/subclass_selected
-
-/datum/outfit/job/roguetown/greater_skeleton/lich/spellblade/Topic(href, href_list)
-	. = ..()
-	if(href_list["subclass"])
-		subclass_selected = href_list["subclass"]
-	else if(href_list["close"])
-		if(!subclass_selected)
-			subclass_selected = "blade"
 
 /datum/outfit/job/roguetown/greater_skeleton/lich/spellblade/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -689,98 +680,57 @@ LICH SKELETONS
 
 	to_chat(H, span_warning("You start with Bind Weapon. Remember to Bind your weapon so you can use your abilities and build up Arcyne Momentum."))
 
-	subclass_selected = null
-	var/selection_html = get_spellblade_chant_html(src, H, "undead")
-	H << browse(selection_html, "window=spellblade_chant;size=1100x900")
-	onclose(H, "spellblade_chant", src)
-
-	var/open_time = world.time
-	while(!subclass_selected && world.time - open_time < 5 MINUTES)
-		stoplag(1)
-	H << browse(null, "window=spellblade_chant")
-
-	if(!subclass_selected)
-		subclass_selected = "blade"
-
-	var/datum/status_effect/buff/arcyne_momentum/momentum = H.apply_status_effect(/datum/status_effect/buff/arcyne_momentum)
-	if(momentum)
-		momentum.chant = subclass_selected
+	var/spellblade_chant_selected = prompt_spellblade_choice(H, get_spellblade_chant_html(src, H, "undead"))
+	var/datum/spellblade_chant/chant = GLOB.spellblade_chants[spellblade_chant_selected]
+	chant.apply_chant(H)
 
 	if(H.mind)
-		switch(subclass_selected)
-			if("blade")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/caedo)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/air_strike)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/leyline_anchor)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/blade_storm)
-			if("phalangite")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/azurean_phalanx)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/projectile/azurean_pilum)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/advance)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/gate_of_reckoning)
-			if("macebearer")
-				H.mind.AddSpell(new /datum/action/cooldown/spell/telegraphed_strike/spellblade/shatter)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/telegraphed_strike/spellblade/tremor)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/charge)
-				H.mind.AddSpell(new /datum/action/cooldown/spell/cataclysm)
-
-		H.mind.AddSpell(new /datum/action/cooldown/spell/recall_weapon)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/empower_weapon)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/bind_weapon)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/mending)
 		H.mind.AddSpell(new /datum/action/cooldown/spell/bonemend) //So you don't die from damaging yourself by your own gameplay loop.
 		H.mind.setup_mage_aspects(list("mastery" = FALSE, "major" = 0, "minor" = 0, "utilities" = 4))
 
 	H.adjust_blindness(-3)
-	switch(subclass_selected)
+	// used to handle skill assignment automatically
+	var/obj/item/rogueweapon/granted_weapon = null
+	switch(spellblade_chant_selected)
 		if("blade")
 			var/weapons = list("Ancient Khopesh", "Ancient Longsword", "Ancient Dagger")
 			var/weapon_choice = input(H, "Choose your BLADE.", "RAGE AGAINST THE LYVING.") as anything in weapons
 			switch(weapon_choice)
 				if("Ancient Khopesh")
-					beltr = /obj/item/rogueweapon/sword/sabre/palloy
+					beltr = granted_weapon = /obj/item/rogueweapon/sword/sabre/palloy
 				if("Ancient Longsword")
-					beltr = /obj/item/rogueweapon/sword/long/palloy //role unique
+					beltr = granted_weapon = /obj/item/rogueweapon/sword/long/palloy //role unique
 				if("Ancient Dagger")
-					beltr = /obj/item/rogueweapon/huntingknife/idagger/steel/padagger
-			if(weapon_choice == "Ancient Dagger")
-				H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-			else
-				H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
+					beltr = granted_weapon = /obj/item/rogueweapon/huntingknife/idagger/steel/padagger
 		if("phalangite")
 			var/weapons = list("Ancient Spear", "Ancient Bardiche")
 			var/weapon_choice = input(H, "Choose your SPEAR.", "RAGE AGAINST THE LYVING.") as anything in weapons
 			switch(weapon_choice)
 				if("Ancient Spear")
-					r_hand = /obj/item/rogueweapon/spear/paalloy
+					r_hand = granted_weapon = /obj/item/rogueweapon/spear/paalloy
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
 				if("Ancient Bardiche")
-					r_hand = /obj/item/rogueweapon/halberd/bardiche/paalloy
+					r_hand = granted_weapon = /obj/item/rogueweapon/halberd/bardiche/paalloy
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
-			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 4, TRUE)
 		if("macebearer")
 			var/weapons = list("Ancient Mace", "Ancient Warhammer", "Ancient Grand Mace", "Ancient Alloy Axe", "Steel Greataxe")
 			var/weapon_choice = input(H, "Choose your WEAPON.", "RAGE AGAINST THE LYVING.") as anything in weapons
-			var/picked_axe = FALSE
 			switch(weapon_choice)
 				if("Ancient Mace")
-					beltr = /obj/item/rogueweapon/mace/steel/palloy
+					beltr = granted_weapon = /obj/item/rogueweapon/mace/steel/palloy
 				if("Ancient Warhammer")
-					beltr = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
+					beltr = granted_weapon = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
 				if("Ancient Grand Mace")
-					r_hand = /obj/item/rogueweapon/mace/goden/steel/paalloy
+					r_hand = granted_weapon = /obj/item/rogueweapon/mace/goden/steel/paalloy
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
 				if("Ancient Alloy Axe")
-					beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel/paaxe
-					picked_axe = TRUE
+					beltr = granted_weapon = /obj/item/rogueweapon/stoneaxe/woodcut/steel/paaxe
 				if("Steel Greataxe")
-					r_hand = /obj/item/rogueweapon/greataxe/steel
+					r_hand = granted_weapon = /obj/item/rogueweapon/greataxe/steel
 					backr = /obj/item/rogueweapon/scabbard/gwstrap
-					picked_axe = TRUE
-			if(picked_axe)
-				H.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
-			else
-				H.adjust_skillrank_up_to(/datum/skill/combat/maces, 4, TRUE)
+	if(granted_weapon)
+		H.adjust_skillrank_up_to(granted_weapon::associated_skill, SKILL_LEVEL_EXPERT, TRUE)
+
 	H.set_blindness(0)
 
 	// Hack for ordering
@@ -811,8 +761,8 @@ LICH SKELETONS
 //Most importantly, unlike other lich skeletons, these ones really stand out amongst the many. You know who to target on-sight pretty much.
 //Yes the name is a bitter irony because Sectarian means a closed-minded us vs them, mindset. Aka limited or bigoted, but this fits the "slaughter the living so they may walk with her" mindset of skeletons.
 /datum/advclass/greater_skeleton/lich/sectarian
-	name = "Ancient Anathematic Sectarian"
-	tutorial = "Amongst the many fallen, few not only take their place not only in reverence but through faith and channeling the Demiurge's mortal divinity. No matter how far you've fallen, your faith will be that which shall carve the heavens and fundament - Let the Anathema aid in your ambition, let their Will be your guide and render your master's vision reality."
+	name = "Ancient Zizite Sectarian"
+	tutorial = "'Progress. Ascension. Destiny. A mandate, commanded by God, to be fufilled by Man.' - Amongst the many fallen, few not only take their place not only in reverence but through faith and channeling divinity. No matter how far you've fallen, your faith will be that which shall peirce the heavens - Let Progress be your chariot, let her will be your guide and let your master's vision become reality."
 	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/sectarian
 	maximum_possible_slots = 3 //don't want too many healers for skeletons in a round but we want leniency for when they die and get replaced
 
@@ -980,7 +930,7 @@ LICH SKELETONS
 
 /obj/item/clothing/gloves/roguetown/angle/grenzelgloves/blacksmith/lich
 	name = "decrepit forge gauntlets"
-	desc = "A wrap of rugged silks and leather from beyond your lyfetime; oft serving to physically hold together phalanges wrapped beneath. You can feel the dust and crumbs of bone of those before contained within its fingers."
+	desc = "A shirt of rugged silks and leather from beyond your lyfetime, donned as a grasp 'pon the one thing that oft' outlasts through aeon the most; \"Artifice, Progress, Construction\"."
 	//no color changes, it already looks good
 
 /obj/item/clothing/head/roguetown/roguehood/shalal/hijab/lich
@@ -1077,7 +1027,7 @@ LICH SKELETONS
 
 /obj/item/rogueweapon/greatsword/grenz/flamberge/paalloy
 	name = "ancient flamberge"
-	desc = "Polished gilbranze and velvety saigaleather, masterfully bound together to hewn a greatsword of archaic opulance. One must remember that even the undying aren't consigned to the Anathema's grasp; for those of true faith and nobleheartedness can persist in penitence."
+	desc = "Polished gilbranze and velvety saigaleather, masterfully bound together to hewn a greatsword of archaic opulance. One must remember that even the undying aren't consigned to the Archdevil's grasp; for those of true faith and nobleheartedness can persist in penitence."
 	icon_state = "ancientflamb"
 	smeltresult = /obj/item/ingot/aaslag
 

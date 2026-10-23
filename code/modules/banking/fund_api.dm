@@ -59,6 +59,39 @@
 			return innkeeper_fund
 	return null
 
+// ============================================================================
+// BATHHOUSE DAILY WITHDRAWAL LIMITS
+// The Bathmaster sets separate per-day mammon caps for bathhouse
+// workers and for Agents of the Bathhouse, and may suspend payments to either
+// group outright. Tallies reset daily.
+// ============================================================================
+
+/// Resets the per-day withdrawal tallies when the in-game day rolls over.
+/datum/controller/subsystem/treasury/proc/check_bathhouse_withdrawal_reset()
+	if(GLOB.dayspassed != bathhouse_withdrawals_day)
+		bathhouse_withdrawals_day = GLOB.dayspassed
+		bathhouse_withdrawals = list()
+
+/// How much a worker or agent has already drawn from the bathhouse fund today.
+/datum/controller/subsystem/treasury/proc/get_bathhouse_withdrawn(mob/living/carbon/human/H)
+	if(!H)
+		return 0
+	check_bathhouse_withdrawal_reset()
+	return bathhouse_withdrawals[H.real_name] || 0
+
+/// How much more they may still draw today under the given cap.
+/datum/controller/subsystem/treasury/proc/get_bathhouse_withdraw_remaining(mob/living/carbon/human/H, limit)
+	if(!H)
+		return 0
+	return max(0, limit - get_bathhouse_withdrawn(H))
+
+/// Records a bathhouse worker's or agent's withdrawal against today's cap.
+/datum/controller/subsystem/treasury/proc/record_bathhouse_withdrawal(mob/living/carbon/human/H, amount)
+	if(!H || amount <= 0)
+		return
+	check_bathhouse_withdrawal_reset()
+	bathhouse_withdrawals[H.real_name] = get_bathhouse_withdrawn(H) + amount
+
 /datum/controller/subsystem/treasury/proc/find_jawbank_for_fund_id(fund_id)
 	var/obj/structure/roguemachine/vaultbank/V = jawbanks_by_fund_id[fund_id]
 	if(QDELETED(V))
@@ -91,7 +124,8 @@
 /datum/controller/subsystem/treasury/proc/skim_for_banditry_debt(datum/fund/to_fund, amount)
 	if(amount <= 0 || banditry_debt <= 0 || to_fund != discretionary_fund)
 		return amount
-	var/skim = min(amount, banditry_debt)
+	// Only a fraction skims toward debt - the rest visibly lands in the purse.
+	var/skim = min(round(amount * BANDITRY_DEBT_SKIM_RATE), banditry_debt)
 	banditry_debt -= skim
 	GLOB.azure_round_stats[STATS_BANDITRY_DEBT_OUTSTANDING] = banditry_debt
 	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, "Banditry debt repayment"))
@@ -111,11 +145,20 @@
 	record_round_statistic(STATS_TREASURY_DEBT_REPAID, skim)
 	var/reason
 	if(treasury_state == TREASURY_BANKRUPTCY)
-		reason = "Sequestration debt - Pharovian Trading Company"
+		// [SURREALIS-EDIT] - LORE
+		// reason = "Sequestration debt - ATC" // SURREALIS-EDIT - ORIGINAL
+		reason = "Sequestration debt - PTC"
+		// [/SURREALIS-EDIT]
 	else if(treasury_state == TREASURY_IN_ARREARS)
+		// [SURREALIS-EDIT] - LORE
+		// reason = "Arrears repayment - Burghers of Azuria" // SURREALIS-EDIT - ORIGINAL
 		reason = "Arrears repayment - Burghers of Pharos"
+		// [/SURREALIS-EDIT]
 	else
-		reason = "ATC loan repayment"
+		// [SURREALIS-EDIT] - LORE
+		// reason = "ATC loan repayment" // SURREALIS-EDIT - ORIGINAL
+		reason = "PTC loan repayment"
+		// [/SURREALIS-EDIT]
 	log_fund_entry(new /datum/treasury_entry("burn", to_fund, null, skim, reason))
 	if(treasury_debt <= 0)
 		treasury_debt = 0
@@ -157,7 +200,7 @@
 	to_fund.pending_micro = list()
 	if(remainder > 0)
 		to_fund.pending_micro += list(list("amount" = remainder, "source" = null, "reason" = "carryover"))
-	mint(to_fund, whole, "Fractional remit ([whole]m from [contributors] pending entries)")
+	mint(to_fund, whole, "Small payments combined ([whole]m from [contributors] payments)")
 	return whole
 
 /datum/controller/subsystem/treasury/proc/burn(datum/fund/from_fund, amount, reason)

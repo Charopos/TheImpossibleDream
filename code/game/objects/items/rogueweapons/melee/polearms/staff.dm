@@ -12,6 +12,7 @@
 	penfactor = PEN_NONE
 	damfactor = 1.3 // Adds up to be slightly stronger than an unenhanced ebeak strike.
 	clickcd = CLICK_CD_CHARGED
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 /obj/item/rogueweapon/woodstaff
 	force = 10
@@ -73,7 +74,7 @@
 
 /obj/item/rogueweapon/woodstaff/aries/icarus // more boisterous with aura
 	name = "staff of the guide"
-	desc = "A radiant staff crowned by a lavish, pure gold-forged sun whose rays stretch in every direction. It embodies the sacred duty to bring light where darkness lingers, offering wisdom to the faithful and hope to the despairing. More than a mark of rank, it stands as a beacon that calls others to walk the righteous path beneath the ever-watchful eyes of the Fivefold Divines."
+	desc = "A radiant staff crowned by a lavish, pure gold-forged sun whose rays stretch in every direction. It embodies the sacred duty to bring light where darkness lingers, offering wisdom to the faithful and hope to the despairing. More than a mark of rank, it stands as a beacon that calls others to walk the righteous path beneath the ever-watchful eyes of the Ten."
 	icon_state = "icarus"
 	aura_color = "#ffed9f"
 
@@ -103,13 +104,22 @@
 			return
 
 		if(H.patron?.type in ALL_INHUMEN_PATRONS)
+			// [SURREALIS-EDIT] - LORE
+			// to_chat(H, span_boldred("You feel the Ten's blessings weigh upon your soul.")) // SURREALIS-EDIT - ORIGINAL
 			to_chat(H, span_boldred("You feel the blessings of the Gods weigh upon your soul."))
+			// [/SURREALIS-EDIT]
 			H.add_stress(/datum/stressevent/blessed_evil)
 		else if(H.patron?.type in OLD_GOD_PATRON)
+			// [SURREALIS-EDIT] - LORE
+			// to_chat(H, span_hypnophrase("You feel the Ten's blessings reluctantly settle upon your soul.")) // SURREALIS-EDIT - ORIGINAL
 			to_chat(H, span_hypnophrase("You feel the blessings of the Gods reluctantly settle upon your soul."))
+			// [/SURREALIS-EDIT]
 			H.add_stress(/datum/stressevent/blessed_neutral)
 		else
+			// [SURREALIS-EDIT] - LORE
+			// to_chat(H, span_hypnophrase("You feel the Ten's blessings settle upon your soul.")) // SURREALIS-EDIT - ORIGINAL
 			to_chat(H, span_hypnophrase("You feel the blessings of the Gods settle upon your soul."))
+			// [/SURREALIS-EDIT]
 			H.apply_status_effect(/datum/status_effect/buff/blessed)
 			H.add_stress(/datum/stressevent/blessed)
 
@@ -124,7 +134,8 @@
 
 		// haha hey guys its me profane dagger im just gonna sneak on in here!
 		if(istype(I, /obj/item/rogueweapon/huntingknife/idagger/steel/profane))
-			destroy_that_dagger(user, I)
+			var/obj/item/rogueweapon/huntingknife/idagger/steel/profane/zevil_dagger = I
+			zevil_dagger.attempt_to_break(zevil_dagger, user, 1)
 			return
 
 		var/datum/component/silverbless/CP = I.GetComponent(/datum/component/silverbless)
@@ -160,47 +171,10 @@
 			if("wielded")
 				return list("shrink" = 0.6,"sx" = 4,"sy" = -2,"nx" = -3,"ny" = -2,"wx" = -5,"wy" = -1,"ex" = 3,"ey" = -2,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0,"nturn" = 7,"sturn" = -7,"wturn" = 16,"eturn" = -22,"nflip" = 8,"sflip" = 0,"wflip" = 8,"eflip" = 0)
 
-// this is such a shitty way to do it im sorry
-/obj/item/rogueweapon/woodstaff/aries/proc/destroy_that_dagger(mob/user, obj/item/target)
-	var/obj/item/rogueweapon/huntingknife/idagger/steel/profane/pissdagger = target
-	// assassin must be dead
-	if(!pissdagger.is_my_owner_dead())
-		to_chat(user, span_warning("I hear a laughing surrounding me. The assassin is not yet dead... their foul magicks still protect this dagger!"))
-		return
-	// im so fucking sorry for the if chain. conceptually we're invoking ravox & necra verus graggar in a tiny battle.
-	user.visible_message(span_warning("[user] begins reciting a prayer over [pissdagger]..."), span_info("I begin to recite a prayer over [pissdagger]... this will take some time."))
-	playsound(user, 'sound/magic/censercharging.ogg', 100)
-	if(do_after(user, 7 SECONDS))
-		user.say("VISAGE: RAVOX - 4:6... HE travels the lands. RAVOX's justice falls upon the thief, a hand taken, by HIS ADJUDICATORS.")
-		playsound(user, 'sound/magic/censercharging.ogg', 100)
-		if(do_after(user, 7 SECONDS))
-			user.say("VISAGE: NECRA - 1:2... To her arms did she call the dead and dying, to save them from their empty and wandering fate did they rest forevermore in her embrace!")
-			pissdagger.say(span_gamedeadsay("NECRA, FREE US!!"))
-			playsound(user, 'sound/misc/carriage2.ogg', 100)
-			if(do_after(user, 7 SECONDS))
-				user.say("DECA: NECRA - 5:4... The dead shall rest eternum. Within HER grasp. The FAITHFUL have NAUGHT to fear of HER realm.")
-				pissdagger.say(span_cult("MASTER! SAVE ME!! I DON'T WANT TO GO!!")) // dagger is not happy
-				playsound(user, 'sound/magic/battle_cry_graggar.ogg', 60)
-				pissdagger.visible_message(span_warning("[pissdagger] begins thrashing around on the ground! Souls scream from within! The metal begins to twist!"))
-				if(do_after(user, 5 SECONDS))
-					user.say("DECA: RAVOX - 7:1... Though outmatched, outnumbered and with inferior weapons, there the man stood... and He gave him the strength to see the fight to the end, for Justice is its own armor!")
-					pissdagger.visible_message(span_warning("CURSED METAL TWISTS INTO NAUGHT! THE HILTED GLUT TREMBLES, NEARLY FALLING OUT OF IT'S METAL EMPLACEMENT!"))
-					pissdagger.say(span_cult("IT HUUURTS!!")) // hes so fucking sad
-					playsound(user, 'sound/magic/bloodcurse.ogg', 60)
-					if(do_after(user, 5 SECONDS))
-						user.say("DAWN: RAVOX - 6:1... The warrior had just enough strength to see the fight through, finally DRIVING HIS BLADE through the WRETCHED HIDE OF THE BEAST and saving all, NO MATTER THE COST!!")
-						pissdagger.say(span_cult("MAAAASTER!! PLEAAAASE!!"))
-						playsound(user, 'sound/magic/battle_cry_undivided.ogg', 70) // gaggar loses
-						if(do_after(user, 7	 SECONDS))
-							user.say("UNDERMAIDEN! JUSTICAR! FREE THOSE TRAPPED WITHIN! BY THE GODS' LIGHT I SMITE YOU!")
-							playsound(user, 'sound/magic/undivided_solemnity.ogg', 80)
-							pissdagger.release_profane_souls(user)
-							pissdagger.shatter_dagger()
-
 
 /obj/item/churcharticles/litany
-	name = "litany of the Divine Wills"
-	desc = "A finely illuminated parchment of litany bearing the sacred verses of the Pantheon of the Pentacle. Penned upon blessed parchment and sealed with crimson wax, it contains the Rite of Endorsement, a solemn invocation entrusted only to ordained priests. Once the final verse is spoken, the parchment burns to ash, and one of the Gods' sacred croziers is called forth. Don't lose it."
+	name = "litany of the Ten"
+	desc = "A finely illuminated parchment of litany bearing the sacred verses of the Holy See. Penned upon blessed parchment and sealed with crimson wax, it contains the Rite of Endorsement, a solemn invocation entrusted only to ordained bishops. Once the final verse is spoken, the parchment burns to ash, and one of the Ten's sacred croziers is called forth. Don't lose it."
 	icon = 'icons/roguetown/items/misc.dmi'
 	icon_state = "litany"
 	item_state = "litany"
@@ -219,7 +193,10 @@
 	if(!do_after(user, 25, target = user))
 		in_use = FALSE
 		return
+	// [SURREALIS-EDIT] - LORE
+	// user.say(",g Before the Holy Ten, I reaffirm the sacred vows laid upon my soul.") // SURREALIS-EDIT - ORIGINAL
 	user.say(",g Before the Greatest Gods, I reaffirm the sacred vows laid upon my soul.")
+	// [/SURREALIS-EDIT]
 	if(!do_after(user, 25, target = user))
 		in_use = FALSE
 		return
@@ -235,12 +212,19 @@
 	if(!do_after(user, 25, target = user))
 		in_use = FALSE
 		return
+	// [SURREALIS-EDIT] - LORE
+	// user.say(",g Let my office stand as testament to the covenant between the Holy See and the faithful.") // SURREALIS-EDIT - ORIGINAL
 	user.say(",g Let my office stand as testament to the covenant between the True Gods and the faithful.")
+	// [/SURREALIS-EDIT]
 	if(!do_after(user, 25, target = user))
 		in_use = FALSE
 		return
+	// [SURREALIS-EDIT] - LORE
+	// user.say(",g Should I yet prove worthy in Your sight, grant unto me a sacred staff, wrought by the grace of the Holy Ten, that I may bear it as the symbol of the authority entrusted to me.") // SURREALIS-EDIT - ORIGINAL
+	// var/choice = tgui_alert(user, "Which of the Ten's staves do you invoke?", "RITE OF THE TEN", list("Staff of the Shepherd", "Staff of the Guide", "Cancel")) // SURREALIS-EDIT - ORIGINAL
 	user.say(",g Should I yet prove worthy in Your sight, grant unto me a sacred staff, wrought by the grace of the Greatest Gods, that I may bear it as the symbol of the authority entrusted to me.")
 	var/choice = tgui_alert(user, "Which of the Pantheon's staves do you invoke?", "RITE OF THE GODS", list("Staff of the Shepherd", "Staff of the Guide", "Cancel"))
+	// [/SURREALIS-EDIT]
 	if(!choice || choice == "Cancel")
 		in_use = FALSE
 		return
@@ -332,10 +316,10 @@
 	name = "silver quarterstaff"
 	desc = "A quarterstaff reinforced with silver tips. A relatively new design, purportedly inspired by the warstaffs oft-carried by Naledian \
 	warscholars. Durable enough to catch-and-disarm avantyne to the shaft, without so much as a splinter - or so, they say."
-	force = 20
-	force_wielded = 27
+	force = 18
+	force_wielded = 25
 	icon_state = "quarterstaff_silver"
-	max_integrity = 250
+	max_integrity = 200
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silver
 
@@ -343,43 +327,32 @@
 	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_TENNITE,\
-		added_force = 0,\
-		added_blade_int = 50,\
-		added_int = 50,\
-		added_def = 2,\
+		silver_type = SILVER_TENNITE\
 	)
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/psy
 	name = "psydonic quarterstaff"
 	desc = "A quarterstaff reinforced with silver tips. A relatively new design, purportedly inspired by the warstaffs \
 	oft-carried by Naledian warscholars. Durable enough to catch avantyne to the shaft, without so much as a splinter - or so, they say."
-	force_wielded = 27
+	force_wielded = 25
 	icon_state = "quarterstaff_silver"
-	max_integrity = 250
+	max_integrity = 200
 	is_silver = TRUE
 	smeltresult = /obj/item/ingot/silverblessed
+	force = 18
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/psy/ComponentInitialize()
 	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 50,\
-		added_int = 50,\
-		added_def = 2,\
+		silver_type = SILVER_PSYDONIAN\
 	)
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/psy/preblessed/ComponentInitialize()
 	AddComponent(\
 		/datum/component/silverbless,\
 		pre_blessed = BLESSING_PSYDONIAN,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 50,\
-		added_int = 50,\
-		added_def = 2,\
+		silver_type = SILVER_PSYDONIAN\
 	)
 
 /obj/item/rogueweapon/woodstaff/quarterstaff/gold

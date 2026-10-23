@@ -16,7 +16,7 @@
 	being born in these rough places otherwise devoid of a fairer sex. Your mother-clan is in thrall \
 	to the Ironmask. True orcs would kill you on sight, seeing you as a mongrel dog, and non-orcish \
 	people cannot decide between regarding you with either mere distrust or outright disgust. Yet \
-	somehow your wandering feet came to the Pharos, where half-orcs ply muscle and their hardiness \
+	somehow your wandering feet came to Azure Peak, where half-orcs ply muscle and their hardiness \
 	in the rough underbelly or outer reaches of society."
 
 	skin_tone_wording = "Clan"
@@ -93,6 +93,8 @@
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,
 		/datum/customizer/organ/vagina/human_anthro,
+		/datum/customizer/bodypart_feature/pubes,
+		/datum/customizer/bodypart_feature/pits,
 		/datum/customizer/organ/horns/tusks,
 		/datum/customizer/organ/ears/halforc,
 		)
@@ -118,7 +120,10 @@
 		"Crescent Fang" = SKIN_COLOR_CRESCENT_FANG,
 		"Murkwalker" = SKIN_COLOR_MURKWALKER,
 		"Shatterhorn" = SKIN_COLOR_SHATTERHORN,
-		"Spirit Crusher" = SKIN_COLOR_SPIRITCRUSHER
+		"Spirit Crusher" = SKIN_COLOR_SPIRITCRUSHER,
+		"Iron Splinter" = SKIN_COLOR_IRON_SPLINTER,
+		"Glass Crag" = SKIN_COLOR_GLASS_CRAG,
+		"Daemonscar" = SKIN_COLOR_DAEMONSCAR
 	)
 
 /datum/species/halforc/get_hairc_list()

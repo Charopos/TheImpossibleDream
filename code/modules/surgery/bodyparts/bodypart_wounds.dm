@@ -110,10 +110,9 @@
 /obj/item/bodypart/proc/get_bleed_rate()
 	var/bleed_rate = bleeding
 	if(bandage && !HAS_BLOOD_DNA(bandage))
-		process_bandage(bleed_rate)
 		var/obj/item/natural/cloth/cloth = bandage
 		bleed_rate *= cloth.bandage_effectiveness
-		if(bleed_rate <= 1) //if the bleeding is below this after being bandaged, bleeding stops completely, but the bandage still takes damage
+		if(bleed_rate <= 1) //if the bleeding is below this after being bandaged, bleeding stops completely
 			return 0
 		return bleed_rate
 	/*
@@ -187,6 +186,9 @@
 					human_owner.emote("paincrit", forced = TRUE)
 
 			if(user)
+				// [SURREALIS-EDIT] - SEXCON - (New proc in modular_tidi/sexcon/code/overrides/addictions.dm)
+				// SURREALIS-EDIT - ORIGINAL
+				/*
 				if(user.has_flaw(/datum/charflaw/addiction/thrillseeker))
 					var/datum/component/arousal/CAR = user.GetComponent(/datum/component/arousal)
 					if(CAR)
@@ -200,6 +202,10 @@
 						owner.sate_addiction(/datum/charflaw/addiction/thrillseeker)
 						owner.add_stress(/datum/stressevent/thrill)
 						CAR.ejaculate_special()
+				*/
+				user.sexcon?.thrill_climax()
+				owner.sexcon?.thrill_climax()
+				// [/SURREALIS-EDIT]
 
 			return crit_attempt
 	if(ishuman(owner))

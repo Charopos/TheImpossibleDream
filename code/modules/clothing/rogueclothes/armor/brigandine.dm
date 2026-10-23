@@ -67,6 +67,21 @@
 	GLOB.lordcolor -= src
 	return ..()
 
+/obj/item/clothing/suit/roguetown/armor/brigandine/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/armour_filtering/negative, TRAIT_FREEBLADEDEXTERITY)
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/pyro
+	name = "darksooted brigandine coat"
+	desc = "A coat-of-plates, concealed underneath layers of soot-anointed leather. It seems to be insulated against flames and acid, due to the supernatural quality of the infernal ashes."
+	armor = ARMOR_INSULATED_BRIGANDINE
+	body_parts_covered = COVERAGE_ALL_BUT_HANDLEGS
+	icon_state = "pyrocoat"
+	item_state = "pyrocoat"
+
+/obj/item/clothing/suit/roguetown/armor/brigandine/pyro/attack_right(mob/user)
+	return
+
 /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	slot_flags = ITEM_SLOT_ARMOR
 	name = "lightweight brigandine"
@@ -146,7 +161,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/banneret
 	name = "knight banneret's brigandine"
-	desc = "A resplendant coat-of-plates, gilded and veiled in dyeable silk. Only the finest of knights within the Midderland have been entrusted with this beautiful article."
+	desc = "A resplendant coat-of-plates, gilded and veiled in dyeable silk. Only the finest of Azuria's Knights has been entrusted with this beautiful article."
 	icon_state = "capplate"
 	icon = 'icons/roguetown/clothing/special/captain.dmi'
 	mob_overlay_icon = 'icons/roguetown/clothing/special/onmob/captain.dmi'

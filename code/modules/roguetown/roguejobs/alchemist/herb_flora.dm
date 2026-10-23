@@ -203,8 +203,8 @@
 /obj/structure/flora/roguegrass/herb/benedictus
 	name = "benedictus"
 	desc = "Known as 'blessed thistle' by many commonfolk, the priests of the Otavan Orthodoxy claim \
-	this hairy, leathery plant to be sacred to Psydon; it thereby features often in sites of pilgrimage to \
-	the Father. The Temple of the Pentacle, in conscious contradiction, refuses to acknowledge any sacred association whatsoever."
+	this hairy, leathery plant to be sacred to Psydon; it thereby features often in sites of Psydonite \
+	pilgrimage. The Holy See, in conscious contradiction, refuses to acknowledge any sacred association whatsoever."
 	icon_state = "benedictus"
 
 	herbtype = /obj/item/alch/benedictus
@@ -249,7 +249,6 @@
 	name = "fyritius flowers"
 	desc = "A cluster of dangerously flammable flowers. Their hazardous qualities make them useful \
 	alchemical reagents for burning away rot, decay, and diseases. Mundane, magickal, or divine."
-	icon = 'icons/roguetown/misc/crops.dmi' // im too lazy to move it or make a new sprite
-	icon_state = "fyritius2"
+	icon_state = "fyritius"
 
 	herbtype = /obj/item/reagent_containers/food/snacks/grown/rogue/fyritius

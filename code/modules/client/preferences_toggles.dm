@@ -59,7 +59,7 @@
 			to_chat(src, "Your character information will no longer be viewable when masked.")
 
 /client/verb/toggle_instruments()
-	set category = "Preferences.Options"
+	set category = "Preferences.Audio"
 	set name = "Toggle Instrument Sounds"
 	if(prefs)
 		prefs.toggles ^= SOUND_INSTRUMENTS
@@ -75,7 +75,7 @@
 	to_chat(src, "You will[prefs.toggles & SOUND_MIDI ? "" : " no longer"] hear admin-played sounds.")
 
 /client/verb/mute_animal_emotes()
-	set category = "Preferences.Options"
+	set category = "Preferences.Audio"
 	set name = "Toggle Animal Noise Emotes"
 	if(prefs)
 		prefs.mute_animal_emotes = !prefs.mute_animal_emotes
@@ -97,7 +97,10 @@
 			to_chat(src, "You will no longer try to repeatedly consume/feed food/drinks")
 
 /client/verb/toggle_ERP() // Alters if other people can use the ERP panel ON you.
-	set category = "Preferences.Options"
+	// [SURREALIS-EDIT] - SEXCON
+	// set category = "Preferences.Options" // SURREALIS-EDIT - ORIGINAL
+	set category = "Preferences.Sensual"
+	// [/SURREALIS-EDIT]
 	set name = "Toggle ERP Panel"
 	if(prefs)
 		prefs.sexable = !prefs.sexable
@@ -183,7 +186,7 @@
 
 /client/verb/toggle_lobby_music()
 	set name = "Toggle Lobby Music"
-	set category = "Preferences.Options"
+	set category = "Preferences.Audio"
 	set desc = ""
 	if(prefs)
 		prefs.toggles ^= SOUND_LOBBY
@@ -198,13 +201,13 @@
 
 /client/verb/stop_sounds_rogue()
 	set name = "StopSounds"
-	set category = "Preferences.Options"
+	set category = "Preferences.Audio"
 	set desc = ""
 	if(mob)
 		SEND_SOUND(mob, sound(null))
 
 /client/verb/toggle_area_music()
-	set category = "Preferences.Options"
+	set category = "Preferences.Audio"
 	set name = "Toggle Area Music"
 	if(prefs)
 		prefs.stopdroning = !prefs.stopdroning
@@ -274,7 +277,7 @@
 
 /client/verb/vocal_barks()
 	set name = "Toggle Vocal Barks"
-	set category = "Preferences.Options"
+	set category = "Preferences.Audio"
 	set desc = ""
 	if(prefs)
 		prefs.mute_barks = !prefs.mute_barks
@@ -436,6 +439,8 @@
 	prefs.save_preferences()
 	to_chat(src, "You will [prefs.admin_chat_toggles & CHAT_ADMINSPAWN ? "see" : "not see any"] spawn logs.")
 
+// [SURREALIS-REMOVE] - SEXCON - (Moved to modular_tidi/sexcon/code/overrides/descriptors.dm)
+/*
 /client/verb/full_examine()
 	set category = "Preferences.Options"
 	set name = "Toggle Full Examine"
@@ -446,5 +451,17 @@
 			to_chat(src, "Examines will be fully shown.")
 		else
 			to_chat(src, "Examines will have some information behind dropdowns.")
+
+*/
+// [/SURREALIS-REMOVE]
+
+/client/verb/toggle_showooc()
+	set category = "Preferences.Options"
+	set name = "Show / Hide OOC"
+	set desc = "Toggles seeing OOC chatter"
+	if(prefs)
+		prefs.chat_toggles ^= CHAT_OOC_MUTED
+		prefs.save_preferences()
+	to_chat(usr, "You will [(prefs.chat_toggles & CHAT_OOC_MUTED) ? "no longer" : "now"] see messages on the OOC channel.")
 
 #undef TOGGLE_CHECKBOX

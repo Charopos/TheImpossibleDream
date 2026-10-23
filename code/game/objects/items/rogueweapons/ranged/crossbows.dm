@@ -91,6 +91,8 @@
 
 /datum/intent/shoot/crossbow
 	chargedrain = 0 //no drain to aim a crossbow
+	hold_grace = 0
+	hold_ramp = 0
 
 /datum/intent/shoot/crossbow/slurbow
 	chargedrain = 0 //no drain to aim a crossbow
@@ -118,6 +120,8 @@
 /datum/intent/arc/crossbow
 	chargetime = 1
 	chargedrain = 0 //no drain to aim a crossbow
+	hold_grace = 0
+	hold_ramp = 0
 
 /datum/intent/arc/crossbow/slurbow
 	chargetime = 1
@@ -309,7 +313,7 @@
 //
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/slurbow
-	name = "flatbow"
+	name = "slurbow"
 	desc = "A lighter weight crossbow with a distinct barrel shroud holding the bolt in place. While its reduced draw-weight \
 	does hamper the power of its bolts, it's consequently much easier to rearm and aim than the common crossbow; doubly-so, \
 	while on the move. </br>They're popular among among highwaymen and the patrolling lamplighters of Otava."
@@ -320,6 +324,7 @@
 	draw_base = SLURBOW_DRAW_BASE
 	draw_floor = SLURBOW_DRAW_FLOOR
 	draw_per_skill = SLURBOW_DRAW_PER_SKILL
+	arc_draw_floor_extra = SLURBOW_ARC_DRAW_FLOOR_EXTRA
 	damfactor = 0.6
 	accfactor = 1.3
 	reloadtime = 20
@@ -343,8 +348,8 @@
 	desc = "A heavier weight crossbow - the basis of a mounted ballista, made fit for handheld usage. Integrated just \
 	beneath the stock is a windlass mechanism, necessary to surmount the siegebow's titanic draw-strength. It loads \
 	heavier, full-length bolts; purpose-made to pulverize. </br>Assembled in Grenzelhoft, championed by Valoria, and \
-	rare in these lands touched by the Scar."
-	icon = 'icons/roguetown/weapons/misc32.dmi'
+	unfamiliar to the highlands of Azure Peak."
+	icon = 'icons/roguetown/weapons/ranged32.dmi'
 	icon_state = "heavybow0"
 	item_state = "heavybow"
 	possible_item_intents = list(/datum/intent/shoot/crossbow/heavy, /datum/intent/arc/crossbow/heavy, /datum/intent/buttstroke/heavy, /datum/intent/effect/daze) //Remember, this is quite heavy.
@@ -435,6 +440,7 @@
 	draw_base = SLURBOW_DRAW_BASE
 	draw_floor = SLURBOW_DRAW_FLOOR
 	draw_per_skill = SLURBOW_DRAW_PER_SKILL
+	arc_draw_floor_extra = SLURBOW_ARC_DRAW_FLOOR_EXTRA
 	damfactor = 1 //No damage malus, as it uses proprietary ammunition.
 	accfactor = 1.3
 	reloadtime = 20

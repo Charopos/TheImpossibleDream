@@ -70,40 +70,48 @@ export const DrowWrit = (props: {
   return (
     <>
       <p style={writParagraph}>
+        {/* [SURREALIS-EDIT] - LORE */}
+        {/* <i>By writ of the {rulerTitle} and the Holy See:</i> SURREALIS-EDIT - ORIGINAL */}
         <i>By writ of the {rulerTitle} and Pantheonic law:</i>
+        {/* [/SURREALIS-EDIT] */}
       </p>
       <p style={writParagraph}>
         That {subject} hath emerged from the deep dark into the lands of {realm}
-        : Astrata-shunning things, dealers in bonded souls, that traffic in
-        slaves and bargain with the Archenemy.
+        : shunners of Astrata, who traffic in slaves and bargain with the
+        Archenemy.
       </p>
       {crimes.length > 0 && (
         <>
           <p style={{ ...writParagraph, marginBottom: '4px' }}>
-            Whereof they stand accused of:
+            Whereof they stand accused:
           </p>
           <ul style={indictmentList}>
             {crimes.map((c, i) => (
               <li key={i} style={indictmentItem}>
                 {capitalize(c)}
-                {';'}
               </li>
             ))}
           </ul>
         </>
       )}
       <p style={writParagraph}>
-        Let no man parley, let no man trade, let no priest hear their plea. By
-        writ of the {rulerTitle} and the counsel of the priesthood of the
-        Temple, {subject} be declared{' '}
+        {/* [SURREALIS-EDIT] - LORE */}
+        {/* SURREALIS-EDIT - ORIGINAL */}
+        {/*
+        By writ of the {rulerTitle}, and by counsel of the Holy See, let{' '}
+        {subject} be declared <span style={caputLupinum}>ANATHEMA SIT</span>:
+        accursed before the Tens, owed neither truce nor ransom. Let none parley
+        or trade with them.
+        */}
+        By writ of the {rulerTitle}, and by counsel of the priesthood of the
+        Temple, let {subject} be declared{' '}
         <span style={caputLupinum}>ANATHEMA SIT</span>: accursed before the
-        Gods, sundered from sun and grain, owed neither truce nor ransom.
+        Gods, owed neither truce nor ransom. Let none parley or trade with them.
+        {/* [/SURREALIS-EDIT] */}
       </p>
       <p style={writParagraph}>
-        Slay them where they walk and burn what they bear, lest the blight upon
-        their persons taint the earth. Upon their death the writ shall fall
-        silent and mark itself; return it to the Contract Ledger, that the
-        bounty of{' '}
+        Slay them and burn what they carry. Upon their death this writ shall
+        mark itself. Return it then to the Contract Ledger, that the sum of{' '}
         <RewardClause
           reward={reward}
           levyRate={levyRate}

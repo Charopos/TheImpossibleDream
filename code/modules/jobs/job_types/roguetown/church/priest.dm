@@ -21,7 +21,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	forbidden_races = list(RACES_CONSTRUCT RACES_DESPISED RACES_OOZE)		//Too recent arrivals to ascend to priesthood.
 	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
-	tutorial = "The Divine is all that matters in a world of the immoral. The Shattered God abandoned us, and in his stead the PENTACLE rules over us mortals--and you will preach their wisdom to any who still heed their will. The faithless are growing in number. It is up to you to shepherd them toward a Gods-fearing future, o bridge-builder."
+	tutorial = "The Divine is all that matters in a world of the immoral. The Weeping God abandoned us, and in his stead the TEN rule over us mortals--and you will preach their wisdom to any who still heed their will. The faithless are growing in number. Guide your flock towards a brighter future, no matter what fate has in store for you."
 	whitelist_req = FALSE
 	cmode_music = 'sound/music/cmode/church/combat_astrata.ogg'
 
@@ -37,12 +37,13 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	outfit = /datum/outfit/job/roguetown/priest
 	display_order = JDO_BISHOP
 	give_bank_account = TRUE
-	min_pq = 5 // You should know the basics of things if you're going to lead the town's entire religious sector
+	min_pq = 50 // You should know the basics of things if you're going to lead the town's entire religious sector
 	max_pq = null
 	round_contrib_points = 5
 
 	//No nobility for you, being a member of the clergy means you gave UP your nobility. It says this in many of the church tutorial texts.
 	virtue_restrictions = list(/datum/virtue/utility/noble)
+	quirk_restrictions = list(/datum/quirk/noble)
 	vice_restrictions = list(/datum/charflaw/silverweakness)
 	job_traits = list(TRAIT_CHOSEN, TRAIT_RITUALIST, TRAIT_GRAVEROBBER, TRAIT_HOMESTEAD_EXPERT, TRAIT_MEDICINE_EXPERT, TRAIT_CLERGY, TRAIT_MARRIAGE_CAPABLE)
 	advclass_cat_rolls = list(CTAG_BISHOP = 2)
@@ -52,8 +53,8 @@ GLOBAL_LIST_EMPTY(heretical_players)
 /datum/advclass/bishop
 	name = "Bishop"
 	tutorial = "The Divine is all that matters in a world of the immoral. \
-	The Shattered God abandoned us, and in his stead the PENTACLE rules over us mortals--and you will preach their wisdom to any who still heed their will. The faithless are growing in number. \
-	It is up to you to shepherd them toward a Gods-fearing future, o bridge-builder."
+	The Weeping God abandoned us, and in his stead the TEN rule over us mortals--and you will preach their wisdom to any who still heed their will. The faithless are growing in number. \
+	It is up to you to shepherd them toward a Gods-fearing future; for you are a Bishop of the Holy See."
 	outfit = /datum/outfit/job/roguetown/priest/basic
 	subclass_languages = list(/datum/language/grenzelhoftian)
 	category_tags = list(CTAG_BISHOP)
@@ -80,7 +81,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
 	)
 	subclass_stashed_items = list(
-		"The Verses and Acts of the Pantheon" = /obj/item/book/rogue/bibble,
+		"The Verses and Acts of the Ten" = /obj/item/book/rogue/bibble,
 	)
 	tempo_capable = FALSE
 
@@ -92,9 +93,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 /datum/outfit/job/roguetown/priest/basic/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	head = /obj/item/clothing/head/roguetown/priestmask
 	neck = /obj/item/clothing/neck/roguetown/psicross/silver/undivided
-	shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/silktunic
 	pants = /obj/item/clothing/under/roguetown/tights/black
 	shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
 	belt = /obj/item/storage/belt/rogue/leather/plaquegold
@@ -122,46 +121,53 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	add_verb(H, /mob/living/carbon/human/proc/completesermon)
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_UPPER_CLASS, H)
+		// [SURREALIS-EDIT] - LORE
+		// var/bishop_drip = list("Traditional Astratan Outfit", "Holy See Outfit") // SURREALIS-EDIT - ORIGINAL
+		var/bishop_drip = list("Traditional Astratan Outfit", "Holy Outfit")
+		// [/SURREALIS-EDIT]
+		var/bishop_drip_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in bishop_drip
+		switch(bishop_drip_choice)
+			if("Traditional Astratan Outfit")
+				head = /obj/item/clothing/head/roguetown/priestmask
+				armor = /obj/item/clothing/suit/roguetown/shirt/robe/priest
+				shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/priest
+			// [SURREALIS-EDIT] - LORE
+			// if("Holy See Outfit") // SURREALIS-EDIT - ORIGINAL
+			if("Holy Outfit")
+			// [/SURREALIS-EDIT]
+				head = /obj/item/clothing/head/roguetown/priesthat/bishop
+				cloak = /obj/item/clothing/cloak/stole/bishop
+				armor = /obj/item/clothing/suit/roguetown/shirt/dress/silkdress/bishop
+				shirt = /obj/item/clothing/suit/roguetown/shirt/tunic/silktunic
+
 	switch(H.patron?.type)
 		if(/datum/patron/divine/undivided)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/undivided/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/undivided
 		if(/datum/patron/divine/astrata)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/astrata/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/priest //these are literally the robes made for them
 		if(/datum/patron/divine/noc)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/noc/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/noc
 		if(/datum/patron/divine/abyssor)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/abyssor/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
 		if(/datum/patron/divine/dendor)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/dendor/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/dendor
 		if(/datum/patron/divine/necra)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/necra/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 		if(/datum/patron/divine/pestra)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/pestra/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
 		if(/datum/patron/divine/eora)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/eora/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/eora
 		if(/datum/patron/divine/malum)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/malum/g
-			armor = /obj/item/clothing/cloak/templar/malumite
 		if(/datum/patron/divine/ravox)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/ravox/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/ravox
 		if(/datum/patron/divine/xylix)
 			wrists = /obj/item/clothing/neck/roguetown/psicross/xylix/g
-			armor = /obj/item/clothing/cloak/templar/xylixian
 			H.cmode_music = 'sound/music/combat_jester.ogg'
 			var/datum/inspiration/I = new /datum/inspiration(H)
 			I.grant_inspiration(H, bard_tier = BARD_T1)
 		else
 			wrists = /obj/item/clothing/neck/roguetown/psicross/undivided/g
-			armor = /obj/item/clothing/suit/roguetown/shirt/robe/undivided
 
 /datum/outfit/job/roguetown/priest/basic/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
@@ -240,7 +246,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		SSticker.set_ruler_mob(HU)
 		SSticker.regentmob = null
 		var/dispjob = mind.assigned_role
+		// [SURREALIS-EDIT] - LORE
+		// var/realm = SSticker.realm_name || "Azure Peak" // SURREALIS-EDIT - ORIGINAL
 		var/realm = SSticker.realm_name || "Pharos"
+		// [/SURREALIS-EDIT]
 		var/ruler_title = SSticker.rulertype || "Grand Duke"
 		removeomen(OMEN_NOLORD)
 		say("By the authority of the gods, I pronounce you [ruler_title] of [realm]!")
@@ -284,8 +293,8 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	new_role = "Templar"
 	overlay_state = "recruit_templar"
 	recruitment_faction = "Templars"
-	recruitment_message = "Serve the Gods, %RECRUIT!"
-	accept_message = "FOR THE PENTACLE!"
+	recruitment_message = "Serve the ten, %RECRUIT!"
+	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."
 
 /obj/effect/proc_holder/spell/self/convertrole/monk
@@ -293,8 +302,8 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	new_role = "Acolyte"
 	overlay_state = "recruit_acolyte"
 	recruitment_faction = "Church"
-	recruitment_message = "Serve the Gods, %RECRUIT!"
-	accept_message = "FOR THE GODS!"
+	recruitment_message = "Serve the ten, %RECRUIT!"
+	accept_message = "FOR THE TEN!"
 	refuse_message = "I refuse."
 
 /mob/living/carbon/human/proc/completesermon()
@@ -344,7 +353,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 /mob/living/carbon/human/proc/churchecancurse(mob/living/carbon/human/H, apostasy = FALSE)
 	if (!H.devotion && apostasy)
+		// [SURREALIS-EDIT] - LORE
+		// to_chat(src, span_warning("This one's connection to the ten is too shallow.")) // SURREALIS-EDIT - ORIGINAL
 		to_chat(src, span_warning("This one's connection to the Divine is too shallow."))
+		// [/SURREALIS-EDIT]
 		return FALSE
 
 	//Flavor messages for cursing certain god's faithful.
@@ -356,7 +368,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 	//Abyssor's clergy are gripped by his dream.
 	if (istype(H.patron, /datum/patron/divine/abyssor))
+		// [SURREALIS-EDIT] - LORE
+		// to_chat(src, span_warning("The Dreamer, Abyssor has his clutches grasped firmly around this one. The light of the ten only barely penetrates the depths.")) // SURREALIS-EDIT - ORIGINAL
 		to_chat(src, span_warning("The Dreaming Abhorrency, Abyssor, has his clutches grasped firmly around this one. The light of the Divine only barely penetrates the depths."))
+		// [/SURREALIS-EDIT]
 		ADD_TRAIT(H, TRAIT_CURSE_RESIST, TRAIT_GENERIC)
 
 	//Let's not curse heretical antags.
@@ -380,7 +395,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		return
 
 	if (!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+		// [SURREALIS-EDIT] - LORE
+		// to_chat(src, span_warning("I need to do this from the House of the Ten.")) // SURREALIS-EDIT - ORIGINAL
 		to_chat(src, span_warning("I need to do this from the House of the Gods."))
+		// [/SURREALIS-EDIT]
 		return FALSE
 
 	if(!src.key)
@@ -446,13 +464,19 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		return
 
 	var/found = FALSE
+	// [SURREALIS-EDIT] - LORE
+	// var/inputty = input(src, "Excommunicate someone, away from the Ten...	(excommunicate them again to remove it)", "Sinner Name") as text|null // SURREALIS-EDIT - ORIGINAL
 	var/inputty = input(src, "Excommunicate someone, away from the Pentacle...	(excommunicate them again to remove it)", "Sinner Name") as text|null
+	// [/SURREALIS-EDIT]
 
 	if (!inputty)
 		return
 
 	if (!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+		// [SURREALIS-EDIT] - LORE
+		// to_chat(src, span_warning("I need to do this from the House of the Ten.")) // SURREALIS-EDIT - ORIGINAL
 		to_chat(src, span_warning("I need to do this from the House of the Gods."))
+		// [/SURREALIS-EDIT]
 		return FALSE
 
 	if(!src.key)
@@ -464,7 +488,10 @@ GLOBAL_LIST_EMPTY(heretical_players)
 
 	if (inputty in GLOB.excommunicated_players)
 		GLOB.excommunicated_players -= inputty
+		// [SURREALIS-EDIT] - LORE
+		// priority_announce("[real_name] has reconciled [inputty] with the Church. They are once again part of the flock!", title = "RECONCILIATION", sound = 'sound/misc/bell.ogg') // SURREALIS-EDIT - ORIGINAL
 		priority_announce("[real_name] has reconciled [inputty] with the Temple. They are once again part of the flock!", title = "RECONCILIATION", sound = 'sound/misc/bell.ogg')
+		// [/SURREALIS-EDIT]
 		message_admins("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
 		log_game("EXCOMMUNICATION: [real_name] ([ckey]) has reconciled [H.real_name] ([H.ckey])")
 
@@ -524,7 +551,10 @@ code\modules\admin\verbs\divinewrath.dm has a variant with all the gods so keep 
 		return
 
 	if (!istype(get_area(src), /area/rogue/indoors/town/church/chapel))
+		// [SURREALIS-EDIT] - LORE
+		// to_chat(src, span_warning("I need to do this from the House of the Ten.")) // SURREALIS-EDIT - ORIGINAL
 		to_chat(src, span_warning("I need to do this from the House of the Gods."))
+		// [/SURREALIS-EDIT]
 		return FALSE
 
 	if(!src.key)

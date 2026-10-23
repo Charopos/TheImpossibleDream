@@ -40,6 +40,7 @@
 #define CUISINE_ETRUSCAN		(1<<4)
 #define CUISINE_SOUTHEASTERN	(1<<5)
 #define CUISINE_RANESHENI		(1<<6)
+#define CUISINE_NALEDI			(1<<7)
 
 // Dish type flags - food only.
 #define DISH_MEAT		(1<<0)
@@ -62,5 +63,6 @@
 #define DRINKTYPE_MEAD		(1<<3)
 #define DRINKTYPE_CIDER		(1<<4)
 #define DRINKTYPE_CAFFEINE	(1<<5)
-#define DRINKTYPE_JUICE	(1<<6)
+#define DRINKTYPE_JUICE		(1<<6)
 #define DRINKTYPE_RICEWINE	(1<<7)
+#define DRINKTYPE_VIRGIN	(1<<8)

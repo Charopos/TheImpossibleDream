@@ -9,9 +9,9 @@
 	forbidden_races = list(RACES_DESPISED)
 	allowed_sexes = list(MALE, FEMALE)
 	display_order = JDO_PHYSICIAN
-	tutorial = "You are the Head Physician, master of the city clinic of Pharos \
-		and overseer of all medical practice and learning within the University-Upon- \
-		the-Scar. You share authority within the University with the Court Magician - \
+	tutorial = "You are the Head Physician, master of the city clinic of Azure Peak \
+		and overseer of all medical practice and learning within the University of \
+		Azuria. You share authority within the University with the Court Magician - \
 		your authority over mundane and medical matters is supreme, whereas they \
 		have total authority over all matters of magic and arcane practice. \
 		You have also an arrangement with the Keepers of Pestra beneath the University \
@@ -39,9 +39,9 @@
 
 /datum/advclass/physician
 	name = "Head Physician"
-	tutorial = "You are the Head Physician, master of the city clinic of Pharos \
-		and overseer of all medical practice and learning within the University-Upon- \
-		the-Scar. You share authority within the University with the Court Magician - \
+	tutorial = "You are the Head Physician, master of the city clinic of Azure Peak \
+		and overseer of all medical practice and learning within the University of \
+		Azuria. You share authority within the University with the Court Magician - \
 		your authority over mundane and medical matters is supreme, whereas they \
 		have total authority over all matters of magic and arcane practice. \
 		You have also an arrangement with the Keepers of Pestra beneath the University \
@@ -105,14 +105,14 @@
 		shirt = /obj/item/clothing/suit/roguetown/shirt/courtphysician/female
 		gloves = /obj/item/clothing/gloves/roguetown/courtphysician/female
 		pants = /obj/item/clothing/under/roguetown/skirt/courtphysician
-		shoes = /obj/item/clothing/shoes/courtphysician/female
+		shoes = /obj/item/clothing/shoes/roguetown/courtphysician/female
 	else
 		head = /obj/item/clothing/head/roguetown/courtphysician
 		armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/jacket/courtphysician
 		shirt = /obj/item/clothing/suit/roguetown/shirt/courtphysician
 		gloves = /obj/item/clothing/gloves/roguetown/courtphysician
 		pants = /obj/item/clothing/under/roguetown/trou/leather/courtphysician
-		shoes = /obj/item/clothing/shoes/courtphysician
+		shoes = /obj/item/clothing/shoes/roguetown/courtphysician
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/diagnose/secular)
 	if(H.mind)

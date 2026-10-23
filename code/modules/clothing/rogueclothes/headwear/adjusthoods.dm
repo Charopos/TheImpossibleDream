@@ -142,6 +142,22 @@
 	icon_state = "hijab"
 	naledicolor = TRUE
 
+/obj/item/clothing/head/roguetown/roguehood/shalal/hijab/pyro
+	name = "darksooted headscarf"
+	desc = "A headscarf anointed in cursed soot and drenched in the blood of infernals. The foul mixture has seeped deep into its fibers, leaving behind a strange, smoldering quality that only those with a true fondness for fire can endure."
+	slot_flags = ITEM_SLOT_HEAD
+	max_integrity = 350 // 50 less dura for better visibility
+	armor = ARMOR_INSULATED_LEATHER
+	item_state = "hijab"
+	icon_state = "hijab"
+	naledicolor = FALSE
+	color = COLOR_ALMOST_BLACK
+	aura_color = "#ffa76d"
+
+/obj/item/clothing/head/roguetown/roguehood/shalal/hijab/pyro/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/cursed_item, list(TRAIT_BOMBER_EXPERT), src)
+
 /obj/item/clothing/head/roguetown/roguehood/shalal/heavyhood
 	name = "heavy hood"
 	desc = "This thick lump of burlap completely shrouds your head, protecting it from harsh weather and nosey protagonists alike."
@@ -263,8 +279,8 @@
 	block2add = null
 
 /obj/item/clothing/head/roguetown/roguehood/undivided
-	name = "pantheonic hood"
-	desc = "A hood of those devoted to upholding the penta-divinity in their dae to dae duties."
+	name = "undivided hood"
+	desc = "A hood of those devoted to upholding the deca-divinity in their dae to dae duties."
 	color = null
 	icon_state = "undividedhood"
 	item_state = "undividedhood"
@@ -327,8 +343,8 @@
 	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/roguehood/undividedcleric
-	name = "pantheonic clerical hood"
-	desc = "A hood of those devoted to guiding those with penta-divinity across Psydonia."
+	name = "undivided clerical hood"
+	desc = "A hood of those devoted to guiding those with deca-divinity across Psydonia."
 	color = "#999999"
 	icon_state = "monkhood"
 	item_state = "monkhood"
@@ -488,7 +504,7 @@
 	salvage_amount = 1
 
 /obj/item/clothing/head/roguetown/roguehood/pontifex
-	name = "medjai's pashmina"
+	name = "pontifex's pashmina"
 	desc = "A slim hood with thin, yet dense fabric. Stretchy and malleable, allowing for full flexibility and mobility. Made with spell-laced fabric to provide some protection against daemons and mortals alike."
 	max_integrity = ARMOR_INT_HELMET_LEATHER
 	armor = ARMOR_LEATHER

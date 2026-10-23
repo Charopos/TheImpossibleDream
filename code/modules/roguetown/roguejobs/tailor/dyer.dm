@@ -258,6 +258,10 @@ GLOBAL_LIST_EMPTY(used_colors)
 		if(inserted_item.glaze_bonus_pct > 0 && !inserted_item.glazed)
 			inserted_item.glazed = TRUE
 		playsound(src, "bubbles", 50, 1)
+// [SURREALIS-ADD] - AUTO-EJECT_DYED_CLOTHES 
+		inserted.forceMove(drop_location())
+		inserted = null
+// [/SURREALIS ADD] 
 		interact(usr)
 
 	if(href_list["paint_detail"])

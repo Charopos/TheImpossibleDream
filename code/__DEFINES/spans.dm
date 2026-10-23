@@ -31,6 +31,9 @@
 #define span_cultlarge(str) ("<span class='cultlarge'>" + (str) + "</span>")
 #define span_cultsmall(str) ("<span class='cultsmall'>" + (str) + "</span>")
 #define span_danger(str) ("<span class='danger'>" + (str) + "</span>")
+// [SURREALIS-ADD]
+#define span_doyourjobidiot(str) ("<span class='doyourjobidiot'>" + (str) + "</span>")
+// [/SURREALIS-ADD]
 #define span_combatprimary(str) ("<span class='combatprimary'>" + (str) + "</span>")
 #define span_combatsecondary(str) ("<span class='combatsecondary'>" + (str) + "</span>")
 #define span_combatsecondarybp(str) ("<span class='combatsecondarybodypart'>" + (str) + "</span>")
@@ -107,6 +110,21 @@
 
 #define span_astrata(str) ("<span class='astrata'>" + (str) + "</span>")
 #define span_undivided(str) ("<span class='undivided'>" + (str) + "</span>")
+#define span_abyssor(str) ("<span class='abyssor'>" + (str) + "</span>")
+#define span_dendor(str) ("<span class='dendor'>" + (str) + "</span>")
+#define span_eora(str) ("<span class='eora'>" + (str) + "</span>")
+#define span_malum(str) ("<span class='malum'>" + (str) + "</span>")
+#define span_necra(str) ("<span class='necra'>" + (str) + "</span>")
+#define span_noc(str) ("<span class='noc'>" + (str) + "</span>")
+#define span_pestra(str) ("<span class='pestra'>" + (str) + "</span>")
+#define span_ravox(str) ("<span class='ravox'>" + (str) + "</span>")
+#define span_xylix(str) ("<span class='xylix'>" + (str) + "</span>")
+#define span_baotha(str) ("<span class='baotha'>" + (str) + "</span>")
+#define span_graggar(str) ("<span class='graggar'>" + (str) + "</span>")
+#define span_matthios(str) ("<span class='matthios'>" + (str) + "</span>")
+#define span_zizo(str) ("<span class='zizo'>" + (str) + "</span>")
+#define span_vheslyn(str) ("<span class='vheslyn'>" + (str) + "</span>")
+#define span_mossmother(str) ("<span class='mossmother'>" + (str) + "</span>")
 
 #define span_divine(str) ("<span class='divine'>" + (str) + "</span>")
 #define span_profane(str) ("<span class='profane'>" + (str) + "</span>")
