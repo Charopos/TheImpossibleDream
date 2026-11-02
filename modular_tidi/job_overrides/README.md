@@ -4,7 +4,7 @@
 
 **Created In:** https://github.com/Shadow-Fragger-Metaclique-Gang/TheImpossibleDream/pull/71
 
-**Related PRs:** https://github.com/Shadow-Fragger-Metaclique-Gang/TheImpossibleDream/pull/112
+**Related PRs:** https://github.com/Shadow-Fragger-Metaclique-Gang/TheImpossibleDream/pull/102 https://github.com/Shadow-Fragger-Metaclique-Gang/TheImpossibleDream/pull/112
 
 **Major changes:**
 
@@ -25,6 +25,7 @@ Files are split by job category.
 
 ## Required core edits
 
+- `code/modules/jobs/job_types/roguetown/adventurer/wretch.dm`: `calculate_adventurer_scaling` returns the flat `get_adventurer_slot_cap()` (the admin panels still read it) and `update_adventurer_slots` is a no-op. The original bodies are commented out.
 - `code/__DEFINES/jobs.dm`: the Primal Divines department flag, color and display order, the Merchant's Mercenary display order, and department colors for Primal Divines and Merchantry.
 - `code/controllers/subsystem/job.dm`: maps the new departments to their latejoin group names.
 - `code/controllers/subsystem/lobby.dm`: the roundstart ready screen shows a job's display title.
