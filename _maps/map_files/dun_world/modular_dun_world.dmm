@@ -58962,7 +58962,7 @@
 /area/rogue/indoors/cave)
 "ket" = (
 /obj/structure/roguemachine/mail/r{
-	mailtag = "Bishop's Chambers"
+	mailtag = "Pontifex's Chambers"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church/chapel)
@@ -73150,7 +73150,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "priest";
 	locked = 1;
-	name = "Chamber of the Diocesal Bishop"
+	name = "Chamber of the Pontifexus"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church/chapel)
@@ -77316,7 +77316,7 @@
 /area/rogue/under/cave/scarymaze)
 "nle" = (
 /obj/structure/roguemachine/scomm/r{
-	scom_tag = "Cathedral - Office of the Bishop"
+	scom_tag = "Temple - Office of the Pontifex"
 	},
 /turf/open/floor/rogue/metal{
 	dir = 4
@@ -121790,7 +121790,7 @@
 /obj/structure/mineral_door/wood/fancywood{
 	lockid = "priest";
 	locked = 1;
-	name = "Office of the Diocesal Bishop"
+	name = "Office of the Pontifexus"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church/chapel)

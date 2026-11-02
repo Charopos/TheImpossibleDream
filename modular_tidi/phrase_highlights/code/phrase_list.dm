@@ -13,5 +13,8 @@ GLOBAL_LIST_INIT(phrase_highlights, list(
 	"leveller" = "Common way of referring to the apostate patron Matthios.",
 	"sutra" = "Common way of referring to the apostate patron Baotha.",
 	"kaan" = "Gronnic insult meaning 'whom fornicates with insects'.",
-	"purity afloat" = "Common greeting and departing phrase used by those of Psydonian worship."
+	"purity afloat" = "Common greeting and departing phrase used by those of Orthodoxist Psydonian worship.",
+	"bishop" = "A name describing an elevated member of the Psydonian clergy. <b>Only</b> the Psydonian clergy.",
+	"agonies eternal" = "Common mantra recited by those of <i>ag Cruucis</i>, the Body; venerating the eternal, empathetic suffering of PSYDON, wounded - and those of His creations.",
+	"His Majesty" = "The traditional means of referring to the Sovereign of the Kingdom.",
 ))
