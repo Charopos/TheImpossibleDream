@@ -22,13 +22,17 @@
 	</br>Even Death can be bargained with, however, and the Gravemaiden is nothing if not patient. It is said that She and Eora are locked often in the throes of dance, as Life and Death must always be, and that the drumming of their matched hearts is unlike any sound known to mortals."
 
 /datum/patron/divine/dendor
-	desc = "Lord of Madness, Chaos-Bringer, Prince of Indulgence, He of Feral Heart, Dendor is Nature, and He makes himself known well by the breaking of mortal-wrought confines. </br> \
-	</br> Many a highstrung noble has been lured from their hunting saiga and lost deep within His woods, never to be found again, but laughing all the while."
+	desc = "Dendor is a voice that speaks through the creak and rustle of trees. His flesh is that of the prey; His blood coursing hotly through the predator. </br> \
+	</br> It is he whose dreams are caught in fungus; capable of being consumed and shared. Those strongest attuned to Him discard all trappings of the civil and settled; throwing their lives away to exist free, faceless, to live, breed, eat, and die in the Wildman’s beautiful Cycle. </br>\
+	</br>Among more settled, civilized believers, the Treefather paradoxically serves as both a force of rabid, animistic chaos - and stable, steady growth. To a new mother, she offers tidings to Dendor for the safe keeping of her babes; that they may grow up healthy and resplendent- as so many of His groves do. Even a merchant deep within the cities of the world may pray to the Hamadryad– seeking a secure growth to his coffers and marketplace.</br>\
+	</br><i>There is so much wisdom in the Wild; why do you not seek it?</br></i>"
 
 /datum/patron/divine/abyssor
 	desc = "The seaborne's Primal Divine. Great Dreamer, He Who Slumbers In The Deep, Saltborne and Wavecrasher, Abyssor is the Sea- violent, and yet calmed. </br> \
-	</br> Out of Love long lost, the Tide follows the Moon, and the Moon in turn keeps the Dreamer sleeping within the depths, though the world oft quakes with His fitful slumber.</br> \
-	</br> Tyrannical, abyssal, and ne'er to be understood - though those that follow the Deepest Will can court the currents in their favor."
+	</br>Abyssor is many things; sire of the Seaborne, imposer of the Change. Worship of the Deep Will varies greatly across the Known World- from cherishing the bounty of the ocean, praying for the safe return of fleets afloat, and - even in the arid deserts of Raneshan - praying for change so driven by the Dreamer Divine; be it a new turn in a person’s life, cultural shifts, or rightful societal upheaval. Like a river, fate flows; His many hands carve its course.</br> \
+	</br>Out of Love long lost, the Tide follows the Moon, and the Moon in turn keeps the Dreamer sleeping within the depths, though the world oft quakes with His fitful slumber. </br> \
+	</br> Tyrannical, abyssal, and ne'er to be understood - though those that follow the Deepest Will can court the currents in their favor.</br>\
+	</br><i>Stagnation is to be scorned. The waves will always welcome you.</i>"
 
 /datum/patron/divine/malum
 	desc = "Divine Forgemaster, Master of Invention, Smith of the Gods, it is said that Malum is the Spirit of Humen Creation, patron of all those who make anew what the world has given. Its songs are sung in the pounding of hammer upon steel, the hum and hiss of freshly-quenched blades.</br> \
