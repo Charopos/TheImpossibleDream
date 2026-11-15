@@ -143,6 +143,9 @@ GLOBAL_LIST_INIT(burgher_positions, list( //Artisans, store owners what have you
 	"Tailor",
 	"Head Physician",
 	"Apothecary",
+	// [SURREALIS-ADD] - LORE
+	"Keeper",
+	// [/SURREALIS-ADD]
 	"Innkeeper",
 	"Bathmaster",
 	"Magicians Associate",
