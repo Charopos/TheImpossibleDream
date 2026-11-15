@@ -1097,10 +1097,10 @@
 	e1.dir = dir
 	e1.color = color
 	var/obj/effect/decal/edge/e3 = new(loc)
-	e3.dir = turn(-90, dir)
+	e3.dir = turn(dir, -90)
 	e3.color = color
 	var/obj/effect/decal/edge/e2 = new(loc)
-	e2.dir = turn(-45, dir)
+	e2.dir = turn(dir, -45)
 	e2.color = color //need this order or else it goes on the bodttombottom.
 	return INITIALIZE_HINT_QDEL
 
