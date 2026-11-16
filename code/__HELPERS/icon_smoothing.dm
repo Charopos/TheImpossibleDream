@@ -332,7 +332,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 		//Check for any neighborlay blockers blocking the check. TODO: Make this part of turf init so we only have to run this once per turf.
 		for(var/obj/O in contents)
 
-			if(O.blocks_neighborlays || O.flags_1&ON_BORDER_1)
+			if(O.blocks_neighborlays || O.flags_1&ON_BORDER_1 | !iswallturf(neighbortest))
 				if(O.dir == testing_dir)
 					adjacencies["[testing_dir]"] = FALSE
 					neighborlay_blocked = TRUE
