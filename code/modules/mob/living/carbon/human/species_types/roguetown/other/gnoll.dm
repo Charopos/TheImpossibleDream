@@ -91,7 +91,20 @@
 	C.pixel_x = -8
 	C.base_pixel_y = -4
 	C.pixel_y = -4
-
+// [SURREALIS-ADD] - WW_SEXCON
+	if(C.getorganslot(ORGAN_SLOT_PENIS))
+		if(C.internal_organs_slot[ORGAN_SLOT_PENIS])
+			C.internal_organs_slot[ORGAN_SLOT_PENIS] = /obj/item/organ/penis/barbed_knotted
+			C.internal_organs_slot[ORGAN_SLOT_PENIS].penis_size = MAX_PENIS_SIZE
+	if(C.getorganslot(ORGAN_SLOT_TESTICLES))
+		C.internal_organs_slot[ORGAN_SLOT_TESTICLES] = /obj/item/organ/testicles
+	if(C.getorganslot(ORGAN_SLOT_BREASTS))
+		C.internal_organs_slot[ORGAN_SLOT_BREASTS] = /obj/item/organ/breasts
+	if(C.getorganslot(ORGAN_SLOT_VAGINA))
+		C.internal_organs_slot[ORGAN_SLOT_VAGINA] = /obj/item/organ/vagina
+//	regenerate_icons() //TODO: sprites
+	ADD_TRAIT(src, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
+// [/SURREALIS-ADD]
 /datum/species/gnoll/update_damage_overlays(mob/living/carbon/human/H)
 	H.remove_overlay(DAMAGE_LAYER)
 	var/list/hands = list()

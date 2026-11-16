@@ -17,6 +17,22 @@
 	else
 		H.icon_state = "wwolf_f"
 	if(H.getorganslot(ORGAN_SLOT_PENIS)) //gock compatible
+		if(H.sexcon.arousal >= 20 && H.sexcon.manual_arousal == 1 || H.sexcon.manual_arousal == 4)
+			H.icon_state = "wwolf_m-e"
+		else if(H.sexcon.arousal >= 10 && H.sexcon.manual_arousal == 1 || H.sexcon.manual_arousal == 3)
+			H.icon_state = "wwolf_m-p"
+		else
+			H.icon_state = "wwolf_m"
+		H.add_overlay(benis)
+	H.update_damage_overlays()
+	return TRUE
+/* Leaving this copy of the old code here for reuse later.
+
+	if(H.gender == MALE)
+		H.icon_state = "wwolf_m"
+	else
+		H.icon_state = "wwolf_f"
+	if(H.getorganslot(ORGAN_SLOT_PENIS)) //gock compatible
 		H.cut_overlays()
 		var/image/benis = image(icon = H.icon)
 		if(H.sexcon.arousal >= 20 && H.sexcon.manual_arousal == 1 || H.sexcon.manual_arousal == 4)
@@ -25,6 +41,4 @@
 			benis.icon_state = "wwolf_benis-p"
 		else
 			benis.icon_state = "wwolf_benis-f"
-		H.add_overlay(benis)
-	H.update_damage_overlays()
-	return TRUE
+		H.add_overlay(benis) */
