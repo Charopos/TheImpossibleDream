@@ -242,7 +242,10 @@
 				return
 			if(!do_after(user, 20, target = user))
 				return
-			if(prob(L.STASTR * 8))
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(prob(L.STASTR * 8)) // SURREALIS-EDIT - ORIGINAL
+			if(get_stat_roll(L.STASTR) >= 5)
+			// [/SURREALIS-EDIT]
 				torn_sleeve_number += 1
 				r_sleeve_status = SLEEVE_TORN
 				user.visible_message(span_notice("[user] tears [src]."))
@@ -268,7 +271,10 @@
 				return
 			if(!do_after(user, 20, target = user))
 				return
-			if(prob(L.STASTR * 8))
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(prob(L.STASTR * 8)) // SURREALIS-EDIT - ORIGINAL
+			if(get_stat_roll(L.STASTR) >= 5)
+			// [/SURREALIS-EDIT]
 				torn_sleeve_number += 1
 				l_sleeve_status = SLEEVE_TORN
 				user.visible_message(span_notice("[user] tears [src]."))
@@ -446,8 +452,12 @@
 /obj/item/clothing/proc/get_flung_off()
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
+		// [SURREALIS-REMOVE] - VRCOMBAT
+		/*
 		if(!H.get_tempo_bonus(TEMPO_TAG_EQUIPTOSS))
 			return
+		*/
+		// [/SURREALIS-REMOVE]
 		var/max_range = (H.mind ? 2 : 3)
 		var/throwprob = (H.mind ? 8 : 80) + ((10 - H.STALUC))	// More FOR we have the less likely it is to happen.
 		if(!prob(throwprob))
@@ -492,6 +502,10 @@
 
 /obj/item/clothing/obj_fix(mob/user, full_repair = TRUE)
 	..()
+	// [SURREALIS-ADD] - VRCOMBAT
+	if(full_repair)
+		restore_all_zones()
+	// [/SURREALIS-ADD]
 	armor = original_armor
 
 /*
@@ -692,11 +706,22 @@ BLIND		// can't see anything
 	return (picked_sound ? picked_sound : FALSE)
 
 /obj/item/clothing/take_damage(damage_amount, damage_type = BRUTE, damage_flag, sound_effect, attack_dir, armor_penetration)
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
 	var/newdam = run_obj_armor(damage_amount, damage_type, damage_flag, attack_dir, armor_penetration)
 	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
 	var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
 	var/ratio =	(eff_currint / eff_maxint)
 	var/ratio_newinteg = (eff_currint - newdam) / eff_maxint
+	*/
+	var/watched_zone = zone_damage_target
+	var/ratio = integrity_display_ratio(watched_zone)
+	. = ..()
+	if(QDELETED(src))
+		return
+	var/ratio_newinteg = integrity_display_ratio(watched_zone)
+	// [/SURREALIS-EDIT]
 	var/text
 	var/y_offset
 	var/chunkicon
@@ -724,7 +749,11 @@ BLIND		// can't see anything
 				L.last_integ_sound = world.time + INT_NOISE_DELAY
 			new /obj/effect/temp_visual/armor_chunk(get_turf(src), 0.7 SECONDS, chunkcolor, chunkicon)
 		filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, -20, y_offset)
+	// [SURREALIS-REMOVE] - VRCOMBAT
+	/*
 	. = ..()
+	*/
+	// [/SURREALIS-REMOVE]
 
 
 /obj/proc/generate_tooltip(examine_text)
@@ -796,6 +825,9 @@ BLIND		// can't see anything
 		armor = new /datum/armor()
 	max_integrity = ARMOR_INT_CHEST_CIVILIAN
 	obj_integrity = max_integrity
+	// [SURREALIS-ADD] - VRCOMBAT
+	restore_all_zones()
+	// [/SURREALIS-ADD]
 	blocksound = null
 	if(slot_flags & (ITEM_SLOT_ARMOR | ITEM_SLOT_SHIRT | ITEM_SLOT_CLOAK))
 		slot_flags |= ITEM_SLOT_ARMOR | ITEM_SLOT_SHIRT | ITEM_SLOT_CLOAK

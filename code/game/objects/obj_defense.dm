@@ -13,7 +13,10 @@
 	if(damage_amount < DAMAGE_PRECISION)
 		return
 	. = damage_amount
-	if(obj_flags & CLAMP_BREAK)
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// if(obj_flags & CLAMP_BREAK) // SURREALIS-EDIT - ORIGINAL
+	if((obj_flags & CLAMP_BREAK) && clamps_break_damage())
+	// [/SURREALIS-EDIT]
 		var/break_threshold = (integrity_failure * max_integrity)
 		if(obj_integrity > break_threshold)
 			if((obj_integrity - damage_amount) <= break_threshold)
@@ -21,7 +24,10 @@
 		if(obj_broken || (integrity_failure && obj_integrity == break_threshold))	// We're either broken or we will be broken
 			if(damage_type != BURN)
 				damage_amount = 1
-	obj_integrity = max(obj_integrity - damage_amount, 0)
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// obj_integrity = max(obj_integrity - damage_amount, 0) // SURREALIS-EDIT - ORIGINAL
+	apply_integrity_damage(damage_amount)
+	// [/SURREALIS-EDIT]
 	if(animate_dmg)
 		var/oldx = pixel_x
 		animate(src, pixel_x = oldx+1, time = 0.5)
@@ -35,6 +41,14 @@
 
 		obj_destruction(damage_flag)
 
+// [SURREALIS-ADD] - VRCOMBAT
+/obj/proc/clamps_break_damage()
+	return TRUE
+
+/obj/proc/apply_integrity_damage(damage_amount)
+	obj_integrity = max(obj_integrity - damage_amount, 0)
+
+// [/SURREALIS-ADD]
 //forces the object to reach the integrity failure and break if it has one
 /obj/proc/force_obj_break(damage_flag = "")
 	if(!obj_broken && integrity_failure)

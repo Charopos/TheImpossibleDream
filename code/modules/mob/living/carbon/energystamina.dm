@@ -99,7 +99,10 @@
 	var/nutrition_amount = amt * 0.075 // flat 1/2 of the old 0.15 rate
 
 	if (amt <= 2)
-		if (amt == 2 && prob(STACON * 5)) // only sprinting knocks off 2 stamina at a time, so test this vs our con to see if we drop it
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// if (amt == 2 && prob(STACON * 5)) // only sprinting knocks off 2 stamina at a time, so test this vs our con to see if we drop it // SURREALIS-EDIT - ORIGINAL
+		if (amt == 2 && get_stat_roll(STACON) >= 10) // only sprinting knocks off 2 stamina at a time, so test this vs our con to see if we drop it
+		// [/SURREALIS-EDIT]
 			return 0
 
 	var/tox_damage = getToxLoss()

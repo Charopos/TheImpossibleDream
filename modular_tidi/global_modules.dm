@@ -37,3 +37,4 @@
 #include "weapons\_weapons.dme"
 #include "weapons_modular\_weapons_modular.dme"
 #include "ww_tweaks\_ww_tweaks.dme"
+#include "verdant_combat\_verdant_combat.dme"

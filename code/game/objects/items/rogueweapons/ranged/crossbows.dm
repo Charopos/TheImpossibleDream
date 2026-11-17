@@ -73,9 +73,17 @@
 	if(!onehanded)
 		. += span_info("Nocking from a pouch requires my other hand to be free.")
 	if(penfactor < 0)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// SURREALIS-EDIT - ORIGINAL
+		/*
 		. += span_info("This weapon <b>reduces</b> bolt penetration by <b>[abs(penfactor)]</b> tier(s).")
 	else if(penfactor > 0)
 		. += span_info("This weapon <b>increases</b> bolt penetration by <b>[penfactor]</b> tier(s).")
+		*/
+		. += span_info("This weapon <b>reduces</b> bolt penetration by <b>[abs(penfactor)]</b>.")
+	else if(penfactor > 0)
+		. += span_info("This weapon <b>increases</b> bolt penetration by <b>[penfactor]</b>.")
+		// [/SURREALIS-EDIT]
 	if(onehanded)
 		. += span_info("This weapon can be used in one hand, at the penalty of aim time.")
 		if(HAS_TRAIT(user, TRAIT_DUALWIELDER))
@@ -225,8 +233,20 @@
 			continue
 
 		apply_ranged_accuracy(BB, user)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// SURREALIS-EDIT - ORIGINAL
+		/*
 		BB.armor_penetration = max(PEN_NONE, BB.armor_penetration + penfactor)
 		BB.damage *= damfactor
+		*/
+		BB.armor_penetration = max(0, BB.armor_penetration + penfactor)
+		apply_ranged_variance(BB, user, /datum/skill/combat/crossbows, 0, luck_only = TRUE, use_statmult = FALSE)
+		BB.damage *= damfactor
+		BB.falloff_start_distance = 7
+		BB.falloff_damage_per_turf = 5
+		BB.falloff_ap_per_turf = 5
+		BB.falloff_accuracy_per_turf = 3
+		// [/SURREALIS-EDIT]
 
 	cocked = FALSE
 
@@ -304,7 +324,10 @@
 	attack_verb = list("strikes", "buttstrokes")
 	hitsound = list('sound/combat/hits/blunt/woodblunt (1).ogg', 'sound/combat/hits/blunt/woodblunt (2).ogg')
 	chargetime = 0
-	penfactor = PEN_NONE
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// penfactor = PEN_NONE // SURREALIS-EDIT - ORIGINAL
+	penfactor = 0
+	// [/SURREALIS-EDIT]
 	damfactor = 1.1 //Translates into 11 DMG for a Slurbow, 16.5 DMG for a Crossbow, and 23 DMG for a Siegebow.
 	swingdelay = 0
 	icon_state = "instrike"

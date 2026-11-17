@@ -104,6 +104,10 @@
 		var/obj/item/rogueweapon/best_implement = get_held_implement(user)
 		best_implement?.attune_implement(spell_color, attunement_school)
 
+	// [SURREALIS-ADD] - VRCOMBAT
+	to_fire.damage = get_varied_damage(to_fire.damage, user)
+
+	// [/SURREALIS-ADD]
 	to_fire.preparePixelProjectile(target, user)
 
 	// Register hit signal so the spell knows when the projectile connects

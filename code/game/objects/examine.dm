@@ -186,9 +186,29 @@
 	if(guarded)
 		return ""
 
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
 	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
 	var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
 	var/ratio =	(eff_currint / eff_maxint)
+	*/
+	var/current_integrity = obj_integrity
+	var/maximum_integrity = max_integrity
+	if(uses_zone_integrity())
+		current_integrity = 0
+		maximum_integrity = 0
+		for(var/zone in GLOB.armor_check_zones)
+			if(has_zone_integrity(zone))
+				current_integrity += get_zone_integrity(zone)
+				maximum_integrity += get_zone_max_integrity(zone)
+
+	var/eff_maxint = maximum_integrity - (maximum_integrity * integrity_failure)
+	var/eff_currint = max(current_integrity - (maximum_integrity * integrity_failure), 0)
+	var/ratio = 1
+	if(eff_maxint > 0)
+		ratio = (eff_currint / eff_maxint)
+	// [/SURREALIS-EDIT]
 	var/percent = round((ratio * 100), 1)
 	var/result
 	if(percent < 100)

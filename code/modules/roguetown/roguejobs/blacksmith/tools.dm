@@ -140,7 +140,10 @@
 		if(repair_percent)
 			repair_percent *= attacked_item.max_integrity
 			var/exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
-			attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) // SURREALIS-EDIT - ORIGINAL
+			attacked_item.adjust_integrity(repair_percent)
+			// [/SURREALIS-EDIT]
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
 			else

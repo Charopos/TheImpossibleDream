@@ -45,7 +45,7 @@
 	damfactor = 1.2
 	swingdelay = 8
 	clickcd = CLICK_CD_MELEE
-	penfactor = PEN_HEAVY
+	penfactor = 3
 
 /datum/intent/claw/lunge/steel
 	damfactor = 1.2
@@ -66,33 +66,33 @@
 	damfactor = 1.2
 	swingdelay = 8
 	clickcd = CLICK_CD_MELEE
-	penfactor = PEN_HEAVY
+	penfactor = 3
 
 /datum/intent/claw/lunge/steel
 	damfactor = 1.2
 	swingdelay = 12
 	clickcd = CLICK_CD_HEAVY
-	penfactor = PEN_HEAVY
+	penfactor = 3
 
 /datum/intent/claw/lunge/gronn
 	damfactor = 1.1
 	swingdelay = 5
 	clickcd = CLICK_CD_QUICK
-	penfactor = PEN_HEAVY
+	penfactor = 3
 
 /datum/intent/claw/cut/iron
-	penfactor = PEN_MEDIUM
+	penfactor = 2
 	damfactor = 1.1
 	clickcd = CLICK_CD_HEAVY
 
 /datum/intent/claw/cut/steel
-	penfactor = PEN_MEDIUM
+	penfactor = 2
 	swingdelay = 4
 	damfactor = 1.3
 	clickcd = CLICK_CD_HEAVY
 
 /datum/intent/claw/cut/gronn
-	penfactor = PEN_MEDIUM
+	penfactor = 2
 	swingdelay = 0
 	damfactor = 1.1
 	clickcd = CLICK_CD_MELEE

@@ -736,13 +736,20 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			var/obj/item/ammo_casing/caseless/rogue/rog_ammo = src
 			if(rog_ammo.BB.damage)
 				inspec += "\n<b>PROJECTILE DAMAGE:</b> [rog_ammo.BB.damage]"
-			inspec += "\n<b>Armor Penetration:</b> [rog_ammo.BB.armor_penetration > PEN_NONE ? colorgrade_rating(uppertext(rog_ammo.BB.flag), rog_ammo.BB.armor_penetration) : "<font color='#808080'>NONE</font>"]"
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// inspec += "\n<b>Armor Penetration:</b> [rog_ammo.BB.armor_penetration > PEN_NONE ? colorgrade_rating(uppertext(rog_ammo.BB.flag), rog_ammo.BB.armor_penetration) : "<font color='#808080'>NONE</font>"]" // SURREALIS-EDIT - ORIGINAL
+			inspec += "\n<b>Armor Penetration:</b> [rog_ammo.BB.armor_penetration > AP_NONE ? colorgrade_rating(uppertext(rog_ammo.BB.flag), rog_ammo.BB.armor_penetration) : "<font color='#808080'>NONE</font>"]"
+			// [/SURREALIS-EDIT]
 			if(rog_ammo.BB.min_range)
 				inspec += "\n<b>MINIMUM EFFECTIVE RANGE:</b> [rog_ammo.BB.min_range] tile(s)"
 			if(rog_ammo.BB.max_range)
 				inspec += "\n<b>MAXIMUM EFFECTIVE RANGE:</b> [rog_ammo.BB.max_range] tile(s)"
+			// [SURREALIS-REMOVE] - VRCOMBAT
+			/*
 			if(rog_ammo.BB.dam_falloff_factor)
 				inspec += "\n<b>DAMAGE FALLOFF:</b> [get_falloff_string(rog_ammo.BB.dam_falloff_factor)]"
+			*/
+			// [/SURREALIS-REMOVE]
 			if(rog_ammo.BB.antibeast_factor != 1)
 				inspec += "\n<b>ANTI-BEAST MODIFIER:</b> [rog_ammo.BB.antibeast_factor * 100]% <span class='info'><a href='?src=[REF(src)];explainantibeast=1'>{?}</a></span>"
 
@@ -770,7 +777,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 //**** General durability
 
-		if(max_integrity)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// if(max_integrity) // SURREALIS-EDIT - ORIGINAL
+		var/obj/item/clothing/zoned_clothing = src
+		if(max_integrity && istype(zoned_clothing) && zoned_clothing.uses_zone_integrity())
+			inspec += zoned_clothing.durability_inspect_text()
+			if(force >= 5)
+				inspec += " <span class='info'><a href='?src=[REF(src)];explaindurability=1'>{?}</a></span>"
+		else if(max_integrity)
+		// [/SURREALIS-EDIT]
 			inspec += "\n<b>DURABILITY:</b> "
 			var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
 			var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
@@ -1281,6 +1296,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			max_sharp = max(max_sharp, IS_SHARP)
 	return max_sharp
 
+// [SURREALIS-REMOVE] - VRCOMBAT
+/*
 /obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting, mob/user, zone_sel)
 	if(!get_sharpness() || !affecting.can_dismember(src))
 		return 0
@@ -1311,7 +1328,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			return 0
 
 	return affecting.dismemberment_chance_from_force(nuforce, zone_sel)
-
+*/
+// [/SURREALIS-REMOVE]
 /obj/item/proc/get_dismember_sound()
 	if(damtype == BURN)
 		. = 'sound/blank.ogg'
@@ -1397,6 +1415,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		else
 			return "Mighty"
 
+// [SURREALIS-REMOVE] - VRCOMBAT
+/*
 /obj/item/proc/get_falloff_string(falloff)
 	switch(falloff)
 		if(0 to 0.25)
@@ -1409,7 +1429,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			return "Marginal"
 		else
 			return "None"
-
+*/
+// [/SURREALIS-REMOVE]
 /obj/item/MouseEntered(location, control, params)
 	. = ..()
 

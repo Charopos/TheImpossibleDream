@@ -143,6 +143,9 @@
 /mob/living/carbon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	var/hurt = TRUE
+	// [SURREALIS-ADD] - VRCOMBAT
+	var/was_jumping = is_jumping
+	// [/SURREALIS-ADD]
 	if(hit_atom.density && isturf(hit_atom))
 		if(hurt)
 			take_bodypart_damage(10,check_armor = TRUE)
@@ -152,6 +155,9 @@
 		var/mob/living/carbon/victim = hit_atom
 		if(victim.movement_type & FLYING)
 			return
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// SURREALIS-EDIT - ORIGINAL
+		/*
 		if(cmode && m_intent == MOVE_INTENT_RUN)
 			if(ishuman(src))
 				var/mob/living/carbon/human/H = src
@@ -166,9 +172,19 @@
 							visible_message("<span class='danger'>[src] leaps onto [victim]!",\
 								"<span class='danger'>I leap onto [victim]!</span>")
 							return
+		*/
+		if(ishuman(src) && cmode && m_intent == MOVE_INTENT_RUN && !get_active_held_item() && istype(a_intent, INTENT_GRAB) && was_jumping)
+			var/mob/living/carbon/human/H = src
+			if(H.try_tackle(victim, throwingdatum))
+				hurt = FALSE
+		// [/SURREALIS-EDIT]
 		if(hurt)
 			victim.take_bodypart_damage(10,check_armor = TRUE)
 			take_bodypart_damage(10,check_armor = TRUE)
+			// [SURREALIS-ADD] - VRCOMBAT
+			if(victim.IsOffBalanced())
+				victim.Knockdown(30)
+			// [/SURREALIS-ADD]
 			visible_message("<span class='danger'>[src] crashes into [victim]!",\
 				"<span class='danger'>I violently crash into [victim]!</span>")
 			playsound(src,"genblunt",100,TRUE)
@@ -1074,7 +1090,10 @@
 			death()
 			cure_blind(UNCONSCIOUS_BLIND)
 			return
-		if(((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) || IsUnconscious() || IsSleeping() || getOxyLoss() > 75 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// if(((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) || IsUnconscious() || IsSleeping() || getOxyLoss() > 75 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))) // SURREALIS-EDIT - ORIGINAL
+		if(((blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) || HAS_TRAIT(src, TRAIT_BP_CRASH) || IsUnconscious() || IsSleeping() || getOxyLoss() > 75 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
+		// [/SURREALIS-EDIT]
 			if(stat != UNCONSCIOUS) // Transition into hardcrit — announce once
 				var/bled_out = (blood_volume in -INFINITY to BLOOD_VOLUME_SURVIVE) && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)
 				var/suffocating = getOxyLoss() > 75
