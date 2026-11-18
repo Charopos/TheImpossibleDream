@@ -93,8 +93,7 @@
 	C.pixel_y = -4
 // [SURREALIS-ADD] - WW_SEXCON
 	if(C.getorganslot(ORGAN_SLOT_PENIS))
-		if(C.internal_organs_slot[ORGAN_SLOT_PENIS])
-			C.internal_organs_slot[ORGAN_SLOT_PENIS] = /obj/item/organ/penis/barbed_knotted/big
+		C.internal_organs_slot[ORGAN_SLOT_PENIS] = /obj/item/organ/penis/barbed_knotted/big
 	if(C.getorganslot(ORGAN_SLOT_TESTICLES))
 		C.internal_organs_slot[ORGAN_SLOT_TESTICLES] = /obj/item/organ/testicles
 	if(C.getorganslot(ORGAN_SLOT_BREASTS))
