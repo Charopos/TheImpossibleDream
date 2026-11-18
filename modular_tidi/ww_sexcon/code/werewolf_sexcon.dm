@@ -23,7 +23,6 @@
 			H.icon_state = "wwolf_m-p"
 		else
 			H.icon_state = "wwolf_m"
-		H.add_overlay(benis)
 	H.update_damage_overlays()
 	return TRUE
 /* Leaving this copy of the old code here for reuse later.
