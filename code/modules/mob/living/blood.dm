@@ -196,10 +196,13 @@
 			// [SURREALIS-ADD] - VRCOMBAT
 			var/soft_crit_threshold = clamp(BLOOD_VOLUME_SURVIVE - ((STACON - 10) * 10), 40, 200)
 			// [/SURREALIS-ADD]
-			if(blood_volume <= BLOOD_VOLUME_BAD)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(blood_volume <= BLOOD_VOLUME_BAD) // SURREALIS-EDIT - ORIGINAL
+			// Health is now maxHealth - max(tox, oxy), so blood-loss oxy damage is lethal; bloodloss-immune mobs must skip it entirely.
+			if(blood_volume <= BLOOD_VOLUME_BAD && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
+			// [/SURREALIS-EDIT]
 				if(mind && !has_status_effect(/datum/status_effect/debuff/critwounded)) //check if we have a mind and lack the status effect before we do our trait condition check. - So every NPC isn't running this.
-					if(!HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) //uniquely undeath rituos users/vampires don't care for bloodloss, they do on arteries though.
-						apply_status_effect(/datum/status_effect/debuff/critwounded) //apply critically wounded - more energy in cmode cost. Until fixed.
+					apply_status_effect(/datum/status_effect/debuff/critwounded) //apply critically wounded - more energy in cmode cost. Until fixed.
 				// [SURREALIS-EDIT] - VRCOMBAT
 				// SURREALIS-EDIT - ORIGINAL
 				/*
