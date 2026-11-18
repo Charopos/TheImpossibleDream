@@ -9,7 +9,6 @@
 #include "code\hit_reactions.dm"
 #include "code\tackle.dm"
 #include "code\coifs.dm"
-#include "code\self_disembowel.dm"
 #include "code\crit_model.dm"
 #include "code\lethal_wounds.dm"
 #include "code\elemental_burns.dm"

@@ -202,7 +202,7 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `code/modules/mob/living/living_defense.dm`: EDIT near `/mob/living/bullet_act`, EDIT near `/mob/living/hitby`, EDIT near `/mob/living/proc/check_projectile_wounding`, EDIT near `/mob/living/proc/run_armor_check`
 - `code/modules/mob/living/living_defines.dm`: ADD near `/mob/living`
 - `code/modules/mob/living/living_wounds.dm`: EDIT near `/mob/living/proc/simple_woundcritroll`
-- `code/modules/mob/living/simple_animal/animal_defense.dm`: EDIT near `/mob/living/simple_animal/attack_hand`, EDIT near `/mob/living/simple_animal/attacked_by`, EDIT near `/mob/living/simple_animal/onbite`, EDIT near `/mob/living/simple_animal/proc/attack_threshold_check`
+- `code/modules/mob/living/simple_animal/animal_defense.dm`: EDIT near `/mob/living/simple_animal/attack_hand`, EDIT near `/mob/living/simple_animal/attacked_by`, EDIT near `/mob/living/simple_animal/onbite`, EDIT near `/mob/living/simple_animal/proc/attack_threshold_check`, EDIT near `/mob/living/simple_animal/attack_animal`
 - `code/modules/mob/living/simple_animal/damage_procs.dm`: EDIT near `/mob/living/simple_animal/adjustBruteLoss`, EDIT near `/mob/living/simple_animal/adjustFireLoss`
 - `code/modules/mob/living/simple_animal/hostile/bosses/baroness.dm`: EDIT near `/datum/intent/simple/baroness`
 - `code/modules/mob/living/simple_animal/hostile/bosses/lich_boss.dm`: EDIT near `/datum/intent/simple/lich`

@@ -13,10 +13,10 @@
 		I.funny_attack_effects(src, user)
 		if(I.force_dynamic)
 			var/newforce = get_complex_damage(I, user)
-			var/pen = user.used_intent.penfactor
 			// [SURREALIS-EDIT] - VRCOMBAT
 			// SURREALIS-EDIT - ORIGINAL
 			/*
+			var/pen = user.used_intent.penfactor
 			if(user.used_intent.out_of_effective_range(src, user))
 				pen = PEN_NONE
 				newforce *= EFF_RANGE_MISS_DAMFACTOR
@@ -30,7 +30,6 @@
 			*/
 			var/armor_pen = melee_armor_penetration(I, user)
 			if(user.used_intent.out_of_effective_range(src, user))
-				pen = 0
 				armor_pen = 0
 				newforce *= EFF_RANGE_MISS_DAMFACTOR
 			var/haha = user.used_intent.item_d_type
@@ -64,7 +63,10 @@
 				if(HAS_TRAIT(src, TRAIT_SIMPLE_WOUNDS))
 					if((I.is_silver || (I.is_even_lesser_silver && is_npc(src))) && HAS_TRAIT(src, TRAIT_SILVER_WEAK))
 						newforce *= SILVER_SIMPLEMOB_DAM_MULT
-					simple_woundcritroll(user.used_intent.blade_class, newforce, user, selzone, weapon = I, penfactor = pen, part_mult = user.used_intent.get_part_damage_factor())
+					// [SURREALIS-EDIT] - VRCOMBAT
+					// simple_woundcritroll(user.used_intent.blade_class, newforce, user, selzone, weapon = I, penfactor = pen, part_mult = user.used_intent.get_part_damage_factor()) // SURREALIS-EDIT - ORIGINAL
+					simple_woundcritroll(user.used_intent.blade_class, newforce, user, selzone, weapon = I, penfactor = AP_TO_PEN_TIER(armor_pen), part_mult = user.used_intent.get_part_damage_factor())
+					// [/SURREALIS-EDIT]
 				if(newforce > 5)
 					if(haha != BCLASS_BLUNT)
 						I.add_mob_blood(src)
@@ -158,7 +160,10 @@
 			attack_threshold_check(damage, hitlim, armorcheck = armor)
 			log_combat(M, src, "attacked")
 			updatehealth()
-			simple_woundcritroll(M.used_intent.blade_class, damage, M, selzone, penfactor = M.used_intent.penfactor, part_mult = M.used_intent.get_part_damage_factor())
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// simple_woundcritroll(M.used_intent.blade_class, damage, M, selzone, penfactor = M.used_intent.penfactor, part_mult = M.used_intent.get_part_damage_factor()) // SURREALIS-EDIT - ORIGINAL
+			simple_woundcritroll(M.used_intent.blade_class, damage, M, selzone, penfactor = AP_TO_PEN_TIER(M.used_intent.penfactor), part_mult = M.used_intent.get_part_damage_factor())
+			// [/SURREALIS-EDIT]
 			visible_message(span_danger("[M] [atk_verb] [src] in the [span_combatsecondarybp(hitlim)]![next_attack_msg.Join()]"),\
 							span_danger("[M] [atk_verb] me in the [span_userdanger(hitlim)]![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
 			next_attack_msg.Cut()
@@ -275,7 +280,10 @@
 			next_attack_msg += VISMSG_ARMOR_BLOCKED
 		damage *= weakpoint_damage_mod(selzone)
 		attack_threshold_check(damage, hitlim, M.melee_damage_type, armor)
-		simple_woundcritroll(M.a_intent.blade_class, damage, M, selzone, penfactor = M.a_intent.penfactor, part_mult = M.a_intent.get_part_damage_factor())
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// simple_woundcritroll(M.a_intent.blade_class, damage, M, selzone, penfactor = M.a_intent.penfactor, part_mult = M.a_intent.get_part_damage_factor()) // SURREALIS-EDIT - ORIGINAL
+		simple_woundcritroll(M.a_intent.blade_class, damage, M, selzone, penfactor = AP_TO_PEN_TIER(M.armor_penetration), part_mult = M.a_intent.get_part_damage_factor())
+		// [/SURREALIS-EDIT]
 		var/attack_verb = pick(M.a_intent.attack_verb)
 		visible_message(span_danger("\The [M] [attack_verb] [src] in the [span_combatsecondarybp(hitlim)]![next_attack_msg.Join()]"), \
 					span_danger("\The [M] [attack_verb] me in the [span_userdanger(hitlim)]![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)

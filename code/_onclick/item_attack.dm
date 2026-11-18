@@ -794,7 +794,10 @@
 	I.funny_attack_effects(src, user)
 	if(I.force_dynamic)
 		var/newforce = get_complex_damage(I, user)
-		var/pen = user.used_intent.penfactor
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// var/pen = user.used_intent.penfactor // SURREALIS-EDIT - ORIGINAL
+		var/pen = AP_TO_PEN_TIER(melee_armor_penetration(I, user))
+		// [/SURREALIS-EDIT]
 		// No sweetspot penalty if they are prone
 		if(user.used_intent.out_of_effective_range(src, user))
 			// [SURREALIS-EDIT] - VRCOMBAT

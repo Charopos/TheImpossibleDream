@@ -34,6 +34,13 @@ GLOBAL_LIST_INIT(clamping_tool_behaviors, list(TOOL_HEMOSTAT, TOOL_WIRECUTTER, T
 	limb_grabbed?.invalidate_owner_bleed_cache()
 
 /obj/item/bodypart/proc/calculate_crit_chance(damage_dividend, dam, resistance, base_multiplier = 10, dam_divisor = 5, resistance_penalty = 10, bonus = 0, armor_resistance = 0)
+	var/chance = base_crit_chance(damage_dividend, dam, resistance, base_multiplier, dam_divisor, resistance_penalty, bonus, armor_resistance)
+#ifndef HUGBOX
+	chance = round(chance * crit_curve_mult(damage_dividend, dam), 1)
+#endif
+	return chance
+
+/obj/item/bodypart/proc/base_crit_chance(damage_dividend, dam, resistance, base_multiplier = 10, dam_divisor = 5, resistance_penalty = 10, bonus = 0, armor_resistance = 0)
 	var/con_modifier = STAT_MOD(owner.STACON)
 	var/base_chance = round(damage_dividend * base_multiplier + dam * (dam_divisor / 5) - resistance_penalty * resistance + bonus, 1)
 	if(con_modifier > 0)
@@ -43,6 +50,15 @@ GLOBAL_LIST_INIT(clamping_tool_behaviors, list(TOOL_HEMOSTAT, TOOL_WIRECUTTER, T
 	if(armor_resistance > 0)
 		base_chance *= 1 - (armor_resistance / 100) * 0.5
 	return round(base_chance, 1)
+
+#ifndef HUGBOX
+/obj/item/bodypart/proc/crit_curve_mult(damage_dividend, dam)
+	if(dam >= CRIT_CURVE_OVERKILL + owner.STACON)
+		return 1
+	var/prior_fraction = max(0, damage_dividend - (dam / max_damage))
+	var/readiness = min(1, prior_fraction / CRIT_CURVE_FULL_FRACTION) ** CRIT_CURVE_EXPONENT
+	return CRIT_CURVE_FRESH_MULT + (1 - CRIT_CURVE_FRESH_MULT) * readiness
+#endif
 
 /obj/item/bodypart/proc/check_crit_threshold(damage_dividend, dam, resistance, divisor, overkill_difficulty)
 	if(damage_dividend >= divisor)

@@ -55,28 +55,7 @@
 /datum/intent/claw/cut
 	penfactor = INTENT_PEN_NONE
 
-/datum/intent/claw/cut/gronn
-	penfactor = INTENT_PEN_SOLID
-
-/datum/intent/claw/cut/iron
-	penfactor = INTENT_PEN_BASIC
-
-/datum/intent/claw/cut/steel
-	penfactor = INTENT_PEN_GLANCING
-
-/datum/intent/claw/lunge/gronn
-	penfactor = INTENT_PEN_STRONG_PLUS
-
-/datum/intent/claw/lunge/iron
-	penfactor = INTENT_PEN_KEEN
-
-/datum/intent/claw/lunge/steel
-	penfactor = INTENT_PEN_KEEN
-
 /datum/intent/claw/rend
-	penfactor = INTENT_PEN_BASIC
-
-/datum/intent/claw/rend/steel
 	penfactor = INTENT_PEN_BASIC
 
 /datum/intent/dagger/chop
@@ -269,22 +248,23 @@
 	penfactor = INTENT_PEN_PUNCTURE
 
 /datum/intent/rend
-	penfactor = INTENT_PEN_NEVER
+	penfactor = INTENT_PEN_NONE
+	never_penetrates = TRUE
 
 /datum/intent/rend/apophis
-	penfactor = INTENT_PEN_NEVER
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/rend/krieg
-	penfactor = INTENT_PEN_NEVER
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/rend/reach
-	penfactor = INTENT_PEN_NEVER
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/rend/reach/partizan
-	penfactor = INTENT_PEN_NEVER
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/rend/reach/partizan/martyr
-	penfactor = INTENT_PEN_NEVER
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/shield/bash
 	penfactor = INTENT_PEN_BASIC
@@ -398,7 +378,7 @@
 	penfactor = 10
 
 /datum/intent/simple/werewolf
-	penfactor = 50
+	penfactor = INTENT_PEN_STRONG
 
 /datum/intent/simple/werewolf/gnoll
 	penfactor = 1.5

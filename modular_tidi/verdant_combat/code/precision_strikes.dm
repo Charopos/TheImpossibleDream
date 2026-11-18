@@ -13,7 +13,12 @@ GLOBAL_LIST_INIT(precision_vulnerable_zones, list(BODY_ZONE_L_ARM = 5,
 /mob/living
 	var/last_attack_was_blunted = FALSE
 
+/datum/intent
+	var/never_penetrates = FALSE
+
 /proc/melee_armor_penetration(obj/item/I, mob/living/user)
+	if(user.used_intent?.never_penetrates)
+		return 0
 	var/pen = I.armor_penetration
 	if(I.d_type == "blunt")
 		pen = BLUNT_DEFAULT_PENFACTOR

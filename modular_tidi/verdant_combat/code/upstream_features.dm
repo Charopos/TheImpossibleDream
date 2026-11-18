@@ -25,6 +25,7 @@
 		to_chat(user, span_warning("You stop before you can disembowel yourself!"))
 		return TRUE
 	var/mob/living/carbon/C = user
+	C.get_bodypart(BODY_ZONE_CHEST)?.add_wound(/datum/wound/slash/disembowel)
 	var/static/list/spilled_slots = list(ORGAN_SLOT_STOMACH, ORGAN_SLOT_LIVER, ORGAN_SLOT_HEART)
 	for(var/slot in spilled_slots)
 		var/obj/item/organ/spilled = C.getorganslot(slot)
@@ -32,6 +33,7 @@
 			continue
 		spilled.Remove(C)
 		spilled.forceMove(C.drop_location())
+	C.update_damage_overlays()
 	user.visible_message(span_danger("[user] disembowels themselves, their organs spilling out!"), span_notice("You feel a horrible pain as your organs spill out!"))
 	user.emote("scream", null, null, TRUE, TRUE)
 	user.overlay_fullscreen("painflash", /atom/movable/screen/fullscreen/painflash)

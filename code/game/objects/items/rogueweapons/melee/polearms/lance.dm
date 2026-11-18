@@ -1,5 +1,6 @@
 /datum/intent/spear/thrust/lance
 	damfactor = 1.25 // Turns its base damage into 30 on the two-hand thrust. It keeps the spear thrust one handed.
+	penfactor = INTENT_PEN_PIERCING
 
 /datum/intent/lance
 	name = "lance"
@@ -9,7 +10,7 @@
 	item_d_type = "stab"
 	// [SURREALIS-EDIT] - VRCOMBAT
 	// penfactor = PEN_NONE // SURREALIS-EDIT - ORIGINAL
-	penfactor = 0
+	penfactor = INTENT_PEN_PIERCING
 	// [/SURREALIS-EDIT]
 	chargetime = 4 SECONDS
 	damfactor = 4

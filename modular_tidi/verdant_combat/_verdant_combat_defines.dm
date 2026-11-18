@@ -64,8 +64,6 @@
 #define INTENT_PEN_PUNCTURE			3
 #define INTENT_PEN_PUNCTURE_PLUS	3.75
 #define INTENT_PEN_ARMOR_BREAKER	4
-/// Rend intents are designed never to penetrate armor.
-#define INTENT_PEN_NEVER			-100
 
 #define BLUNT_AP_MOD_LIGHT -10
 #define BLUNT_AP_MOD_MEDIUM -6
@@ -141,7 +139,18 @@
 #undef CRIT_RESISTANCE_EFFECTIVE_BLEEDRATE
 #undef CRIT_RESISTANCE_TIMER_CD
 
-#define HUGBOX
+// #define HUGBOX
+
+#ifndef HUGBOX
+	/// Crit chance multiplier on an undamaged limb.
+	#define CRIT_CURVE_FRESH_MULT		0.1
+	/// Limb damage fraction, before the hit, at which crits reach full chance.
+	#define CRIT_CURVE_FULL_FRACTION	0.75
+	/// Shape of the ramp between fresh and full; above 1 keeps crits rare until the limb is badly hurt.
+	#define CRIT_CURVE_EXPONENT			1.5
+	/// A single hit dealing at least this plus the target's CON ignores the curve.
+	#define CRIT_CURVE_OVERKILL			90
+#endif
 
 #ifdef HUGBOX
 	#define CRIT_LIMB_DISLOCATION_DIVISOR		0.5
