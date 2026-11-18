@@ -99,8 +99,6 @@
 	if(!wound.apply_to_bodypart(src, silent, crit_message, damage))
 		qdel(wound)
 		return
-	if(!istype(wound, /datum/wound/infection))
-		check_wound_infection(wound, user, weapon)
 	// [/SURREALIS-EDIT]
 	return wound
 
@@ -366,6 +364,8 @@
 	if(!newwound.silent_progress)
 		owner.visible_message(span_red("A new [newwound.name] appears on [owner]'s [LOWER_TEXT(bodyzone2readablezone(bodypart_to_zone(newwound.bodypart_owner)))]!"))
 	newwound.upgrade(dam, armor)
+	if(!istype(newwound, /datum/wound/dynamic/burn) && newwound.bleed_rate > 0)
+		check_wound_infection(newwound, user, weapon)
 	for(var/datum/wound/dynamic/existing as anything in same_type_wounds)
 		if(existing.can_merge(newwound))
 			existing.merge_wound(newwound)

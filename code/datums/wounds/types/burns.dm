@@ -112,7 +112,7 @@
 	woundpain += (dam * BURN_UPG_PAINRATE)
 	passive_healing = max(0.1, passive_healing - BURN_UPG_HEALDECAY)
 	if(!is_sewn())
-		if(whp >= BURN_CRITICAL_WHP && bodypart_owner?.can_bloody_wound())
+		if(whp >= BURN_CRITICAL_WHP && bodypart_owner?.can_bloody_wound() && !bodypart_owner.cauterizing)
 			set_bleed_rate(0.4)
 			bodypart_owner.check_wound_infection(src)
 		else

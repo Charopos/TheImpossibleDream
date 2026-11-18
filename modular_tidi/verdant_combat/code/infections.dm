@@ -208,8 +208,10 @@ GLOBAL_LIST_INIT(filthy_weapon_types, typecacheof(list(
 	if(is_type_in_typecache(src, GLOB.filthy_weapon_types))
 		ADD_TRAIT(src, TRAIT_FILTHY_WEAPON, INNATE_TRAIT)
 
+/obj/item/bodypart/var/cauterizing = FALSE
+
 /obj/item/bodypart/proc/check_wound_infection(datum/wound/new_wound, mob/living/user, obj/item/weapon)
-	if(!owner || !istype(new_wound, /datum/wound/dynamic))
+	if(!owner || cauterizing || !istype(new_wound, /datum/wound/dynamic))
 		return
 	if(HAS_TRAIT(owner, TRAIT_NOMETABOLISM) || HAS_TRAIT(owner, TRAIT_DEADITE) || HAS_TRAIT(owner, TRAIT_ROTMAN))
 		return
