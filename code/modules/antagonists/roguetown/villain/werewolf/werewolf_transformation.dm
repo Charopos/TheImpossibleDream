@@ -135,15 +135,19 @@
 	ADD_TRAIT(src, TRAIT_PACIFISM, TRAIT_SOURCE_WEREWOLF)
 // [SURREALIS-ADD] - WW_SEXCON
 	if(getorganslot(ORGAN_SLOT_PENIS))
-		W.internal_organs_slot[ORGAN_SLOT_PENIS] = /obj/item/organ/penis/knotted/big
+		var/obj/item/organ/penis/knotted/big/knot = new
+		knot.Insert(W, TRUE, TRUE)
 	if(getorganslot(ORGAN_SLOT_TESTICLES))
-		W.internal_organs_slot[ORGAN_SLOT_TESTICLES] = /obj/item/organ/testicles
+		var/obj/item/organ/testicles/balls = new
+		balls.Insert(W, TRUE, TRUE)
 	if(getorganslot(ORGAN_SLOT_BREASTS))
-		W.internal_organs_slot[ORGAN_SLOT_BREASTS] = /obj/item/organ/breasts
+		var/obj/item/organ/breasts/boobs = new
+		boobs.Insert(W, TRUE, TRUE)
 	if(getorganslot(ORGAN_SLOT_VAGINA))
-		W.internal_organs_slot[ORGAN_SLOT_VAGINA] = /obj/item/organ/vagina
+		var/obj/item/organ/vagina/pussy = new
+		pussy.Insert(W, TRUE, TRUE)
 	regenerate_icons() //hate to call this twice but well shrug emoji
-	ADD_TRAIT(src, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
+	ADD_TRAIT(W, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
 // [/SURREALIS-ADD]
 	to_chat(W, span_userdanger("I transform into a horrible beast!"))
 	W.emote("rage")

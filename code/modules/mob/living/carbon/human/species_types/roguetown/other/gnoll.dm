@@ -84,25 +84,13 @@
 	H.update_inv_armor_special()
 	return TRUE
 
-/datum/species/gnoll/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/gnoll/on_species_gain(mob/living/carbon/C, datum/species/old_species, datum/preferences/pref_load)
 	. = ..()
 	C.icon_state = "firepelt"
 	C.base_pixel_x = -8
 	C.pixel_x = -8
 	C.base_pixel_y = -4
 	C.pixel_y = -4
-// [SURREALIS-ADD] - WW_SEXCON
-	if(C.getorganslot(ORGAN_SLOT_PENIS))
-		C.internal_organs_slot[ORGAN_SLOT_PENIS] = /obj/item/organ/penis/barbed_knotted/big
-	if(C.getorganslot(ORGAN_SLOT_TESTICLES))
-		C.internal_organs_slot[ORGAN_SLOT_TESTICLES] = /obj/item/organ/testicles
-	if(C.getorganslot(ORGAN_SLOT_BREASTS))
-		C.internal_organs_slot[ORGAN_SLOT_BREASTS] = /obj/item/organ/breasts
-	if(C.getorganslot(ORGAN_SLOT_VAGINA))
-		C.internal_organs_slot[ORGAN_SLOT_VAGINA] = /obj/item/organ/vagina
-//	regenerate_icons() //TODO: sprites
-	ADD_TRAIT(src, TRAIT_DEATHBYSNUSNU, TRAIT_GENERIC)
-// [/SURREALIS-ADD]
 /datum/species/gnoll/update_damage_overlays(mob/living/carbon/human/H)
 	H.remove_overlay(DAMAGE_LAYER)
 	var/list/hands = list()

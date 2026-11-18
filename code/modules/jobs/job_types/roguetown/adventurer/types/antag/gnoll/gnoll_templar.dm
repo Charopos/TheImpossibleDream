@@ -36,7 +36,9 @@
 
 /datum/outfit/job/roguetown/gnoll/templar/pre_equip(mob/living/carbon/human/H)
 	if(H.mind)
+		var/list/mygenitals = disgusting_gnoll_shim_proc(H, null)
 		H.set_species(/datum/species/gnoll)
+		disgusting_gnoll_shim_proc(H,mygenitals)
 		H.skin_armor = new vamp_armor_type(H)
 		H.AddComponent(/datum/component/vampiric_striker, shard_threshold, shard_repair_value, max_fury_stacks)
 		neck = /obj/item/storage/belt/rogue/pouch/healing
