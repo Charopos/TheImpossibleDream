@@ -276,16 +276,16 @@
 	penfactor = 20
 
 /datum/intent/simple/bear
-	penfactor = 10
+	penfactor = INTENT_PEN_PUNCTURE_PLUS
 
 /datum/intent/simple/bite/dragon_bite
 	penfactor = 60
 
 /datum/intent/simple/cabbit
-	penfactor = 10
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/simple/cat
-	penfactor = 10
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/simple/claw/boar
 	penfactor = 2.5
@@ -321,7 +321,7 @@
 	penfactor = 1
 
 /datum/intent/simple/fox
-	penfactor = 10
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/simple/gnoll_cut
 	penfactor = 1.5
@@ -345,7 +345,7 @@
 	penfactor = 5
 
 /datum/intent/simple/mole
-	penfactor = 15
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/simple/mole/dig
 	penfactor = 1
@@ -363,10 +363,10 @@
 	penfactor = 1.5
 
 /datum/intent/simple/spider
-	penfactor = 20
+	penfactor = INTENT_PEN_STRONG_PLUS
 
 /datum/intent/simple/spider/mire
-	penfactor = 5
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/simple/terrorhog_trample
 	penfactor = 2.5
@@ -375,7 +375,7 @@
 	penfactor = 10
 
 /datum/intent/simple/volf
-	penfactor = 10
+	penfactor = INTENT_PEN_NONE
 
 /datum/intent/simple/werewolf
 	penfactor = INTENT_PEN_STRONG
@@ -4778,6 +4778,12 @@
 	armor_penetration = 15
 
 /obj/item/rogueweapon/werewolf_claw/gnoll
+	armor_penetration = 15
+
+/obj/item/rogueweapon/bear_claw
+	armor_penetration = 15
+
+/obj/item/rogueweapon/direvolf_claw
 	armor_penetration = 15
 
 /obj/item/rogueweapon/werewolf_claw/gnoll/left

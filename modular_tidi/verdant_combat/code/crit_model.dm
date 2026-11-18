@@ -199,5 +199,5 @@ GLOBAL_LIST_INIT(brain_penetration_zones, list(BODY_ZONE_PRECISE_SKULL, BODY_ZON
 /datum/wound
 	var/silent_progress = FALSE
 
-/datum/wound/dynamic/burn
+/datum/wound/dynamic
 	silent_progress = TRUE
