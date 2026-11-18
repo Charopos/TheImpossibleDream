@@ -152,7 +152,7 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 			continue
 		if(!zone2covered(def_zone, C.body_parts_covered_dynamic))
 			continue
-		if(QDELETED(C) || !C.armor)
+		if(QDELETED(C) || !C.armor || C.obj_broken)
 			continue
 		var/effectiveness = 1.0
 		if(C.max_integrity)
