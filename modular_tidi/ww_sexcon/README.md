@@ -12,7 +12,7 @@ Gives the people what they fucking deserve: hot werewolf sex.
 
 ## Layout
 
-- `_ww_tweaks.dme`: local includes.
+- `_ww_sexcon.dme`: local includes.
 - `code/ww_sexcons.dm`: Appliies a local override in the werewolf icon generation as well as shims in the genital code.
 
 ## Core files changed
