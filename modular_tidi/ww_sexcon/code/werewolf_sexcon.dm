@@ -6,9 +6,6 @@
 		if(W && W.transformed == TRUE)
 			user.regenerate_icons()
 
-/mob/living/carbon/human/werewolf_transform()
-	..()
-
 /datum/species/werewolf/regenerate_icons(mob/living/carbon/human/H)
 	H.icon = 'modular_tidi/ww_sexcon/icons/werewolf.dmi'
 	H.base_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB)

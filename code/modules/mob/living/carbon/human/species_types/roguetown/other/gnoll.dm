@@ -84,7 +84,10 @@
 	H.update_inv_armor_special()
 	return TRUE
 
+// [SURREALIS-EDIT] - WW_SEXCON
+// /datum/species/gnoll/on_species_gain(mob/living/carbon/C, datum/species/old_species) // SURREALIS-EDIT - ORIGINAL
 /datum/species/gnoll/on_species_gain(mob/living/carbon/C, datum/species/old_species, datum/preferences/pref_load)
+// [/SURREALIS-EDIT]
 	. = ..()
 	C.icon_state = "firepelt"
 	C.base_pixel_x = -8
