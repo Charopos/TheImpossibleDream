@@ -70,7 +70,7 @@
 			disabling = TRUE
 			to_chat(owner, span_userdanger("The flesh on my [bodypart_owner.name] has completely rotted away!"))
 			owner.visible_message(span_danger("[owner]'s [bodypart_owner.name] turns to bare bone!"))
-			bodypart_owner.skeletonize(lethal = (bodypart_owner.body_zone in GLOB.vital_body_zones))
+			bodypart_owner.skeletonize(bodypart_owner.body_zone in GLOB.vital_body_zones)
 
 /datum/wound/infection/proc/apply_stage_effects()
 	if(!owner || !bodypart_owner)
