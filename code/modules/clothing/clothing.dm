@@ -781,13 +781,25 @@ BLIND		// can't see anything
 			return examine_text
 
 	var/str
-	str += "<b>ABSORPTION:</b> [colorgrade_rating("🔨 BLUNT", armor.blunt, elaborate = TRUE, max_tier = 5)]<br>"
-	str += "<b>BLOCK:</b> "
+	// [SURREALIS-EDIT] - VRCOMBAT
+	str += "<b>PROTECTION:</b> [colorgrade_rating("🔨 BLUNT", armor.blunt, elaborate = TRUE)] | "
 	str += "[colorgrade_rating("🪓 SLASH", armor.slash, elaborate = TRUE)] | "
 	str += "[colorgrade_rating("🗡️ STAB", armor.stab, elaborate = TRUE)] | "
 	str += "[colorgrade_rating("🏹 PIERCE", armor.piercing, elaborate = TRUE)]"
+	var/list/resists = list()
 	if(armor.fire > NONE)
-		str += "<br><b>RESIST:</b> [colorgrade_rating("🔥 FIRE", armor.fire, elaborate = TRUE)]"
+		resists += colorgrade_rating("🔥 FIRE", armor.fire, elaborate = TRUE)
+	if(armor.acid > NONE)
+		resists += colorgrade_rating("🧪 ACID", armor.acid, elaborate = TRUE)
+	if(armor.frost > NONE)
+		resists += colorgrade_rating("❄️ FROST", armor.frost, elaborate = TRUE)
+	if(armor.electrical > NONE)
+		resists += colorgrade_rating("⚡ ELECTRICAL", armor.electrical, elaborate = TRUE)
+	if(armor.magic > NONE)
+		resists += colorgrade_rating("✨ MAGIC", armor.magic, elaborate = TRUE)
+	if(length(resists))
+		str += "<br><b>RESIST:</b> [jointext(resists, " | ")]"
+	// [/SURREALIS-EDIT]
 
 	if(examine_highlight_status)
 		var/heresy_desc = get_examine_highlight_description(examine_highlight_status)

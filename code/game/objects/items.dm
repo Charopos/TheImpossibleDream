@@ -1740,14 +1740,18 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			if(!def_armor.blunt && !def_armor.slash && !def_armor.stab && !def_armor.piercing)
 				str += "<b>NO ARMOR!</b>"
 			else
-				var/defense = "[SPAN_TOOLTIP("Each tier increases effective HP of the armor by 20%. Absorbed attacks never reach HP. The armor must be broken first.", "<u><b>ABSORB:</b></u>")] [colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE, max_tier = 5)]"
-				defense += "<br>"
-				defense += "[SPAN_TOOLTIP("Each tier reduces damage by 20% of base. Reduced damage still reaches HP. Armor absorbs what was blocked.", "<u><b>REDUCE:</b></u>")] [colorgrade_rating("BURN", def_armor.fire, elaborate = TRUE, max_tier = 5)]"
-				defense += "<br>"
-				defense += "[SPAN_TOOLTIP("Blocks attacks below this tier (Armor takes all damage). Same tier penetrates 20% (80% goes to armor). Exceeding tier penetrates fully.", "<u><b>BLOCK:</b></u>")] "
+				// [SURREALIS-EDIT] - VRCOMBAT
+				var/defense = "[SPAN_TOOLTIP("Weapon AP and armor wear effectively lower these ratings. Attacks dealing less than half the rating in damage are absorbed. Attacks dealing more than half the armor rating have their damage reduced by armor%. Edged attacks below the armor rating are blunted and their damage halved.", "<u><b>PROTECTION:</b></u>")] "
+				defense += "[colorgrade_rating("BLUNT", def_armor.blunt, elaborate = TRUE)] | "
 				defense += "[colorgrade_rating("SLASH", def_armor.slash, elaborate = TRUE)] | "
 				defense += "[colorgrade_rating("STAB", def_armor.stab, elaborate = TRUE)] | "
-				defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)]"
+				defense += "[colorgrade_rating("PIERCING", def_armor.piercing, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("FIRE", def_armor.fire, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("ACID", def_armor.acid, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("FROST", def_armor.frost, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("ELECTRICAL", def_armor.electrical, elaborate = TRUE)] | "
+				defense += "[colorgrade_rating("MAGIC", def_armor.magic, elaborate = TRUE)]"
+				// [/SURREALIS-EDIT]
 				str += "[defense]<br>"
 		else
 			str += "<b>NO ARMOR!</b>"

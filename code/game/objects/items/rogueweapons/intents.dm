@@ -171,7 +171,7 @@
 		inspec += "\n<b>Damage:</b> [damfactor]"
 	// [SURREALIS-EDIT] - VRCOMBAT
 	// inspec += "\n<b>Armor Penetration:</b> [penfactor > PEN_NONE ? colorgrade_rating(uppertext(item_d_type), penfactor) : "<font color='#808080'>NONE</font>"]" // SURREALIS-EDIT - ORIGINAL
-	inspec += "\n<b>Armor Penetration:</b> [penfactor > 0 ? "[round(penfactor * INTENT_BASE_AP)] + [round(penfactor, 0.01)]x stat bonus" : "<font color='#808080'>NONE</font>"]"
+	inspec += "\n<b>Armor Penetration:</b> [penfactor > 0 ? "[uppertext(item_d_type)] [round(penfactor * INTENT_BASE_AP)] + [round(penfactor, 0.01)]x stat bonus" : "<font color='#808080'>NONE</font>"]"
 	// [/SURREALIS-EDIT]
 	if(masteritem)
 		inspec += " <span class='info'><a href='?src=[REF(masteritem)];explainpenfactor=1'>{?}</a></span>"

@@ -148,8 +148,8 @@
 	// [SURREALIS-EDIT] - VRCOMBAT
 	// if(penfactor > PEN_NONE) // SURREALIS-EDIT - ORIGINAL
 	if(penfactor > 0)
+		details += "AP [uppertext(item_d_type)] [round(penfactor * INTENT_BASE_AP)] + [round(penfactor, 0.01)]x stat bonus"
 	// [/SURREALIS-EDIT]
-		details += "AP [colorgrade_rating(uppertext(item_d_type), penfactor)]"
 	else
 		details += "AP <font color='#808080'>NONE</font>"
 	if(reach != 1)
