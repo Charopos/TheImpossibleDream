@@ -787,11 +787,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		else if(max_integrity)
 		// [/SURREALIS-EDIT]
 			inspec += "\n<b>DURABILITY:</b> "
-			var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
-			var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
-			var/ratio =	(eff_currint / eff_maxint)
-			var/percent = round((ratio * 100), 1)
-			inspec += "[percent]% ([floor(eff_currint)])"
+			var/percent = round((get_integrity_fraction() * 100), 1)
+			inspec += "[percent]% ([floor(max(obj_integrity - (max_integrity * integrity_failure), 0))])"
 			if(force >= 5) // Durability is rather obvious for non-weapons
 				inspec += " <span class='info'><a href='?src=[REF(src)];explaindurability=1'>{?}</a></span>"
 		if(istype(src, /obj/item/clothing))	//awful

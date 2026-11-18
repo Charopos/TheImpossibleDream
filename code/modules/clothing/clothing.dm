@@ -814,9 +814,7 @@ BLIND		// can't see anything
 	return SPAN_TOOLTIP_DANGEROUS_HTML(str, examine_text)
 
 /obj/item/clothing/proc/get_armor_integ()
-	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
-	var/eff_currint = max(obj_integrity - (max_integrity * integrity_failure), 0)
-	var/ratio =	(eff_currint / eff_maxint)
+	var/ratio = get_integrity_fraction()
 	switch(ratio)
 		if(0.75 to 1)
 			return null

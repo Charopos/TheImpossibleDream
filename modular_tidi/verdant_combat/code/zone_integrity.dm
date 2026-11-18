@@ -112,12 +112,33 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 		sync_zone_basis()
 	return zone_integrity[zone]
 
+/// Integrity fraction: the ONE definition of "how intact is this", used everywhere.
+/// 1 = pristine, 0 = broken. Non-zoned items break at integrity_failure, so the fraction is
+/// measured over the usable range above that threshold. Zones break at 0, so a zone's raw ratio already fits.
+/obj/item/proc/get_integrity_fraction()
+	if(obj_broken || !max_integrity)
+		return 0
+	var/break_threshold = max_integrity * integrity_failure
+	var/usable = max_integrity - break_threshold
+	if(usable <= 0)
+		return 0
+	return clamp((obj_integrity - break_threshold) / usable, 0, 1)
+
+/obj/item/clothing/get_integrity_fraction()
+	if(!uses_zone_integrity())
+		return ..()
+	if(obj_broken)
+		return 0
+	return get_overall_zone_ratio()
+
+/// Integrity fraction for a specific body zone. Falls back to the whole-item fraction for
+/// items (or zones) without per-zone integrity, e.g. helmets and masks.
 /obj/item/clothing/proc/get_zone_integrity_ratio(def_zone)
 	if(!zone_integrity || !istext(def_zone))
-		return max_integrity ? (obj_integrity / max_integrity) : 0
+		return get_integrity_fraction()
 	var/zone = CANONICAL_INTEGRITY_ZONE(def_zone)
 	if(!zone || isnull(zone_integrity[zone]))
-		return max_integrity ? (obj_integrity / max_integrity) : 0
+		return get_integrity_fraction()
 	if(zone_basis_max != max_integrity)
 		sync_zone_basis()
 	var/zone_max = zone_max_integrity[zone]
@@ -211,13 +232,7 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 	if(!istype(source))
 		return
 	if(!source.uses_zone_integrity() || !uses_zone_integrity())
-		var/source_ratio = source.max_integrity ? (source.obj_integrity / source.max_integrity) : 1
-		if(uses_zone_integrity())
-			for(var/zone in zone_integrity)
-				set_zone_integrity_ratio(zone, source_ratio)
-			update_overall_integrity()
-		else
-			obj_integrity = max_integrity * source_ratio
+		set_integrity_fraction(source.get_integrity_fraction())
 		return
 	for(var/zone in zone_integrity)
 		if(source.has_zone_integrity(zone))
@@ -236,15 +251,8 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 
 /obj/item/clothing/proc/integrity_display_ratio(def_zone)
 	if(def_zone && has_zone_integrity(def_zone))
-		var/zone_max = get_zone_max_integrity(def_zone)
-		var/eff_zone_max = zone_max - (zone_max * integrity_failure)
-		if(!eff_zone_max)
-			return 0
-		return max(get_zone_integrity(def_zone) - (zone_max * integrity_failure), 0) / eff_zone_max
-	var/eff_maxint = max_integrity - (max_integrity * integrity_failure)
-	if(!eff_maxint)
-		return 0
-	return max(obj_integrity - (max_integrity * integrity_failure), 0) / eff_maxint
+		return get_zone_integrity_ratio(def_zone)
+	return get_integrity_fraction()
 
 /obj/item/clothing/proc/durability_inspect_text()
 	var/text = "\n<b>DURABILITY:</b>"
@@ -252,11 +260,8 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 	for(var/zone in inspected_zones)
 		if(!has_zone_integrity(zone))
 			continue
-		var/zone_max = get_zone_max_integrity(zone)
-		var/eff_max = zone_max - (zone_max * integrity_failure)
-		var/eff_curr = max(get_zone_integrity(zone) - (zone_max * integrity_failure), 0)
-		var/percent = eff_max ? round(((eff_curr / eff_max) * 100), 1) : 0
-		text += "\n  <b>[capitalize(get_zone_name(zone))]:</b> [percent]% ([floor(eff_curr)])"
+		var/percent = round(get_zone_integrity_ratio(zone) * 100, 1)
+		text += "\n  <b>[capitalize(get_zone_name(zone))]:</b> [percent]% ([floor(get_zone_integrity(zone))])"
 	return text
 
 /obj/proc/adjust_integrity(amount)
@@ -275,8 +280,10 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 	update_overall_integrity(TRUE)
 	return obj_integrity - old_integrity
 
+/// Inverse of get_integrity_fraction(): 0 puts the item at its break threshold, 1 at max.
 /obj/item/proc/set_integrity_fraction(fraction)
-	obj_integrity = max_integrity * clamp(fraction, 0, 1)
+	var/break_threshold = max_integrity * integrity_failure
+	obj_integrity = break_threshold + (max_integrity - break_threshold) * clamp(fraction, 0, 1)
 
 /obj/item/clothing/set_integrity_fraction(fraction)
 	if(!uses_zone_integrity())
@@ -286,15 +293,16 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 	update_overall_integrity(TRUE)
 
 /obj/item/proc/copy_integrity_from(obj/item/source)
-	obj_integrity = source.obj_integrity
+	set_integrity_fraction(source.get_integrity_fraction())
+	if(source.obj_broken && !obj_broken)
+		force_obj_break()
 
 /obj/item/clothing/copy_integrity_from(obj/item/source)
-	if(!uses_zone_integrity())
+	if(!istype(source, /obj/item/clothing))
 		return ..()
-	if(istype(source, /obj/item/clothing))
-		copy_zone_integrity(source)
-	else
-		set_integrity_fraction(source.max_integrity ? (source.obj_integrity / source.max_integrity) : 1)
+	copy_zone_integrity(source)
+	if(source.obj_broken && !obj_broken)
+		force_obj_break()
 
 /obj/item/clothing/clamps_break_damage()
 	return obj_broken || !uses_zone_integrity()
