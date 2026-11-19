@@ -31,6 +31,8 @@
 /datum/wound/infection/can_apply_to_bodypart(obj/item/bodypart/affected)
 	if(affected.skeletonized || !affected.is_organic_limb())
 		return FALSE
+	if(affected.owner && HAS_TRAIT(affected.owner, TRAIT_IRONMAN))
+		return FALSE
 	return ..()
 
 /datum/wound/infection/on_bodypart_gain(obj/item/bodypart/affected)
