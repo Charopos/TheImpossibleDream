@@ -8,7 +8,7 @@
 	woundpain = 0
 	bleed_rate = null
 	can_sew = FALSE
-	can_cauterize = FALSE
+	can_cauterize = TRUE
 	disabling = FALSE
 	critical = TRUE
 	sleep_healing = 0
@@ -167,9 +167,6 @@
 		owner.emote("painscream", TRUE)
 		qdel(src)
 		return TRUE
-	if(infection_stage > 1)
-		to_chat(owner, span_warning("The infection is too deep to burn out with a torch!"))
-		return FALSE
 	to_chat(owner, span_notice("The flame sears away the infected tissue!"))
 	owner.visible_message(span_danger("[owner] cauterizes the infection on [owner.p_their()] [bodypart_owner.name]!"))
 	owner.emote("paincrit", TRUE)

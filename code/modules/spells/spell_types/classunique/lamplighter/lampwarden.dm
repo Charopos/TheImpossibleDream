@@ -47,9 +47,12 @@
 				return FALSE
 		var/foundwound = FALSE
 		if(length(affecting.wounds))
-			for(var/datum/wound/wound in affecting.wounds)
+			for(var/datum/wound/wound in affecting.wounds.Copy())
 				if(!isnull(wound) && wound.can_cauterize)
-					wound.heal_wound(wound.whp)
+					if(istype(wound, /datum/wound/infection))
+						wound.cauterize_wound()
+					else
+						wound.heal_wound(wound.whp)
 					foundwound = TRUE
 					owner.visible_message(("<font color = '#FF4500'>[capitalize(wound.name)] cauterizes from the heat of the lamp!</font>"))
 					affecting.add_wound(/datum/wound/lampcautery)
