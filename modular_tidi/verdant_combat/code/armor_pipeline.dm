@@ -298,10 +298,14 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 	return armor_actual_damage(raw_damage, armor, damage_type)
 
 /proc/shield_degradation_mult(obj/item/shield, attacker_bclass)
-	if(!attacker_bclass)
+	if(!attacker_bclass || !shield)
 		return 1.0
-	if(istype(shield, /obj/item/rogueweapon/shield/wood) && attacker_bclass == BCLASS_CHOP)
-		return ARMOR_DEGR_CUT_LIGHT
+	if(ispath(shield.anvilrepair, /datum/skill/craft/carpentry))
+		if(attacker_bclass == BCLASS_CHOP)
+			return ARMOR_DEGR_CUT_LIGHT
+		return 1.0
+	if(!ispath(shield.smeltresult, /obj/item/ingot) && !ispath(shield.anvilrepair, /datum/skill/craft/weaponsmithing) && !ispath(shield.anvilrepair, /datum/skill/craft/blacksmithing) && !ispath(shield.anvilrepair, /datum/skill/craft/armorsmithing))
+		return 1.0
 	switch(attacker_bclass)
 		if(BCLASS_BLUNT, BCLASS_SMASH)
 			return ARMOR_DEGR_BLUNT_HEAVY

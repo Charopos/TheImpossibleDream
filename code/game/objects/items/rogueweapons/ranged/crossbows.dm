@@ -332,7 +332,7 @@
 	swingdelay = 0
 	icon_state = "instrike"
 	item_d_type = "blunt"
-	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR - 0.5 //Reduces integrity damage modifier to +10%.
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 //
 
@@ -433,7 +433,7 @@
 	swingdelay = 6
 	icon_state = "instrike"
 	item_d_type = "blunt"
-	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR - 0.45 //Reduces integrity damage modifier to +15%.
+	intent_intdamage_factor = BLUNT_DEFAULT_INT_DAMAGEFACTOR
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy/paalloy
 	name = "ancient siegebow"
