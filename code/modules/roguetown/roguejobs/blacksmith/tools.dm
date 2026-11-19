@@ -109,7 +109,7 @@
 	repair_busy = FALSE
 
 /obj/item/rogueweapon/hammer/proc/repair_item(obj/item/attacked_item, mob/living/user)
-	if(!attacked_item.anvilrepair || (attacked_item.obj_integrity >= attacked_item.max_integrity) || !isturf(attacked_item.loc))
+	if(!attacked_item.anvilrepair || !attacked_item.integrity_needs_repair() || !isturf(attacked_item.loc))
 		return
 
 	if(!attacked_item.ontable())
@@ -151,13 +151,13 @@
 				if(attacked_item.body_parts_covered != attacked_item.body_parts_covered_dynamic)
 					user.visible_message(span_info("[user] repairs [attacked_item]'s coverage!"))
 					attacked_item.repair_coverage()
-			if(attacked_item.obj_broken && attacked_item.obj_integrity == attacked_item.max_integrity)
+			if(attacked_item.obj_broken && !attacked_item.integrity_needs_repair())
 				attacked_item.obj_fix()
 			user.mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 		else
 			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_item]!"))
 
-		if(attacked_item.obj_integrity >= attacked_item.max_integrity)
+		if(!attacked_item.integrity_needs_repair())
 			break
 
 	while(do_after(user, CLICK_CD_QUICK, target = attacked_item))

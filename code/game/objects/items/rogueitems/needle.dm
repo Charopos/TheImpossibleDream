@@ -130,7 +130,7 @@
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
 		if(I.sewrepair && I.max_integrity)
-			if(I.obj_integrity == I.max_integrity)
+			if(!I.integrity_needs_repair())
 				to_chat(user, span_warning("This is not broken."))
 				return
 			if(!I.ontable())
@@ -207,7 +207,7 @@
 				// I.obj_integrity = min(I.obj_integrity + BASE_SEW_REPAIR + skill * SEW_REPAIR_PER_LEVEL, I.max_integrity) // SURREALIS-EDIT - ORIGINAL
 				I.adjust_integrity(BASE_SEW_REPAIR + skill * SEW_REPAIR_PER_LEVEL)
 				// [/SURREALIS-EDIT]
-				if(I.obj_broken && istype(I, /obj/item) && I.obj_integrity >= I.max_integrity)
+				if(I.obj_broken && istype(I, /obj/item) && !I.integrity_needs_repair())
 					var/obj/item/cloth = I
 					cloth.obj_fix()
 					return

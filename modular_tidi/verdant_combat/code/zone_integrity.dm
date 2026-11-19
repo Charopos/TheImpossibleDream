@@ -281,6 +281,19 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 	return obj_integrity - old_integrity
 
 /// Inverse of get_integrity_fraction(): 0 puts the item at its break threshold, 1 at max.
+/obj/item/proc/integrity_needs_repair()
+	return max_integrity && obj_integrity < max_integrity
+
+/obj/item/clothing/integrity_needs_repair()
+	if(..())
+		return TRUE
+	if(!uses_zone_integrity())
+		return FALSE
+	for(var/zone in zone_integrity)
+		if(zone_integrity[zone] < get_zone_max_integrity(zone))
+			return TRUE
+	return FALSE
+
 /obj/item/proc/set_integrity_fraction(fraction)
 	var/break_threshold = max_integrity * integrity_failure
 	obj_integrity = break_threshold + (max_integrity - break_threshold) * clamp(fraction, 0, 1)
