@@ -121,7 +121,7 @@
 		if(spell_guard_check(struck, FALSE, user))
 			deflected = TRUE
 		else
-			arcyne_strike(user, struck, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Azurean Phalanx", skip_animation = TRUE)
+			arcyne_strike(user, struck, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Azurean Phalanx", skip_animation = TRUE, full_crit = TRUE)
 			hit_count++
 			already_hit += struck
 
@@ -132,7 +132,7 @@
 			if(spell_guard_check(victim, FALSE, user, punish_caster = deflected ? FALSE : null))
 				deflected = TRUE
 				continue
-			arcyne_strike(user, victim, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Azurean Phalanx", skip_animation = TRUE)
+			arcyne_strike(user, victim, weapon, damage, def_zone, BCLASS_STAB, spell_name = "Azurean Phalanx", skip_animation = TRUE, full_crit = TRUE)
 			hit_count++
 			already_hit += victim
 

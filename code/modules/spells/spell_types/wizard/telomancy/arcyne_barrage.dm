@@ -45,7 +45,7 @@
 
 /datum/action/cooldown/spell/projectile/arcyne_barrage/get_spell_statistics(mob/living/user)
 	var/list/stats = ..()
-	stats += span_info("Damage: [SPELL_DMG(45)] per bolt ([bolts_per_pulse] per pulse, pierces up to 5)")
+	stats += span_info("Damage: [SPELL_DMG(30)] per bolt ([bolts_per_pulse] per pulse, pierces up to 5)")
 	return stats
 
 /datum/action/cooldown/spell/projectile/arcyne_barrage/before_cast(atom/cast_on)
@@ -126,7 +126,7 @@
 	name = "greater arcyne bolt"
 	icon = 'icons/obj/magic_projectiles.dmi'
 	icon_state = "arcyne_bolt"
-	damage = SPELL_DMG(45)
+	damage = SPELL_DMG(30)
 	nodamage = FALSE
 	damage_type = BRUTE
 	woundclass = BCLASS_BLUNT

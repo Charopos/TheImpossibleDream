@@ -135,7 +135,7 @@
 		if(spell_guard_check(victim, FALSE, H, punish_caster = deflected ? FALSE : null))
 			deflected = TRUE
 			continue
-		arcyne_strike(H, victim, held_weapon, damage, def_zone, BCLASS_STAB, spell_name = "Advance!")
+		arcyne_strike(H, victim, held_weapon, damage, def_zone, BCLASS_STAB, spell_name = "Advance!", full_crit = TRUE)
 		hit_count++
 
 	if(!hit_count)
@@ -147,7 +147,7 @@
 			if(spell_guard_check(victim, FALSE, H, punish_caster = deflected ? FALSE : null))
 				deflected = TRUE
 				continue
-			arcyne_strike(H, victim, held_weapon, damage, def_zone, BCLASS_STAB, spell_name = "Advance!")
+			arcyne_strike(H, victim, held_weapon, damage, def_zone, BCLASS_STAB, spell_name = "Advance!", full_crit = TRUE)
 			hit_count++
 
 	if(!hit_count)

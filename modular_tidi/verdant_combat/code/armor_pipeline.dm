@@ -145,7 +145,7 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 			return FALSE
 	return TRUE
 
-/mob/living/carbon/human/proc/covering_armor(def_zone, d_type, armor_penetration, bypass_item, blunt_applies, vital_penalties, apply_vital_bonus)
+/mob/living/carbon/human/proc/covering_armor(def_zone, d_type, armor_penetration, bypass_item, blunt_applies, vital_penalties, apply_vital_bonus, no_crush = FALSE)
 	var/list/covering = list()
 	for(var/obj/item/clothing/C in worn_armor_slots())
 		if(bypass_item && (C == bypass_item || (islist(bypass_item) && (C in bypass_item))))
@@ -164,6 +164,8 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 		if(val <= 0)
 			continue
 		var/blunt_modifier = blunt_applies ? PIECE_BLUNT_MODIFIER(C, effectiveness, vital_penalties ? def_zone : null, apply_vital_bonus) : 0
+		if(no_crush)
+			blunt_modifier = min(blunt_modifier, 0)
 		covering[C] = max(val * effectiveness - (armor_penetration + blunt_modifier), 0)
 	return covering
 
@@ -202,7 +204,8 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 
 	var/blunt_applies = d_type == "blunt"
 	var/apply_vital_bonus = blunt_applies && blunt_vital_bonus_applies(used_weapon, attacker)
-	var/list/covering = covering_armor(def_zone, d_type, armor_penetration, bypass_item, blunt_applies, TRUE, apply_vital_bonus)
+	var/no_crush = istype(used_weapon, /obj/projectile/magic)
+	var/list/covering = covering_armor(def_zone, d_type, armor_penetration, bypass_item, blunt_applies, TRUE, apply_vital_bonus, no_crush)
 	var/obj/item/clothing/used
 	var/best_effective_armor = 0
 	for(var/obj/item/clothing/C as anything in covering)
@@ -221,6 +224,8 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 			armor_effectiveness = PIECE_EFFECTIVENESS(used, used.get_zone_integrity_ratio(def_zone), FALSE)
 		if(blunt_applies)
 			used_blunt_modifier = PIECE_BLUNT_MODIFIER(used, armor_effectiveness, def_zone, apply_vital_bonus)
+			if(no_crush)
+				used_blunt_modifier = min(used_blunt_modifier, 0)
 	if(used && damage)
 		if(!blade_dulling)
 			blade_dulling = BCLASS_BLUNT
