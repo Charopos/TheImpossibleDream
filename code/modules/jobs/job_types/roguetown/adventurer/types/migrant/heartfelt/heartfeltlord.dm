@@ -225,7 +225,7 @@
 	shoes = /obj/item/clothing/shoes/roguetown/boots/leather/reinforced
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 	cloak = /obj/item/clothing/cloak/darkcloak/minotaur/red
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine
+	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 	neck = /obj/item/clothing/neck/roguetown/leather
 	beltr = /obj/item/rogueweapon/huntingknife
 	gloves = /obj/item/clothing/gloves/roguetown/leather/black

@@ -103,7 +103,7 @@
 			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 		if("Medium Armor")
 			pants = /obj/item/clothing/under/roguetown/chainlegs
-			armor = /obj/item/clothing/suit/roguetown/armor/brigandine
+			armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 	H.cmode_music = 'sound/music/combat_heretic.ogg'

@@ -2965,7 +2965,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/haraate
 	armor = ARMOR_PLATE
-	armor_class = 3
+	armor_class = 2
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/heavy
 	armor = ARMOR_PLATE
@@ -3005,6 +3005,7 @@
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/pyro
 	armor = ARMOR_INSULATED_BRIGANDINE
+	armor_class = 2
 
 /obj/item/clothing/suit/roguetown/armor/brigandine/retinue
 	armor = ARMOR_PLATE

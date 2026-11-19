@@ -96,7 +96,7 @@
 	)
 
 /datum/outfit/job/roguetown/marshal/classic/pre_equip(mob/living/carbon/human/H)
-	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/retinue
+	armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 	cloak = /obj/item/clothing/cloak/tabard/stabard/surcoat/bailiff
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/armharness

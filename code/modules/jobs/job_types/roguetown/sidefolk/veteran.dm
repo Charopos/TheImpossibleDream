@@ -310,7 +310,12 @@
 
 /datum/outfit/job/roguetown/vet/calvaryman/pre_equip(mob/living/carbon/human/H)
 	neck = /obj/item/clothing/neck/roguetown/chaincoif
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/	// Former knights should have knightly armour.
+	var/armors = list(
+		"Half-Plate"	= /obj/item/clothing/suit/roguetown/armor/plate,
+		"Brigandine"	= /obj/item/clothing/suit/roguetown/armor/brigandine,
+	)
+	var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
+	armor = armors[armorchoice] || /obj/item/clothing/suit/roguetown/armor/plate
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/knight
 	pants = /obj/item/clothing/under/roguetown/chainlegs

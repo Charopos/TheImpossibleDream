@@ -298,7 +298,7 @@
 
 		var/armors = list(
 			"Cuirass"			= /obj/item/clothing/suit/roguetown/armor/plate/cuirass,
-			"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
+			"Lightweight Brigandine"	= /obj/item/clothing/suit/roguetown/armor/brigandine/light,
 			"Scalemail"			= /obj/item/clothing/suit/roguetown/armor/plate/scale,
 		)
 		var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
