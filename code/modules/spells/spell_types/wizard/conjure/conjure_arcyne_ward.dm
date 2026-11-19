@@ -303,7 +303,7 @@
 	if(ward.obj_broken)
 		ward.obj_fix(H, full_repair = TRUE)
 	else
-		ward.obj_integrity = ward.max_integrity
+		ward.set_integrity(ward.max_integrity)
 	ward.recalculate_coverage(force_full = TRUE)
 	return TRUE
 

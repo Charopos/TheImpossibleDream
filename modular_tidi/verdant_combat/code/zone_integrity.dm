@@ -264,6 +264,57 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 		text += "\n  <b>[capitalize(get_zone_name(zone))]:</b> [percent]% ([floor(get_zone_integrity(zone))])"
 	return text
 
+/// Sets obj_integrity. Zoned clothing distributes the change across its zones so both always agree.
+/obj/proc/set_integrity(value)
+	obj_integrity = clamp(value, 0, max_integrity)
+
+/obj/item/clothing/set_integrity(value)
+	if(!uses_zone_integrity())
+		return ..()
+	sync_zone_basis()
+	var/break_threshold = max_integrity * integrity_failure
+	var/usable = max_integrity - break_threshold
+	var/target = usable > 0 ? clamp((value - break_threshold) / usable, 0, 1) : 0
+	var/total = 0
+	var/total_max = 0
+	for(var/zone in zone_integrity)
+		total += zone_integrity[zone]
+		total_max += zone_max_integrity[zone]
+	var/current = total_max ? (total / total_max) : 0
+	for(var/zone in zone_integrity)
+		var/zone_max = zone_max_integrity[zone]
+		if(target >= 1)
+			zone_integrity[zone] = zone_max
+		else if(target > current)
+			zone_integrity[zone] += (zone_max - zone_integrity[zone]) * ((target - current) / (1 - current))
+		else if(current > 0)
+			zone_integrity[zone] *= target / current
+		if(zone_integrity[zone] > 0)
+			broken_zones -= zone
+		else
+			broken_zones |= zone
+	if(value < break_threshold)
+		obj_integrity = clamp(value, 0, max_integrity)
+	else
+		update_overall_integrity(TRUE)
+
+/// Sets max_integrity. Zoned clothing rescales its zones and keeps obj_integrity derived from them.
+/obj/proc/set_max_integrity(new_max)
+	max_integrity = new_max
+
+/obj/item/clothing/set_max_integrity(new_max)
+	. = ..()
+	if(uses_zone_integrity())
+		sync_zone_basis()
+		update_overall_integrity()
+
+/obj/item/clothing/force_obj_break(damage_flag = "")
+	if(!obj_broken && integrity_failure && uses_zone_integrity())
+		for(var/zone in zone_integrity)
+			zone_integrity[zone] = 0
+			broken_zones |= zone
+	return ..()
+
 /obj/proc/adjust_integrity(amount)
 	var/old_integrity = obj_integrity
 	obj_integrity = clamp(obj_integrity + amount, 0, max_integrity)

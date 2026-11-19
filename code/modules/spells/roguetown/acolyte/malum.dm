@@ -88,9 +88,9 @@
 			door.repair_state = 0
 			if((S.obj_integrity + repair_points) > S.max_integrity)
 				var/need_points = (S.max_integrity - S.obj_integrity)
-				S.obj_integrity += need_points
+				S.set_integrity(S.obj_integrity + need_points)
 			else
-				S.obj_integrity += repair_points
+				S.set_integrity(S.obj_integrity + repair_points)
 			owner.visible_message(span_notice("[owner] point on [door.name] and repair this."), \
 			span_notice("I point on [door.name]. Malum blessing!"))
 			return TRUE
@@ -111,9 +111,9 @@
 				window.obj_broken = FALSE
 				if((S.obj_integrity + repair_points) > S.max_integrity)
 					var/need_points = (S.max_integrity - S.obj_integrity)
-					S.obj_integrity += need_points
+					S.set_integrity(S.obj_integrity + need_points)
 				else
-					S.obj_integrity += repair_points
+					S.set_integrity(S.obj_integrity + repair_points)
 				owner.visible_message(span_notice("[owner] point on [window.name] and repair this."), \
 				span_notice("I point on [window.name]. Malum blessing!"))
 				return TRUE
@@ -122,9 +122,9 @@
 				return
 			if((S.obj_integrity + repair_points) > S.max_integrity)
 				var/need_points = (S.max_integrity - S.obj_integrity)
-				S.obj_integrity += need_points
+				S.set_integrity(S.obj_integrity + need_points)
 			else
-				S.obj_integrity += repair_points
+				S.set_integrity(S.obj_integrity + repair_points)
 			return TRUE
 	if(get_turf(starget))
 		var/turf/closed/wall/mineral/W = cast_on

@@ -240,7 +240,7 @@ Reel teleports the attached atom to the grabbed turf.
 			if(istype(O,/obj/structure/roguewindow))
 				var/obj/structure/roguewindow/W = O
 				if(!W.climbable)
-					O.obj_integrity = 1	//Keeps it from being destroyed
+					O.set_integrity(1)	//Keeps it from being destroyed
 					O.obj_break()
 		LAZYCLEARLIST(obj_to_destroy)
 

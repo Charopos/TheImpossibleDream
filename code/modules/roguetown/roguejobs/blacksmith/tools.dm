@@ -139,10 +139,10 @@
 		playsound(src,'sound/items/bsmithfail.ogg', 40, FALSE)
 		if(repair_percent)
 			repair_percent *= attacked_item.max_integrity
-			var/exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity
 			// [SURREALIS-EDIT] - VRCOMBAT
+			// var/exp_gained = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) - attacked_item.obj_integrity // SURREALIS-EDIT - ORIGINAL
 			// attacked_item.obj_integrity = min(attacked_item.obj_integrity + repair_percent, attacked_item.max_integrity) // SURREALIS-EDIT - ORIGINAL
-			attacked_item.adjust_integrity(repair_percent)
+			var/exp_gained = max(attacked_item.adjust_integrity(repair_percent), 0)
 			// [/SURREALIS-EDIT]
 			if(repair_percent == 0.01) // If an inexperienced repair attempt has been successful
 				to_chat(user, span_warning("You fumble your way into slightly repairing [attacked_item]."))
@@ -475,7 +475,7 @@
 					return
 				repair_percent = max(user.get_skill_level(I.hammer_repair) * 0.05, 0.05)
 			repair_percent = repair_percent * I.max_integrity
-			I.obj_integrity = min(obj_integrity+repair_percent, I.max_integrity)
+			I.set_integrity(min(I.obj_integrity + repair_percent, I.max_integrity))
 			playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
 			user.visible_message(span_info("[user] repairs [I]!"))
 			return

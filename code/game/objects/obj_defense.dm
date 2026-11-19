@@ -290,12 +290,14 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/current_integrity = obj_integrity
 	var/current_max = max_integrity
 
-	if(current_integrity != 0 && current_max != 0)
+	var/rescale = current_integrity != 0 && current_max != 0
+	if(rescale)
 		var/percentage = current_integrity / current_max
 		current_integrity = max(1, round(percentage * new_max))	//don't destroy it as a result
-		obj_integrity = current_integrity
 
-	max_integrity = new_max
+	set_max_integrity(new_max)
+	if(rescale)
+		set_integrity(current_integrity)
 
 	if(can_break && integrity_failure && current_integrity <= integrity_failure * max_integrity)
 		obj_break(damage_type)

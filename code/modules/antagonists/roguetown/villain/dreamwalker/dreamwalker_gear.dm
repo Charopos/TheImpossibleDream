@@ -448,7 +448,7 @@
 
 		var/needed = most_broken.max_integrity - most_broken.obj_integrity
 		var/applied = min(remaining_repair, needed)
-		most_broken.obj_integrity += applied
+		most_broken.set_integrity(most_broken.obj_integrity + applied)
 		// If this happens to repair a weapon, fix the blade completely.
 		if(most_broken.max_blade_int && most_broken.blade_int < most_broken.max_blade_int)
 			most_broken.blade_int = most_broken.max_blade_int

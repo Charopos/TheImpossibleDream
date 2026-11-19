@@ -1218,7 +1218,7 @@ GLOBAL_LIST_INIT(da_bubbles, list('sound/foley/bubb (1).ogg','sound/foley/bubb (
 	user.visible_message(span_info("[user] restores [I] with alchemical precision."))
 	if(I.body_parts_covered != I.body_parts_covered_dynamic)
 		I.repair_coverage()
-	I.obj_integrity = I.max_integrity
+	I.set_integrity(I.max_integrity)
 	if(I.obj_broken)
 		I.obj_fix()
 	uses--

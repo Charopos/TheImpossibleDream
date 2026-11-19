@@ -833,8 +833,8 @@ BLIND		// can't see anything
 	if(armor)
 		qdel(armor)
 		armor = new /datum/armor()
-	max_integrity = ARMOR_INT_CHEST_CIVILIAN
-	obj_integrity = max_integrity
+	set_max_integrity(ARMOR_INT_CHEST_CIVILIAN)
+	set_integrity(max_integrity)
 	// [SURREALIS-ADD] - VRCOMBAT
 	restore_all_zones()
 	// [/SURREALIS-ADD]

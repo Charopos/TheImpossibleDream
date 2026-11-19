@@ -80,8 +80,8 @@
 	var/obj/item/R = new item_path(H.drop_location())
 
 	// Halve durability
-	R.max_integrity = round(R.max_integrity * 0.5)
-	R.obj_integrity = R.max_integrity
+	R.set_max_integrity(round(R.max_integrity * 0.5))
+	R.set_integrity(R.max_integrity)
 
 	// Mark as conjured — no salvage, no smelting
 	R.smeltresult = null

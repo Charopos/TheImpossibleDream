@@ -159,7 +159,7 @@
 					if(I.obj_broken)
 						I.obj_fix(null, TRUE)
 					else
-						I.obj_integrity = I.max_integrity
+						I.set_integrity(I.max_integrity)
 					I.update_icon()
 					repaired_count++
 				// Also restore sharpness
@@ -173,7 +173,7 @@
 						if(I.obj_broken)
 							I.obj_fix(null, TRUE)
 						else
-							I.obj_integrity = I.max_integrity
+							I.set_integrity(I.max_integrity)
 						I.update_icon()
 						repaired_count++
 					// Also restore sharpness
@@ -190,7 +190,7 @@
 			var/damaged_count = 0
 			for(var/obj/item/I in target.held_items)
 				if(I && I.max_integrity)
-					I.obj_integrity = I.max_integrity * 0.5
+					I.set_integrity(I.max_integrity * 0.5)
 					I.update_icon()
 					damaged_count++
 			
@@ -198,7 +198,7 @@
 				var/mob/living/carbon/human/H = target
 				for(var/obj/item/I in H.GetAllContents())
 					if(I.max_integrity)
-						I.obj_integrity = I.max_integrity * 0.5
+						I.set_integrity(I.max_integrity * 0.5)
 						I.update_icon()
 						damaged_count++
 			
@@ -237,7 +237,7 @@
 				if(I.obj_broken)
 					I.obj_fix(null, TRUE)
 				else
-					I.obj_integrity = I.max_integrity
+					I.set_integrity(I.max_integrity)
 				// Also restore sharpness
 				if(I.max_blade_int > 0)
 					I.blade_int = I.max_blade_int
@@ -279,7 +279,7 @@
 		if("damage_item")
 			var/obj/item/I = locate(href_list["item"])
 			if(I && I.max_integrity)
-				I.obj_integrity = max(I.max_integrity * 0.25, 1)
+				I.set_integrity(max(I.max_integrity * 0.25, 1))
 				I.update_icon()
 				to_chat(usr, span_notice("Damaged [I.name]."))
 				message_admins("[key_name_admin(usr)] damaged [I.name] for [key_name_admin(target)].")

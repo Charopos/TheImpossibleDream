@@ -974,7 +974,7 @@ Inquisitorial armory down here
 		if(do_after(user, 8 SECONDS, TRUE, src))
 			qdel(I)
 			obj_broken = FALSE
-			obj_integrity = max_integrity
+			set_integrity(max_integrity)
 			icon_state = initial(icon_state)
 			icon_angle = initial(icon_angle)
 			name = initial(name)
@@ -1136,7 +1136,7 @@ Inquisitorial armory down here
 /obj/item/clothing/head/inqarticles/blackbag/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(user.head == src)
-		obj_integrity = max_integrity
+		set_integrity(max_integrity)
 		bagging = FALSE
 		user.become_blind("blindfold_[REF(src)]")
 		playsound(user, pick('sound/misc/blackbagequip.ogg', 'sound/misc/blackbagequip2.ogg'), 100, TRUE, 4)
@@ -1149,7 +1149,7 @@ Inquisitorial armory down here
 	if(worn == TRUE)
 		user.cure_blind("blindfold_[REF(src)]")
 		worn = FALSE
-		obj_integrity = max_integrity
+		set_integrity(max_integrity)
 		REMOVE_TRAIT(user, TRAIT_BAGGED, TRAIT_GENERIC)
 		user.equip_to_slot(headgear, SLOT_HEAD)
 		var/list/datum/wound/w_List = user.get_wounds()

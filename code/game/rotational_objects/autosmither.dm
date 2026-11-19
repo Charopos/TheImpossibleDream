@@ -516,7 +516,7 @@
 	for(var/i in 1 to current.createditem_num)
 		new_item = new current.created_item(drop_target)
 		if(new_item.obj_integrity < new_item.max_integrity)
-			new_item.obj_integrity = new_item.max_integrity
+			new_item.set_integrity(new_item.max_integrity)
 		created_items += new_item
 		if(hopper && !QDELETED(hopper) && hopper.insert(new_item))
 			continue

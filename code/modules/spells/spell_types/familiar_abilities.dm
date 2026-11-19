@@ -452,7 +452,7 @@
 	var/obj/R = new item_path(H.drop_location())
 	var/obj/item/I = R
 
-	R.obj_integrity = R.max_integrity
+	R.set_integrity(R.max_integrity)
 	owner.status_flags |= GODMODE
 	if(isitem(R))
 		// Mark as conjured — no salvage, no smelting

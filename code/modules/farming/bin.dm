@@ -206,8 +206,8 @@
 					var/obj/item/editme = new crafteditem(used_turf)
 					editme.was_crafted = TRUE
 					R.apply_result_quality(editme)
-					editme.max_integrity = newmaxinteg
-					editme.obj_integrity = newinteg
+					editme.set_max_integrity(newmaxinteg)
+					editme.set_integrity(newinteg)
 					if(istype(editme, /obj/item/rogueweapon))
 						editme.force = newforce
 						editme.throwforce = newthrow

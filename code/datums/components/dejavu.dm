@@ -102,5 +102,5 @@
 
 /datum/component/dejavu/proc/rewind_obj()
 	var/obj/master = parent
-	master.obj_integrity = integrity
+	master.set_integrity(integrity)
 	rewind()
