@@ -136,6 +136,14 @@
 #define SMASH_IMPACT_DAMAGE_PER_TILE 5
 /// Most knockback tiles that count toward impact damage.
 #define SMASH_IMPACT_MAX_TILES 6
+/// Infection chance added by a filthy weapon, an animal attacker or a bite.
+#define INFECTION_FILTHY_BONUS 5
+/// Infection chance added by a deadite attacker.
+#define INFECTION_DEADITE_BONUS 5
+/// Infection chance added by standing in sewer, swamp or bloody water.
+#define INFECTION_FOUL_WATER_BONUS 3
+/// Infection chance removed per point of CON above 10, and added per point below.
+#define INFECTION_CON_PER_POINT 1
 /// Time between pain emotes from punching heavy armor bare-handed.
 #define PUNCH_RECOIL_PAIN_COOLDOWN (5 SECONDS)
 /// Oxygen damage per tick from a nicked heart.
