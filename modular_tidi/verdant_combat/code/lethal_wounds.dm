@@ -223,10 +223,14 @@
 		"The lung collapses!",
 		"The blade runs through %VICTIM's lung!"
 	)
-	bleed_rate = 15
-	woundpain = 100
+	bleed_rate = 4
+	woundpain = 60
 	mortal = TRUE
 	organ_slot = ORGAN_SLOT_LUNGS
+	/// Bleed rate the untreated wound ramps up to.
+	var/max_bleed_rate = 15
+	/// Bleed added each life tick while unbandaged; ~60s from start to max.
+	var/bleed_ramp_per_tick = 0.4
 
 /datum/wound/lethal/lung_penetration/get_crit_message(mob/living/affected, obj/item/bodypart/affected_bodypart)
 	var/static/list/fracture_messages = list(
@@ -252,6 +256,8 @@
 
 /datum/wound/lethal/lung_penetration/on_life()
 	. = ..()
+	if(owner && !is_sewn() && !bodypart_owner?.bandage && bleed_rate < max_bleed_rate)
+		set_bleed_rate(min(bleed_rate + bleed_ramp_per_tick, max_bleed_rate))
 	if(!iscarbon(owner) || HAS_TRAIT(owner, TRAIT_NOBREATH))
 		return
 	var/mob/living/carbon/carbon_owner = owner

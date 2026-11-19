@@ -218,20 +218,22 @@ GLOBAL_LIST_INIT(filthy_weapon_types, typecacheof(list(
 /obj/item/bodypart/proc/calculate_infection_chance(mob/living/user, obj/item/weapon, datum/wound/new_wound)
 	var/chance = 0
 	if((weapon && HAS_TRAIT(weapon, TRAIT_FILTHY_WEAPON)) || isanimal(user) || istype(new_wound, /datum/wound/dynamic/bite))
-		chance += 15
+		chance += 8
+	var/filth_bonus = 0
 	if(weapon && weapon.blood_DNA_length() > 0)
-		chance += 3
+		filth_bonus = 3
 	if(user)
 		if(user.blood_DNA_length() > 0)
-			chance += 2
+			filth_bonus = max(filth_bonus, 2)
 		if(HAS_TRAIT(user, TRAIT_DEADITE))
 			chance += 10
 	var/turf/owner_turf = get_turf(owner)
 	if(owner_turf)
 		if(locate(/obj/effect/decal/cleanable) in owner_turf)
-			chance += 2
+			filth_bonus = max(filth_bonus, 2)
 		if(istype(owner_turf, /turf/open/water/sewer) || istype(owner_turf, /turf/open/water/swamp) || istype(owner_turf, /turf/open/water/bloody))
 			chance += 10
+	chance += filth_bonus
 	if(ishuman(owner))
 		chance -= owner.STACON - 10
 	for(var/datum/wound/dynamic/burn/burn in wounds)

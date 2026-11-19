@@ -880,7 +880,12 @@
 			attempted_wounds += try_add_crit_wound(/datum/wound/scarring, damage_dividend, dam, resistance, scar_chance, CRIT_SCARRING_DIVISOR, CRIT_SCARRING_THRESHOLD)
 
 	if(bclass in GLOB.stab_bclasses)
-		var/stab_chance = calculate_crit_chance(damage_dividend, dam, resistance, armor_resistance = armor_resistance, dam_divisor = 2, resistance_penalty = 12, bonus = aimed_bonus ? 12 : 0)
+		var/stab_projectile = istype(weapon, /obj/projectile)
+		var/stab_chance = calculate_crit_chance(damage_dividend, dam, resistance, armor_resistance = armor_resistance, dam_divisor = 2, resistance_penalty = 12, bonus = (aimed_bonus && !stab_projectile) ? 12 : 0)
+#ifndef HUGBOX
+		if(stab_projectile)
+			stab_chance = round(stab_chance * CRIT_PROJECTILE_ORGAN_MULT, 1)
+#endif
 		if(check_crit_threshold(damage_dividend, dam, resistance, CRIT_CHEST_ORGAN_STAB_DIVISOR, CRIT_CHEST_ORGAN_STAB_THRESHOLD) && prob(stab_chance))
 			attempted_wounds += organ_penetration_wound(zone_precise, 20)
 

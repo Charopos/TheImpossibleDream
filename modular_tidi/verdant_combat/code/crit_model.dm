@@ -36,7 +36,7 @@ GLOBAL_LIST_INIT(clamping_tool_behaviors, list(TOOL_HEMOSTAT, TOOL_WIRECUTTER, T
 /obj/item/bodypart/proc/calculate_crit_chance(damage_dividend, dam, resistance, base_multiplier = 10, dam_divisor = 5, resistance_penalty = 10, bonus = 0, armor_resistance = 0)
 	var/chance = base_crit_chance(damage_dividend, dam, resistance, base_multiplier, dam_divisor, resistance_penalty, bonus, armor_resistance)
 #ifndef HUGBOX
-	chance = round(chance * crit_curve_mult(damage_dividend, dam), 1)
+	chance = round(chance * crit_curve_mult(damage_dividend, dam) * CRIT_CHANCE_GLOBAL_MULT, 1)
 #endif
 	return chance
 

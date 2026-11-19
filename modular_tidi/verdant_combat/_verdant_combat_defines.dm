@@ -143,13 +143,17 @@
 
 #ifndef HUGBOX
 	/// Crit chance multiplier on an undamaged limb.
-	#define CRIT_CURVE_FRESH_MULT		0.1
+	#define CRIT_CURVE_FRESH_MULT		0.03
 	/// Limb damage fraction, before the hit, at which crits reach full chance.
 	#define CRIT_CURVE_FULL_FRACTION	0.75
 	/// Shape of the ramp between fresh and full; above 1 keeps crits rare until the limb is badly hurt.
-	#define CRIT_CURVE_EXPONENT			1.5
+	#define CRIT_CURVE_EXPONENT			2
 	/// A single hit dealing at least this plus the target's CON ignores the curve.
 	#define CRIT_CURVE_OVERKILL			90
+	/// Flat multiplier on every crit chance.
+	#define CRIT_CHANCE_GLOBAL_MULT		0.75
+	/// Organ penetration chance multiplier for projectiles.
+	#define CRIT_PROJECTILE_ORGAN_MULT	0.5
 #endif
 
 #ifdef HUGBOX
