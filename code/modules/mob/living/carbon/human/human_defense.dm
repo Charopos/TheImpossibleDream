@@ -696,6 +696,11 @@
 	else
 		examination += span_dead("[m1] dead.")
 
+	// [SURREALIS-ADD] - VRCOMBAT
+	if(stat < DEAD && HAS_TRAIT(src, TRAIT_BP_CRASH))
+		examination += span_artery("<B>[user == src ? "My" : p_their(TRUE)] pulse is acutely weak.</B>")
+	// [/SURREALIS-ADD]
+
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 			examination += span_artery("<B>[m1] extremely anemic.</B>")
@@ -735,12 +740,14 @@
 			continue
 		var/organ_status
 		if(organ.organ_flags & ORGAN_FAILING)
-			organ_status = span_dead("<B>FAILING</B>")
+			organ_status = span_dead("<B>destroyed</B>")
 		else if(organ.damage > organ.high_threshold)
 			organ_status = span_artery("<B>heavily damaged</B>")
 		else
 			organ_status = span_warning("damaged")
-		examination += span_info("☼ [capitalize(organ.name)]: [organ_status]")
+		examination += span_info("☼ [capitalize(organ.name)] is [organ_status].")
+	for(var/datum/status_effect/debuff/missing_organ/missing in status_effects)
+		examination += span_info("☼ [capitalize(missing.organ_slot)] is [span_dead("<B>missing</B>")].")
 
 	// [/SURREALIS-ADD]
 	examination += "ø ------------ ø</span>"

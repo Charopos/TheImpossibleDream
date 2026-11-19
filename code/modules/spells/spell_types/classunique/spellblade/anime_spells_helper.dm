@@ -179,7 +179,10 @@ without going through the click pipeline, so spells can deliver weapon-style str
 				// var/obj/item/clothing/C = H.get_best_worn_armor(def_zone, attack_flag) // SURREALIS-EDIT - ORIGINAL
 				var/obj/item/clothing/C = H.get_best_armor(def_zone, attack_flag)
 				// [/SURREALIS-EDIT]
-				var/extra_msg = C?.get_armor_integ()
+				// [SURREALIS-EDIT] - VRCOMBAT
+				// var/extra_msg = C?.get_armor_integ() // SURREALIS-EDIT - ORIGINAL
+				var/extra_msg = C?.get_armor_integ(def_zone)
+				// [/SURREALIS-EDIT]
 				if(extra_msg)
 					armor_msg += extra_msg
 		target.visible_message(

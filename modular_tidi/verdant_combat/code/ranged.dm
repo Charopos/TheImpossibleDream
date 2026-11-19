@@ -5,6 +5,16 @@
 	var/falloff_accuracy_per_turf = 0
 	var/firer_skill_level = 0
 	var/falloff_applied = FALSE
+	var/variance_percentile = null
+
+/obj/projectile/proc/variance_hit_quality()
+	if(isnull(variance_percentile))
+		return 0
+	if(variance_percentile <= VARIANCE_LOW_PERCENTILE)
+		return -1
+	if(variance_percentile >= VARIANCE_HIGH_PERCENTILE)
+		return 1
+	return 0
 
 /proc/projectile_falloff(distance, start_distance, damage_per_turf, ap_per_turf, accuracy_per_turf, skill_level)
 	var/static/list/no_falloff = list(0, 0, 0)
@@ -31,8 +41,10 @@
 		return
 	falloff_applied = TRUE
 	var/list/loss = projectile_falloff(falloff_distance_to(target_turf), falloff_start_distance, falloff_damage_per_turf, falloff_ap_per_turf, 0, firer_skill_level)
+	var/had_damage = damage > 0
 	damage = max(damage - loss[1], 0)
 	armor_penetration = max(armor_penetration - loss[2], 0)
+	return had_damage && damage <= 0
 
 /obj/projectile/proc/farsight_penalty(distance)
 	if(distance <= ACC_RANGED_VISUAL_REACH)
@@ -62,6 +74,7 @@
 	var/skill_level = user.get_skill_level(skill_type)
 	var/roll = get_damage_variance(skill_type, ranged_variance_center(user.STALUC, bonus_stat, skill_level, luck_only), user)
 	BB.damage *= 1 + (roll / 100)
+	BB.variance_percentile = ((roll + RANGED_VARIANCE_RANGE) / (RANGED_VARIANCE_RANGE * 2)) * 100
 	if(use_statmult)
 		BB.damage *= max(bonus_stat / 20, 1)
 	BB.firer_skill_level = skill_level
@@ -113,6 +126,7 @@
 	if(destination.density || has_dense_content(destination))
 		destination = get_nearest_open_turf(destination, 3)
 	if(!destination)
+		handle_drop()
 		qdel(src)
 		return
 	trajectory_ignore_forcemove = TRUE

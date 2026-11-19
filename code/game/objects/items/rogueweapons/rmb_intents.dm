@@ -283,7 +283,7 @@
 
 	if(!feint_success)
 		playsound(user, 'sound/combat/feint.ogg', 100, TRUE)
-		if(user.client?.prefs.showrolls)
+		if(!autofail && user.client?.prefs.showrolls)
 			to_chat(user, span_warning("[L.p_they(TRUE)] did not fall for my feint... [user_roll] vs [HAS_TRAIT(L, TRAIT_DECEIVING_MEEKNESS) ? "???" : target_roll]"))
 		// [/SURREALIS-EDIT]
 		user.apply_status_effect(/datum/status_effect/debuff/feintcd, newcd)

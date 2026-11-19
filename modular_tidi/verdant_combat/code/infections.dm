@@ -22,13 +22,21 @@
 	var/last_stage_duration = 0
 	var/stage_4_time = 60 MINUTES
 	var/necrotic_overlay_applied = FALSE
+	var/notice_time = 0
+	var/noticed = FALSE
 
 /datum/wound/infection/can_stack_with(datum/wound/other)
 	return !istype(other, /datum/wound/infection)
 
+/datum/wound/infection/can_apply_to_bodypart(obj/item/bodypart/affected)
+	if(affected.skeletonized || !affected.is_organic_limb())
+		return FALSE
+	return ..()
+
 /datum/wound/infection/on_bodypart_gain(obj/item/bodypart/affected)
 	. = ..()
 	time_to_next_stage = world.time + (rand(10 MINUTES, 20 MINUTES) * get_con_modifier()) / progression_multiplier
+	notice_time = world.time + (time_to_next_stage - world.time) / 2
 
 /datum/wound/infection/proc/get_con_modifier()
 	if(!ishuman(owner))
@@ -41,12 +49,21 @@
 		return
 	if(world.time >= time_to_next_stage)
 		advance_stage()
+	else if(!noticed && world.time >= notice_time)
+		notice_rot()
 	apply_stage_effects()
+
+/datum/wound/infection/proc/notice_rot()
+	noticed = TRUE
+	to_chat(owner, span_warning("You smell something starting to rot..."))
+	var/turf/owner_turf = get_turf(owner)
+	owner_turf?.pollute_turf(/datum/pollutant/rot, 2)
 
 /datum/wound/infection/proc/advance_stage()
 	if(!owner || !bodypart_owner)
 		return
 	infection_stage++
+	noticed = TRUE
 	switch(infection_stage)
 		if(2)
 			name = "festering wound"

@@ -145,10 +145,15 @@
 	var/hurt = TRUE
 	// [SURREALIS-ADD] - VRCOMBAT
 	var/was_jumping = is_jumping
+	var/knockback_impact = smash_knockback_impact(hit_atom, throwingdatum)
 	// [/SURREALIS-ADD]
 	if(hit_atom.density && isturf(hit_atom))
 		if(hurt)
-			take_bodypart_damage(10,check_armor = TRUE)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// take_bodypart_damage(10,check_armor = TRUE) // SURREALIS-EDIT - ORIGINAL
+			if(!knockback_impact)
+				take_bodypart_damage(10,check_armor = TRUE)
+			// [/SURREALIS-EDIT]
 			if(IsOffBalanced())
 				Paralyze(20)
 	if(iscarbon(hit_atom) && hit_atom != src)
@@ -180,7 +185,11 @@
 		// [/SURREALIS-EDIT]
 		if(hurt)
 			victim.take_bodypart_damage(10,check_armor = TRUE)
-			take_bodypart_damage(10,check_armor = TRUE)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// take_bodypart_damage(10,check_armor = TRUE) // SURREALIS-EDIT - ORIGINAL
+			if(!knockback_impact)
+				take_bodypart_damage(10,check_armor = TRUE)
+			// [/SURREALIS-EDIT]
 			// [SURREALIS-ADD] - VRCOMBAT
 			if(victim.IsOffBalanced())
 				victim.Knockdown(30)
@@ -1114,6 +1123,10 @@
 					visible_message(span_danger("<b>[src] collapses, broken and bloodied!</b>"), \
 						span_userdanger("My bones are shattered... I cannot go on."))
 					balloon_alert_to_viewers("<font color='#bb2b2b'>beaten down!</font>")
+				// [SURREALIS-ADD] - VRCOMBAT
+				else if(HAS_TRAIT(src, TRAIT_BP_CRASH))
+					to_chat(src, span_danger("You suddenly feel extremely faint."))
+				// [/SURREALIS-ADD]
 			set_stat(UNCONSCIOUS)
 			if(ishuman(src))
 				var/mob/living/carbon/human/H = src

@@ -69,6 +69,12 @@
 #define BLUNT_AP_MOD_MEDIUM -6
 #define BLUNT_AP_MOD_HEAVY 26
 
+/// Damage variance range, in percent, for bows, crossbows and slings.
+#define RANGED_VARIANCE_RANGE 20
+/// Variance percentile at or below which a hit announces as weak.
+#define VARIANCE_LOW_PERCENTILE 10
+/// Variance percentile at or above which a hit announces as strong.
+#define VARIANCE_HIGH_PERCENTILE 90
 #define SPELL_VARIANCE_LOW 15
 #define SPELL_VARIANCE_MID 25
 #define SPELL_VARIANCE_HIGH 40
@@ -124,9 +130,17 @@
 #define SHOCK_BLEED_FLAT 1.45
 /// Delay before a pierced heart crashes blood pressure.
 #define HEART_BP_CRASH_DELAY (10 SECONDS)
+/// Time before frostbite drops a limb.
+#define FROSTBITE_LOOSE_WARNING (3 MINUTES)
+/// Impact damage per tile of knockback left.
+#define SMASH_IMPACT_DAMAGE_PER_TILE 5
+/// Most knockback tiles that count toward impact damage.
+#define SMASH_IMPACT_MAX_TILES 6
+/// Time between pain emotes from punching heavy armor bare-handed.
+#define PUNCH_RECOIL_PAIN_COOLDOWN (5 SECONDS)
 /// Oxygen damage per tick from a nicked heart.
 #define HEART_PENETRATION_OXYLOSS 5.25
-/// Heart wound organ damage that counts as a nick.
+/// Amount of organ damage that counts as a nicked heart.
 #define HEART_PENETRATION_NICK_DAMAGE 40
 /// How sharply heart oxygen damage grows with organ damage.
 #define HEART_PENETRATION_OXYLOSS_EXPONENT 2.2

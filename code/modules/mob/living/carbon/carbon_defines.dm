@@ -18,6 +18,8 @@
 	var/cached_hidden_bleed = 0
 	/// Part of the last bleed rate that stays inside the body.
 	var/hidden_bleed_rate = 0
+	/// Part of the last bleed rate that comes from internal wounds.
+	var/internal_bleed_rate = 0
 	var/cached_grab_suppression = 1
 	var/bleed_cache_dirty = TRUE
 	// [/SURREALIS-ADD]

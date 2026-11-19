@@ -1,7 +1,22 @@
 /obj/item/bodypart/proc/should_dismember(bclass, damage_dealt, mob/living/user, zone_precise, armor_block = 0, raw_damage = 0, obj/item/weapon)
-	return prob(get_dismember_probability(bclass, damage_dealt, user, zone_precise, armor_block, raw_damage, weapon))
+	var/probability = get_dismember_probability(bclass, damage_dealt, user, zone_precise, armor_block, raw_damage, weapon)
+	if(probability)
+		return prob(probability)
+	if(user && blade_too_dull(bclass, weapon) && prob(get_dismember_probability(bclass, damage_dealt, user, zone_precise, armor_block, raw_damage, weapon, ignore_dullness = TRUE)))
+		to_chat(user, span_warning("Your blade catches on the bone."))
+	return FALSE
 
-/obj/item/bodypart/proc/get_dismember_probability(bclass, damage_dealt, mob/living/user, zone_precise, armor_block = 0, raw_damage = 0, obj/item/weapon)
+/obj/item/bodypart/proc/blade_too_dull(bclass, obj/item/weapon)
+	if(bclass == BCLASS_CHOP || !(bclass in GLOB.dismember_bclasses) || !istype(weapon, /obj/item/rogueweapon))
+		return FALSE
+	var/obj/item/rogueweapon/blade = weapon
+	if(!blade.max_blade_int)
+		return FALSE
+	if(blade.blade_int / blade.max_blade_int <= 0.15)
+		return TRUE
+	return blade.blade_int < blade.max_blade_int * 0.95 && get_damage() < max_damage * 0.8
+
+/obj/item/bodypart/proc/get_dismember_probability(bclass, damage_dealt, mob/living/user, zone_precise, armor_block = 0, raw_damage = 0, obj/item/weapon, ignore_dullness = FALSE)
 	if(!owner || !dismemberable || (owner.status_flags & GODMODE) || HAS_TRAIT(owner, TRAIT_NODISMEMBER))
 		return 0
 	var/total_dam = get_damage()
@@ -13,15 +28,10 @@
 
 	if(is_sharp || is_blunt)
 		var/nuforce = damage_dealt
-		if(is_sharp && istype(weapon, /obj/item/rogueweapon))
-			var/obj/item/rogueweapon/blade = weapon
-			if(bclass == BCLASS_CHOP)
-				nuforce *= 1.1
-			else if(blade.max_blade_int && blade.dismember_blade_int)
-				if(blade.blade_int / blade.dismember_blade_int <= 0.15)
-					return 0
-				if(blade.blade_int < blade.dismember_blade_int * 0.95 && total_dam < max_damage * 0.8)
-					return 0
+		if(is_sharp && bclass == BCLASS_CHOP && istype(weapon, /obj/item/rogueweapon))
+			nuforce *= 1.1
+		if(!ignore_dullness && blade_too_dull(bclass, weapon))
+			return 0
 		if(user)
 			if(istype(user.rmb_intent, /datum/rmb_intent/weak))
 				return 0

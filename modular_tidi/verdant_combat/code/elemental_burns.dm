@@ -40,6 +40,8 @@
 	)
 	sound_effect = 'sound/combat/crit.ogg'
 	var/time_until_falloff = 0
+	var/time_until_halfway = 0
+	var/numb_stage = 0
 	var/next_disable_check = 0
 	var/next_organ_damage = 0
 
@@ -50,6 +52,7 @@
 		whp += damage * 0.8
 		woundpain += damage * 0.4
 	time_until_falloff = world.time + rand(20 MINUTES, 40 MINUTES)
+	time_until_halfway = world.time + (time_until_falloff - world.time) / 2
 	next_disable_check = world.time + rand(30 SECONDS, 2 MINUTES)
 	next_organ_damage = world.time + rand(5 MINUTES, 10 MINUTES)
 
@@ -63,6 +66,7 @@
 			next_organ_damage = world.time + rand(5 MINUTES, 10 MINUTES)
 			apply_organ_damage()
 		return
+	update_numbness()
 	if(world.time >= next_disable_check)
 		next_disable_check = world.time + rand(30 SECONDS, 2 MINUTES)
 		if(prob(15))
@@ -73,6 +77,17 @@
 		owner.visible_message(span_danger("[owner]'s frostbitten [bodypart_owner.name] falls off!"), \
 							span_userdanger("My frostbitten [bodypart_owner.name] falls off!"))
 		bodypart_owner.dismember(BURN, BCLASS_FROST, skip_checks = TRUE)
+
+/datum/wound/burn/frostbite/proc/update_numbness()
+	if(numb_stage < 1)
+		numb_stage = 1
+		to_chat(owner, span_warning("You can't feel your [bodypart_owner.name]."))
+	else if(numb_stage < 2 && world.time >= time_until_halfway)
+		numb_stage = 2
+		to_chat(owner, span_danger("Your [bodypart_owner.name] has gone hard and cold."))
+	else if(numb_stage < 3 && world.time >= time_until_falloff - FROSTBITE_LOOSE_WARNING)
+		numb_stage = 3
+		to_chat(owner, span_danger("<B>Your [bodypart_owner.name] is coming loose...</B>"))
 
 /datum/wound/burn/frostbite/proc/remove_disable()
 	if(!bodypart_owner)

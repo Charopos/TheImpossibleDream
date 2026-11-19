@@ -298,6 +298,7 @@
 	var/internal_bleed = cached_internal_bleed
 	var/hidden_bleed = cached_hidden_bleed
 	hidden_bleed_rate = 0
+	internal_bleed_rate = 0
 	if(cached_grab_suppression != 1)
 		normal_bleed *= cached_grab_suppression
 		critical_bleed *= cached_grab_suppression * 0.5
@@ -323,6 +324,7 @@
 	if(total_bleed <= 0.1)
 		return 0
 	hidden_bleed_rate = hidden_bleed * inner_factor
+	internal_bleed_rate = internal_bleed * inner_factor
 	return total_bleed
 
 /// Checks for hypotensive shock.

@@ -254,10 +254,11 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 		return get_zone_integrity_ratio(def_zone)
 	return get_integrity_fraction()
 
+GLOBAL_LIST_INIT(integrity_display_zones, list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_GROIN, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+
 /obj/item/clothing/proc/durability_inspect_text()
 	var/text = "\n<b>DURABILITY:</b>"
-	var/static/list/inspected_zones = list(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_GROIN, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-	for(var/zone in inspected_zones)
+	for(var/zone in GLOB.integrity_display_zones)
 		if(!has_zone_integrity(zone))
 			continue
 		var/percent = round(get_zone_integrity_ratio(zone) * 100, 1)
@@ -370,3 +371,30 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 
 /obj/item/clothing/clamps_break_damage()
 	return obj_broken || !uses_zone_integrity()
+
+/obj/item/clothing/examine(mob/user)
+	. = ..()
+	if(!uses_zone_integrity() || obj_broken || !integrity_needs_repair())
+		return
+	var/list/zone_lines = list()
+	for(var/zone in GLOB.integrity_display_zones)
+		if(has_zone_integrity(zone))
+			zone_lines += "[capitalize(get_zone_name(zone))]: [round(get_zone_integrity_ratio(zone) * 100, 1)]%"
+	if(length(zone_lines))
+		. += span_warning(jointext(zone_lines, " | "))
+
+/obj/item/clothing/proc/announce_breaches(broken_before)
+	if(obj_broken || !isliving(loc))
+		return
+	var/mob/living/wearer = loc
+	for(var/i in broken_before + 1 to length(broken_zones))
+		wearer.visible_message(span_danger("The [name]'s [get_zone_name(broken_zones[i])] has been breached!"))
+
+/mob/living/proc/acid_armor_message(def_zone)
+	return ""
+
+/mob/living/carbon/human/acid_armor_message(def_zone)
+	var/obj/item/clothing/sizzling = get_best_armor(def_zone, "acid")
+	if(!sizzling)
+		return ""
+	return " <span class='warning'>The [sizzling.name] begins to sizzle!</span>"

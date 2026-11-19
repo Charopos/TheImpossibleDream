@@ -115,6 +115,9 @@
 		playsound(I, 'sound/magic/mending.ogg', 35, TRUE, -2)
 
 		if(!I.integrity_needs_repair())
+			// [SURREALIS-ADD] - VRCOMBAT
+			to_chat(user, span_info("The [I.name] has been fully repaired."))
+			// [/SURREALIS-ADD]
 			if(I.obj_broken)
 				I.obj_fix()
 			if(I.body_parts_covered_dynamic != I.body_parts_covered)

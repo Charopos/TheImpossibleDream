@@ -26,9 +26,9 @@
 	if(istype(user.rmb_intent, /datum/rmb_intent/weak))
 		return " <span style='color:pink'><i>A restrained strike.</i></span>"
 	if(user.last_variance_percentile)
-		if(user.last_variance_percentile <= 10)
+		if(user.last_variance_percentile <= VARIANCE_LOW_PERCENTILE)
 			return " <span style='color:pink'><i>A glancing blow.</i></span>"
-		if(user.last_variance_percentile >= 90)
+		if(user.last_variance_percentile >= VARIANCE_HIGH_PERCENTILE)
 			return " <b style='color:pink'><i>The strike lands squarely!</i></b>"
 	return ""
 
@@ -44,7 +44,26 @@
 	if(throw_power + throw_damage_bonus >= 50 || (!cmode && user.cmode && throw_power + throw_damage_bonus >= 25))
 		throw_power = max(floor(throw_power / 10) - 3, 1)
 		var/turf/target_turf = get_ranged_target_turf(get_turf(src), get_dir(get_turf(user), get_turf(src)), throw_power)
-		throw_at(target_turf, throw_power, throw_power, src, spin = FALSE)
+		smash_knockback_flying = TRUE
+		if(!throw_at(target_turf, throw_power, throw_power, src, spin = FALSE, callback = CALLBACK(src, PROC_REF(end_smash_knockback))))
+			smash_knockback_flying = FALSE
+
+/mob/living/carbon
+	var/smash_knockback_flying = FALSE
+
+/mob/living/carbon/proc/end_smash_knockback()
+	smash_knockback_flying = FALSE
+
+/mob/living/carbon/proc/smash_knockback_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(!smash_knockback_flying || !throwingdatum || !hit_atom?.density || hit_atom == src)
+		return FALSE
+	smash_knockback_flying = FALSE
+	var/tiles_left = min(max(throwingdatum.maxrange - throwingdatum.dist_travelled, 0) + 1, SMASH_IMPACT_MAX_TILES)
+	take_bodypart_damage(tiles_left * SMASH_IMPACT_DAMAGE_PER_TILE, check_armor = TRUE)
+	playsound(src, "genblunt", 100, TRUE)
+	if(isclosedturf(hit_atom) && blood_volume && !(NOBLOOD in dna?.species?.species_traits))
+		blood_spray(get_dir(src, hit_atom))
+	return TRUE
 
 /mob/living/proc/dodge_turf_away_from(atom/threat)
 	var/static/list/away_north = list(NORTH, WEST, EAST)
@@ -126,8 +145,14 @@
 	if(recoil_damage <= 0)
 		return
 	var/obj/item/bodypart/punching_hand = hand_bodyparts[active_hand_index]
+	if(!HAS_TRAIT(src, TRAIT_NOPAIN) && COOLDOWN_FINISHED(src, recoil_pain_cooldown))
+		COOLDOWN_START(src, recoil_pain_cooldown, PUNCH_RECOIL_PAIN_COOLDOWN)
+		emote("pain", forced = TRUE)
 	if(punching_hand)
 		apply_damage(recoil_damage, BRUTE, punching_hand, 0)
+
+/mob/living/carbon/human
+	COOLDOWN_DECLARE(recoil_pain_cooldown)
 
 /proc/dodge_weapon_modifier(mob/living/attacker, mob/living/carbon/human/defender, obj/item/I, defender_dodge_expert)
 	. = 0

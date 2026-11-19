@@ -36,7 +36,7 @@
 			variance_range = 10
 			curve_depth = 3
 		if(/datum/skill/combat/bows, /datum/skill/combat/crossbows, /datum/skill/combat/slings)
-			variance_range = 20
+			variance_range = RANGED_VARIANCE_RANGE
 			curve_depth = 4
 			isprojectile = TRUE
 

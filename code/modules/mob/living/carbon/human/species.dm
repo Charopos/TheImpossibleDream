@@ -2085,11 +2085,14 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 			H.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
 			var/obj/item/clothing/C = H.last_armor_hit?.resolve()
 	// [/SURREALIS-EDIT]
-			var/extra_msg = C?.get_armor_integ()
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// var/extra_msg = C?.get_armor_integ() // SURREALIS-EDIT - ORIGINAL
+			var/extra_msg = C?.get_armor_integ(def_zone)
+			// [/SURREALIS-EDIT]
 			if(extra_msg)
 				H.next_attack_msg += extra_msg
 			// [SURREALIS-ADD] - VRCOMBAT
-			var/stamina_drain = min(armor_block * 0.05, 10)
+			var/stamina_drain = min(armor_block * 0.05, 5)
 			if(stamina_drain > 0)
 				H.stamina_add(stamina_drain)
 			// [/SURREALIS-ADD]

@@ -717,10 +717,13 @@ BLIND		// can't see anything
 	*/
 	var/watched_zone = zone_damage_target
 	var/ratio = integrity_display_ratio(watched_zone)
+	var/broken_before = uses_zone_integrity() ? length(broken_zones) : -1
 	. = ..()
 	if(QDELETED(src))
 		return
 	var/ratio_newinteg = integrity_display_ratio(watched_zone)
+	if(broken_before >= 0 && length(broken_zones) > broken_before)
+		announce_breaches(broken_before)
 	// [/SURREALIS-EDIT]
 	var/text
 	var/y_offset
@@ -741,6 +744,13 @@ BLIND		// can't see anything
 		sfx = pick_damage_sound(3)
 		chunkicon = "chunkfall3"
 		y_offset = 30
+	// [SURREALIS-ADD] - VRCOMBAT
+	if(ratio > 0 && ratio_newinteg <= 0)
+		text = "Armor <br><font color = '#8b2b2b'>breached</font>"
+		sfx = pick_damage_sound(3)
+		chunkicon = "chunkfall3"
+		y_offset = 30
+	// [/SURREALIS-ADD]
 	if(text)
 		if(isliving(loc))
 			var/mob/living/L = loc
@@ -813,6 +823,9 @@ BLIND		// can't see anything
 		examine_text = "<font color = '#808080'>[examine_text]</font>"
 	return SPAN_TOOLTIP_DANGEROUS_HTML(str, examine_text)
 
+// [SURREALIS-EDIT] - VRCOMBAT
+// SURREALIS-EDIT - ORIGINAL
+/*
 /obj/item/clothing/proc/get_armor_integ()
 	var/ratio = get_integrity_fraction()
 	switch(ratio)
@@ -824,6 +837,17 @@ BLIND		// can't see anything
 			return VISMSG_ARMOR_INT_STAGETWO
 		if(0 to 0.24)
 			return VISMSG_ARMOR_INT_STAGETHREE
+*/
+/obj/item/clothing/proc/get_armor_integ(def_zone)
+	var/ratio = integrity_display_ratio(def_zone)
+	if(ratio >= 0.75)
+		return null
+	if(ratio >= 0.5)
+		return VISMSG_ARMOR_INT_STAGEONE
+	if(ratio >= 0.25)
+		return VISMSG_ARMOR_INT_STAGETWO
+	return VISMSG_ARMOR_INT_STAGETHREE
+// [/SURREALIS-EDIT]
 
 
 /// Pardon the goofy name, but this proc in essence turns the item into an aesthetic-only loadout variant.

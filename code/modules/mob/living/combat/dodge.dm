@@ -393,16 +393,22 @@
 		var/obj/item/attacker_mainhand = attacker.get_active_held_item()
 		var/obj/item/attacker_offhand = attacker.get_inactive_held_item()
 		var/attacker_dualw = attacker_mainhand && attacker_offhand && HAS_TRAIT(attacker, TRAIT_DUALWIELDER) && istype(attacker_mainhand, attacker_offhand)
-		if(src.client?.prefs.showrolls)
-			to_chat(src, span_info("Dodge Roll: [def_roll] vs [HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS) ? "???" : atk_roll]"))
 		var/dodge_success = (def_roll >= atk_roll)
+		var/dualw_penalty = FALSE
 		if(defender_dualw && !attacker_dualw)
 			if(dodge_success)
 				def_roll -= 4
+				dualw_penalty = TRUE
 				dodge_success = (def_roll >= atk_roll)
 		else if(attacker_dualw && !defender_dualw)
 			def_roll -= 4
+			dualw_penalty = TRUE
 			dodge_success = (def_roll >= atk_roll)
+		if(src.client?.prefs.showrolls)
+			var/text = "Dodge Roll: [def_roll] vs [HAS_TRAIT(user, TRAIT_DECEIVING_MEEKNESS) ? "???" : atk_roll]"
+			if(dualw_penalty)
+				text += " (Disadvantage -4)"
+			to_chat(src, span_info(text))
 		if(!dodge_success)
 			return FALSE
 		drained = 10

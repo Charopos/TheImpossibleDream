@@ -331,3 +331,21 @@
 	if(!carbon_owner.stat && prob(12))
 		carbon_owner.vomit(1, blood = TRUE, stun = FALSE)
 		to_chat(carbon_owner, span_warning("I taste blood!"))
+/obj/item/bodypart/proc/get_internal_bleed_rate()
+	if(bandage && !HAS_BLOOD_DNA(bandage))
+		return 0
+	. = 0
+	for(var/datum/wound/wound as anything in wounds)
+		if(wound.internal_bleeding && wound.bleed_rate > 0)
+			. += wound.bleed_rate
+
+/mob/living/carbon/human/proc/get_rot_examine(observer_privilege, possessive)
+	for(var/obj/item/bodypart/part as anything in bodyparts)
+		if(!observer_privilege && !get_location_accessible(src, part.body_zone))
+			continue
+		var/datum/wound/infection/infection = part.has_wound(/datum/wound/infection)
+		if(infection?.noticed && infection.infection_stage < 4)
+			LAZYADD(., span_danger("<B>[possessive] [part.name] is festering!</B>"))
+		var/datum/wound/burn/frostbite/frostbite = part.has_wound(/datum/wound/burn/frostbite)
+		if(frostbite?.numb_stage >= 2)
+			LAZYADD(., span_danger("[possessive] [part.name] is blackened and decaying."))

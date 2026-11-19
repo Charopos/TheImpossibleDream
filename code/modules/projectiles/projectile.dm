@@ -476,7 +476,10 @@
 		if(damage)
 			damage = round(damage * dam_falloff_factor)
 	*/
-	apply_damage_falloff(T)
+	if(apply_damage_falloff(T))
+		handle_drop()
+		qdel(src)
+		return hit_something
 	// [/SURREALIS-EDIT]
 
 	if(QDELETED(src) || !T || !target)		//We're done, nothing's left.

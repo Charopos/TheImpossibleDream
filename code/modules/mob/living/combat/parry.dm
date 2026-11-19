@@ -464,8 +464,11 @@
 		var/parry_result = do_parry(used_weapon, istype(used_weapon, /obj/item/rogueweapon/shield) ? ceil(drained / 2) : drained, user, untrained_armor, balance_diff)
 		if(parry_result == PARRY_DISARM)
 			if(used_weapon)
+				var/disarm_msg = "<b>[src]</b> parries [user] with [used_weapon]! The [used_weapon.name] flies free from [src]'s grasp!"
 				dropItemToGround(used_weapon, TRUE)
-				visible_message(span_danger("[used_weapon] is knocked from [src]'s hands!"), span_userdanger("My [used_weapon] is knocked from my hands!"))
+				playsound(get_turf(src), 'sound/combat/clash_disarm_us.ogg', 100, FALSE)
+				visible_message(span_combatsecondary(disarm_msg), span_boldwarning(disarm_msg), vision_distance = COMBAT_MESSAGE_RANGE, ignored_mobs = list(user))
+				to_chat(user, span_boldwarning(disarm_msg))
 			return TRUE
 		if(parry_result) //show message
 		// [/SURREALIS-EDIT]
@@ -600,10 +603,11 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/defender_human = src
 		var/stamina_before = defender_human.stamina
-		if(defender_human.stamina_add(parrydrain))
-			if(stamina_before + parrydrain >= defender_human.max_stamina && ishuman(user))
-				if(get_stat_roll(user.STASTR) >= get_stat_roll(defender_human.STASTR) + (balance_diff * 3) + 10)
-					return PARRY_DISARM
+		var/stamina_held = defender_human.stamina_add(parrydrain)
+		if(parry_weapon && stamina_before + parrydrain >= defender_human.max_stamina && ishuman(user))
+			if(get_stat_roll(user.STASTR) >= get_stat_roll(defender_human.STASTR) + (balance_diff * 3) + 10)
+				return PARRY_DISARM
+		if(stamina_held)
 // [/SURREALIS-EDIT]
 			if(parry_weapon)
 				playsound(get_turf(src), pick(parry_weapon.parrysound), 100, FALSE)
@@ -624,6 +628,10 @@
 
 			visible_message(span_combatsecondary(def_msg), span_boldwarning(def_msg), COMBAT_MESSAGE_RANGE, list(user))
 			to_chat(user, span_boldwarning(def_msg))
+			// [SURREALIS-ADD] - VRCOMBAT
+			if(parry_weapon && ishuman(user) && defender_human.stamina + parrydrain >= defender_human.max_stamina)
+				to_chat(src, span_warning("I start to lose my grip on the [parry_weapon.name]!"))
+			// [/SURREALIS-ADD]
 
 			for(var/mob/living/hearer in get_hearers_in_view(4, src, RECURSIVE_CONTENTS_CLIENT_MOBS))
 				if(!hearer.has_flaw(/datum/charflaw/addiction/clamorous))

@@ -368,6 +368,10 @@
 		else
 			P.handle_drop()
 
+	// [SURREALIS-ADD] - VRCOMBAT
+	if(P.flag == "acid")
+		next_attack_msg += acid_armor_message(def_zone)
+	// [/SURREALIS-ADD]
 	var/organ_hit_text = ""
 	var/limb_hit = hit_zone_name(def_zone)//to get the correct message info.
 	if(limb_hit)
@@ -375,8 +379,18 @@
 	if(P.hitsound && !nodmg)
 		var/volume = P.vol_by_damage()
 		playsound(loc, pick(P.hitsound), volume, TRUE, -1)
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
 	visible_message(span_danger("[src] is hit by \a [P][organ_hit_text]![next_attack_msg.Join()]"), \
 			span_danger("I'm hit by \a [P][organ_hit_text]![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+	*/
+	var/hit_quality = P.variance_hit_quality()
+	var/bullseye = hit_quality > 0 ? "Bullseye! " : ""
+	var/hit_verb = hit_quality < 0 ? "grazed" : "hit"
+	visible_message(span_danger("[bullseye][src] is [hit_verb] by \a [P][organ_hit_text]![next_attack_msg.Join()]"), \
+			span_danger("[bullseye]I'm [hit_verb] by \a [P][organ_hit_text]![next_attack_msg.Join()]"), null, COMBAT_MESSAGE_RANGE)
+	// [/SURREALIS-EDIT]
 	next_attack_msg.Cut()
 	show_ranged_accuracy_fail(P.firer, aimed_zone, def_zone, roll_out)
 

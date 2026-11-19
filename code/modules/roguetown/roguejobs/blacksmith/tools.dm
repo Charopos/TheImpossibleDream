@@ -109,8 +109,15 @@
 	repair_busy = FALSE
 
 /obj/item/rogueweapon/hammer/proc/repair_item(obj/item/attacked_item, mob/living/user)
-	if(!attacked_item.anvilrepair || !attacked_item.integrity_needs_repair() || !isturf(attacked_item.loc))
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// if(!attacked_item.anvilrepair || !attacked_item.integrity_needs_repair() || !isturf(attacked_item.loc)) // SURREALIS-EDIT - ORIGINAL
+	if(!attacked_item.anvilrepair || !isturf(attacked_item.loc))
 		return
+	if(!attacked_item.integrity_needs_repair())
+		if(attacked_item.ontable())
+			to_chat(user, span_info("The [attacked_item.name] has been fully repaired."))
+		return
+	// [/SURREALIS-EDIT]
 
 	if(!attacked_item.ontable())
 		to_chat(user, span_warning("I should put this on a table or an anvil first."))
@@ -158,6 +165,9 @@
 			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_item]!"))
 
 		if(!attacked_item.integrity_needs_repair())
+			// [SURREALIS-ADD] - VRCOMBAT
+			to_chat(user, span_info("The [attacked_item.name] has been fully repaired."))
+			// [/SURREALIS-ADD]
 			break
 
 	while(do_after(user, CLICK_CD_QUICK, target = attacked_item))
