@@ -2074,12 +2074,16 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 	var/nodmg = FALSE
 	var/raw_damage = 0
 	var/actual_damage = 0
+	var/was_blunted = FALSE
 
 	if(Iforce)
 		var/weakness = H.check_weakness(I, user)
 		raw_damage = Iforce * ((weakness == 0) ? 1 : weakness)
 		H.next_attack_msg.Cut()
 		actual_damage = armor_actual_damage(raw_damage, armor_block, I.d_type)
+		was_blunted = armor_blunts_attack(actual_damage, armor_block, bladec)
+		if(was_blunted)
+			actual_damage = ceil(actual_damage * 0.5)
 		if(!apply_damage(actual_damage, I.damtype, def_zone, 0, H, wounds_handled = TRUE))
 			nodmg = TRUE
 			H.next_attack_msg += " <span class='warning'>Armor stops the damage.</span>"
@@ -2112,10 +2116,8 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 			var/datum/wound/crit_wound = affecting.bodypart_attacked_by(user.used_intent.blade_class, post_reduction_dmg, user, selzone, crit_message = TRUE, weapon = I, pen_info = pen_info_check)
 			*/
 			var/wound_bclass = bladec
-			var/was_blunted = armor_blunts_attack(actual_damage, armor_block, bladec)
 			if(was_blunted)
 				wound_bclass = BCLASS_BLUNT
-				actual_damage = ceil(actual_damage * 0.5)
 			H.last_attack_was_blunted = was_blunted
 			if(armor_block > 0 && actual_damage > 0)
 				H.next_attack_msg += " <span class='warning'>Armor softens the blow.</span>"

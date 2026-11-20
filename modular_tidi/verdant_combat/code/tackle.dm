@@ -9,7 +9,7 @@
 		return FALSE
 
 	if(target.has_status_effect(/datum/status_effect/buff/clash))
-		tackle_fall()
+		tackle_fall(throwingdatum)
 		visible_message(span_warning("[src] charges at [target], but is repelled by their guard!"), span_warning("I charge at [target] but am repelled by their guard!"))
 		return FALSE
 
@@ -47,7 +47,7 @@
 
 	visible_message(span_danger("[src] charges at [target]!"), span_danger("I charge at [target]!"))
 	if(!prob(tackle_chance))
-		tackle_fall()
+		tackle_fall(throwingdatum)
 		visible_message(span_warning("[src] fails to tackle [target] and falls!"), span_warning("I fail to tackle [target] and fall!"))
 		return FALSE
 
@@ -79,7 +79,10 @@
 	addtimer(CALLBACK(src, PROC_REF(tackle_grapple_check), target), 1)
 	return TRUE
 
-/mob/living/carbon/human/proc/tackle_fall()
+/mob/living/carbon/human/proc/tackle_fall(datum/thrownthing/throwingdatum)
+	is_jumping = FALSE
+	if(throwingdatum)
+		throwingdatum.extra = FALSE
 	Knockdown(30)
 	Immobilize(2 SECONDS)
 	drop_all_held_items()

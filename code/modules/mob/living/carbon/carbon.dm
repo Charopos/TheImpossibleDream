@@ -178,13 +178,19 @@
 								"<span class='danger'>I leap onto [victim]!</span>")
 							return
 		*/
+		var/tackled = FALSE
 		if(ishuman(src) && cmode && m_intent == MOVE_INTENT_RUN && !get_active_held_item() && istype(a_intent, INTENT_GRAB) && was_jumping)
 			var/mob/living/carbon/human/H = src
+			tackled = TRUE
 			if(H.try_tackle(victim, throwingdatum))
 				hurt = FALSE
 		// [/SURREALIS-EDIT]
 		if(hurt)
-			victim.take_bodypart_damage(10,check_armor = TRUE)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// victim.take_bodypart_damage(10,check_armor = TRUE) // SURREALIS-EDIT - ORIGINAL
+			if(!tackled)
+				victim.take_bodypart_damage(10,check_armor = TRUE)
+			// [/SURREALIS-EDIT]
 			// [SURREALIS-EDIT] - VRCOMBAT
 			// take_bodypart_damage(10,check_armor = TRUE) // SURREALIS-EDIT - ORIGINAL
 			if(!knockback_impact)
