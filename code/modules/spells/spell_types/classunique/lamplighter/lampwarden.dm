@@ -47,11 +47,18 @@
 				return FALSE
 		var/foundwound = FALSE
 		if(length(affecting.wounds))
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// SURREALIS-EDIT - ORIGINAL
+			/*
+			for(var/datum/wound/wound in affecting.wounds)
+				if(!isnull(wound) && wound.can_cauterize)
+			*/
 			for(var/datum/wound/wound in affecting.wounds.Copy())
 				if(!isnull(wound) && wound.can_cauterize)
 					if(istype(wound, /datum/wound/infection))
 						wound.cauterize_wound()
 					else
+			// [/SURREALIS-EDIT]
 						wound.heal_wound(wound.whp)
 					foundwound = TRUE
 					owner.visible_message(("<font color = '#FF4500'>[capitalize(wound.name)] cauterizes from the heat of the lamp!</font>"))

@@ -436,8 +436,8 @@
 					msg += span_bloody("[m1] shedding lyfe's blood, exposing weakness!")
 				else
 					msg += span_bloody("[m1] letting out the red stuff!")
-
 	// [SURREALIS-ADD] - VRCOMBAT
+
 	var/list/rot_lines = get_rot_examine(observer_privilege, capitalize(m2))
 	if(rot_lines)
 		msg += rot_lines

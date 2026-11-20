@@ -202,6 +202,11 @@
 			if(blood_volume <= BLOOD_VOLUME_BAD && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE))
 			// [/SURREALIS-EDIT]
 				if(mind && !has_status_effect(/datum/status_effect/debuff/critwounded)) //check if we have a mind and lack the status effect before we do our trait condition check. - So every NPC isn't running this.
+					// [SURREALIS-REMOVE] - VRCOMBAT
+					/*
+					if(!HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE)) //uniquely undeath rituos users/vampires don't care for bloodloss, they do on arteries though.
+					*/
+					// [/SURREALIS-REMOVE]
 					apply_status_effect(/datum/status_effect/debuff/critwounded) //apply critically wounded - more energy in cmode cost. Until fixed.
 				// [SURREALIS-EDIT] - VRCOMBAT
 				// SURREALIS-EDIT - ORIGINAL

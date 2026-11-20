@@ -290,6 +290,16 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	var/current_integrity = obj_integrity
 	var/current_max = max_integrity
 
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
+	if(current_integrity != 0 && current_max != 0)
+		var/percentage = current_integrity / current_max
+		current_integrity = max(1, round(percentage * new_max))	//don't destroy it as a result
+		obj_integrity = current_integrity
+
+	max_integrity = new_max
+	*/
 	var/rescale = current_integrity != 0 && current_max != 0
 	if(rescale)
 		var/percentage = current_integrity / current_max
@@ -298,6 +308,7 @@ GLOBAL_DATUM_INIT(acid_overlay, /mutable_appearance, mutable_appearance('icons/e
 	set_max_integrity(new_max)
 	if(rescale)
 		set_integrity(current_integrity)
+	// [/SURREALIS-EDIT]
 
 	if(can_break && integrity_failure && current_integrity <= integrity_failure * max_integrity)
 		obj_break(damage_type)

@@ -306,3 +306,38 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `modular/code/game/objects/gallows.dm`: EDIT near `/obj/structure/noose/process`
 - `code/modules/mob/living/carbon/human/species_types/roguetown/other/werewolf.dm`: EDIT near `/datum/species/werewolf`
 - `code/modules/spells/spell_types/classunique/lamplighter/lampwarden.dm`: EDIT near `/datum/action/cooldown/spell/lamplighter/cauterize/cast`
+- `code/__DEFINES/combat.dm`: EDIT near `#define BLUNT_DEFAULT_INT_DAMAGEFACTOR`
+- `code/datums/components/dejavu.dm`: EDIT near `/datum/component/dejavu/proc/rewind_obj`
+- `code/game/objects/items/rogueitems/repair_kits.dm`: EDIT near `/obj/item/repair_kit/attack_obj`
+- `code/game/objects/items/spell_implements/_spell_implement.dm`: EDIT near `/obj/item/rogueweapon/proc/apply_implement_tier`
+- `code/game/rotational_objects/autosmither.dm`: EDIT near `/obj/structure/autosmither/proc/create_current`
+- `code/modules/admin/verbs/inventory_panel.dm`: EDIT near `/datum/admins/proc/handle_inventory_panel_topic`
+- `code/modules/antagonists/roguetown/villain/dark_itinerant.dm`: EDIT near `/datum/outfit/job/dark_itinerant_squire/pre_equip`
+- `code/modules/antagonists/roguetown/villain/dreamwalker/dreamwalker_gear.dm`: EDIT near `/datum/component/dreamwalker_repair/proc/repair_from_shard`
+- `code/modules/jobs/job_types/roguetown/adventurer/types/antag/hedgeknight.dm`: EDIT near `/datum/outfit/job/roguetown/bandit/hedgeknight/pre_equip`
+- `code/modules/jobs/job_types/roguetown/adventurer/types/combat/warrior.dm`: ADD near `/datum/outfit/job/roguetown/adventurer/ironclad/pre_equip`, EDIT near `/datum/outfit/job/roguetown/adventurer/ironclad/pre_equip`
+- `code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/heartfeltlord.dm`: EDIT near `/datum/outfit/job/heartfelt/lord/chief/pre_equip`
+- `code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltarmorer.dm`: EDIT near `/datum/outfit/job/roguetown/heartfelt/retinue/armorer/pre_equip`
+- `code/modules/jobs/job_types/roguetown/adventurer/types/migrant/heartfelt/retinue/heartfeltwarriors.dm`: EDIT near `/datum/outfit/job/roguetown/heartfelt/retinue/houseguard/pre_equip`, EDIT near `/datum/outfit/job/roguetown/heartfelt/retinue/squire/pre_equip`
+- `code/modules/jobs/job_types/roguetown/adventurer/types/wretch/deserter.dm`: EDIT near `/datum/outfit/job/roguetown/wretch/deserter/pre_equip`
+- `code/modules/jobs/job_types/roguetown/garrison/sergeant.dm`: EDIT near `/datum/outfit/job/roguetown/sergeant/sergeant/pre_equip`
+- `code/modules/jobs/job_types/roguetown/retinue/marshal.dm`: EDIT near `/datum/outfit/job/roguetown/marshal/classic/pre_equip`
+- `code/modules/jobs/job_types/roguetown/sidefolk/mercenary/etrusca.dm`: EDIT near `/datum/outfit/job/roguetown/mercenary/etrusca_condottiero/pre_equip`
+- `code/modules/jobs/job_types/roguetown/sidefolk/veteran.dm`: EDIT near `/datum/outfit/job/roguetown/vet/calvaryman/pre_equip`
+- `code/modules/mob/living/carbon/human/examine.dm`: ADD near `/mob/living/carbon/human/examine`, EDIT near `/mob/living/carbon/human/examine`
+- `code/modules/mob/living/carbon/human/human_topic.dm`: EDIT near `/mob/living/carbon/human/Topic`
+- `code/modules/mob/living/carbon/human/species_types/roguetown/construct/constructm.dm`: EDIT near `/atom/proc/ironman_mine`
+- `code/modules/roguetown/roguejobs/blacksmith/forge.dm`: EDIT near `/obj/machinery/light/rogue/forge/attackby`
+- `code/modules/roguetown/roguejobs/blacksmith/items.dm`: EDIT near `/obj/item/proc/apply_full_polish`, EDIT near `/obj/item/take_damage`
+- `code/modules/roguetown/roguejobs/engineer/grappler.dm`: EDIT near `/obj/item/grapplinghook/proc/destroy_eligible_objects`
+- `code/modules/spells/pantheon/inhumen/_inhumen_spell_items.dm`: EDIT near `/obj/item/alchserum/matthios_warsmith/attack_obj`
+- `code/modules/spells/roguetown/acolyte/malum.dm`: EDIT near `/datum/action/cooldown/spell/malum/reconstruction/cast`
+- `code/modules/spells/spell_types/classunique/spellblade/advance.dm`: EDIT near `/datum/action/cooldown/spell/advance/cast`
+- `code/modules/spells/spell_types/classunique/spellblade/azurean_phalanx.dm`: EDIT near `/datum/action/cooldown/spell/azurean_phalanx/proc/do_pierce`
+- `code/modules/spells/spell_types/classunique/spellblade/caedo.dm`: EDIT near `/datum/action/cooldown/spell/caedo/proc/execute_path_strikes`, EDIT near `/datum/action/cooldown/spell/caedo/proc/second_strike`
+- `code/modules/spells/spell_types/familiar_abilities.dm`: EDIT near `/datum/action/cooldown/spell/earthen_forge/cast`
+- `code/modules/spells/spell_types/skills/invoked_single_target/engineertuneup.dm`: EDIT near `/obj/effect/proc_holder/spell/invoked/engineertuneup/cast`
+- `code/modules/spells/spell_types/wizard/conjure/arcyne_forge.dm`: EDIT near `/datum/action/cooldown/spell/arcyne_forge/cast`
+- `code/modules/spells/spell_types/wizard/conjure/conjure_arcyne_ward.dm`: EDIT near `/datum/action/cooldown/spell/regenerate_arcyne_ward/cast`
+- `code/modules/spells/spell_types/wizard/ferramancy/blade_form_spells.dm`: EDIT near `/datum/action/cooldown/spell/form_blade/cast`
+- `code/modules/spells/spell_types/wizard/telomancy/arcyne_barrage.dm`: EDIT near `/datum/action/cooldown/spell/projectile/arcyne_barrage/get_spell_statistics`, EDIT near `/obj/projectile/magic/arcyne_barrage_bolt`
