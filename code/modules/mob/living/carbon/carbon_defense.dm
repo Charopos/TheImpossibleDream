@@ -111,8 +111,10 @@
 		var/datum/wound/dynamic/puncture/stab_wound = BP.has_wound(/datum/wound/dynamic/puncture)
 		var/bleed_before = stab_wound ? stab_wound.bleed_rate : 0
 		BP.spell_crit_halved = istype(P, /obj/projectile/magic) && !!GLOB.spell_physical_damage_names[P.flag]
+		BP.projectile_crit = TRUE
 		BP.bodypart_attacked_by(wound_class || P.woundclass, isnull(damage) ? P.damage : damage, zone_precise = def_zone, crit_message = TRUE, weapon = P, no_crit = P.no_crit)
 		BP.spell_crit_halved = FALSE
+		BP.projectile_crit = FALSE
 		stab_wound = BP.has_wound(/datum/wound/dynamic/puncture)
 		if(stab_wound)
 			BP.last_bleed_increase = max(stab_wound.bleed_rate - bleed_before, 0)

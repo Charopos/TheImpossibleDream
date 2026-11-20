@@ -251,6 +251,7 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `code/modules/spells/spell_types/classunique/vizier/diminish.dm`: EDIT near `/obj/effect/proc_holder/spell/invoked/diminish/cast`, REMOVE near `/obj/effect/proc_holder/spell/invoked/diminish/proc/diminish_area`
 - `code/modules/spells/spell_types/divine/projectiles_single/divine_blast.dm`: EDIT near `/obj/projectile/energy/divineblast/proc/apply_divine_damage`
 - `code/modules/spells/spell_types/divine/projectiles_single/unholy_blast.dm`: EDIT near `/obj/projectile/energy/unholyblast/proc/apply_divine_damage`
+- `code/modules/spells/spell_types/skills/invoked_single_target/engineerwindup.dm`: ADD near `/obj/effect/proc_holder/spell/invoked/engineerwindup/cast`, EDIT near `/obj/effect/proc_holder/spell/invoked/engineerwindup/cast`
 - `code/modules/spells/spell_types/wizard/augmentation/enlarge.dm`: ADD near `/datum/action/cooldown/spell/augment_buff/enlarge/cast`, ADD near `/datum/action/cooldown/spell/augment_buff/enlarge/proc/remove_buff`
 - `code/modules/spells/spell_types/wizard/cryomancy/frost_bolt.dm`: ADD near `/datum/action/cooldown/spell/projectile/frostbolt`, EDIT near `/obj/projectile/magic/frostbolt`
 - `code/modules/spells/spell_types/wizard/cryomancy/frost_shards.dm`: ADD near `/datum/action/cooldown/spell/projectile/frost_shards`, EDIT near `/obj/projectile/magic/frost_shard`
@@ -284,6 +285,7 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `code/modules/surgery/organs/lungs.dm`: EDIT near `/obj/item/organ/lungs/on_life`
 - `code/modules/surgery/organs/organ_internal.dm`: ADD near `/obj/item/organ/proc/Insert`, ADD near `/obj/item/organ/proc/enter_wardrobe`
 - `code/modules/surgery/organs/stomach.dm`: ADD near `/obj/item/organ/stomach/Remove`, ADD near `/obj/item/organ/stomach/ethereal/proc/adjust_charge`, EDIT near `/obj/item/organ/stomach/on_life`
+- `code/modules/surgery/revive_chair.dm`: ADD near `/obj/structure/fluff/revive_chair`, EDIT near `/obj/structure/fluff/revive_chair`
 - `code/modules/surgery/surgeries/amputation.dm`: ADD near `/datum/surgery_step/amputate`
 - `code/modules/surgery/surgeries/bloodletting.dm`: ADD near `/datum/surgery_step/bloodlet`, ADD near `/datum/surgery_step/cutvein`
 - `code/modules/surgery/surgeries/dislocation.dm`: ADD near `/datum/surgery_step/relocate_bone`

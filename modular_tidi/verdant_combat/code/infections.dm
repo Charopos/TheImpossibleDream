@@ -83,6 +83,11 @@
 	refresh_harm()
 	if(owner.stat == DEAD)
 		return
+	var/mob/living/carbon/carbon_owner = owner
+	if(infection_stage >= INFECTION_STAGE_SKELETAL && !is_harmless() && (bodypart_owner.body_zone in GLOB.vital_body_zones) && !(istype(carbon_owner) && (NOBLOOD in carbon_owner.dna?.species?.species_traits)))
+		to_chat(owner, span_userdanger("There is nothing left of my [bodypart_owner.name] but bone!"))
+		owner.death()
+		return
 	tick_clock(INFECTION_CLOCK_PAUSE_GAP)
 	apply_stage_effects()
 
@@ -245,6 +250,8 @@
 	return TRUE
 
 /datum/wound/infection/proc/try_cauterize_treatment(surgical = FALSE)
+	if(bodypart_owner?.skeletonized)
+		return FALSE
 	if(surgical)
 		to_chat(owner, span_notice("The surgical cautery burns away the infected tissue!"))
 		owner.visible_message(span_danger("[owner] cauterizes the infected tissue on [owner.p_their()] [bodypart_owner.name]!"))

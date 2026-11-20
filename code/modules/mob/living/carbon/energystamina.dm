@@ -186,6 +186,11 @@
 	if(stamina >= max_stamina)
 		stamina = max_stamina
 		update_health_hud()
+		// [SURREALIS-ADD] - VRCOMBAT
+		if(world.time < mob_timers["exhausted"])
+			return FALSE
+		mob_timers["exhausted"] = world.time + CLICK_CD_EXHAUSTED
+		// [/SURREALIS-ADD]
 		if(m_intent == MOVE_INTENT_RUN) //can't sprint at full fatigue
 			toggle_rogmove_intent(MOVE_INTENT_WALK, TRUE)
 		if(!emote_override)

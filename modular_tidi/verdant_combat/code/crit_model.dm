@@ -7,6 +7,7 @@
 /obj/item/bodypart
 	var/last_bleed_increase = 0
 	var/spell_crit_halved = FALSE
+	var/projectile_crit = FALSE
 
 GLOBAL_LIST_INIT(clamping_tool_behaviors, list(TOOL_HEMOSTAT, TOOL_WIRECUTTER, TOOL_IMPROVISED_HEMOSTAT))
 
@@ -54,7 +55,7 @@ GLOBAL_LIST_INIT(clamping_tool_behaviors, list(TOOL_HEMOSTAT, TOOL_WIRECUTTER, T
 
 #ifndef HUGBOX
 /obj/item/bodypart/proc/crit_curve_mult(damage_dividend, dam)
-	if(dam >= CRIT_CURVE_OVERKILL + owner.STACON)
+	if(!projectile_crit && dam >= CRIT_CURVE_OVERKILL + owner.STACON)
 		return 1
 	var/prior_fraction = max(0, damage_dividend - (dam / max_damage))
 	var/readiness = min(1, prior_fraction / CRIT_CURVE_FULL_FRACTION) ** CRIT_CURVE_EXPONENT
@@ -205,3 +206,15 @@ GLOBAL_LIST_INIT(brain_penetration_zones, list(BODY_ZONE_PRECISE_SKULL, BODY_ZON
 
 /datum/wound/dynamic
 	silent_progress = TRUE
+
+/datum/wound/fracture/head/set_bone()
+	. = ..()
+	if(!. || !paralysis || !owner)
+		return
+	paralysis = FALSE
+	REMOVE_TRAIT(owner, TRAIT_NO_BITE, "[type]")
+	REMOVE_TRAIT(owner, TRAIT_PARALYSIS, "[type]")
+	REMOVE_TRAIT(owner, TRAIT_NOPAIN, "[type]")
+	if(iscarbon(owner))
+		var/mob/living/carbon/carbon_owner = owner
+		carbon_owner.update_disabled_bodyparts()

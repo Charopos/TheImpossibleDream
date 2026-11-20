@@ -4862,6 +4862,12 @@
 /obj/projectile/bullet/reusable/arrow/stone/wall_projectile
 	armor_penetration = 10
 
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
+	damfactor = 1
+
+/obj/item/gun/ballistic/revolver/grenadelauncher/crossbow/heavy
+	damfactor = 1.2
+
 /obj/projectile/bullet/reusable/bolt
 	armor_penetration = 60
 
