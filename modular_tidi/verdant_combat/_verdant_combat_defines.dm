@@ -144,6 +144,24 @@
 #define INFECTION_FOUL_WATER_BONUS 3
 /// Infection chance removed per point of CON above 10, and added per point below.
 #define INFECTION_CON_PER_POINT 1
+#define INFECTION_STAGE_INFECTED 1
+#define INFECTION_STAGE_FESTERING 2
+#define INFECTION_STAGE_NECROTIC 3
+#define INFECTION_STAGE_SKELETAL 4
+/// A gap between living infection ticks longer than this pauses the infection's clock for the gap.
+#define INFECTION_CLOCK_PAUSE_GAP (10 SECONDS)
+/// Shortest time, before the CON modifier, for a fresh infection to fester, and for a corpse's flesh to become infected.
+#define INFECTION_FESTER_MIN_TIME (10 MINUTES)
+/// Longest time, before the CON modifier, for a fresh infection to fester, and for a corpse's flesh to become infected.
+#define INFECTION_FESTER_MAX_TIME (20 MINUTES)
+/// The corpse rot processor ticks every 30 seconds, so only a longer gap pauses a corpse's infection clocks.
+#define CORPSE_ROT_CLOCK_GAP (75 SECONDS)
+/// Time an NPC corpse stays bare bone before it crumbles to dust.
+#define CORPSE_DUST_DELAY (8 MINUTES)
+#define ZOMBIE_RISE_MIN_TIME (5 MINUTES)
+#define ZOMBIE_RISE_MAX_TIME (10 MINUTES)
+#define ZOMBIE_EARLY_ROT_SPEED 2
+#define ZOMBIE_FESTERING_ROT_SPEED 4
 /// Time between pain emotes from punching heavy armor bare-handed.
 #define PUNCH_RECOIL_PAIN_COOLDOWN (5 SECONDS)
 /// Oxygen damage per tick from a nicked heart.

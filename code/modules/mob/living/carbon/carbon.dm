@@ -1177,8 +1177,14 @@
 		CR.amount = 0
 	if(admin_revive) //reset rot on admin revives
 		for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// SURREALIS-EDIT - ORIGINAL
+			/*
 			bodypart.rotted = FALSE
 			bodypart.skeletonized = FALSE
+			*/
+			bodypart.cure_rot()
+			// [/SURREALIS-EDIT]
 	if(admin_revive)
 		suiciding = FALSE
 		regenerate_limbs()

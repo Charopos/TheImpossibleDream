@@ -77,8 +77,14 @@
 /proc/clean_body_parts(mob/living/carbon/target)
 
 	for (var/obj/item/bodypart/bodypart in target.bodyparts)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// SURREALIS-EDIT - ORIGINAL
+		/*
 		bodypart.rotted = FALSE
 		bodypart.skeletonized = FALSE
+		*/
+		bodypart.cure_rot()
+		// [/SURREALIS-EDIT]
 		bodypart.update_limb()
 		bodypart.update_disabled()
 

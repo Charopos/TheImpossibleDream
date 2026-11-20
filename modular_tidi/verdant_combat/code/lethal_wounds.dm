@@ -340,12 +340,20 @@
 			. += wound.bleed_rate
 
 /mob/living/carbon/human/proc/get_rot_examine(observer_privilege, possessive)
+	var/corpse_rot = 0
 	for(var/obj/item/bodypart/part as anything in bodyparts)
 		if(!observer_privilege && !get_location_accessible(src, part.body_zone))
 			continue
 		var/datum/wound/infection/infection = part.has_wound(/datum/wound/infection)
-		if(infection?.noticed && infection.infection_stage < 4)
-			LAZYADD(., span_danger("<B>[possessive] [part.name] is festering!</B>"))
+		if(infection?.noticed && infection.infection_stage < INFECTION_STAGE_SKELETAL)
+			if(stat == DEAD)
+				corpse_rot = max(corpse_rot, infection.infection_stage)
+			else
+				LAZYADD(., span_danger("<B>[possessive] [part.name] is festering!</B>"))
 		var/datum/wound/burn/frostbite/frostbite = part.has_wound(/datum/wound/burn/frostbite)
 		if(frostbite?.numb_stage >= 2)
 			LAZYADD(., span_danger("[possessive] [part.name] is blackened and decaying."))
+	if(corpse_rot >= INFECTION_STAGE_NECROTIC)
+		LAZYADD(., span_danger("<B>[possessive] body is rotting away!</B>"))
+	else if(corpse_rot)
+		LAZYADD(., span_danger("<B>[possessive] body is festering!</B>"))

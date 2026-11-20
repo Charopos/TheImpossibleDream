@@ -825,7 +825,7 @@
 		<p>Sometimes, your friend or helpful strangers will retrieve you for revival at the town or other places, othertime, or even during a revival, you will turn into a deadite - this settings equivalence of zombie (Do not refer to them as zombie IC), largely thought to be brought about by the disaster caused by Zizo's ascension causing the dead to walk again.</p>
 
 		<h3>Deadite</h3>
-		<p>After dying and if you are not decapitated, a timer starts as your body rots, and after [DEAD_TO_ZOMBIE_TIME / 600] minutes, your character will rise from the death as a deadite, effectively becoming a zombie you are in control of. This is a mechanic to allow you to return back to town or wherever you can be revived.</p>
+		<p>After dying and if you are not decapitated, a timer starts as your body rots, and after [ZOMBIE_RISE_MIN_TIME / 600] to [ZOMBIE_RISE_MAX_TIME / 600] minutes, your character will rise from the death as a deadite, effectively becoming a zombie you are in control of. This is a mechanic to allow you to return back to town or wherever you can be revived.</p>
 
 		<p>That timer does not tick at all while your body is indoors in town. Certain traits or races also make it impossible.</p>
 

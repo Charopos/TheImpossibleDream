@@ -13,6 +13,7 @@
 #include "code\lethal_wounds.dm"
 #include "code\elemental_burns.dm"
 #include "code\infections.dm"
+#include "code\corpse_rot.dm"
 #include "code\dismemberment.dm"
 #include "code\burn_healing.dm"
 #include "code\construct_surgery.dm"

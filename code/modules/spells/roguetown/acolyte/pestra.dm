@@ -344,8 +344,14 @@
 	if(attached_count > 0)
 		if(!(human_target.mob_biotypes & MOB_UNDEAD))
 			for(var/obj/item/bodypart/limb in human_target.bodyparts)
+				// [SURREALIS-EDIT] - VRCOMBAT
+				// SURREALIS-EDIT - ORIGINAL
+				/*
 				limb.rotted = FALSE
 				limb.skeletonized = FALSE
+				*/
+				limb.cure_rot()
+				// [/SURREALIS-EDIT]
 		human_target.update_body()
 	else
 		to_chat(user, span_warning("No body parts were attached."))

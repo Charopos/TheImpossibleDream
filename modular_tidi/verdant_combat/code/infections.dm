@@ -24,6 +24,7 @@
 	var/necrotic_overlay_applied = FALSE
 	var/notice_time = 0
 	var/noticed = FALSE
+	var/last_alive_tick = 0
 
 /datum/wound/infection/can_stack_with(datum/wound/other)
 	return !istype(other, /datum/wound/infection)
@@ -37,23 +38,82 @@
 
 /datum/wound/infection/on_bodypart_gain(obj/item/bodypart/affected)
 	. = ..()
-	time_to_next_stage = world.time + (rand(10 MINUTES, 20 MINUTES) * get_con_modifier()) / progression_multiplier
+	bleed_rate = null
+	time_to_next_stage = world.time + (rand(INFECTION_FESTER_MIN_TIME, INFECTION_FESTER_MAX_TIME) * get_con_modifier()) / progression_multiplier
 	notice_time = world.time + (time_to_next_stage - world.time) / 2
+	last_alive_tick = world.time
+
+/datum/wound/infection/on_bodypart_loss(obj/item/bodypart/affected)
+	. = ..()
+	if(!necrotic_overlay_applied || affected.skeletonized)
+		return
+	affected.rotted = FALSE
+	affected.owner?.update_body_parts()
 
 /datum/wound/infection/proc/get_con_modifier()
-	if(!ishuman(owner))
+	return owner ? owner.infection_con_modifier() : 1
+
+/// How much slower infection and rot run on this body; hardier bodies resist longer.
+/mob/living/proc/infection_con_modifier()
+	if(!ishuman(src))
 		return 1
-	return clamp(1 + ((owner.STACON - 10) * 0.05), 0.5, 2)
+	return clamp(1 + ((STACON - 10) * 0.05), 0.5, 2)
+
+/// Rot that harms nothing: on corpses, and on the walking dead.
+/datum/wound/infection/proc/is_harmless()
+	return owner && (owner.stat == DEAD || HAS_TRAIT(owner, TRAIT_DEADITE) || HAS_TRAIT(owner, TRAIT_ROTMAN))
+
+/datum/wound/infection/proc/stage_pain()
+	switch(infection_stage)
+		if(2)
+			return 80
+		if(3)
+			return 150
+	return 0
+
+/datum/wound/infection/proc/refresh_harm()
+	var/harmless = is_harmless()
+	woundpain = harmless ? 0 : stage_pain()
+	disabling = !harmless && infection_stage >= INFECTION_STAGE_SKELETAL
 
 /datum/wound/infection/on_life()
 	. = ..()
 	if(!owner || !bodypart_owner)
 		return
-	if(world.time >= time_to_next_stage)
-		advance_stage()
-	else if(!noticed && world.time >= notice_time)
-		notice_rot()
+	refresh_harm()
+	if(owner.stat == DEAD)
+		return
+	tick_clock(INFECTION_CLOCK_PAUSE_GAP)
 	apply_stage_effects()
+
+/// Advances the infection on its own timer; a tick gap longer than pause_gap stops the clock for that gap. Returns TRUE on a stage change.
+/datum/wound/infection/proc/tick_clock(pause_gap)
+	var/paused_for = world.time - last_alive_tick
+	last_alive_tick = world.time
+	if(infection_stage >= INFECTION_STAGE_SKELETAL)
+		return FALSE
+	if(paused_for > pause_gap)
+		time_to_next_stage += paused_for
+		notice_time += paused_for
+	else
+		var/hurry = paused_for * (owner.zombie_rot_speed(infection_stage) - 1)
+		time_to_next_stage -= hurry
+		notice_time -= hurry
+	if(world.time >= time_to_next_stage)
+		advance_stage(owner.stat == DEAD)
+		return TRUE
+	if(!noticed && world.time >= notice_time)
+		if(owner.stat == DEAD)
+			noticed = TRUE
+		else
+			notice_rot()
+	return FALSE
+
+/// Advances to at least target_stage without messages.
+/datum/wound/infection/proc/advance_to(target_stage)
+	noticed = TRUE
+	while(infection_stage < target_stage && bodypart_owner && !QDELETED(src))
+		advance_stage(TRUE)
 
 /datum/wound/infection/proc/notice_rot()
 	noticed = TRUE
@@ -61,35 +121,38 @@
 	var/turf/owner_turf = get_turf(owner)
 	owner_turf?.pollute_turf(/datum/pollutant/rot, 2)
 
-/datum/wound/infection/proc/advance_stage()
+/datum/wound/infection/proc/advance_stage(silent = FALSE)
 	if(!owner || !bodypart_owner)
 		return
 	infection_stage++
 	noticed = TRUE
+	last_alive_tick = world.time
 	switch(infection_stage)
-		if(2)
+		if(INFECTION_STAGE_FESTERING)
 			name = "festering wound"
 			check_name = span_infection_purple("<B>FESTERING</B>")
-			woundpain = 80
-			to_chat(owner, span_userdanger("The wound on my [bodypart_owner.name] begins to fester!"))
+			if(!silent)
+				to_chat(owner, span_userdanger("The wound on my [bodypart_owner.name] begins to fester!"))
 			last_stage_duration = (rand(20 MINUTES, 40 MINUTES) * get_con_modifier()) / progression_multiplier
 			time_to_next_stage = world.time + last_stage_duration
-		if(3)
+		if(INFECTION_STAGE_NECROTIC)
 			name = "necrotic wound"
 			check_name = span_infection_purple("<B>ROTTEN</B>")
-			woundpain = 150
-			to_chat(owner, span_userdanger("The wound on my [bodypart_owner.name] turns necrotic!"))
-			owner.visible_message(span_danger("[owner]'s [bodypart_owner.name] begins to rot!"))
+			if(!silent)
+				to_chat(owner, span_userdanger("The wound on my [bodypart_owner.name] turns necrotic!"))
+				owner.visible_message(span_danger("[owner]'s [bodypart_owner.name] begins to rot!"))
 			var/time_since_infection = world.time - (time_to_next_stage - last_stage_duration)
 			time_to_next_stage = world.time + max(stage_4_time - time_since_infection, 5 MINUTES)
 			next_spread_attempt = world.time + 1 MINUTES
-		if(4)
+			apply_necrotic_overlay()
+		if(INFECTION_STAGE_SKELETAL)
 			name = "skeletal limb"
 			check_name = span_bone_grey("<B>BONE</B>")
-			disabling = TRUE
-			to_chat(owner, span_userdanger("The flesh on my [bodypart_owner.name] has completely rotted away!"))
-			owner.visible_message(span_danger("[owner]'s [bodypart_owner.name] turns to bare bone!"))
-			bodypart_owner.skeletonize(bodypart_owner.body_zone in GLOB.vital_body_zones)
+			if(!silent)
+				to_chat(owner, span_userdanger("The flesh on my [bodypart_owner.name] has completely rotted away!"))
+				owner.visible_message(span_danger("[owner]'s [bodypart_owner.name] turns to bare bone!"))
+			bodypart_owner.skeletonize(!is_harmless() && (bodypart_owner.body_zone in GLOB.vital_body_zones))
+	refresh_harm()
 
 /datum/wound/infection/proc/apply_stage_effects()
 	if(!owner || !bodypart_owner)
@@ -105,6 +168,8 @@
 /datum/wound/infection/proc/apply_necrotic_effects()
 	if(!necrotic_overlay_applied)
 		apply_necrotic_overlay()
+	if(is_harmless())
+		return
 	if(prob(3))
 		bodypart_owner.set_disabled(BODYPART_DISABLED_ROT)
 		owner.visible_message(span_warning("[owner]'s [bodypart_owner.name] seizes up from the rot!"))
