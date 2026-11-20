@@ -18,7 +18,7 @@
 	mask_y_offset = _mask_y_offset
 	effect_alpha = _effect_alpha
 	mask = new
-	mask.render_target ="*[ref(mask)]"
+	mask.render_target ="[ref(mask)]"
 	RegisterSignal(get_turf(target), COMSIG_TURF_EXITED, PROC_REF(on_remove), override = TRUE)
 	RegisterSignal(get_turf(target), COMSIG_TURF_ENTERED, PROC_REF(on_add), override = TRUE)
 	RegisterSignal(target, COMSIG_MOB_OVERLAY_FORCE_REMOVE, PROC_REF(on_remove), override = TRUE)
@@ -70,7 +70,7 @@
 	if(istype(target, /obj/structure/hotspring))
 		return
 
-	var/offset = y_offset
+	var/offset = 0
 	if(istype(target, /obj/structure/flora/tree))
 		offset -= 24
 	if(isitem(target))
@@ -83,7 +83,6 @@
 		if(isliving(target))
 			var/mob/living/L = target
 			RegisterSignal(L, COMSIG_LIVING_LYING_UPDATE, PROC_REF(on_lying_update), override = TRUE)
-			on_lying_update(L.lying)
 	if(ismob(mob))
 		mob.update_vision_cone()
 	RegisterSignal(arrived, COMSIG_ITEM_PICKUP, TYPE_PROC_REF(/datum/element/mob_overlay_effect, on_remove_proxy), override = TRUE)
@@ -98,18 +97,15 @@
 	mouse_opacity = FALSE
 	vis_flags = VIS_UNDERLAY
 	appearance_flags = RESET_TRANSFORM
-
-/datum/element/mob_overlay_effect/proc/on_lying_update(datum/source, lying = 0)
+/datum/element/mob_overlay_effect/proc/on_lying_update(mob/living/source, lying)
 	SIGNAL_HANDLER
 	var/matrix/newmatrix =  new
 	var/i_failed_calc= 0
-	switch(lying)
+	switch(source.lying)
 		if(0)
 			i_failed_calc = 0
 		if(90)
 			i_failed_calc = -90
 		if(270)
 			i_failed_calc = 90
-		else
-			CRASH("THIS IS YOUR WEIRD USECASE, LYING = [lying]")
 	mask.transform = newmatrix.Turn(i_failed_calc)

@@ -1103,6 +1103,7 @@
 			lying = 270
 		update_transform()
 		lying_prev = lying
+	SEND_SIGNAL(src, COMSIG_LIVING_LYING_UPDATE, lying)
 	if (buckled && buckled.loc != newloc) //not updating position
 		if (!buckled.anchored)
 			return buckled.Move(newloc, direct, glide_size)
@@ -1140,7 +1141,7 @@
 	if(. && isturf(newloc))
 		check_track_creation(newloc)
 	//Hearthstone end.
-	SEND_SIGNAL(src, COMSIG_LIVING_LYING_UPDATE, lying)
+
 
 /mob/living/setDir(newdir)
 	var/olddir = dir
