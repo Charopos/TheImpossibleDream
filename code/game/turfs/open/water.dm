@@ -55,7 +55,6 @@
 	water_overlay = new
 	water_overlay.icon = 'icons/turf/newwater.dmi'
 	AddElement(/datum/element/mob_overlay_effect, water_params[1],water_params[2],water_params[3])
-	update_icon()
 	.= ..()
 	if(!isnull(fishing_datum) && is_fishable())
 		add_lazy_fishing(fishing_datum)
@@ -65,7 +64,9 @@
 		// and re-freezing it on the spot would close the hole the moment it was made. Tracked
 		// only, so the next season change picks it up.
 		GLOB.seasonal_water_turfs |= src
-
+/turf/open/water/smooth()
+	update_icon()
+	..()
 /turf/open/water/examine(mob/user)
 	. = ..()
 	var/datum/fish_source/source = get_fish_source()

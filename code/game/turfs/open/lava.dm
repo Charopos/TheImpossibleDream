@@ -28,7 +28,7 @@
 /turf/open/lava/Initialize(mapload)
 	. = ..()
 	dir = pick(GLOB.cardinals)
-
+	AddElement(/datum/element/mob_overlay_effect, 2, -2,100)
 /turf/open/lava/can_traverse_safely(atom/movable/traveler)
 	return FALSE
 

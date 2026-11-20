@@ -18,7 +18,7 @@
 	mask_y_offset = _mask_y_offset
 	effect_alpha = _effect_alpha
 	mask = new
-	mask.render_target ="[ref(mask)]"
+	mask.render_target ="*[ref(mask)]"
 	RegisterSignal(get_turf(target), COMSIG_TURF_EXITED, PROC_REF(on_remove), override = TRUE)
 	RegisterSignal(get_turf(target), COMSIG_TURF_ENTERED, PROC_REF(on_add), override = TRUE)
 	RegisterSignal(target, COMSIG_MOB_OVERLAY_FORCE_REMOVE, PROC_REF(on_remove), override = TRUE)
