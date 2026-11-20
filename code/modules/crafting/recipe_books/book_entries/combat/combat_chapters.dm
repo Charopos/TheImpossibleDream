@@ -818,6 +818,42 @@
 
 /// [SURREALIS-EDITED] - LORE
 /datum/book_entry/combat/revival/inner_book_html(mob/user)
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
+	return {"
+		<div>
+		<p>Whether you are PVEing or PVPing, dying is a common occurence and an expected part of the game.</p>
+
+		<p>Sometimes, your friend or helpful strangers will retrieve you for revival at the town or other places, othertime, or even during a revival, you will turn into a deadite - this settings equivalence of zombie (Do not refer to them as zombie IC), largely thought to be brought about by the disaster caused by Zizo's ascension causing the dead to walk again.</p>
+
+		<h3>Deadite</h3>
+		<p>After dying and if you are not decapitated, a timer starts as your body rots, and after [DEAD_TO_ZOMBIE_TIME / 600] minutes, your character will rise from the death as a deadite, effectively becoming a zombie you are in control of. This is a mechanic to allow you to return back to town or wherever you can be revived.</p>
+
+		<p>That timer does not tick at all while your body is indoors in town. Certain traits or races also make it impossible.</p>
+
+		<p>As a deadite, you are a mindless beast with a hunger for flesh, though as a deadite, you still must follows the escalation rules that is common to the server before initiating an attack. You can victimize strangers or challenge passing by adventurers - with the goal of putting up a proper fight before being promptly restrained and taken back to be revived.</p>
+
+		<p>In general, it is highly frowned upon if not outright disallowed to simply walk back to a revival place and then just lie down without a fight, putting up an earnest fight - which you do not need to put all your efforts into unless you want to, is a minimum requirement.</p>
+
+		<p>Becoming a deadite makes you unable to feint or use any special actions or weapons, but make you able to regenerate. You also suffer a crippling STAT debuff.</p>
+
+		<p>After you are restrained, a surgeon can then open your chest up to burn the rot from your body, thus removing the deadite status.</p>
+
+		<h3>Revival Methods</h3>
+		<p>Three primary revival methods exists in the game. Two of them will leave a revival penalty.</p>
+		<ul>
+			<li><b>Lux Tranfusion</b>: Lux extracted from someone and then purified can be transplanted into someone and then used to revive them.</li>
+			<li><b>FULMENOR Chair</b>: The Fulmenor Chair is exclusively accessed by the Clinic and some wretches, and can revive someone with lux with better efficiency and without any penalty.</li>
+			<li><b>Revival Rituals</b>: The Temple, with access to certain materials can also revive someone from the death, though they take a normal penalty.</li>
+		</ul>
+
+		<p>After non-chair revival, you gain Revival Sickness - [REVIVED_DEBUFF_DURATION / 600] minutes of -1 to every single stat you have. It stacks with the rot debuff if your body had begun to turn, so naturally rotting instead of becoming revived, followed by a ritual revival will hit you with a significant amount of debuff. You are encouraged to take it easy for a while and seek non combat roleplay after.</p>
+
+		<p>For a brief period after revival, being slain again will results in you becoming permanently unrevivable for the round. You get [DEATHMARK_GRACE_PERIOD / 600] minutes of grace first, and only then does the penalty applies for [PERMADEATH_DURATION / 600] minutes.</p>
+		</div>
+	"}
+	*/
 	return {"
 		<div>
 		<p>Whether you are PVEing or PVPing, dying is a common occurence and an expected part of the game.</p>
@@ -850,6 +886,7 @@
 		<p>For a brief period after revival, being slain again will results in you becoming permanently unrevivable for the round. You get [DEATHMARK_GRACE_PERIOD / 600] minutes of grace first, and only then does the penalty applies for [PERMADEATH_DURATION / 600] minutes.</p>
 		</div>
 	"}
+	// [/SURREALIS-EDIT]
 
 
 /datum/book_entry/combat/misc

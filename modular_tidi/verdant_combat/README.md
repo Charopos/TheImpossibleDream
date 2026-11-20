@@ -341,3 +341,16 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `code/modules/spells/spell_types/wizard/conjure/conjure_arcyne_ward.dm`: EDIT near `/datum/action/cooldown/spell/regenerate_arcyne_ward/cast`
 - `code/modules/spells/spell_types/wizard/ferramancy/blade_form_spells.dm`: EDIT near `/datum/action/cooldown/spell/form_blade/cast`
 - `code/modules/spells/spell_types/wizard/telomancy/arcyne_barrage.dm`: EDIT near `/datum/action/cooldown/spell/projectile/arcyne_barrage/get_spell_statistics`, EDIT near `/obj/projectile/magic/arcyne_barrage_bolt`
+- `code/__DEFINES/misc.dm`: REMOVE near `#define ZOMBIE_INFECTION_TIME`
+- `code/datums/components/rotting.dm`: EDIT near `/datum/component/rot/corpse/process`
+- `code/game/objects/effects/effect_system/effects_smoke.dm`: EDIT near `/obj/effect/particle_effect/smoke/healing_gas/smoke_mob`
+- `code/modules/antagonists/roguetown/villain/zombie/remove_rot.dm`: EDIT near `/proc/clean_body_parts`, EDIT near `/proc/remove_rot`
+- `code/modules/antagonists/roguetown/villain/zombie/zombie.dm`: ADD near `/datum/antagonist/zombie/on_gain`, ADD near `/datum/antagonist/zombie`, EDIT near `/datum/antagonist/zombie/on_removal`, EDIT near `/datum/antagonist/zombie/proc/transform_zombie`
+- `code/modules/mob/living/carbon/human/npc/deadite.dm`: EDIT near `/mob/living/carbon/human/proc/zombie_infect_attempt`
+- `code/modules/mob/living/carbon/human/npc/goblin.dm`: EDIT near `/datum/component/rot/corpse/goblin/process`
+- `code/modules/mob/living/carbon/human/npc/npc_procs.dm`: EDIT near `/mob/living/carbon/human/proc/make_deadite`
+- `code/modules/spells/roguetown/acolyte/pestra.dm`: EDIT near `/obj/effect/proc_holder/spell/invoked/attach_bodypart/cast`, EDIT near `/obj/effect/proc_holder/spell/invoked/cure_rot/cast`
+- `code/modules/spells/roguetown/oldgod.dm`: ADD near `/proc/translate_wound_for_target`
+- `code/modules/surgery/organs/ears.dm`: EDIT near `/obj/item/organ/ears/Insert`
+- `code/modules/surgery/organs/eyes.dm`: EDIT near `/obj/item/organ/eyes/Insert`
+- `code/modules/surgery/organs/tongue.dm`: EDIT near `/obj/item/organ/tongue/Insert`
