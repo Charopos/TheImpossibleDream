@@ -162,9 +162,7 @@
 			// [SURREALIS-EDIT] - VRCOMBAT
 			// zombie_part.rotted = FALSE // SURREALIS-EDIT - ORIGINAL
 			if(!keep_flesh_rot)
-				var/was_bone = zombie_part.skeletonized
 				zombie_part.cure_rot()
-				zombie_part.skeletonized = was_bone
 			// [/SURREALIS-EDIT]
 			zombie_part.update_disabled()
 			zombie_part.update_limb()
