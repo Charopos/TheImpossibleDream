@@ -1430,7 +1430,7 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 			base_intdamfactor *= glove_intdamfactor_mult
 		// [SURREALIS-EDIT] - VRCOMBAT
 		// var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = PEN_NONE, blade_dulling = user.used_intent.blade_class, damage = damage, intdamfactor = base_intdamfactor) // SURREALIS-EDIT - ORIGINAL
-		var/bonus_pen = HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN) ? (user.STASTR - 10) * STR_PEN_FACTOR : 0
+		var/bonus_pen = HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN) ? user.STASTR + (user.STASTR - 10) * STR_PEN_FACTOR : 0
 		var/punch_d_type = user.used_intent?.item_d_type ? user.used_intent.item_d_type : "blunt"
 		var/armor_block = target.run_armor_check(selzone, punch_d_type, armor_penetration = bonus_pen + user.used_intent.penfactor, blade_dulling = user.used_intent.blade_class, damage = damage, intdamfactor = base_intdamfactor, attacker = user)
 		var/actual_damage = target.armor_reduced_damage(damage, armor_block, punch_d_type)
@@ -1764,7 +1764,7 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 			var/nodmg = FALSE
 			if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
 			*/
-			var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = (HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN) ? max((user.STASTR - 10) * STR_PEN_FACTOR, 0) : 0), blade_dulling = BCLASS_BLUNT, damage = damage)
+			var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = (HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN) ? max(user.STASTR + (user.STASTR - 10) * STR_PEN_FACTOR, 0) : 0), blade_dulling = BCLASS_BLUNT, damage = damage)
 			target.next_attack_msg.Cut()
 			var/nodmg = FALSE
 			damage = target.armor_reduced_damage(damage, armor_block, null)
@@ -1907,7 +1907,7 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 		var/damage = user.get_punch_dmg()
 		if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block))
 		*/
-		var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = (HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN) ? max((user.STASTR - 10) * STR_PEN_FACTOR, 0) : 0), blade_dulling = BCLASS_BLUNT)
+		var/armor_block = target.run_armor_check(selzone, "blunt", armor_penetration = (HAS_TRAIT(user, TRAIT_CIVILIZEDBARBARIAN) ? max(user.STASTR + (user.STASTR - 10) * STR_PEN_FACTOR, 0) : 0), blade_dulling = BCLASS_BLUNT)
 		var/damage = target.armor_reduced_damage(user.get_punch_dmg(), armor_block, null)
 		if(!target.apply_damage(damage, user.dna.species.attack_type, affecting, 0))
 		// [/SURREALIS-EDIT]

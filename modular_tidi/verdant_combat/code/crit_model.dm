@@ -207,6 +207,11 @@ GLOBAL_LIST_INIT(brain_penetration_zones, list(BODY_ZONE_PRECISE_SKULL, BODY_ZON
 /datum/wound/dynamic
 	silent_progress = TRUE
 
+/datum/wound/fracture/set_bone()
+	. = ..()
+	if(.)
+		set_bleed_rate(0)
+
 /datum/wound/fracture/head/set_bone()
 	. = ..()
 	if(!. || !paralysis || !owner)

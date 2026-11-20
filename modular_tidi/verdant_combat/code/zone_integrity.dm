@@ -197,7 +197,10 @@ GLOBAL_LIST_INIT(canonical_integrity_zones, list(
 	return TRUE
 
 /obj/item/clothing/proc/update_overall_integrity(force = FALSE)
-	if(!uses_zone_integrity() || (obj_broken && !force))
+	if(!uses_zone_integrity())
+		return
+	refresh_zone_break_visual()
+	if(obj_broken && !force)
 		return
 	var/break_threshold = max_integrity * integrity_failure
 	if(all_zones_destroyed())
@@ -398,3 +401,24 @@ GLOBAL_LIST_INIT(integrity_display_zones, list(BODY_ZONE_CHEST, BODY_ZONE_PRECIS
 	if(!sizzling)
 		return ""
 	return " <span class='warning'>The [sizzling.name] begins to sizzle!</span>"
+
+/obj/item/clothing
+	var/shown_zone_break = FALSE
+
+/obj/item/clothing/proc/refresh_zone_break_visual()
+	var/zone_broken = length(broken_zones) > 0
+	if(zone_broken == shown_zone_break)
+		return
+	shown_zone_break = zone_broken
+	update_damaged_state()
+
+/obj/item/clothing/update_damaged_state()
+	if(obj_broken || !length(broken_zones))
+		return ..()
+	cut_overlays()
+	var/icon/damaged_icon = icon(initial(icon), icon_state, , TRUE)
+	damaged_icon.Blend("#fff", ICON_ADD)
+	damaged_icon.Blend(icon(dam_icon, dam_icon_state), ICON_MULTIPLY)
+	var/mutable_appearance/damage = new(damaged_icon)
+	damage.alpha = 150
+	add_overlay(damage)

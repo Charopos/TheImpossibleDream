@@ -203,6 +203,14 @@
 			return 50
 
 	damage += dna.species.punch_damage
+	// [SURREALIS-ADD] - VRCOMBAT
+	var/variance_center = (STALUC - 10) * 0.0125 + get_skill_level(/datum/skill/combat/unarmed) * 0.025
+	if(istype(rmb_intent, /datum/rmb_intent/strong))
+		variance_center = 1
+	if(istype(rmb_intent, /datum/rmb_intent/weak))
+		variance_center = -1
+	damage = max(round(damage * (1 + get_damage_variance(/datum/skill/combat/unarmed, variance_center, src) / 100), 1), 1)
+	// [/SURREALIS-ADD]
 	return damage
 
 /mob/living/carbon/human/is_floor_hazard_immune()

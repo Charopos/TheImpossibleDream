@@ -171,7 +171,7 @@
 			user.apply_damage(recoil, BRUTE, BODY_ZONE_PRECISE_MOUTH)// cleaner, basically! this will recoil 25% damage to your mouth if you bite flesh, and 50% if you bite armor
 		if(!apply_damage(dam2do, BRUTE, def_zone, armor_block, user))
 		*/
-		var/armor_block = run_armor_check(def_zone, "stab", armor_penetration = AP_NONE, blade_dulling=BCLASS_BITE, damage = dam2do)
+		var/armor_block = run_armor_check(def_zone, "stab", armor_penetration = HAS_TRAIT(user, TRAIT_STRONGBITE) ? user.STASTR : AP_NONE, blade_dulling=BCLASS_BITE, damage = dam2do)
 
 		if(!apply_damage(armor_reduced_damage(dam2do, armor_block, null), BRUTE, def_zone, 0, user))
 		// [/SURREALIS-EDIT]
@@ -380,7 +380,7 @@
 		var/recoil = round(damage * recoil_mult)
 		user.apply_damage(recoil, BRUTE, BODY_ZONE_PRECISE_MOUTH) // cleaner, basically! this will recoil 25% damage to your mouth if you bite flesh, and 50% if you bite armor
 	*/
-	var/armor_block = C.run_armor_check(sublimb_grabbed, d_type, armor_penetration = max(BLUNT_DEFAULT_PENFACTOR * (user.STASTR - 10), 0), damage = damage)
+	var/armor_block = C.run_armor_check(sublimb_grabbed, d_type, armor_penetration = max(BLUNT_DEFAULT_PENFACTOR * (user.STASTR - 10), 0) + (HAS_TRAIT(user, TRAIT_STRONGBITE) ? user.STASTR : 0), damage = damage)
 
 	// [/SURREALIS-EDIT]
 
