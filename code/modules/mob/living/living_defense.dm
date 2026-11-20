@@ -413,7 +413,8 @@
 /mob/living/proc/check_projectile_wounding(obj/projectile/P, def_zone, wound_class = null, damage = null)
 	var/mob/living/shooter = P.firer
 	var/part_mult = (istype(shooter) && shooter.is_monster_hunting(src)) ? MONSTER_HUNTER_RANGED_PART_MULT : 1
-	return simple_woundcritroll(wound_class || P.woundclass, isnull(damage) ? P.damage * P.antibeast_factor : damage, null, def_zone, crit_message = TRUE, ranged = TRUE, penfactor = AP_TO_PEN_TIER(P.armor_penetration), part_mult = part_mult)
+	var/ap = (P.flag == "blunt") ? 0 : P.armor_penetration
+	return simple_woundcritroll(wound_class || P.woundclass, isnull(damage) ? P.damage * P.antibeast_factor : damage, null, def_zone, crit_message = TRUE, ranged = TRUE, penfactor = AP_TO_PEN_TIER(ap), part_mult = part_mult)
 
 /mob/living/proc/check_projectile_embed(obj/projectile/P, def_zone, was_blunted = FALSE, blocked = 0)
 // [/SURREALIS-EDIT]

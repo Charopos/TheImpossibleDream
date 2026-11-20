@@ -158,16 +158,20 @@
 				if(attacked_item.body_parts_covered != attacked_item.body_parts_covered_dynamic)
 					user.visible_message(span_info("[user] repairs [attacked_item]'s coverage!"))
 					attacked_item.repair_coverage()
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(attacked_item.obj_broken && attacked_item.obj_integrity == attacked_item.max_integrity) // SURREALIS-EDIT - ORIGINAL
 			if(attacked_item.obj_broken && !attacked_item.integrity_needs_repair())
+			// [/SURREALIS-EDIT]
 				attacked_item.obj_fix()
 			user.mind.add_sleep_experience(attacked_item.anvilrepair, exp_gained/2) //We gain as much exp as we fix divided by 2
 		else
 			user.visible_message(span_warning("[user] fumbles trying to repair [attacked_item]!"))
 
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(attacked_item.obj_integrity >= attacked_item.max_integrity) // SURREALIS-EDIT - ORIGINAL
 		if(!attacked_item.integrity_needs_repair())
-			// [SURREALIS-ADD] - VRCOMBAT
 			to_chat(user, span_info("The [attacked_item.name] has been fully repaired."))
-			// [/SURREALIS-ADD]
+			// [/SURREALIS-EDIT]
 			break
 
 	while(do_after(user, CLICK_CD_QUICK, target = attacked_item))
@@ -474,6 +478,25 @@
 	icon_state = "hammer_s"
 	smeltresult = /obj/item/ingot/steel
 
+// [SURREALIS-EDIT] - VRCOMBAT
+// SURREALIS-EDIT - ORIGINAL
+// /*
+// /obj/item/rogueweapon/hammer/steel/attack_turf(turf/T, mob/living/user)
+// 	if(!user.cmode)
+// 		if(T.hammer_repair && T.max_integrity && !T.obj_broken)
+// 			var/repair_percent = 0.05
+// 			if(user.mind)
+// 				if(user.get_skill_level(I.hammer_repair) <= 0)
+// 					to_chat(user, span_warning("I don't know how to repair this.."))
+// 					return
+// 				repair_percent = max(user.get_skill_level(I.hammer_repair) * 0.05, 0.05)
+// 			repair_percent = repair_percent * I.max_integrity
+// 			I.obj_integrity = min(obj_integrity+repair_percent, I.max_integrity)
+// 			playsound(src,'sound/items/bsmithfail.ogg', 100, FALSE)
+// 			user.visible_message(span_info("[user] repairs [I]!"))
+// 			return
+// 	..()
+// */
 /*
 /obj/item/rogueweapon/hammer/steel/attack_turf(turf/T, mob/living/user)
 	if(!user.cmode)
@@ -491,6 +514,7 @@
 			return
 	..()
 */
+// [/SURREALIS-EDIT]
 /obj/item/rogueweapon/hammer/blacksteel
 	name = "blacksteel hammer"
 	desc = "A hammer made of blacksteel, to drive even the hardest metals into submission."

@@ -1039,8 +1039,15 @@
 	if(!awakens || awakened)
 		return
 	awakened = TRUE
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
+	max_integrity += 50
+	obj_integrity = max_integrity
+	*/
 	set_max_integrity(max_integrity + 50)
 	set_integrity(max_integrity)
+	// [/SURREALIS-EDIT]
 	restore_bintegrity()
 	awaken_edge()
 

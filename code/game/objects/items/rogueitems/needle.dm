@@ -130,7 +130,10 @@
 			to_chat(user, span_warning("The needle has no thread left!"))
 			return
 		if(I.sewrepair && I.max_integrity)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(I.obj_integrity == I.max_integrity) // SURREALIS-EDIT - ORIGINAL
 			if(!I.integrity_needs_repair())
+			// [/SURREALIS-EDIT]
 				to_chat(user, span_warning("This is not broken."))
 				return
 			if(!I.ontable())
@@ -204,10 +207,15 @@
 				if(XP_ON_SUCCESS > 0)
 					user.mind.add_sleep_experience(/datum/skill/craft/sewing, user.STAINT * XP_ON_SUCCESS)
 				// [SURREALIS-EDIT] - VRCOMBAT
+				// SURREALIS-EDIT - ORIGINAL
+				/*
+				I.obj_integrity = min(I.obj_integrity + BASE_SEW_REPAIR + skill * SEW_REPAIR_PER_LEVEL, I.max_integrity)
+				if(I.obj_broken && istype(I, /obj/item) && I.obj_integrity >= I.max_integrity)
+				*/
 				// I.obj_integrity = min(I.obj_integrity + BASE_SEW_REPAIR + skill * SEW_REPAIR_PER_LEVEL, I.max_integrity) // SURREALIS-EDIT - ORIGINAL
 				I.adjust_integrity(BASE_SEW_REPAIR + skill * SEW_REPAIR_PER_LEVEL)
-				// [/SURREALIS-EDIT]
 				if(I.obj_broken && istype(I, /obj/item) && !I.integrity_needs_repair())
+				// [/SURREALIS-EDIT]
 					var/obj/item/cloth = I
 					cloth.obj_fix()
 					return

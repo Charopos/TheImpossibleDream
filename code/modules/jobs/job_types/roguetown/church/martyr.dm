@@ -343,9 +343,17 @@
 	current_holder.update_a_intents()
 	I.force = initial(I.force)
 	I.force_wielded = initial(I.force_wielded)
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
+	I.max_integrity = initial(I.max_integrity)
+	I.slot_flags = initial(I.slot_flags)	//Returns its ability to be sheathed
+	I.obj_integrity = I.max_integrity
+	*/
 	I.set_max_integrity(initial(I.max_integrity))
 	I.slot_flags = initial(I.slot_flags)	//Returns its ability to be sheathed
 	I.set_integrity(I.max_integrity)
+	// [/SURREALIS-EDIT]
 	last_time = null	//Refreshes the countdown tracker
 
 	last_activation = world.time
@@ -410,8 +418,15 @@
 		I.gripped_intents = active_intents_wielded
 		user.update_a_intents()
 		I.slot_flags = null	//Can't sheathe a burning sword
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// SURREALIS-EDIT - ORIGINAL
+		/*
+		I.max_integrity = 9999
+		I.obj_integrity = 9999
+		*/
 		I.set_max_integrity(9999)
 		I.set_integrity(9999)
+		// [/SURREALIS-EDIT]
 
 		ADD_TRAIT(parent, TRAIT_NODROP, TRAIT_GENERIC)	//You're committed, now.
 
@@ -427,8 +442,15 @@
 				I.blade_int = I.max_blade_int
 			if(STATE_MARTYR)
 				end_activation = world.time + martyr_duration
+				// [SURREALIS-EDIT] - VRCOMBAT
+				// SURREALIS-EDIT - ORIGINAL
+				/*
+				I.max_integrity = 2000				//If you're committing, we repair the weapon and give it a boost so it lasts the whole fight
+				I.obj_integrity = I.max_integrity
+				*/
 				I.set_max_integrity(2000)				//If you're committing, we repair the weapon and give it a boost so it lasts the whole fight
 				I.set_integrity(I.max_integrity)
+				// [/SURREALIS-EDIT]
 
 				I.max_blade_int = 9999
 				I.blade_int = I.max_blade_int
@@ -440,8 +462,15 @@
 				current_holder.adjust_skillrank_down_to(/datum/skill/combat/wrestling, SKILL_LEVEL_NONE, TRUE)
 			if(STATE_MARTYRULT)
 				end_activation = world.time + ultimate_duration
+				// [SURREALIS-EDIT] - VRCOMBAT
+				// SURREALIS-EDIT - ORIGINAL
+				/*
+				I.max_integrity = 9999				//why not, they got 2 mins anyway
+				I.obj_integrity = I.max_integrity
+				*/
 				I.set_max_integrity(9999)				//why not, they got 2 mins anyway
 				I.set_integrity(I.max_integrity)
+				// [/SURREALIS-EDIT]
 
 				I.max_blade_int = 9999
 				I.blade_int = I.max_blade_int

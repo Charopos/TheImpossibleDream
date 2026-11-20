@@ -4947,64 +4947,64 @@
 	armor_penetration = 0
 
 /obj/projectile/magic
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/acidsplash
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/acidsplash/quietus
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/acidsplash/wall_projectile
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/antimagic
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/dragon_breath
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball/infernal
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball/rogue
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball/rogue/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball/rogue/artillery/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball/rogue/great
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/aoe/fireball/rogue/great/lich
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/arc_bolt
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/arc_bolt/single
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/arc_bolt/single/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/arcane_barrage
 	armor_penetration = 0
 
 /obj/projectile/magic/arcyne_barrage_bolt
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/arcyne_lance
 	armor_penetration = 0
@@ -5013,142 +5013,142 @@
 	armor_penetration = 0
 
 /obj/projectile/magic/azurean_pilum
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/azurean_pilum/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/azurean_pilum/empowered
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/azurean_pilum/empowered/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/baroness
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/baroness/lightning
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/bloodlightning
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/bloodsteal
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/blowingdust
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/blowingdust/moondust
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/blowingdust/spice
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/blowingdust/starsugar
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/boulder
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/bounty
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/death
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/divine_bolt
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/divine_bolt/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/fetch
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/firebolt
 	armor_penetration = 0
 
 /obj/projectile/magic/flashpowder
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/flying
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frost_shard
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frost_shard/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frost_shard/primordial
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frostbolt
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frostbolt/Baroness
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frostbolt/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frostbolt/greater
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/frostbolt/wall_projectile
 	armor_penetration = 5
 
 /obj/projectile/magic/gallows
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/gravel_blast
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/gravel_blast/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/greater_arcyne_bolt
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/greater_arcyne_bolt/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/greater_arcyne_bolt/flurry
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/greater_arcyne_bolt/primordial
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/ice_burst
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/ice_lance
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/lich
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/lich/lightning
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/lightning
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/locker
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/mockery_note
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/necropotence
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/noc_owl
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/profane
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/profane/bone_shard
 	armor_penetration = 0
@@ -5157,70 +5157,70 @@
 	armor_penetration = 0
 
 /obj/projectile/magic/ravox_chain
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/repel
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/resurrection
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/sacred_flame
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/safety
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/sapping
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/seeker_orb
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/seeker_orb/greater
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/sickness
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/sickness/lich
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/smoke_burst
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/smoke_burst/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/soulshot
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/spell
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/spellblade
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/spitfire
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/spitfire/arc
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/spitfire/primordial
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/teleport
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/unholy_grasp
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/zardman_jailer_mage
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/projectile/magic/zardman_jailer_mage/lightning
-	armor_penetration = 100
+	armor_penetration = 0
 
 /obj/machinery
 	armor = ARMOR_MACHINERY

@@ -699,8 +699,8 @@
 	// [SURREALIS-ADD] - VRCOMBAT
 	if(stat < DEAD && HAS_TRAIT(src, TRAIT_BP_CRASH))
 		examination += span_artery("<B>[user == src ? "My" : p_their(TRUE)] pulse is acutely weak.</B>")
-	// [/SURREALIS-ADD]
 
+	// [/SURREALIS-ADD]
 	switch(blood_volume)
 		if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 			examination += span_artery("<B>[m1] extremely anemic.</B>")

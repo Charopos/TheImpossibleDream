@@ -45,7 +45,10 @@
 				to_chat(owner, span_warning("Not even magic can mend this item!"))
 			return FALSE
 
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// if(I.obj_integrity >= I.max_integrity && I.body_parts_covered_dynamic == I.body_parts_covered) // SURREALIS-EDIT - ORIGINAL
 		if(!I.integrity_needs_repair() && I.body_parts_covered_dynamic == I.body_parts_covered)
+		// [/SURREALIS-EDIT]
 			if(owner)
 				to_chat(owner, span_info("[I] appears to be in perfect condition."))
 			return FALSE
@@ -114,10 +117,11 @@
 		user.visible_message(span_info("[I] glows in a faint mending light."))
 		playsound(I, 'sound/magic/mending.ogg', 35, TRUE, -2)
 
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(I.obj_integrity >= I.max_integrity) // SURREALIS-EDIT - ORIGINAL
 		if(!I.integrity_needs_repair())
-			// [SURREALIS-ADD] - VRCOMBAT
 			to_chat(user, span_info("The [I.name] has been fully repaired."))
-			// [/SURREALIS-ADD]
+			// [/SURREALIS-EDIT]
 			if(I.obj_broken)
 				I.obj_fix()
 			if(I.body_parts_covered_dynamic != I.body_parts_covered)

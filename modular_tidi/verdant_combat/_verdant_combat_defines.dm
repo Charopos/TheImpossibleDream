@@ -192,6 +192,7 @@
 	#define CRIT_CURVE_OVERKILL			90
 	/// Flat multiplier on every crit chance.
 	#define CRIT_CHANCE_GLOBAL_MULT		0.75
+	#define CRIT_SPELL_MULT				0.5
 	/// Organ penetration chance multiplier for projectiles.
 	#define CRIT_PROJECTILE_ORGAN_MULT	0.5
 #endif
