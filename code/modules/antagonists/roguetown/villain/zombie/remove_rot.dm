@@ -11,12 +11,21 @@
 	var/has_rot = FALSE
 	var/datum/antagonist/zombie/was_zombie = target.mind?.has_antag_datum(/datum/antagonist/zombie)
 
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// SURREALIS-EDIT - ORIGINAL
+	/*
 	if (was_zombie)
 		has_rot = TRUE
 	else if (istype(target, /mob/living/carbon))
 		has_rot = check_bodyparts_for_rot(target)
 	else if (target.has_status_effect(/datum/status_effect/zombie_infection))
 		has_rot = TRUE
+	*/
+	if (was_zombie || target.has_status_effect(/datum/status_effect/zombie_infection))
+		has_rot = TRUE
+	else
+		has_rot = check_bodyparts_for_rot(target)
+	// [/SURREALIS-EDIT]
 
 	// Remove rot component
 	remove_rot_component(target)

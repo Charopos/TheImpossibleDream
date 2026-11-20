@@ -552,7 +552,10 @@
 			newdam *= damflerp
 			newdam = round(newdam)	//floors it, making the scaling harsher
 	newforce = (newforce + newdam) * dullfactor
-	if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100)
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// if(user.used_intent.get_chargetime() && user.client?.chargedprog < 100) // SURREALIS-EDIT - ORIGINAL
+	if(user.used_intent.get_chargetime() && user.client && user.client.chargedprog < 100)
+	// [/SURREALIS-EDIT]
 		newforce = newforce * 0.5
 	if(!(user.mobility_flags & MOBILITY_STAND))
 		newforce *= 0.5

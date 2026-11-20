@@ -122,7 +122,15 @@
 			to_chat(src, span_warning("Failed to [is_parry_attempt ? "parry" : "dodge"] point-blank shot!"))
 		return FALSE
 	if(is_parry_attempt)
-		if(do_parry(parry_weapon, 3, shooter) != TRUE)
+		var/parry_result = do_parry(parry_weapon, 3, shooter)
+		if(parry_result == PARRY_DISARM)
+			var/disarm_msg = "<b>[src]</b> bats away [shooter]'s [P.fired_from.name]! The [parry_weapon.name] flies free from [src]'s grasp!"
+			dropItemToGround(parry_weapon, TRUE)
+			playsound(get_turf(src), 'sound/combat/clash_disarm_us.ogg', 100, FALSE)
+			visible_message(span_boldwarning(disarm_msg), span_boldwarning(disarm_msg))
+			P.setAngle(rand(0, 359))
+			return TRUE
+		if(parry_result != TRUE)
 			return FALSE
 		visible_message(span_boldwarning("<b>[src]</b> bats away [shooter]'s [P.fired_from.name], spoiling the shot!"), span_boldwarning("I knock away [shooter]'s [P.fired_from.name]!"))
 		P.setAngle(rand(0, 359))
