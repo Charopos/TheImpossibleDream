@@ -261,7 +261,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 
 	var/edge_layer = TURF_DECAL_LAYER
 
-	if(istype(src, /turf/open/floor/rogue/grass))
+	if(istype(src, /turf/open/floor/rogue/grass) || istype(src, /turf/open/water))
 		edge_layer += 0.0005
 
 	var/image/overlay = image(
@@ -332,7 +332,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 		//Check for any neighborlay blockers blocking the check. TODO: Make this part of turf init so we only have to run this once per turf.
 		for(var/obj/O in contents)
 
-			if(O.blocks_neighborlays || O.flags_1&ON_BORDER_1 | !iswallturf(neighbortest))
+			if(O.blocks_neighborlays || O.flags_1&ON_BORDER_1 || !iswallturf(neighbortest))
 				if(O.dir == testing_dir)
 					adjacencies["[testing_dir]"] = FALSE
 					neighborlay_blocked = TRUE
@@ -341,7 +341,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 		if(!neighborlay_blocked) //Skip it. Ideally we would just skip a labelled loop but there's nothing in the docs on how you DO that?
 			for(var/obj/O2 in neighbortest.contents)
 				if(O2.blocks_neighborlays  || O2.flags_1&ON_BORDER_1)
-					if(get_step(O2, GLOB.reverse_dir[O2.dir]))
+					if(get_step(O2, GLOB.reverse_dir[O2.dir] == src))
 						adjacencies["[testing_dir]"] = FALSE
 						neighborlay_blocked = TRUE
 						break

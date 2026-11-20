@@ -18,18 +18,16 @@
 	barefootstep = FOOTSTEP_LAVA
 	clawfootstep = FOOTSTEP_LAVA
 	heavyfootstep = FOOTSTEP_LAVA
-
-	// cardinal_smooth()/verdantsmooth() only ever reads cardinal adjacency bits - see the same note
-	// on /turf/open/floor/rogue.
-	//canSmoothWith = list(/turf/closed, /turf/open/floor/rogue/volcanic, /turf/open/floor/rogue/dirt, /turf/open/floor/rogue/dirt/road,/turf/open/floor/rogue/naturalstone)
-	neighborlay_override = "lavedge"
+	smoothing_flags = SMOOTH_EDGE
+	smoothing_groups = SMOOTH_GROUP_FLOOR_LIQUID
+	smoothing_list = SMOOTH_GROUP_FLOOR_LIQUID
+	neighborlay_self = "lavedge"
 
 
 
 /turf/open/lava/Initialize(mapload)
 	. = ..()
 	dir = pick(GLOB.cardinals)
-//	verdantsmooth()
 
 /turf/open/lava/can_traverse_safely(atom/movable/traveler)
 	return FALSE
