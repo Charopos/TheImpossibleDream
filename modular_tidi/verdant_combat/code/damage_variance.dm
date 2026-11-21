@@ -21,7 +21,7 @@
 		if(/datum/skill/combat/axes, /datum/skill/labor/lumberjacking)
 			variance_range = 40
 			curve_depth = 6
-		if(/datum/skill/combat/maces, /datum/skill/combat/shields, /datum/skill/craft/blacksmithing, /datum/skill/labor/mining)
+		if(/datum/skill/combat/maces, /datum/skill/combat/shields, /datum/skill/craft/blacksmithing, /datum/skill/labor/mining, /datum/skill/craft/cooking)
 			variance_range = 20
 			curve_depth = 3
 		if(/datum/skill/combat/polearms, /datum/skill/labor/farming)
