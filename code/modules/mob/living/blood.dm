@@ -408,7 +408,7 @@
 	// blood_volume = max(blood_volume - amt, 0) // SURREALIS-EDIT - ORIGINAL
 	var/old_volume = blood_volume
 	blood_volume = max(blood_volume - amt, 0)
-	if(old_volume > 0 && !blood_volume && stat != DEAD)
+	if(old_volume > 0 && !blood_volume && stat != DEAD && !HAS_TRAIT(src, TRAIT_BLOODLOSS_IMMUNE) && !HAS_TRAIT(src, TRAIT_NODEATH))
 		to_chat(src, span_userdanger("The last of my lyfeblood ebbs from my ravaged body and soaks the cold earth below..."))
 		death()
 	// [/SURREALIS-EDIT]
