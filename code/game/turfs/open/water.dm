@@ -20,7 +20,7 @@
 	bullet_bounce_sound = null //needs a splashing sound one day.
 	smoothing_flags = SMOOTH_EDGE
 	smoothing_groups = SMOOTH_GROUP_FLOOR_LIQUID
-	smoothing_list = SMOOTH_GROUP_FLOOR_LIQUID
+	smoothing_list = SMOOTH_GROUP_FLOOR_LIQUID + SMOOTH_GROUP_FLOOR_FROZEN
 //	canSmoothWith = list(/turf/closed/mineral,/turf/closed/wall/mineral/rogue, /turf/open/floor/rogue)
 	footstep = null
 	barefootstep = null
@@ -128,6 +128,7 @@
 	if(!istype(F))
 		return null
 	F.baseturfs = water_stack
+	RemoveElement(/datum/element/mob_overlay_effect)
 	F.seasonal_freeze = TRUE
 	return F
 

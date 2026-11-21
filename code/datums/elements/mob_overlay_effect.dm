@@ -11,6 +11,7 @@
 	var/alternate_behavior
 	var/obj/mask_atom/mask
 	var/image/newmask
+	var/lastlying
 /datum/element/mob_overlay_effect/Attach(datum/target, _y_offset = 0, _mask_y_offset = 0, _effect_alpha = 0, _alternate_behavior)
 	. = ..()
 
@@ -99,6 +100,8 @@
 	appearance_flags = RESET_TRANSFORM
 /datum/element/mob_overlay_effect/proc/on_lying_update(mob/living/source, lying)
 	SIGNAL_HANDLER
+	if(source.lying == lastlying)
+		return
 	var/matrix/newmatrix =  new
 	var/i_failed_calc= 0
 	switch(source.lying)
@@ -109,3 +112,4 @@
 		if(270)
 			i_failed_calc = 90
 	mask.transform = newmatrix.Turn(i_failed_calc)
+	lastlying = source.lying

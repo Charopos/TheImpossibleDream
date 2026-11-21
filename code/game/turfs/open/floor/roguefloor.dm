@@ -348,7 +348,8 @@
 	winter_type = null
 	summer_type = /turf/open/floor/rogue/grasscold
 	snowy = TRUE
-
+	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_SNOW
+	smoothing_list = SMOOTH_GROUP_FLOOR_OPEN_SPACE + SMOOTH_GROUP_FLOOR_SNOW + SMOOTH_GROUP_FLOOR_LIQUID
 /turf/open/floor/rogue/grassred
 	name = "red grass"
 	desc = "Grass, ripe with Dendor's blood."
@@ -376,7 +377,8 @@
 	summer_type = /turf/open/floor/rogue/grassred
 	snowy = TRUE
 	icon = 'icons/turf/roguefloor.dmi'
-	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_GRASS + SMOOTH_GROUP_FLOOR_GRASS_RED + SMOOTH_GROUP_FLOOR_SNOW
+	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_SNOW
+	smoothing_list = SMOOTH_GROUP_FLOOR_OPEN_SPACE + SMOOTH_GROUP_FLOOR_SNOW + SMOOTH_GROUP_FLOOR_LIQUID
 
 /turf/open/floor/rogue/grassyel
 	name = "yellow grass"
@@ -406,8 +408,8 @@
 	winter_type = null
 	summer_type = /turf/open/floor/rogue/grassyel
 	snowy = TRUE
-	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_GRASS + SMOOTH_GROUP_FLOOR_GRASS_YELLOW + SMOOTH_GROUP_FLOOR_SNOW
-
+	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_SNOW
+	smoothing_list = SMOOTH_GROUP_FLOOR_OPEN_SPACE + SMOOTH_GROUP_FLOOR_SNOW + SMOOTH_GROUP_FLOOR_LIQUID
 /turf/open/floor/rogue/grass
 	name = "grass"
 	desc = "Grass, sodden with mud and bogwater."
@@ -628,9 +630,8 @@
 	winter_type = null
 	summer_type = /turf/open/floor/rogue/dirt
 	snowy = TRUE
-	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_DIRT + SMOOTH_GROUP_FLOOR_SNOW
-	smoothing_list = SMOOTH_GROUP_FLOOR_OPEN_SPACE + SMOOTH_GROUP_FLOOR_DIRT + SMOOTH_GROUP_FLOOR_GRASS + SMOOTH_GROUP_FLOOR_SAND  \
-	+ SMOOTH_GROUP_FLOOR_LIQUID + SMOOTH_GROUP_FLOOR_SNOW+  SMOOTH_GROUP_WALLS
+	smoothing_groups = SMOOTH_GROUP_OPEN_FLOOR + SMOOTH_GROUP_FLOOR_SNOW
+	smoothing_list = SMOOTH_GROUP_FLOOR_OPEN_SPACE + SMOOTH_GROUP_FLOOR_SNOW + SMOOTH_GROUP_FLOOR_LIQUID
 
 /// Same reasoning as dirt/winter, for dirt/road - sprite/edge family is snowrough's instead.
 /turf/open/floor/rogue/dirt/road/winter
