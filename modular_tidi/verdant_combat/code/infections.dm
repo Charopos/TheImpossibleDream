@@ -235,8 +235,8 @@
 		return 0
 	return ..()
 
-/datum/wound/infection/cauterize_wound(surgical = FALSE)
-	return try_cauterize_treatment(surgical)
+/datum/wound/infection/cauterize_wound(surgical = FALSE, mob/user)
+	return try_cauterize_treatment(surgical, user)
 
 /datum/wound/infection/proc/try_alcohol_treatment()
 	if(infection_stage > 1)
@@ -249,17 +249,19 @@
 	qdel(src)
 	return TRUE
 
-/datum/wound/infection/proc/try_cauterize_treatment(surgical = FALSE)
+/datum/wound/infection/proc/try_cauterize_treatment(surgical = FALSE, mob/user)
 	if(bodypart_owner?.skeletonized)
 		return FALSE
+	if(!user)
+		user = owner
 	if(surgical)
 		to_chat(owner, span_notice("The surgical cautery burns away the infected tissue!"))
-		owner.visible_message(span_danger("[owner] cauterizes the infected tissue on [owner.p_their()] [bodypart_owner.name]!"))
+		user.visible_message(span_danger("[user] cauterizes the infected tissue on [user == owner ? owner.p_their() : "[owner]'s"] [bodypart_owner.name]!"))
 		owner.emote("painscream", TRUE)
 		qdel(src)
 		return TRUE
 	to_chat(owner, span_notice("The flame sears away the infected tissue!"))
-	owner.visible_message(span_danger("[owner] cauterizes the infection on [owner.p_their()] [bodypart_owner.name]!"))
+	user.visible_message(span_danger("[user] cauterizes the infection on [user == owner ? owner.p_their() : "[owner]'s"] [bodypart_owner.name]!"))
 	owner.emote("paincrit", TRUE)
 	qdel(src)
 	return TRUE

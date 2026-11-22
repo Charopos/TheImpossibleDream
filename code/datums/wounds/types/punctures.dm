@@ -249,7 +249,7 @@
 
 // [SURREALIS-EDIT] - VRCOMBAT
 // /datum/wound/puncture/drilling/cauterize_wound() // SURREALIS-EDIT - ORIGINAL
-/datum/wound/puncture/drilling/cauterize_wound(surgical = FALSE)
+/datum/wound/puncture/drilling/cauterize_wound(surgical = FALSE, mob/user)
 // [/SURREALIS-EDIT]
 	qdel(src)
 	return TRUE

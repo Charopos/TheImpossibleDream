@@ -483,7 +483,7 @@ GLOBAL_LIST_INIT(primordial_wounds, init_primordial_wounds())
 /// Cauterizes the wound
 // [SURREALIS-EDIT] - VRCOMBAT
 // /datum/wound/proc/cauterize_wound() // SURREALIS-EDIT - ORIGINAL
-/datum/wound/proc/cauterize_wound(surgical = FALSE)
+/datum/wound/proc/cauterize_wound(surgical = FALSE, mob/user)
 // [/SURREALIS-EDIT]
 	if(!can_cauterize)
 		return FALSE

@@ -150,7 +150,7 @@
 			bleeder.cauterize_wound()
 		*/
 		for(var/datum/wound/bleeder as anything in bodypart.wounds?.Copy())
-			bleeder.cauterize_wound(surgical = (tool?.tool_behaviour == TOOL_CAUTERY))
+			bleeder.cauterize_wound(surgical = (tool?.tool_behaviour == TOOL_CAUTERY), user = user)
 		// bodypart.receive_damage(burn = 25) //painful, but the wounds go away eh? // SURREALIS-EDIT - ORIGINAL
 		bodypart.cauterize_burn(25)
 		// [/SURREALIS-EDIT]
