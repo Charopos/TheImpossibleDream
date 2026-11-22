@@ -2049,6 +2049,7 @@
 			if(buckled.buckle_lying != -1)
 				lying = buckled.buckle_lying
 		if(!lying) //force them on the ground
+			SEND_SIGNAL(src, COMSIG_LIVING_LYING_UPDATE, lying)
 			lying = 90
 	else
 		mobility_flags |= MOBILITY_STAND
@@ -2113,7 +2114,7 @@
 		else
 			remove_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE)
 
-	SEND_SIGNAL(src, COMSIG_LIVING_LYING_UPDATE, lying)
+
 
 /mob/living/proc/fall(forced)
 	if(!(mobility_flags & MOBILITY_USE))

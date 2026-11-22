@@ -220,6 +220,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 		// Reverse dir because we are offsetting the overlay onto the adjacency
 		add_neighborlay(REVERSE_DIR(dir), neighborlay, TRUE)
 
+//Todo: Distinguish between neighborlay and neighborlay self; it would be better to just have these be tracked overlays of other turfs.
 /turf/proc/add_neighborlay(dir, edgeicon, offset = FALSE)
 	var/add
 	var/y = 0
@@ -322,17 +323,22 @@ DEFINE_BITFIELD(smoothing_junction, list(
 	for(var/testing_dir in dirs_to_check)
 		adjacencies["[testing_dir]"] = TRUE
 
-		var/turf/neighbortest = get_step(src, testing_dir)
+
+		var/turf/neighbortest = get_step(src, testing_dir) //Neighbor we're testing.
+		if(iswallturf(neighbortest))//Can't neighbor onto a wall, otherwise we would need a LOT more assets.
+			continue
 		if(!neighbortest)
 			continue
 		// A neighboring turf may not have completed Initialize().
-
+		if(type == neighbortest.type)
+			adjacencies["[testing_dir]"] = FALSE
+			continue
 
 		neighborlay_blocked = FALSE
-		//Check for any neighborlay blockers blocking the check. TODO: Make this part of turf init so we only have to run this once per turf.
+		//Check for any neighborlay blockers blocking the check.
 		for(var/obj/O in contents)
 
-			if(O.blocks_neighborlays || O.flags_1&ON_BORDER_1 || !iswallturf(neighbortest))
+			if(O.blocks_neighborlays || O.flags_1&ON_BORDER_1)
 				if(O.dir == testing_dir)
 					adjacencies["[testing_dir]"] = FALSE
 					neighborlay_blocked = TRUE
@@ -352,9 +358,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 		var/neighbor_smoothing_groups = neighbortest.smoothing_groups
 		if(!islist(smoothing_list) || !islist(neighbor_smoothing_groups))
 			continue
-		if(type == neighbortest.type)
-			adjacencies["[testing_dir]"] = FALSE
-			continue
+
 
 
 

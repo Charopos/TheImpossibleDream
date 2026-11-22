@@ -1,5 +1,6 @@
 ///The alpha mask used on mobs submerged in liquid turfs or standing on high ground
 #define MOB_MOVING_EFFECT_MASK "mob_moving_effect_mask"
+GLOBAL_LIST_EMPTY(mob_overlay_effect_masks)
 ///mob_overlay_effect component. adds and removes
 /datum/element/mob_overlay_effect
 	element_flags = ELEMENT_BESPOKE | ELEMENT_DETACH
@@ -9,17 +10,14 @@
 	var/mask_y_offset = 0
 	var/effect_alpha = 0
 	var/alternate_behavior
-	var/obj/mask_atom/mask
-	var/image/newmask
-	var/lastlying
+
+
 /datum/element/mob_overlay_effect/Attach(datum/target, _y_offset = 0, _mask_y_offset = 0, _effect_alpha = 0, _alternate_behavior)
 	. = ..()
 
 	y_offset = _y_offset
 	mask_y_offset = _mask_y_offset
 	effect_alpha = _effect_alpha
-	mask = new
-	mask.render_target ="*[ref(mask)]"
 	RegisterSignal(get_turf(target), COMSIG_TURF_EXITED, PROC_REF(on_remove), override = TRUE)
 	RegisterSignal(get_turf(target), COMSIG_TURF_ENTERED, PROC_REF(on_add), override = TRUE)
 	RegisterSignal(target, COMSIG_MOB_OVERLAY_FORCE_REMOVE, PROC_REF(on_remove), override = TRUE)
@@ -42,13 +40,15 @@
 /datum/element/mob_overlay_effect/proc/on_remove(datum/source, datum/target)
 	SIGNAL_HANDLER
 	var/mob/mob = target
+	var/atom/movable/AM = target
 	if(ismovable(target))
-		var/atom/movable/AM = target
+
+		var/obj/mask_atom/mask = GLOB.mob_overlay_effect_masks[ref(AM)]
 		AM.remove_filter(MOB_MOVING_EFFECT_MASK)
+		AM.vis_contents -= mask
 	if(ismob(mob))
 		mob.update_vision_cone()
 	UnregisterSignal(target, COMSIG_ITEM_PICKUP)
-	mob.vis_contents -= mask
 
 
 /datum/element/mob_overlay_effect/proc/remove_all(datum/source)
@@ -77,9 +77,11 @@
 	if(isitem(target))
 		offset += 7
 	var/atom/movable/arrived = target
-	if(effect_alpha)
-
+	if(effect_alpha) //Only apply if this is possible. i don't think it's ever not possible but let's be sure.
+		var/obj/mask_atom/mask = new
+		mask.render_target ="*[ref(mask)]"
 		arrived.vis_contents += mask
+		GLOB.mob_overlay_effect_masks[ref(target)] = mask
 		arrived.add_filter(MOB_MOVING_EFFECT_MASK, 1, alpha_mask_filter(0,  mask_y_offset+offset, null, mask.render_target, MASK_INVERSE))
 		if(isliving(target))
 			var/mob/living/L = target
@@ -100,8 +102,7 @@
 	appearance_flags = RESET_TRANSFORM
 /datum/element/mob_overlay_effect/proc/on_lying_update(mob/living/source, lying)
 	SIGNAL_HANDLER
-	if(source.lying == lastlying)
-		return
+	var/obj/mask_atom/mask = GLOB.mob_overlay_effect_masks[ref(source)]
 	var/matrix/newmatrix =  new
 	var/i_failed_calc= 0
 	switch(source.lying)
@@ -112,4 +113,4 @@
 		if(270)
 			i_failed_calc = 90
 	mask.transform = newmatrix.Turn(i_failed_calc)
-	lastlying = source.lying
+
