@@ -425,7 +425,7 @@
 				drained += (abs(round((CLICK_CD_HEAVY - dodgetime) / 2)))
 		if(!attacker_human?.mind)
 			drained = 5
-		if(!defender_human.stamina_add(max(drained, 5)))
+		if(!defender_human.stamina_add(max(drained, 5), skill_used = /datum/skill/misc/athletics))
 		// [/SURREALIS-EDIT]
 			to_chat(src, span_warning("I'm too tired to dodge!"))
 			return FALSE

@@ -95,10 +95,6 @@
 	if(istype(H))
 		H.clear_alert("disgust")
 	..()
-	// [SURREALIS-ADD] - VRCOMBAT
-	if(M && !QDELETED(M))
-		M.apply_status_effect(/datum/status_effect/debuff/missing_organ/stomach)
-	// [/SURREALIS-ADD]
 
 /obj/item/organ/stomach/fly
 	name = "insectoid stomach"
@@ -146,19 +142,3 @@
 
 /obj/item/organ/stomach/ethereal/proc/adjust_charge(amount)
 	crystal_charge = CLAMP(crystal_charge + amount, ETHEREAL_CHARGE_NONE, ETHEREAL_CHARGE_FULL)
-// [SURREALIS-ADD] - VRCOMBAT
-
-/datum/status_effect/debuff/missing_organ/stomach
-	id = "missing_stomach"
-	organ_slot = ORGAN_SLOT_STOMACH
-
-/datum/status_effect/debuff/missing_organ/stomach/missing_organ_effects(mob/living/carbon/C)
-	if(HAS_TRAIT(C, TRAIT_NOHUNGER) || HAS_TRAIT(C, TRAIT_NOMETABOLISM))
-		return
-	C.stamina_add(5)
-	if(C.dna?.species && !(NOBLOOD in C.dna.species.species_traits))
-		C.blood_volume = max(C.blood_volume - 10, 0)
-	if(prob(5) && !C.stat)
-		C.emote("painscream")
-		to_chat(C, span_warning("My insides burn with horrible agony!"))
-// [/SURREALIS-ADD]

@@ -1453,7 +1453,10 @@
 
 	if(moving_resist && client) //we resisted by trying to move
 		client.move_delay = world.time + 20
-	stamina_add(rand(5,15))
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// stamina_add(rand(5,15)) // SURREALIS-EDIT - ORIGINAL
+	stamina_add(rand(5,15), skill_used = /datum/skill/combat/wrestling)
+	// [/SURREALIS-EDIT]
 
 	if(!prob(resist_chance))
 		var/rchance = ""

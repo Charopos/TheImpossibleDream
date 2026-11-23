@@ -543,7 +543,10 @@
 
 	dualwield_processing = TRUE
 
-	if(stamina_add(3))
+	// [SURREALIS-EDIT] - VRCOMBAT
+	// if(stamina_add(3)) // SURREALIS-EDIT - ORIGINAL
+	if(stamina_add(3, skill_used = fatigue_skill_for(get_active_held_item())))
+	// [/SURREALIS-EDIT]
 		var/obj/item/paired_weapon = get_active_held_item()
 		if(paired_weapon)
 			balloon_alert_to_viewers("<font color='#bb2b2b'>Dual Hit!!</font>")
@@ -627,7 +630,10 @@
 /mob/proc/aftermiss()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		H.stamina_add(used_intent.misscost)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// H.stamina_add(used_intent.misscost) // SURREALIS-EDIT - ORIGINAL
+		H.stamina_add(used_intent.misscost, skill_used = H.fatigue_skill_for(H.get_active_held_item()))
+		// [/SURREALIS-EDIT]
 
 //Is the atom obscured by a PREVENT_CLICK_UNDER_1 object above it
 /atom/proc/IsObscured()

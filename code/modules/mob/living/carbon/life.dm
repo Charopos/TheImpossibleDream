@@ -10,6 +10,9 @@
 
 	//Reagent processing needs to come before breathing, to prevent edge cases.
 	handle_organs()
+	// [SURREALIS-ADD] - VRCOMBAT
+	handle_missing_organs()
+	// [/SURREALIS-ADD]
 
 	. = ..()
 

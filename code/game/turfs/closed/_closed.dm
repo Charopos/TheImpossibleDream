@@ -269,7 +269,10 @@
 				var/hadflying = (user.movement_type & FLYING)
 				if((climber_armor_class <= ARMOR_CLASS_LIGHT) && !(ismob(pulling))) // if our armour is not light or none OR we are pulling someone we eat shit and die and can't climb vertically at all, except for 'vaulting' aka we got a sold turf we can walk on in front of us
 					user.movement_type |= FLYING
-				L.stamina_add(stamina_cost_final)
+				// [SURREALIS-EDIT] - VRCOMBAT
+				// L.stamina_add(stamina_cost_final) // SURREALIS-EDIT - ORIGINAL
+				L.stamina_add(stamina_cost_final, skill_used = /datum/skill/misc/climbing)
+				// [/SURREALIS-EDIT]
 				user.forceMove(target)
 				if(!hadflying)
 					user.movement_type &= ~FLYING

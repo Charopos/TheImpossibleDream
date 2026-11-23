@@ -380,7 +380,10 @@
 		target.lastattacker_weakref = WEAKREF(user)
 		if(target.mind)
 			target.mind.attackedme[user.real_name] = world.time
-		user.stamina_add(15)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// user.stamina_add(15) // SURREALIS-EDIT - ORIGINAL
+		user.stamina_add(15, skill_used = /datum/skill/combat/unarmed)
+		// [/SURREALIS-EDIT]
 
 /mob/living/simple_animal/proc/attack_threshold_check(damage, bodypart = null, damagetype = BRUTE, armorcheck = 0)
 	var/temp_damage = damage

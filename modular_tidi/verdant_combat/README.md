@@ -28,6 +28,10 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `code/construct_surgery.dm`: construct-only surgery steps ported from Scarlet Reach.
 - `code/ranged.dm`: ranged variance, falloff, far-sight penalty and z-level steps.
 - `code/spell_variance.dm`: spell damage variance.
+- `code/fatigue.dm`: handles skill-scaled energy cost of stamina use and battering (temporary stamina loss).
+- `code/fatigue_hud.dm`: handles an alpha mask for the stamina and energy bars. Displays battering as a red band rising from the bottom of the stamina bar.
+- `code/missing_organs.dm`: per-tick effects of missing organs moved here for the sake of decluttering.
+- `code/deadite_undeath.dm`: deadites only die when the brain is destroyed or the head comes off, and ignore wound, poison and blood loss debuffs.
 - `code/prevent_crits_values`: override values for armor crit protection types.
 - `code/retune_values`: override values for armor and weapons.
 
@@ -356,3 +360,21 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `code/modules/surgery/organs/ears.dm`: EDIT near `/obj/item/organ/ears/Insert`
 - `code/modules/surgery/organs/eyes.dm`: EDIT near `/obj/item/organ/eyes/Insert`
 - `code/modules/surgery/organs/tongue.dm`: EDIT near `/obj/item/organ/tongue/Insert`
+- `code/_onclick/other_mobs.dm`: EDIT near `/mob/living/carbon/UnarmedAttack`
+- `code/game/objects/items/rogueweapons/mmb/jump.dm`: EDIT near `/mob/living/proc/jump_action_resolve`
+- `code/game/turfs/closed/minerals.dm`: EDIT near `/turf/closed/mineral/attack_right`
+- `code/game/turfs/open/openspace.dm`: EDIT near `/turf/open/transparent/openspace/attack_hand`, EDIT near `/turf/open/transparent/openspace/proc/wallpress`
+- `code/game/turfs/open/water.dm`: EDIT near `/turf/open/water/Exited`
+- `code/modules/farming/helpers.dm`: EDIT near `/proc/apply_farming_fatigue`
+- `code/modules/mob/living/carbon/carbon_movement.dm`: EDIT near `/mob/living/carbon/Move`
+- `code/modules/roguetown/roguejobs/blacksmith/anvil.dm`: EDIT near `/obj/machinery/anvil/attackby`
+- `code/modules/spells/spell.dm`: EDIT near `/obj/effect/proc_holder/spell/proc/perform`
+- `combat_ci.dme`: changed
+- `icons/mob/rogueheat.dmi`: changed
+- `code/modules/spells/roguetown/acolyte/resurrect.dm`: ADD near `/proc/deathmark`
+- `code/datums/status_effects/rogue/debuff.dm`: REMOVE near `/atom/movable/screen/alert/status_effect/debuff/mesmerised`
+- `code/_onclick/drag_drop.dm`: EDIT near `/client/proc/update_to_mob`
+- `code/game/objects/structures/fluff.dm`: EDIT near `/obj/structure/fluff/statue/tdummy/proc/practice`
+- `code/modules/mob/living/carbon/human/emote.dm`: EDIT near `/mob/living/carbon/human/proc/game_armwrestle`
+- `code/modules/mob/living/carbon/human/exercise.dm`: EDIT near `/mob/living/carbon/human/proc/execute_pushups`
+- `code/modules/roguetown/roguejobs/gravedigger/hole.dm`: EDIT near `/obj/structure/closet/dirthole/attackby`

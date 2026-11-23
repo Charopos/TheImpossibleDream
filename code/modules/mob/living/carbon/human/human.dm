@@ -633,6 +633,9 @@
 			else
 				hud_used.healthdoll.icon_state = "healthdoll_DEAD"*/
 
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// SURREALIS-EDIT - ORIGINAL
+		/*
 		if(hud_used.stamina)
 			if(stat != DEAD)
 				. = 1
@@ -723,6 +726,11 @@
 					hud_used.energy.icon_state = "energy10"
 				else if(energy > 0)
 					hud_used.energy.icon_state = "energy5"
+		*/
+		if((hud_used.stamina || hud_used.energy) && stat != DEAD)
+			. = 1
+			update_fatigue_bars()
+		// [/SURREALIS-EDIT]
 
 /mob/living/carbon/human/fully_heal(admin_revive = FALSE, break_restraints = FALSE)
 	dna?.species.spec_fully_heal(src)

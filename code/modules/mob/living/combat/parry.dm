@@ -603,7 +603,7 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/defender_human = src
 		var/stamina_before = defender_human.stamina
-		var/stamina_held = defender_human.stamina_add(parrydrain)
+		var/stamina_held = defender_human.stamina_add(parrydrain, skill_used = defender_human.fatigue_skill_for(parry_weapon))
 		if(parry_weapon && stamina_before + parrydrain >= defender_human.max_stamina && ishuman(user))
 			if(get_stat_roll(user.STASTR) >= get_stat_roll(defender_human.STASTR) + (balance_diff * 3) + 10)
 				return PARRY_DISARM
@@ -657,7 +657,10 @@
 		parrydrain -= defender_human.get_tempo_bonus(TEMPO_TAG_STAMLOSS_PARRY)
 		*/
 		// [/SURREALIS-REMOVE]
-		if(defender_human.stamina_add(parrydrain))
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// if(defender_human.stamina_add(parrydrain)) // SURREALIS-EDIT - ORIGINAL
+		if(defender_human.stamina_add(parrydrain, skill_used = /datum/skill/combat/unarmed))
+		// [/SURREALIS-EDIT]
 			playsound(get_turf(src), pick(parry_sound), 100, FALSE)
 			var/parry_msg = "<b>[src]</b> parries [user]!"
 			if(untrained_armor)

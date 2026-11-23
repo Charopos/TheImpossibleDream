@@ -138,10 +138,10 @@
 // [SURREALIS-ADD] - STAMINA PENALTY FOR STAIRS TRAVELING
 	if(isturf(newtarg))
 		if(L.loc.z - newtarg.z == 1) // went down stairs
-			L.stamina_add(5)
+			L.stamina_add(5, skill_used = /datum/skill/misc/athletics)
 		else // went up stairs
-			L.stamina_add(10)
-// [/SURREALIS ADD]
+			L.stamina_add(10, skill_used = /datum/skill/misc/athletics)
+// [/SURREALIS-ADD]
 	var/atom/movable/pulling = L.pulling
 	var/was_pulled_buckled = FALSE
 	var/obj/item/inqarticles/garrote/cord

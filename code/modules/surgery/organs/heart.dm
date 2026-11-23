@@ -61,10 +61,6 @@
 
 /obj/item/organ/heart/Remove(mob/living/carbon/M, special = 0)
 	..()
-	// [SURREALIS-ADD] - VRCOMBAT
-	if(ishuman(M) && !QDELETED(M))
-		M.apply_status_effect(/datum/status_effect/debuff/missing_organ/heart)
-	// [/SURREALIS-ADD]
 	if(!special)
 		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 120)
 
@@ -120,7 +116,6 @@
 			if(prob(5) && !owner.stat)
 				to_chat(owner, span_warning("My heart aches!"))
 		else
-			owner.stamina_add(damage_ratio * 2)
 			if(prob(2) && !owner.stat)
 				to_chat(owner, span_warning("My chest feels tight."))
 
@@ -260,13 +255,3 @@
 /datum/client_colour/cursed_heart_blood
 	priority = 100 //it's an indicator you're dying, so it's very high priority
 	colour = "red"
-// [SURREALIS-ADD] - VRCOMBAT
-
-/datum/status_effect/debuff/missing_organ/heart
-	id = "missing_heart"
-	organ_slot = ORGAN_SLOT_HEART
-
-/datum/status_effect/debuff/missing_organ/heart/missing_organ_effects(mob/living/carbon/human/H)
-	if(ishuman(H))
-		H.handle_heart()
-// [/SURREALIS-ADD]

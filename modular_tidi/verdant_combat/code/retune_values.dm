@@ -3499,7 +3499,7 @@
 	armor = ARMOR_BRIGANDINE
 
 /obj/item/clothing/suit/roguetown/armor/manual/arcyne_ward/dragonhide
-	armor = ARMOR_LEATHER
+	armor = ARMOR_DRAGONHIDE
 
 /obj/item/clothing/suit/roguetown/armor/manual/emote
 	armor = ARMOR_PADDED_GOOD

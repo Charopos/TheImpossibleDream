@@ -22,4 +22,8 @@
 #include "code\retune_values.dm"
 #include "code\upstream_features.dm"
 #include "code\spell_variance.dm"
+#include "code\fatigue.dm"
+#include "code\fatigue_hud.dm"
+#include "code\missing_organs.dm"
+#include "code\deadite_undeath.dm"
 #include "code\trait_descriptions.dm"

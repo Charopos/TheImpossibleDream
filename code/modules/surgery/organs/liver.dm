@@ -74,6 +74,8 @@
 	if(damage > maxHealth)//cap liver damage
 		damage = maxHealth
 
+// [SURREALIS-REMOVE] - VRCOMBAT
+/*
 /obj/item/organ/liver/Remove(mob/living/carbon/carbon, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 	carbon.apply_status_effect(/datum/status_effect/debuff/liver_failure)
@@ -81,6 +83,8 @@
 /obj/item/organ/liver/Insert(mob/living/carbon/carbon, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 	carbon.remove_status_effect(/datum/status_effect/debuff/liver_failure)
+*/
+// [/SURREALIS-REMOVE]
 
 #undef HAS_SILENT_TOXIN
 #undef HAS_NO_TOXIN

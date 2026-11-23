@@ -1920,7 +1920,10 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 		target.lastattacker_weakref = WEAKREF(user)
 		if(target.mind)
 			target.mind.attackedme[user.real_name] = world.time
-		user.stamina_add(15)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// user.stamina_add(15) // SURREALIS-EDIT - ORIGINAL
+		user.stamina_add(15, skill_used = /datum/skill/combat/unarmed)
+		// [/SURREALIS-EDIT]
 		target.forcesay(GLOB.hit_appends)
 /datum/species/proc/spec_hitby(atom/movable/AM, mob/living/carbon/human/H)
 	return
@@ -2096,9 +2099,7 @@ GLOBAL_LIST_INIT(body_builds, init_body_builds())
 			if(extra_msg)
 				H.next_attack_msg += extra_msg
 			// [SURREALIS-ADD] - VRCOMBAT
-			var/stamina_drain = min(armor_block * 0.05, 5)
-			if(stamina_drain > 0)
-				H.stamina_add(stamina_drain)
+			H.battered_add(min(armor_block * BATTERED_BLOCK_RATIO, BATTERED_BLOCK_MAX))
 			// [/SURREALIS-ADD]
 			if(I)
 				I.remove_bintegrity(1)

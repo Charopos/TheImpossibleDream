@@ -210,7 +210,10 @@
 			if(!(M.status_flags & CANPUSH) || HAS_TRAIT(M, TRAIT_PUSHIMMUNE))
 				to_chat(user, span_warning("Can't get a grip!"))
 				return FALSE
-			user.stamina_add(rand(7,15))
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// user.stamina_add(rand(7,15)) // SURREALIS-EDIT - ORIGINAL
+			user.stamina_add(rand(7,15), skill_used = /datum/skill/combat/wrestling)
+			// [/SURREALIS-EDIT]
 			M.grippedby(user)			//Aggro grip
 			if(grab_state >= GRAB_AGGRESSIVE)
 				// [SURREALIS-EDIT] - VRCOMBAT
@@ -231,7 +234,10 @@
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M))
 					playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
-					user.stamina_add(7)
+					// [SURREALIS-EDIT] - VRCOMBAT
+					// user.stamina_add(7) // SURREALIS-EDIT - ORIGINAL
+					user.stamina_add(7, skill_used = /datum/skill/combat/wrestling)
+					// [/SURREALIS-EDIT]
 					var/mob/living/carbon/C = M
 					var/choke_damage
 					if(user.STASTR > STRENGTH_SOFTCAP)
@@ -281,7 +287,7 @@
 			if(limb_grabbed && grab_state > GRAB_PASSIVE) //this implies a carbon victim
 				if(iscarbon(M))
 					playsound(src.loc, 'sound/foley/struggle.ogg', 100, FALSE, -1)
-					user.stamina_add(7)
+					user.stamina_add(7, skill_used = /datum/skill/combat/wrestling)
 					var/mob/living/carbon/C = M
 					if(!C?.client?.prefs?.horn_breaking)
 						if(user != M)
@@ -381,7 +387,10 @@
 				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(iscarbon(M))
-					user.stamina_add(rand(3,8))
+					// [SURREALIS-EDIT] - VRCOMBAT
+					// user.stamina_add(rand(3,8)) // SURREALIS-EDIT - ORIGINAL
+					user.stamina_add(rand(3,8), skill_used = /datum/skill/combat/wrestling)
+					// [/SURREALIS-EDIT]
 					twistlimb(user)
 		if(/datum/intent/grab/twistitem)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM))
@@ -396,7 +405,10 @@
 				return FALSE
 			if(limb_grabbed && grab_state > 0) //this implies a carbon victim
 				if(ismob(M))
-					user.stamina_add(rand(3,8))
+					// [SURREALIS-EDIT] - VRCOMBAT
+					// user.stamina_add(rand(3,8)) // SURREALIS-EDIT - ORIGINAL
+					user.stamina_add(rand(3,8), skill_used = /datum/skill/combat/wrestling)
+					// [/SURREALIS-EDIT]
 					twistitemlimb(user)
 		if(/datum/intent/grab/remove)
 			if(user.buckled)
@@ -406,7 +418,10 @@
 				badluckmessage(user)
 				user.stop_pulling(TRUE)
 				return FALSE
-			user.stamina_add(rand(3,13))
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// user.stamina_add(rand(3,13)) // SURREALIS-EDIT - ORIGINAL
+			user.stamina_add(rand(3,13), skill_used = /datum/skill/combat/wrestling)
+			// [/SURREALIS-EDIT]
 			if(isitem(sublimb_grabbed))
 				removeembeddeditem(user)
 			else
@@ -428,7 +443,10 @@
 					return
 				var/stun_dur = max(((65 + (skill_diff * 10) + (user.STASTR * 5) - (M.STASTR * 5)) * combat_modifier), 20)
 				var/pincount = 0
-				user.stamina_add(rand(1,3))
+				// [SURREALIS-EDIT] - VRCOMBAT
+				// user.stamina_add(rand(1,3)) // SURREALIS-EDIT - ORIGINAL
+				user.stamina_add(rand(1,3), skill_used = /datum/skill/combat/wrestling)
+				// [/SURREALIS-EDIT]
 				while(M == grabbed && !(M.mobility_flags & MOBILITY_STAND) && (src in M.grabbedby))
 					if(M.IsStun())
 						if(!do_after(user, stun_dur + 1, needhand = 0, target = M))
@@ -441,13 +459,19 @@
 							break
 						M.Stun(stun_dur - pincount * 2)
 						M.Immobilize(stun_dur)	//Made immobile for the whole do_after duration, though
-						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
+						// [SURREALIS-EDIT] - VRCOMBAT
+						// user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5) // SURREALIS-EDIT - ORIGINAL
+						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5, skill_used = /datum/skill/combat/wrestling)
+						// [/SURREALIS-EDIT]
 						M.visible_message(span_danger("[user] keeps [M] pinned to the ground!"))
 						pincount += 2
 					else if(src in M.grabbedby)
 						M.Stun(stun_dur - 10)
 						M.Immobilize(stun_dur)
-						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5)
+						// [SURREALIS-EDIT] - VRCOMBAT
+						// user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5) // SURREALIS-EDIT - ORIGINAL
+						user.stamina_add(rand(1,3) + abs(skill_diff) + stun_dur / 1.5, skill_used = /datum/skill/combat/wrestling)
+						// [/SURREALIS-EDIT]
 						pincount += 2
 						M.visible_message(span_danger("[user] pins [M] to the ground!"), \
 							span_userdanger("[user] pins me to the ground!"), span_hear("I hear a sickening sound of pugilism!"), COMBAT_MESSAGE_RANGE)
@@ -456,7 +480,10 @@
 					badluckmessage(user)
 					user.stop_pulling(TRUE)
 					return FALSE
-				user.stamina_add(rand(5,15))
+				// [SURREALIS-EDIT] - VRCOMBAT
+				// user.stamina_add(rand(5,15)) // SURREALIS-EDIT - ORIGINAL
+				user.stamina_add(rand(5,15), skill_used = /datum/skill/combat/wrestling)
+				// [/SURREALIS-EDIT]
 				// [SURREALIS-EDIT] - VRCOMBAT
 				// if(M.compliance || prob(clamp((((4 + (((user.STASTR - M.STASTR)/2) + skill_diff)) * 10 + rand(-5, 5)) * combat_modifier), 5, 95))) // SURREALIS-EDIT - ORIGINAL
 				if(M.compliance || (get_stat_roll(user.STASTR) + skill_diff + round((combat_modifier-1)*10)) >= get_stat_roll(M.STASTR))
@@ -480,7 +507,10 @@
 					I = M.get_active_held_item()
 				else
 					I = M.get_inactive_held_item()
-			user.stamina_add(rand(3,8))
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// user.stamina_add(rand(3,8)) // SURREALIS-EDIT - ORIGINAL
+			user.stamina_add(rand(3,8), skill_used = /datum/skill/combat/wrestling)
+			// [/SURREALIS-EDIT]
 			var/probby = clamp((((3 + (((user.STASTR - M.STASTR)/4) + skill_diff)) * 10) * combat_modifier), 5, 95)
 			if(I)
 				if(M.mind)

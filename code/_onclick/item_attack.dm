@@ -230,7 +230,7 @@
 	// Unarmed attacks are the only ones right now that have differing releasedrain, see unarmed attacks for their calc.
 	user.stamina_add(user.used_intent.releasedrain + rmb_stam_penalty)
 	*/
-	user.stamina_add(get_stamina_cost(src, user))
+	user.stamina_add(get_stamina_cost(src, user), skill_used = user.fatigue_skill_for(src))
 	if(istype(user.rmb_intent, /datum/rmb_intent/strong))
 		user.energy_add(-max(23 - (user.STAWIL + user.get_skill_level(/datum/skill/misc/athletics)), 3))
 	// [/SURREALIS-EDIT]
@@ -639,7 +639,7 @@
 	if(newforce > 1)
 		// [SURREALIS-EDIT] - VRCOMBAT
 		// if(user.stamina_add(5)) // SURREALIS-EDIT - ORIGINAL
-		if(user.stamina_add(get_stamina_cost(I, user)))
+		if(user.stamina_add(get_stamina_cost(I, user), skill_used = struck_object_skill(blade_dulling, I)))
 		// [/SURREALIS-EDIT]
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else
@@ -702,7 +702,7 @@
 	if(newforce > 1)
 		// [SURREALIS-EDIT] - VRCOMBAT
 		// if(user.stamina_add(5)) // SURREALIS-EDIT - ORIGINAL
-		if(user.stamina_add(get_stamina_cost(I, user)))
+		if(user.stamina_add(get_stamina_cost(I, user), skill_used = struck_object_skill(blade_dulling, I)))
 		// [/SURREALIS-EDIT]
 			user.visible_message(span_danger("[user] [verbu] [src] with [I]!"))
 		else

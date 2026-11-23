@@ -69,6 +69,23 @@
 #define BLUNT_AP_MOD_MEDIUM -6
 #define BLUNT_AP_MOD_HEAVY 26
 
+#define BLUNT_VITAL_CHEST_HEAVY 6
+#define BLUNT_VITAL_CHEST_MEDIUM 5
+#define BLUNT_VITAL_CHEST_LIGHT 4
+#define BLUNT_VITAL_HEAD_HEAVY 6
+#define BLUNT_VITAL_HEAD_MEDIUM 5
+#define BLUNT_VITAL_HEAD_LIGHT 4
+
+#define FATIGUE_SKILL_REDUCTION_PER_RANK 0.05
+
+#define BATTERED_CAP_RATIO 0.5
+#define BATTERED_DECAY_DELAY (4 SECONDS)
+#define BATTERED_DECAY_PER_SECOND 6
+#define BATTERED_BLOCK_RATIO 0.05
+#define BATTERED_BLOCK_MAX 5
+#define BATTERED_HEART_MAX 40
+#define BATTERED_STOMACH_MISSING 30
+
 /// Damage variance range, in percent, for bows, crossbows and slings.
 #define RANGED_VARIANCE_RANGE 20
 /// Variance percentile at or below which a hit announces as weak.

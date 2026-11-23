@@ -142,7 +142,10 @@ This allows the devs to draw whatever shape they want at the cost of it feeling 
 	if(L && stamcost)
 		//If <1 it's %-age based, if >=1 it's just a flat amount.
 		var/cost = (stamcost < 1) ? (L.max_stamina * stamcost) : stamcost
-		return L.stamina_add(cost)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// return L.stamina_add(cost) // SURREALIS-EDIT - ORIGINAL
+		return L.stamina_add(cost, skill_used = custom_skill || L.fatigue_skill_for(L.get_active_held_item()))
+		// [/SURREALIS-EDIT]
 	else
 		return TRUE
 

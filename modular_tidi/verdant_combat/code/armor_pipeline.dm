@@ -1,4 +1,4 @@
-#define PIECE_EFFECTIVENESS(piece, integrity_ratio, light_floor) armor_zone_effectiveness(integrity_ratio, ((light_floor) && (piece).armor_class == ARMOR_CLASS_NONE) ? ARMOR_CLASS_LIGHT : (piece).armor_class)
+#define PIECE_EFFECTIVENESS(piece, integrity_ratio) armor_zone_effectiveness(integrity_ratio, ARMOR_DEGRADATION_CLASS(piece) || ARMOR_CLASS_LIGHT)
 #define PIECE_BLUNT_MODIFIER(piece, effectiveness, def_zone, apply_vital_bonus) blunt_ap_modifier(ARMOR_DEGRADATION_CLASS(piece), effectiveness, def_zone, apply_vital_bonus)
 
 GLOBAL_LIST_INIT(armor_type_by_bclass, list(
@@ -80,19 +80,19 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 		if(def_zone == BODY_ZONE_CHEST)
 			switch(effective_class)
 				if(ARMOR_CLASS_HEAVY)
-					armor_penalty = 26 * effectiveness
+					armor_penalty = BLUNT_VITAL_CHEST_HEAVY * effectiveness
 				if(ARMOR_CLASS_MEDIUM)
-					armor_penalty = 18 * effectiveness
+					armor_penalty = BLUNT_VITAL_CHEST_MEDIUM * effectiveness
 				if(ARMOR_CLASS_LIGHT)
-					armor_penalty = 8 * effectiveness
+					armor_penalty = BLUNT_VITAL_CHEST_LIGHT * effectiveness
 		if(def_zone == BODY_ZONE_HEAD)
 			switch(effective_class)
 				if(ARMOR_CLASS_HEAVY)
-					armor_penalty = 12 * effectiveness
+					armor_penalty = BLUNT_VITAL_HEAD_HEAVY * effectiveness
 				if(ARMOR_CLASS_MEDIUM)
-					armor_penalty = 10 * effectiveness
+					armor_penalty = BLUNT_VITAL_HEAD_MEDIUM * effectiveness
 				if(ARMOR_CLASS_LIGHT)
-					armor_penalty = 8 * effectiveness
+					armor_penalty = BLUNT_VITAL_HEAD_LIGHT * effectiveness
 		blunt_modifier -= armor_penalty
 	return blunt_modifier
 
@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 			var/integrity_ratio = C.get_zone_integrity_ratio(def_zone)
 			if(integrity_ratio <= 0)
 				continue
-			effectiveness = PIECE_EFFECTIVENESS(C, integrity_ratio, !vital_penalties)
+			effectiveness = PIECE_EFFECTIVENESS(C, integrity_ratio)
 		var/val = C.armor.getRating(d_type)
 		if(val <= 0)
 			continue
@@ -221,7 +221,7 @@ GLOBAL_LIST_INIT(armor_type_by_bclass, list(
 	if(used)
 		protection = used.armor.getRating(d_type)
 		if(used.max_integrity)
-			armor_effectiveness = PIECE_EFFECTIVENESS(used, used.get_zone_integrity_ratio(def_zone), FALSE)
+			armor_effectiveness = PIECE_EFFECTIVENESS(used, used.get_zone_integrity_ratio(def_zone))
 		if(blunt_applies)
 			used_blunt_modifier = PIECE_BLUNT_MODIFIER(used, armor_effectiveness, def_zone, apply_vital_bonus)
 			if(no_crush)

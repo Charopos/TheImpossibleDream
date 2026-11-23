@@ -146,32 +146,6 @@ GLOBAL_LIST_INIT(clamping_tool_behaviors, list(TOOL_HEMOSTAT, TOOL_WIRECUTTER, T
 	bodypart_attacked_by(BCLASS_BURN, damage, null, body_zone, raw_damage = damage, no_crit = TRUE, no_debuff = TRUE)
 	cauterizing = FALSE
 
-/obj/item/bodypart/chest/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, armor, was_blunted = FALSE, raw_damage = 0, armor_block = 0, obj/item/weapon, no_crit = FALSE, no_debuff = FALSE)
-	. = ..()
-	if(!owner || dam <= 0 || zone_precise != BODY_ZONE_PRECISE_STOMACH || bclass != BCLASS_BLUNT)
-		return
-	if(armor_block >= raw_damage / 2)
-		return
-	owner.winding_hit_drain("gut_wind", dam * 0.2)
-
-/obj/item/bodypart/head/bodypart_attacked_by(bclass = BCLASS_BLUNT, dam, mob/living/user, zone_precise = src.body_zone, silent = FALSE, crit_message = FALSE, armor, was_blunted = FALSE, raw_damage = 0, armor_block = 0, obj/item/weapon, no_crit = FALSE, no_debuff = FALSE)
-	. = ..()
-	if(!owner || dam <= 0 || armor_block >= raw_damage / 2)
-		return
-	owner.winding_hit_drain("head_wind", (bclass == BCLASS_BLUNT) ? dam * 0.25 : dam * 0.15)
-
-/mob/living/proc/winding_hit_drain(timer_key, base_drain)
-	if(HAS_TRAIT(src, TRAIT_NOPAINSTUN))
-		return
-	if(world.time < mob_timers[timer_key])
-		return
-	var/con = max(STACON, 1)
-	var/stamina_loss = round(base_drain * 10 / con)
-	if(stamina_loss <= 0)
-		return
-	stamina_add(stamina_loss)
-	mob_timers[timer_key] = world.time + (5 + con / 2) SECONDS
-
 GLOBAL_LIST_INIT(brain_penetration_zones, list(BODY_ZONE_PRECISE_SKULL, BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_R_EYE))
 
 /datum/wound/scarring

@@ -746,8 +746,8 @@
 		else
 			organ_status = span_warning("damaged")
 		examination += span_info("☼ [capitalize(organ.name)] is [organ_status].")
-	for(var/datum/status_effect/debuff/missing_organ/missing in status_effects)
-		examination += span_info("☼ [capitalize(missing.organ_slot)] is [span_dead("<B>missing</B>")].")
+	for(var/missing_slot in missing_organ_slots())
+		examination += span_info("☼ [capitalize(missing_slot)] is [span_dead("<B>missing</B>")].")
 
 	// [/SURREALIS-ADD]
 	examination += "ø ------------ ø</span>"

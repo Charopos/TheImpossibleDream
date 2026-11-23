@@ -87,12 +87,18 @@
 /obj/item/gun/ballistic/revolver/grenadelauncher/proc/pay_release_drain(mob/living/user)
 	var/cost = get_shot_drain(user, release_drain)
 	if(cost)
-		user.stamina_add(cost)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// user.stamina_add(cost) // SURREALIS-EDIT - ORIGINAL
+		user.stamina_add(cost, skill_used = associated_skill)
+		// [/SURREALIS-EDIT]
 
 /obj/item/gun/ballistic/revolver/grenadelauncher/proc/pay_letdown_drain(mob/living/user, draw_progress = 1)
 	var/cost = get_shot_drain(user, release_drain * RANGED_LETDOWN_DRAIN_MULT * clamp(draw_progress, 0, 1))
 	if(cost)
-		user.stamina_add(cost)
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// user.stamina_add(cost) // SURREALIS-EDIT - ORIGINAL
+		user.stamina_add(cost, skill_used = associated_skill)
+		// [/SURREALIS-EDIT]
 
 // [SURREALIS-REMOVE] - VRCOMBAT
 /*
