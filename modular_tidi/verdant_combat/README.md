@@ -378,3 +378,4 @@ Port of Verdant Retreat's combat, armor and health reworks to Surrealis: percent
 - `code/modules/mob/living/carbon/human/emote.dm`: EDIT near `/mob/living/carbon/human/proc/game_armwrestle`
 - `code/modules/mob/living/carbon/human/exercise.dm`: EDIT near `/mob/living/carbon/human/proc/execute_pushups`
 - `code/modules/roguetown/roguejobs/gravedigger/hole.dm`: EDIT near `/obj/structure/closet/dirthole/attackby`
+- `code/game/objects/structures/stairs.dm`: ADD near `/proc/movable_travel_z_level`
