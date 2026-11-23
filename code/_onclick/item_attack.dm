@@ -588,7 +588,7 @@
 		variance_center = 1
 	if(istype(user.rmb_intent, /datum/rmb_intent/weak))
 		variance_center = -1
-	var/variance_roll = get_damage_variance(I.associated_skill, variance_center, user)
+	var/variance_roll = get_damage_variance(I.damage_profile_skill(), variance_center, user)
 	newforce = newforce * (1 + (variance_roll / 100))
 	newforce = max(round(newforce, 1), 1)
 	// [/SURREALIS-EDIT]

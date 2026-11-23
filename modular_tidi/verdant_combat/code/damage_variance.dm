@@ -54,3 +54,7 @@
 		H.last_variance_percentile = ((clamped_roll + variance_range) / (variance_range * 2)) * 100
 
 	return clamped_roll
+
+/obj/item/proc/damage_profile_skill()
+	var/datum/component/skill_bind/bind = GetComponent(/datum/component/skill_bind)
+	return bind ? bind.original_skill : associated_skill
