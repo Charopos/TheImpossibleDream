@@ -114,3 +114,6 @@ GLOBAL_LIST_EMPTY(mob_overlay_effect_masks)
 			i_failed_calc = 90
 	mask.transform = newmatrix.Turn(i_failed_calc)
 
+// [SURREALIS-ADD] - PLASMA_OPTS
+#undef MOB_MOVING_EFFECT_MASK
+// [/SURREALIS-ADD]
