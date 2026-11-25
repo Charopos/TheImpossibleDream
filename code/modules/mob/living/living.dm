@@ -1103,7 +1103,7 @@
 			lying = 270
 		update_transform()
 		lying_prev = lying
-
+	SEND_SIGNAL(src, COMSIG_LIVING_LYING_UPDATE, lying)
 	if (buckled && buckled.loc != newloc) //not updating position
 		if (!buckled.anchored)
 			return buckled.Move(newloc, direct, glide_size)
@@ -2049,10 +2049,12 @@
 			if(buckled.buckle_lying != -1)
 				lying = buckled.buckle_lying
 		if(!lying) //force them on the ground
+			SEND_SIGNAL(src, COMSIG_LIVING_LYING_UPDATE, lying)
 			lying = 90
 	else
 		mobility_flags |= MOBILITY_STAND
 		lying = 0
+
 
 /*
 	if(should_be_lying || restrained || incapacitated())
@@ -2111,6 +2113,8 @@
 			add_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE, priority=100, override=TRUE, multiplicative_slowdown=limbless_slowdown, movetypes=GROUND)
 		else
 			remove_movespeed_modifier(MOVESPEED_ID_LIVING_LIMBLESS, update=TRUE)
+
+
 
 /mob/living/proc/fall(forced)
 	if(!(mobility_flags & MOBILITY_USE))
