@@ -151,7 +151,10 @@
 			if(!ismineralturf(src))
 				return
 			src.attackby(item, user, multiplier = 4)
-			user.stamina_add(25)
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// user.stamina_add(25) // SURREALIS-EDIT - ORIGINAL
+			user.stamina_add(25, skill_used = /datum/skill/labor/mining)
+			// [/SURREALIS-EDIT]
 	if(user.used_intent.type == /datum/intent/drill && (user.get_skill_level(/datum/skill/craft/engineering) >= SKILL_LEVEL_APPRENTICE) && (istype(item, /obj/item/rogueweapon/contraption/pick/drill)))
 		var/obj/item/rogueweapon/contraption/pick/drill/drillitem = item
 		if(drillitem.current_charge < 10)
@@ -161,7 +164,10 @@
 			if(!ismineralturf(src))
 				return
 			src.attackby(drillitem, user, multiplier = 5) //higherimpact
-			user.stamina_add(5) //less stamina
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// user.stamina_add(5) //less stamina // SURREALIS-EDIT - ORIGINAL
+			user.stamina_add(5, skill_used = /datum/skill/labor/mining) //less stamina
+			// [/SURREALIS-EDIT]
 			drillitem.current_charge -= 10
 	..()
 
