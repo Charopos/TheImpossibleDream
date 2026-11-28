@@ -1553,7 +1553,10 @@
 		if(attacking_weapon?.max_blade_int)
 			attacking_weapon.remove_bintegrity(5)
 		living_mob.changeNext_move(CLICK_CD_MELEE)
-		living_mob.stamina_add(rand(4, 6))
+		// [SURREALIS-EDIT] - VRCOMBAT
+		// living_mob.stamina_add(rand(4, 6)) // SURREALIS-EDIT - ORIGINAL
+		living_mob.stamina_add(rand(4, 6), skill_used = associated_skill)
+		// [/SURREALIS-EDIT]
 
 		var/probby = (living_mob.STALUC / 10) * 100
 		probby = min(probby, 99)

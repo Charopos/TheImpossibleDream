@@ -149,7 +149,10 @@
 			if(platform_atom_count > 0)
 				return
 			var/drained = get_stamina_drain(user, get_dir(src, newloc))
-			if(drained && !user.stamina_add(drained))
+			// [SURREALIS-EDIT] - VRCOMBAT
+			// if(drained && !user.stamina_add(drained)) // SURREALIS-EDIT - ORIGINAL
+			if(drained && !user.stamina_add(drained, skill_used = /datum/skill/misc/swimming))
+			// [/SURREALIS-EDIT]
 				user.Immobilize(30)
 				addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, Knockdown), 30), 1 SECONDS)
 
